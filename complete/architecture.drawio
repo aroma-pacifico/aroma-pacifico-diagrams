@@ -1,0 +1,377 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="32.4.1" type="device">
+  <diagram id="runtime" name="Complete architecture">
+    <mxGraphModel dx="3200" dy="2400" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3200" pageHeight="2400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" style="" />
+        <mxCell id="1" parent="0" style="" />
+        <mxCell id="title" value="Complete architecture | Aroma Pacifico 2026" style="text;html=1;align=left;verticalAlign=middle;fontSize=35;fontStyle=1;fontColor=#102a43;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="3500" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Runtime paths, boundaries, trust controls and the end-to-end crop-alert, drone, sack and trip flows. Primary cloud: AWS us-east-1; Azure is prepared as an undeployed export target (ADR-001)." style="text;html=1;align=left;verticalAlign=middle;fontSize=21;fontColor=#334e68;" vertex="1" parent="1">
+          <mxGeometry x="40" y="85" width="3500" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="farm" value="FARMS | 200 farms across Cauca, Huila and Tolima" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=24;fontStyle=1;align=left;verticalAlign=top;spacing=15;" vertex="1" parent="1">
+          <mxGeometry x="40" y="175" width="690" height="590" as="geometry" />
+        </mxCell>
+        <mxCell id="farmnodes" value="Crop + drying nodes&#10;Crop: 6 readings/day; drying: 24/day while active&#10;TLS MQTT, per-node X.509 identity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="75" y="255" width="255" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="farmbuf" value="Encrypted, non-volatile buffer&#10;Store-and-forward, maximum 24 h&#10;Live first, then oldest; PUBACK releases" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="365" y="255" width="285" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="farmnet" value="Cellular or satellite bearer&#10;Public internet to regional endpoint&#10;Farm traffic bypasses centers and VPC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="210" y="500" width="315" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="farmoffline" value="NO SIGNAL: retain readings locally; drain after reconnect. Alert target: &lt;5 min with route; after outage, emit on drain within 24 h." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e8;strokeColor=#b27824;strokeWidth=2;fontColor=#5a3b08;fontSize=19;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="80" y="660" width="600" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="centers" value="COLLECTION CENTERS | same pattern x3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=24;fontStyle=1;align=left;verticalAlign=top;spacing=15;" vertex="1" parent="1">
+          <mxGeometry x="760" y="175" width="780" height="590" as="geometry" />
+        </mxCell>
+        <mxCell id="cauca" value="CAUCA | pattern shown in detail&#10;10.41.0.0/16 reserved" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=21;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="785" y="250" width="390" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="cstaff" value="Gerencia 10.41.1.0/24&#10;Support 10.41.2.0/24 (VLAN 102)&#10;Logistics 10.41.3.0/24&#10;Transport 10.41.4.0/24&#10;Visitors 10.41.5.0/24&#10;Servers 10.41.10.0/24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#a7b8c7;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="805" y="305" width="350" height="225" as="geometry" />
+        </mxCell>
+        <mxCell id="cfw" value="Perimeter firewall | 10.41.20.0/24 | IPsec + cellular backup | permanent CC-GST-01/02, CC-TEL-02, CC-STF-01, CC-LNK-01/02/03/04/05/07 and CC-DEF-01" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e8;strokeColor=#b27824;strokeWidth=2;fontColor=#5a3b08;fontSize=17;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="805" y="545" width="350" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="huila" value="HUILA&#10;10.42.0.0/16&#10;Same 10.4x zone plan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1195" y="285" width="125" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="tolima" value="TOLIMA&#10;10.43.0.0/16&#10;Same 10.4x zone plan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="285" width="125" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="hub" value="Network account hub&#10;Two IPsec tunnels per center&#10;100 Mbps WAN; cellular backup" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1195" y="485" width="265" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="center_note" value="Farm telemetry and transporter positions do not cross the center VPN. Drone ground station uses Support VLAN 102; center upload stays private." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef5fb;strokeColor=#61788d;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="785" y="655" width="730" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="operator" value="CONTRACTED DRONE OPERATION | combined area + precision mode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=24;fontStyle=1;align=left;verticalAlign=top;spacing=15;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="175" width="760" height="590" as="geometry" />
+        </mxCell>
+        <mxCell id="mission" value="Ground station preloads mission, polygon and no-fly zones before flight. Operator is contracted and certified; MFA identity." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="260" width="330" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="dronebuf" value="Drone + ground-station buffer&#10;Mission continues without link&#10;Flight record and objects wait for reconnect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1970" y="260" width="330" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="droneoffline" value="NO SIGNAL at plot: mission already loaded; keep record and objects buffered. Fumigation remains open until persistence." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e8;strokeColor=#b27824;strokeWidth=2;fontColor=#5a3b08;fontSize=19;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1605" y="455" width="690" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="drone_services" value="Area mode: delimit farm polygon; estimate harvest once per harvest.&#10;Precision mode: confirm sensor focus; fumigate only on human authorization; verify same plot." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1605" y="570" width="690" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="transport" value="TRANSPORT + PORT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=24;fontStyle=1;align=left;verticalAlign=top;spacing=15;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="175" width="570" height="590" as="geometry" />
+        </mxCell>
+        <mxCell id="phone" value="Transporter phone&#10;GNSS every 5 min during trip&#10;Encrypted outbox; custody first on reconnect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="2395" y="260" width="260" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="buyer" value="Public sack lookup&#10;Buyer sees origin, process dates, status and drying variables only&#10;No farmer ID or full trace" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="2690" y="260" width="200" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="transportnote" value="Phone uses public API over TLS; optional yard access via 10.4x.4.0/24 local breakout, not VPN. Buenaventura delivery closes the trip; vessel tracking is out of scope." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="2395" y="475" width="495" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="awsorg" value="AWS ORGANIZATION | one account per environment and shared security/network accounts | us-east-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=24;fontStyle=1;align=left;verticalAlign=top;spacing=15;" vertex="1" parent="1">
+          <mxGeometry x="40" y="805" width="2890" height="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="security" value="SECURITY ACCOUNT&#10;CloudTrail audit archive&#10;KMS keys, IAM Identity Center&#10;MFA + least privilege" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef5fb;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=19;fontStyle=1;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="75" y="890" width="250" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="dev" value="DEVELOPMENT ACCOUNT&#10;VPC 10.80.0.0/16&#10;Separate state bucket" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="350" y="890" width="245" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="qa" value="TEST ACCOUNT&#10;VPC 10.81.0.0/16&#10;Separate state bucket" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="890" width="245" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="pdn" value="PRODUCTION ACCOUNT (pdn)&#10;VPC 10.82.0.0/16&#10;Separate state bucket" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e8;strokeColor=#b27824;strokeWidth=2;fontColor=#5a3b08;fontSize=21;fontStyle=1;align=left;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="875" width="1980" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc" value="PRODUCTION VPC | 10.82.0.0/16 | private tiers across AZs; centers route only to allow-listed production tiers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f7fb;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=21;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="915" y="1040" width="1940" height="820" as="geometry" />
+        </mxCell>
+        <mxCell id="tier_public" value="public_query&#10;10.82.0.0/20" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="945" y="1110" width="215" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tier_tel" value="telemetry_ingress&#10;10.82.16.0/20" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="1110" width="215" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tier_drone_ing" value="drone_object_ingress&#10;10.82.32.0/20" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="1415" y="1110" width="215" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tier_app" value="application&#10;10.82.48.0/20" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="1650" y="1110" width="215" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tier_data" value="data&#10;10.82.64.0/20" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="1885" y="1110" width="215" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tier_obj" value="object_storage&#10;10.82.80.0/20" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="2120" y="1110" width="215" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tier_admin" value="administration&#10;10.82.96.0/20" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="2355" y="1110" width="215" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tier_transit" value="transit&#10;10.82.240.0/20 (/28 slots)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="2590" y="1110" width="215" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="iot" value="AWS IoT Core" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.iot_core;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="965" y="1270" width="120" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="teleddb" value="Telemetry DB" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1270" width="130" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="threshold" value="Threshold Lambda" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="1270" width="130" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="sns" value="SNS alerts" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="1270" width="120" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="Amazon S3" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1730" y="1270" width="130" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="reception" value="Reception Lambda" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1870" y="1270" width="130" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="vision" value="Amazon Bedrock" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2425" y="1270" width="140" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="casefn" value="Sack API" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2595" y="1270" width="130" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="records" value="Sack / trip DB" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2760" y="1270" width="140" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="sqs" value="Per-function SQS" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2255" y="1270" width="130" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="endpoints" value="Private center path: network-account hub -&gt; transit -&gt; interface endpoints in drone_object_ingress and object_storage -&gt; S3. Farm path uses the public IoT endpoint; telemetry_ingress is reserved for private endpoints." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef5fb;strokeColor=#61788d;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="950" y="1535" width="890" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="fwpol" value="Cloud firewall: managed security groups, prefix lists, network ACLs, endpoint policies and transit routes; no appliance. Permanent refs: CL-LNK-01/02/03/04/06/07, CC-TEL-01, CL-APP-01, CL-DRN-01/02/03, CL-PUB-01 and CL-DEF-01." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e8;strokeColor=#b27824;strokeWidth=1.5;fontColor=#5a3b08;fontSize=18;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1870" y="1535" width="930" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="centerpath" value="Drone inference path: persisted mission record -&gt; EventBridge Pipe + bus -&gt; one SQS queue per function -&gt; Lambda -&gt; Amazon Bedrock in us-east-1. Retries and DLQs are defined in A17 (PD-111 closed)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="950" y="1680" width="890" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="encryption" value="TLS 1.2+ in transit; encrypted device buffers; KMS encryption at rest. Five-year retention for telemetry, drone objects, flight records and sack history. Objects containing a person are excluded from inference (PD-015 closed). Inference results record timestamp, confidence and source-object ID; no trigger authorizes fumigation." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1870" y="1680" width="930" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="farmoff" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b27824;strokeWidth=2;endArrow=block;endFill=1;dashed=1;dashPattern=8 6;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" edge="1" parent="1" source="farmbuf" target="farmoffline">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="505" y="430" />
+              <mxPoint x="505" y="645" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pestflow" value="PEST-TO-FUMIGATION FLOW | persisted events and gates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2f8;strokeColor=#52708a;strokeWidth=1.5;fontColor=#172b4d;fontSize=21;fontStyle=1;align=left;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="65" y="2030" width="2770" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" value="1. Sensor reading&#10;IoT Core persists telemetry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="70" y="2110" width="305" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="2. Threshold function&#10;`crop_alert_raised`" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="410" y="2110" width="305" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="stepedge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=19;" edge="1" parent="1" source="s1" target="s2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="peststep3" value="3. Drone focus flight&#10;confirm marked sensor location" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="750" y="2110" width="305" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="stepedge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=19;" edge="1" parent="1" source="s2" target="peststep3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="4. Inference persists&#10;`focus_confirmed`" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="2110" width="305" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="stepedge3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=19;" edge="1" parent="1" source="peststep3" target="s4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" value="5. Agronomist authorizes&#10;human identity + MFA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="2110" width="305" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="stepedge4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=19;" edge="1" parent="1" source="s4" target="s5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s6" value="6. Contracted operator&#10;fumigates authorized plot" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="1770" y="2110" width="305" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="stepedge5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=19;" edge="1" parent="1" source="s5" target="s6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s7" value="7. Flight record persists&#10;operator, window, product lot" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="2110" y="2110" width="305" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="stepedge6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=19;" edge="1" parent="1" source="s6" target="s7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s8" value="8. Verification object + function&#10;`case_closed` only after persistence" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="2450" y="2110" width="305" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="stepedge7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=19;" edge="1" parent="1" source="s7" target="s8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="modegate" value="Mode boundary: `crop_alert_raised` enters precision mode; `focus_confirmed` makes an order eligible but never authorizes it. Polygon + closed confirmation record are required before order release. Verification cannot close a case if object or inference is missing." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e8;strokeColor=#b27824;strokeWidth=1.5;fontColor=#5a3b08;fontSize=18;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="65" y="2245" width="2770" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="sack1" value="Sack registered&#10;farmer + farm" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1920" width="260" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="sack2" value="Trip pickup&#10;transporter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1920" width="260" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="sack3" value="Center received&#10;accepted / rejected" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1920" width="260" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="sack4" value="Trip to port&#10;position + custody" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="1920" width="260" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="sack5" value="Port delivery&#10;accepted / rejected" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="1920" width="260" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="sack6" value="Buyer lookup&#10;limited view" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="1630" y="1920" width="260" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="sackedge0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="sack1" target="sack2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sackedge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="sack2" target="sack3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sackedge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="sack3" target="sack4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sackedge3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="sack4" target="sack5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sackedge4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="sack5" target="sack6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="drone_ns" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b27824;strokeWidth=2;endArrow=block;endFill=1;dashed=1;dashPattern=8 6;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" edge="1" parent="1" source="dronebuf" target="droneoffline">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2135" y="425" />
+              <mxPoint x="2135" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="paths_legacy" value="Farm: encrypted store-and-forward to public IoT Core. Center: firewall -&gt; IPsec hub -&gt; pdn allow-listed private endpoints. Drone: pre-signed S3 upload from center or municipal seat. Transport + port: public application API.&#10;2020 retained: farm telemetry, alerts and sack traceability. Retired: assumed farm coverage, direct device-to-ingestion publishing and mobile-generation dependence; vessel tracking is out of scope." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef5fb;strokeColor=#61788d;strokeWidth=1.5;fontColor=#172b4d;fontSize=21;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1815" width="2790" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eventbridge" value="EventBridge Pipe + bus" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.eventbridge;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2045" y="1270" width="130" height="140" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="iac" name="IaC traceability">
+    <mxGraphModel dx="3000" dy="1550" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3000" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title2" value="IaC traceability | D01-D13 and the plan pipeline" style="text;html=1;align=left;verticalAlign=middle;fontSize=32;fontStyle=1;fontColor=#102a43;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="2900" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sub2" value="Track B implements reusable patterns and one plan-only environment; it does not instantiate 200 farms or three center networks." style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontColor=#334e68;" vertex="1" parent="1">
+          <mxGeometry x="40" y="85" width="2900" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="b_D01" value="D01" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="155" width="82" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="c_D01" value="Infrastructure repository&#10;&#10;Private `aroma-pacifico-infrastructure`; one root per environment/domain, consuming module tags from the public modules repository." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=11;" vertex="1" parent="1">
+          <mxGeometry x="135" y="155" width="475" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="b_D02" value="D02" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="630" y="155" width="82" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="c_D02" value="Remote state&#10;&#10;One encrypted, versioned S3 state bucket per environment with native S3 locking (ADR-003)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=11;" vertex="1" parent="1">
+          <mxGeometry x="725" y="155" width="475" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="b_D03" value="D03" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="155" width="82" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="c_D03" value="Config and secrets&#10;&#10;Per-environment non-secret config; secrets remain outside repository and state (ADR-003, automation section 11)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=11;" vertex="1" parent="1">
+          <mxGeometry x="1315" y="155" width="475" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="b_D04" value="D04" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="155" width="82" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="c_D04" value="Network pattern&#10;&#10;Pattern VPC and tiers in `10.82.0.0/16`; distinct `dev` and `qa` CIDRs are shown on page 1." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=11;" vertex="1" parent="1">
+          <mxGeometry x="1905" y="155" width="475" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="b_D05" value="D05" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="2400" y="155" width="82" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="c_D05" value="Center association&#10;&#10;Associate the `pdn` pattern environment with one pattern center: Cauca `10.41.0.0/16`." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=11;" vertex="1" parent="1">
+          <mxGeometry x="2495" y="155" width="475" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="b_D06" value="D06" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="82" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="c_D06" value="Base security&#10;&#10;Identities, MFA, KMS keys and initial access controls." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=11;" vertex="1" parent="1">
+          <mxGeometry x="135" y="400" width="475" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="b_D07" value="D07" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="630" y="400" width="82" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="c_D07" value="Firewall rules&#10;&#10;Permanent center and cloud pattern rules with explicit deny controls." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=11;" vertex="1" parent="1">
+          <mxGeometry x="725" y="400" width="475" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="b_D08" value="D08" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="400" width="82" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="c_D08" value="Farm module&#10;&#10;One reusable pattern farm, not the 200 pilot farms." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=11;" vertex="1" parent="1">
+          <mxGeometry x="1315" y="400" width="475" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="b_D09" value="D09" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="400" width="82" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="c_D09" value="Telemetry ingestion&#10;&#10;Approved IoT Core ingestion pattern and telemetry persistence." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=11;" vertex="1" parent="1">
+          <mxGeometry x="1905" y="400" width="475" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="b_D10" value="D10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="2400" y="400" width="82" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="c_D10" value="Inference function&#10;&#10;Event-driven function pattern with trigger, object read, result write and inference permission." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=11;" vertex="1" parent="1">
+          <mxGeometry x="2495" y="400" width="475" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="pipelinehead" value="CI / CD PIPELINE | REVIEWABLE PLAN; ACADEMIC DELIVERY STOPS AT PLAN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2f8;strokeColor=#52708a;strokeWidth=1.5;fontColor=#172b4d;fontSize=20;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="665" width="2840" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="b_D11" value="D11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="785" width="95" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="c_D11" value="CI plan pipeline&#10;&#10;Format, validate, lint, security scan and module tests; GitHub OIDC; produce a saved, reviewable plan." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=11;" vertex="1" parent="1">
+          <mxGeometry x="160" y="775" width="800" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="pipeedge0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="c_D11" target="c_D13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b_D13" value="D13" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="785" width="95" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="c_D13" value="Final validation and evidence&#10;&#10;Review destroys/replacements first; validate plan output and retain evidence. No apply in this academic delivery." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=11;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="775" width="800" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="pipeedge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#51708b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="c_D13" target="c_D12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b_D12" value="D12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1950" y="785" width="95" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="c_D12" value="Controlled CD pipeline&#10;&#10;Human approval of the saved `pdn` plan; enforce harvest-week 05:00-18:00 Colombia window, except recorded incident." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=18;align=left;verticalAlign=middle;spacing=11;" vertex="1" parent="1">
+          <mxGeometry x="2060" y="775" width="800" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="Promotion order: dev plan -&gt; qa review and validation -&gt; pdn saved plan with required human approval. Production changes are prohibited 05:00-18:00 during harvest week except incident. Azure is an undeployed export target (ADR-001)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e8;strokeColor=#b27824;strokeWidth=1.5;fontColor=#5a3b08;fontSize=19;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1010" width="2800" height="170" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
