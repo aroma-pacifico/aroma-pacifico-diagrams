@@ -8,6 +8,26 @@ Part of the Aroma Pacífico pilot, the 2026 update of the coffee traceability pi
 
 This repository holds diagram sources (uncompressed Draw.io XML and Mermaid files) and their publication exports (editable SVG and preview PNG), covering architecture, data-flow, component interactions, and the numbered infrastructure boxes D01 through D13. Distributed AI agent rules and standards are synchronized here from the canonical `aroma-pacifico-ai-agents` repository.
 
+## Data paths
+
+The A13 data-path package documents crop and drying telemetry, transporter
+positions, and drone objects. Each path includes an editable Draw.io source,
+an SVG publication export, and a 2400-pixel PNG preview.
+
+```text
+data-paths/
+|-- data-paths.md
+|-- telemetry.drawio
+|-- telemetry.svg
+|-- telemetry.png
+|-- transporter-position.drawio
+|-- transporter-position.svg
+|-- transporter-position.png
+|-- drone-objects.drawio
+|-- drone-objects.svg
+`-- drone-objects.png
+```
+
 ## Tasks delivered here
 
 - [A13](https://github.com/aroma-pacifico/aroma-pacifico-roadmap/issues/13) data paths
