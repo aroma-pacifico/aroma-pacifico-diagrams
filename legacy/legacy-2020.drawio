@@ -1,0 +1,463 @@
+<mxfile host="app.diagrams.net" version="32.4.1" type="device">
+  <diagram id="legacy-2020" name="2020 Legacy Mapping">
+    <mxGraphModel dx="3200" dy="2520" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3200" pageHeight="2520" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="header_title" value="2020 Legacy Architecture Mapping | Keep, Retire and Replace" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=32;fontStyle=1;fontColor=#102a43;" vertex="1">
+          <mxGeometry x="40" y="25" width="3120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="header_subtitle" value="Comprehensive traceability of 2020 coffee traceability pilot requirements (docs/legacy-2020.md) to the 2026 Aroma Pacifico cloud architecture. Challenge Point 1: Gobierno." parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=18;fontColor=#334e68;" vertex="1">
+          <mxGeometry x="40" y="80" width="3120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="header_mandate" value="Case Statement Core Mandates (p. 1, 7): &quot;Se conserva el requisito que siga vigente y se reemplaza el supuesto de conectividad&quot; | &quot;Precios, dispositivos y servicios de nube de 2020 no son cotización válida&quot; | &quot;No se replica la arquitectura de 2020&quot; | &quot;No se hereda un manual de 2020&quot;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf8ff;strokeColor=#3182ce;strokeWidth=1.5;fontColor=#2b6cb0;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" vertex="1">
+          <mxGeometry x="40" y="125" width="3120" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="col_left_banner" value="2020 LEGACY SPECIFICATION (docs/case/case-statement.pdf)" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#1a202c;strokeWidth=2;fontColor=#ffffff;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="40" y="185" width="1280" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="col_mid_banner" value="TRANSITION &amp; DECISION MAPPING (Labelled Arrows)" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4a5568;strokeColor=#2d3748;strokeWidth=2;fontColor=#ffffff;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="1340" y="185" width="520" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="col_right_banner" value="2026 TARGET DESIGN (aroma-pacifico-architecture &amp; IaC Track B)" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a365d;strokeColor=#0f172a;strokeWidth=2;fontColor=#ffffff;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="1880" y="185" width="1280" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="cont_kept_left" value="KEPT 2020 REQUIREMENTS | Preserved in 2026 Architecture (L-01 to L-08)" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7fafc;strokeColor=#2b6cb0;strokeWidth=2;fontColor=#2b6cb0;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1">
+          <mxGeometry x="40" y="240" width="1280" height="890" as="geometry" />
+        </mxCell>
+        <mxCell id="cont_kept_right" value="2026 TARGET IMPLEMENTATION | Preserved Capability Architecture" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7fafc;strokeColor=#2b6cb0;strokeWidth=2;fontColor=#2b6cb0;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1">
+          <mxGeometry x="1880" y="240" width="1280" height="890" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L01" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="60" y="285" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L01_left" value="L-01
+KEEP" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=2;fontColor=#234e52;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="297" width="110" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L01_left" value="&lt;b style=&quot;font-size:15px;color:#1a202c;&quot;&gt;Traceability from farm to buyer&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#718096;&quot;&gt;Case statement p. 1, Contexto: &quot;piloto de trazabilidad del café, desde la finca hasta el comprador&quot;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Full chain scope: wet mill, transport, collection center, and maritime export port of Buenaventura.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="200" y="293" width="1080" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="right_L01" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="1900" y="285" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L01_right" value="&lt;b style=&quot;font-size:15px;color:#1a365d;&quot;&gt;End-to-End Coffee Sack Traceability Chain&lt;/b&gt; &amp;nbsp;&lt;span style=&quot;font-size:12px;color:#2b6cb0;font-weight:bold;&quot;&gt;[A16 (Sack &amp; Trip §3)]&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;The 60 kg sack is the immutable traced unit from harvest registration to port delivery. Audit log with 5-year compliance retention (S3 Object Lock, ASM-067).&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="1920" y="293" width="1190" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_L01" value="Kept: Full Chain Scope (A16)" parent="1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2b6cb0;strokeWidth=2;endArrow=block;fontColor=#102a43;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" source="left_L01" target="right_L01">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L02" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="60" y="390" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L02_left" value="L-02
+KEEP" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=2;fontColor=#234e52;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="402" width="110" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L02_left" value="&lt;b style=&quot;font-size:15px;color:#1a202c;&quot;&gt;Geographic scope: Cauca, Huila and Tolima&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#718096;&quot;&gt;Case statement p. 1, Contexto: &quot;conserva el mismo territorio y las mismas capacidades&quot;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Three production departments in southwestern Colombia with one regional collection center in each department.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="200" y="398" width="1080" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="right_L02" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="1900" y="390" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="iac_L02" value="D05" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="3040" y="412" width="85" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_L02_0" value="" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.transit_gateway;" vertex="1">
+          <mxGeometry x="2979" y="413" width="46" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L02_right" value="&lt;b style=&quot;font-size:15px;color:#1a365d;&quot;&gt;Three Regional Collection Centers (Cauca, Huila, Tolima)&lt;/b&gt; &amp;nbsp;&lt;span style=&quot;font-size:12px;color:#2b6cb0;font-weight:bold;&quot;&gt;[A07 (Addressing §2) | B05]&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Centers assigned dedicated supernet 10.40.0.0/13: Cauca 10.41.0.0/16, Huila 10.42.0.0/16, Tolima 10.43.0.0/16. Reserved 4th department at 10.44.0.0/16 (ASM-030).&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="1920" y="398" width="1034" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_L02" value="Kept: Territory &amp; Centers (A07, D05)" parent="1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2b6cb0;strokeWidth=2;endArrow=block;fontColor=#102a43;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" source="left_L02" target="right_L02">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L03" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="60" y="495" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L03_left" value="L-03
+KEEP" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=2;fontColor=#234e52;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="507" width="110" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L03_left" value="&lt;b style=&quot;font-size:15px;color:#1a202c;&quot;&gt;Crop and drying monitoring with alert to farmer&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#718096;&quot;&gt;Case statement p. 1, Contexto: &quot;Monitoreo del cultivo y del secado, con alerta al caficultor&quot;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Field sensors for soil/ambient conditions and solar drying monitoring with push alerts on anomaly detection.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="200" y="503" width="1080" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="right_L03" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="1900" y="495" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="iac_L03" value="D08, D09, D10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="2975" y="517" width="150" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_L03_1" value="" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns;" vertex="1">
+          <mxGeometry x="2914" y="518" width="46" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_L03_0" value="" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.iot_core;" vertex="1">
+          <mxGeometry x="2858" y="518" width="46" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L03_right" value="&lt;b style=&quot;font-size:15px;color:#1a365d;&quot;&gt;Crop &amp; Solar Drying Telemetry with Deduplicated Alert Episodes&lt;/b&gt; &amp;nbsp;&lt;span style=&quot;font-size:12px;color:#2b6cb0;font-weight:bold;&quot;&gt;[A10 (Farm Monitoring §1) | B08, B09, B10]&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;2 nodes/farm: crop (6 readings/day), drying (24/day). IoT Core mTLS ingestion, DynamoDB telemetry store, alert episodes (ASM-135) via SMS and mobile push.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="1920" y="503" width="913" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_L03" value="Kept: Ingestion &amp; Alerts (A10, D08-D10)" parent="1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2b6cb0;strokeWidth=2;endArrow=block;fontColor=#102a43;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" source="left_L03" target="right_L03">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L04" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="60" y="600" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L04_left" value="L-04
+KEEP" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=2;fontColor=#234e52;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="612" width="110" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L04_left" value="&lt;b style=&quot;font-size:15px;color:#1a202c;&quot;&gt;Harvest record and packing in 60 kg sacks&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#718096;&quot;&gt;Case statement p. 1, Contexto: &quot;Registro de la cosecha y del empaque en sacos de 60 kg&quot;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Harvest registration and standard 60 kg burlap sacks as the fundamental physical coffee transport unit.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="200" y="608" width="1080" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="right_L04" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="1900" y="600" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L04_right" value="&lt;b style=&quot;font-size:15px;color:#1a365d;&quot;&gt;Scale-Measured Harvest Weight &amp; 60 kg Standard Reference&lt;/b&gt; &amp;nbsp;&lt;span style=&quot;font-size:12px;color:#2b6cb0;font-weight:bold;&quot;&gt;[A16 (Sack &amp; Trip §2)]&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Scale-measured weight recorded digitally at wet mill registration; 60 kg serves as nominal commercial reference (ASM-150). Cryptographic sack ID code generated.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="1920" y="608" width="1190" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_L04" value="Kept: 60 kg Sack Registration (A16)" parent="1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2b6cb0;strokeWidth=2;endArrow=block;fontColor=#102a43;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" source="left_L04" target="right_L04">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L05" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="60" y="705" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L05_left" value="L-05
+KEEP" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=2;fontColor=#234e52;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="717" width="110" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L05_left" value="&lt;b style=&quot;font-size:15px;color:#1a202c;&quot;&gt;Journey tracking to collection center &amp; Buenaventura&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#718096;&quot;&gt;Case statement p. 1, Contexto: &quot;Seguimiento del viaje hasta el centro de acopio y hasta Buenaventura&quot;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Tracking overland transportation legs from farms to collection centers and onward to the Pacific port.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="200" y="713" width="1080" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="right_L05" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="1900" y="705" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_L05_0" value="" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;" vertex="1">
+          <mxGeometry x="3079" y="728" width="46" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L05_right" value="&lt;b style=&quot;font-size:15px;color:#1a365d;&quot;&gt;Two-Leg Overland Journey Tracking &amp; Custody Handoffs&lt;/b&gt; &amp;nbsp;&lt;span style=&quot;font-size:12px;color:#2b6cb0;font-weight:bold;&quot;&gt;[A10 / A16 (Sack &amp; Trip §5)]&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Leg 1 (farm to center) &amp; Leg 2 (center to Buenaventura). GNSS fixes every 5 min (transport_position) and explicit custody handoffs (sack_custody) via transporter outbox.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="1920" y="713" width="1134" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_L05" value="Kept: Trip &amp; Custody Flow (A10, A16)" parent="1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2b6cb0;strokeWidth=2;endArrow=block;fontColor=#102a43;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" source="left_L05" target="right_L05">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L06" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="60" y="810" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L06_left" value="L-06
+KEEP" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=2;fontColor=#234e52;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="822" width="110" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L06_left" value="&lt;b style=&quot;font-size:15px;color:#1a202c;&quot;&gt;Sack lookup by code for farmer, center and buyer&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#718096;&quot;&gt;Case statement p. 1, Contexto: &quot;Consulta de un saco, por código, para el caficultor [...] y el comprador&quot;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Lookup of coffee batch origin, quality certifications, and processing history by scanning/entering sack code.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="200" y="818" width="1080" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="right_L06" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="1900" y="810" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="iac_L06" value="D04" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="3040" y="832" width="85" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_L06_1" value="" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1">
+          <mxGeometry x="2979" y="833" width="46" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_L06_0" value="" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;" vertex="1">
+          <mxGeometry x="2923" y="833" width="46" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L06_right" value="&lt;b style=&quot;font-size:15px;color:#1a365d;&quot;&gt;Public Sack Lookup Front Door (Restricted Buyer View)&lt;/b&gt; &amp;nbsp;&lt;span style=&quot;font-size:12px;color:#2b6cb0;font-weight:bold;&quot;&gt;[A09 / A16 (Sack &amp; Trip §7) | B04]&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Unauthenticated lookup via CloudFront + AWS WAF + Lambda URL (ASM-058, PD-051). Restricted to buyer view (variety, cup score, certs); farmer cédula and internal trace withheld.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="1920" y="818" width="978" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_L06" value="Kept: Public Lookup Front Door (A16, D04)" parent="1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2b6cb0;strokeWidth=2;endArrow=block;fontColor=#102a43;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" source="left_L06" target="right_L06">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L07" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="60" y="915" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L07_left" value="L-07
+KEEP" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=2;fontColor=#234e52;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="927" width="110" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L07_left" value="&lt;b style=&quot;font-size:15px;color:#1a202c;&quot;&gt;Drone service: 5 core flight missions&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#718096;&quot;&gt;Case statement p. 1, Contexto: &quot;Servicio de drones para [...] fumigar, verificar y estimar la cosecha&quot;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Delimit lot, confirm alert, targeted fumigation, treatment verification, and harvest yield estimation.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="200" y="923" width="1080" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="right_L07" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="1900" y="915" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_L07_0" value="" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1">
+          <mxGeometry x="3079" y="938" width="46" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L07_right" value="&lt;b style=&quot;font-size:15px;color:#1a365d;&quot;&gt;Five Drone Missions &amp; Governed Flight Operations&lt;/b&gt; &amp;nbsp;&lt;span style=&quot;font-size:12px;color:#2b6cb0;font-weight:bold;&quot;&gt;[ADR-002 / A15 (Drone Service §5.2)]&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;All 5 missions preserved under combined flight mode (contracted operator, ASM-141). Governed by agronomist MFA authorization, pre-flight checks, and S3 flight record audit.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="1920" y="923" width="1134" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_L07" value="Kept: 5 Drone Missions (ADR-002, A15)" parent="1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2b6cb0;strokeWidth=2;endArrow=block;fontColor=#102a43;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" source="left_L07" target="right_L07">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L08" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="60" y="1020" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L08_left" value="L-08
+KEEP" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=2;fontColor=#234e52;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="1032" width="110" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L08_left" value="&lt;b style=&quot;font-size:15px;color:#1a202c;&quot;&gt;Three applications planned: farmer, transporter, web&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#718096;&quot;&gt;Case statement p. 1, Contexto: &quot;Hay tres aplicaciones previstas. No hay que construirlas&quot;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Farmer mobile app, transporter mobile app, and web reporting / public lookup interface.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="200" y="1028" width="1080" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="right_L08" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="1900" y="1020" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L08_right" value="&lt;b style=&quot;font-size:15px;color:#1a365d;&quot;&gt;Application API Contracts &amp; Backend Integration Surface&lt;/b&gt; &amp;nbsp;&lt;span style=&quot;font-size:12px;color:#2b6cb0;font-weight:bold;&quot;&gt;[A09 (Automation &amp; Pipelines §2)]&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Case statement confirms apps are planned but not built in challenge scope. 2026 delivers REST/GraphQL APIs, Cognito User Pools (staff MFA / field passwordless), and ingestion contracts.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="1920" y="1028" width="1190" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_L08" value="Kept: Target Application APIs (A09)" parent="1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2b6cb0;strokeWidth=2;endArrow=block;fontColor=#102a43;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" source="left_L08" target="right_L08">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cont_repl_left" value="REPLACED 2020 ELEMENTS | 2020 Connectivity Flaws &amp; Architectural Gaps (L-09 to L-12)" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffdfa;strokeColor=#dd6b20;strokeWidth=2;fontColor=#c05621;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1">
+          <mxGeometry x="40" y="1145" width="1280" height="475" as="geometry" />
+        </mxCell>
+        <mxCell id="cont_repl_right" value="2026 TARGET REPLACEMENTS | Resilient Networks &amp; Offline-First Ingestion" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffdfa;strokeColor=#dd6b20;strokeWidth=2;fontColor=#c05621;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1">
+          <mxGeometry x="1880" y="1145" width="1280" height="475" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L09" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="60" y="1190" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L09_left" value="L-09
+REPLACE" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#feebc8;strokeColor=#dd6b20;strokeWidth=2;fontColor=#7b341e;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="1202" width="110" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L09_left" value="&lt;b style=&quot;font-size:15px;color:#1a202c;&quot;&gt;Assumption of data coverage on most farms&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#718096;&quot;&gt;Case statement p. 1, Qué se actualiza: &quot;asumía cobertura de datos en la mayoría de las fincas&quot;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Assumed continuous commercial cellular coverage across remote Andean coffee farms in Cauca, Huila and Tolima.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="200" y="1198" width="1080" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="right_L09" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="1900" y="1190" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L09_right" value="&lt;b style=&quot;font-size:15px;color:#7b341e;&quot;&gt;No-Signal Protocol &amp; Satellite Bearer for Out-of-Coverage Farms&lt;/b&gt; &amp;nbsp;&lt;span style=&quot;font-size:12px;color:#c05621;font-weight:bold;&quot;&gt;[A10 (Connectivity §4.4)]&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Every data flow states explicit offline behavior. Remote farms out of cellular coverage utilize a satellite IP bearer (dual-mode modules, contact at least every 4h, ASM-073, PD-081).&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="1920" y="1198" width="1190" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_L09" value="Replaced by A10: Satellite Bearer &amp; Offline Mode" parent="1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#dd6b20;strokeWidth=2;dashed=1;endArrow=block;fontColor=#7b341e;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" source="left_L09" target="right_L09">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L10" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="60" y="1295" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L10_left" value="L-10
+REPLACE" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#feebc8;strokeColor=#dd6b20;strokeWidth=2;fontColor=#7b341e;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="1307" width="110" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L10_left" value="&lt;b style=&quot;font-size:15px;color:#1a202c;&quot;&gt;Direct telemetry publishing to ingestion point&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#718096;&quot;&gt;Case statement p. 1, Qué se actualiza: &quot;un dispositivo publicando telemetría directo al punto de ingesta&quot;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Field nodes transmitted readings immediately to cloud; sensor readings were dropped/lost whenever link was unavailable.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="200" y="1303" width="1080" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="right_L10" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="1900" y="1295" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="iac_L10" value="D08, D09" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="3005" y="1317" width="120" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_L10_0" value="" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.iot_core;" vertex="1">
+          <mxGeometry x="2944" y="1318" width="46" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L10_right" value="&lt;b style=&quot;font-size:15px;color:#7b341e;&quot;&gt;24-Hour Store-and-Forward Encrypted Non-Volatile Local Buffer&lt;/b&gt; &amp;nbsp;&lt;span style=&quot;font-size:12px;color:#c05621;font-weight:bold;&quot;&gt;[A10 (Connectivity §4.3) | B08, B09]&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Nodes buffer readings locally up to 24 hours. Upon reconnect: live reading sent first, then oldest readings drain in background; AWS IoT PUBACK releases buffer entries.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="1920" y="1303" width="999" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_L10" value="Replaced by A10: 24h Store-and-Forward (D08, D09)" parent="1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#dd6b20;strokeWidth=2;dashed=1;endArrow=block;fontColor=#7b341e;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" source="left_L10" target="right_L10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L11" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="60" y="1400" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L11_left" value="L-11
+REPLACE" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#feebc8;strokeColor=#dd6b20;strokeWidth=2;fontColor=#7b341e;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="1412" width="110" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L11_left" value="&lt;b style=&quot;font-size:15px;color:#1a202c;&quot;&gt;Collection center without LAN or WAN link&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#718096;&quot;&gt;Case statement p. 1, Qué se actualiza: &quot;El centro de acopio y el puerto quedaban sin LAN ni enlace WAN&quot;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;2020 pilot left collection centers isolated with zero enterprise local network and zero secure cloud connectivity.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="200" y="1408" width="1080" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="right_L11" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="1900" y="1400" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="iac_L11" value="D05" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="3040" y="1422" width="85" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_L11_0" value="" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.transit_gateway;" vertex="1">
+          <mxGeometry x="2979" y="1423" width="46" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L11_right" value="&lt;b style=&quot;font-size:15px;color:#7b341e;&quot;&gt;Segmented LAN (7 VLANs) &amp; Dual IPsec VPN to AWS Transit Gateway&lt;/b&gt; &amp;nbsp;&lt;span style=&quot;font-size:12px;color:#c05621;font-weight:bold;&quot;&gt;[A11 / A07 (Collection-Center Network) | B05]&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Standardized center pattern: 7 isolated VLANs (101-120), edge firewall (10.4x.20.1), dual IPsec tunnels over 100 Mbps broadband + cellular backup to Transit Gateway hub (ASM-083, B05).&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="1920" y="1408" width="1034" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_L11" value="Replaced by A11: Enterprise LAN &amp; IPsec WAN (D05)" parent="1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#dd6b20;strokeWidth=2;dashed=1;endArrow=block;fontColor=#7b341e;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" source="left_L11" target="right_L11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L12" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="60" y="1505" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L12_left" value="L-12
+REPLACE" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#feebc8;strokeColor=#dd6b20;strokeWidth=2;fontColor=#7b341e;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="1517" width="110" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L12_left" value="&lt;b style=&quot;font-size:15px;color:#1a202c;&quot;&gt;Port of Buenaventura without LAN or WAN link&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#718096;&quot;&gt;Case statement p. 1-2: &quot;En Buenaventura no se despliega infraestructura de la Federación&quot;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Port reception had no network infrastructure, leaving final export handover and maritime delivery completely unaddressed.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="200" y="1513" width="1080" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="right_L12" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;" vertex="1">
+          <mxGeometry x="1900" y="1505" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L12_right" value="&lt;b style=&quot;font-size:15px;color:#7b341e;&quot;&gt;Zero Federation Infrastructure at Port | Commercial Mobile Outbox&lt;/b&gt; &amp;nbsp;&lt;span style=&quot;font-size:12px;color:#c05621;font-weight:bold;&quot;&gt;[A10 / A16 (Connectivity §10)]&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#2d3748;&quot;&gt;Zero Federation hardware deployed at Buenaventura port (case statement mandate). Transporter app records maritime delivery &amp; custody handoff; encrypted outbox syncs via commercial mobile carrier.&lt;/span&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="1920" y="1513" width="1190" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_L12" value="Replaced by A10: Transporter Mobile Sync" parent="1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#dd6b20;strokeWidth=2;dashed=1;endArrow=block;fontColor=#7b341e;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" source="left_L12" target="right_L12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cont_ret_left" value="RETIRED 2020 ELEMENTS | Dropped Without Direct Replacement (L-13 to L-18) — Crossed Out with Explicit Justification" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#e53e3e;strokeWidth=2;fontColor=#9b2c2c;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1">
+          <mxGeometry x="40" y="1635" width="1800" height="680" as="geometry" />
+        </mxCell>
+        <mxCell id="cont_ret_right" value="2026 ARCHITECTURAL FOUNDATIONS | Modern Replacement Paradigm" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7fafc;strokeColor=#4a5568;strokeWidth=2;fontColor=#1a202c;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1">
+          <mxGeometry x="1880" y="1635" width="1280" height="680" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L13" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fed7d7;strokeColor=#e53e3e;strokeWidth=1.5;fontStyle=8;" vertex="1">
+          <mxGeometry x="60" y="1680" width="620" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L13" value="L-13
+RETIRED" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c53030;strokeColor=#9b2c2c;strokeWidth=2;fontColor=#ffffff;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="1692" width="105" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L13" value="&lt;s style=&quot;font-size:14px;color:#742a2a;font-weight:bold;&quot;&gt;Dependence on a mobile access network generation&lt;/s&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#9b2c2c;&quot;&gt;Case statement p. 2: &quot;La red de acceso móvil cambió desde 2020&quot;&lt;/span&gt;&lt;br&gt;&lt;s style=&quot;font-size:12px;color:#742a2a;&quot;&gt;2G / 3G circuit-switched cellular connections and legacy SMS-only paths.&lt;/s&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="190" y="1688" width="480" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="crossline_L13" parent="1" style="endArrow=none;strokeColor=#e53e3e;strokeWidth=2.5;opacity=40;" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="1772" as="sourcePoint" />
+            <mxPoint x="680" y="1680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="reason_L13" value="&lt;b style=&quot;font-size:14px;color:#9b2c2c;&quot;&gt;Reason for Retirement: Obsolete Mobile Generation Sunset (ASM-041, ASM-072)&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#2d3748;&quot;&gt;2G and 3G circuit-switched networks sunset before or during 2026 pilot. 2026 architecture enforces pure packet-switched IP bearers (4G LTE / Satellite IP) with zero circuit-switched or carrier generation dependency.&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e2e8f0;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="700" y="1680" width="1120" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L14" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fed7d7;strokeColor=#e53e3e;strokeWidth=1.5;fontStyle=8;" vertex="1">
+          <mxGeometry x="60" y="1785" width="620" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L14" value="L-14
+RETIRED" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c53030;strokeColor=#9b2c2c;strokeWidth=2;fontColor=#ffffff;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="1797" width="105" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L14" value="&lt;s style=&quot;font-size:14px;color:#742a2a;font-weight:bold;&quot;&gt;2020 prices and historical budget quotes&lt;/s&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#9b2c2c;&quot;&gt;Case statement p. 1: &quot;Precios [...] de 2020 no son cotización válida&quot;&lt;/span&gt;&lt;br&gt;&lt;s style=&quot;font-size:12px;color:#742a2a;&quot;&gt;All 2020 hardware quotes, connectivity fees, and cloud pricing figures.&lt;/s&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="190" y="1793" width="480" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="crossline_L14" parent="1" style="endArrow=none;strokeColor=#e53e3e;strokeWidth=2.5;opacity=40;" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="1877" as="sourcePoint" />
+            <mxPoint x="680" y="1785" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="reason_L14" value="&lt;b style=&quot;font-size:14px;color:#9b2c2c;&quot;&gt;Reason for Retirement: Invalid Historical Pricing Mandate (PD-017, A23)&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#2d3748;&quot;&gt;Case statement explicitly invalidates all 2020 pricing quotes. 2026 architecture prices all cloud infrastructure, sensor hardware, drone missions, and satellite fees at current 2026 market rates under A23 (roadmap#36).&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e2e8f0;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="700" y="1785" width="1120" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L15" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fed7d7;strokeColor=#e53e3e;strokeWidth=1.5;fontStyle=8;" vertex="1">
+          <mxGeometry x="60" y="1890" width="620" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L15" value="L-15
+RETIRED" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c53030;strokeColor=#9b2c2c;strokeWidth=2;fontColor=#ffffff;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="1902" width="105" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L15" value="&lt;s style=&quot;font-size:14px;color:#742a2a;font-weight:bold;&quot;&gt;Specific 2020 device models and hardware parts&lt;/s&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#9b2c2c;&quot;&gt;Case statement p. 1: &quot;Dispositivos [...] de 2020 no son cotización válida&quot;&lt;/span&gt;&lt;br&gt;&lt;s style=&quot;font-size:12px;color:#742a2a;&quot;&gt;Obsolete 2020 sensor microcontroller models, radio boards, and proprietary kit.&lt;/s&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="190" y="1898" width="480" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="crossline_L15" parent="1" style="endArrow=none;strokeColor=#e53e3e;strokeWidth=2.5;opacity=40;" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="1982" as="sourcePoint" />
+            <mxPoint x="680" y="1890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="reason_L15" value="&lt;b style=&quot;font-size:14px;color:#9b2c2c;&quot;&gt;Reason for Retirement: Hardware Evolution to Functional Device Classes (Connectivity §4.1)&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#2d3748;&quot;&gt;Specific 2020 IoT microcontroller models and obsolete sensor hardware dropped. Replaced by standardized functional device classes (field nodes, ground station, mobile outbox) specified by A10 and priced by A23.&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e2e8f0;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="700" y="1890" width="1120" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L16" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fed7d7;strokeColor=#e53e3e;strokeWidth=1.5;fontStyle=8;" vertex="1">
+          <mxGeometry x="60" y="1995" width="620" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L16" value="L-16
+RETIRED" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c53030;strokeColor=#9b2c2c;strokeWidth=2;fontColor=#ffffff;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="2007" width="105" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L16" value="&lt;s style=&quot;font-size:14px;color:#742a2a;font-weight:bold;&quot;&gt;2020 cloud services and cloud provider choices&lt;/s&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#9b2c2c;&quot;&gt;Case statement p. 1: &quot;Servicios de nube de 2020 no son cotización válida&quot;&lt;/span&gt;&lt;br&gt;&lt;s style=&quot;font-size:12px;color:#742a2a;&quot;&gt;Legacy cloud provider selections and architecture patterns conceived in 2020.&lt;/s&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="190" y="2003" width="480" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="crossline_L16" parent="1" style="endArrow=none;strokeColor=#e53e3e;strokeWidth=2.5;opacity=40;" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="2087" as="sourcePoint" />
+            <mxPoint x="680" y="1995" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="reason_L16" value="&lt;b style=&quot;font-size:14px;color:#9b2c2c;&quot;&gt;Reason for Retirement: Independent Cloud Evaluation &amp; Multi-Cloud Strategy (ADR-001)&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#2d3748;&quot;&gt;2020 cloud choices retired completely. Modern multi-cloud strategy formulated anew under ADR-001: AWS primary (us-east-1) for production workloads, and Azure prepared as an export target (10.88.0.0/13, undeployed).&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e2e8f0;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="700" y="1995" width="1120" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L17" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fed7d7;strokeColor=#e53e3e;strokeWidth=1.5;fontStyle=8;" vertex="1">
+          <mxGeometry x="60" y="2100" width="620" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L17" value="L-17
+RETIRED" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c53030;strokeColor=#9b2c2c;strokeWidth=2;fontColor=#ffffff;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="2112" width="105" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L17" value="&lt;s style=&quot;font-size:14px;color:#742a2a;font-weight:bold;&quot;&gt;The 2020 architecture as a whole&lt;/s&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#9b2c2c;&quot;&gt;Case statement p. 1, Contexto: &quot;No se replica la arquitectura de 2020&quot;&lt;/span&gt;&lt;br&gt;&lt;s style=&quot;font-size:12px;color:#742a2a;&quot;&gt;Monolithic, unsegmented legacy topology without trust boundaries or IaC.&lt;/s&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="190" y="2108" width="480" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="crossline_L17" parent="1" style="endArrow=none;strokeColor=#e53e3e;strokeWidth=2.5;opacity=40;" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="2192" as="sourcePoint" />
+            <mxPoint x="680" y="2100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="reason_L17" value="&lt;b style=&quot;font-size:14px;color:#9b2c2c;&quot;&gt;Reason for Retirement: Zero Legacy Replication | Modern Event-Driven Cloud Platform (A19)&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#2d3748;&quot;&gt;Case statement explicitly bans replicating the 2020 monolithic/ad-hoc architecture. 2026 delivers a clean-sheet, event-driven, serverless architecture documented in A19 and the complete architecture diagram.&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e2e8f0;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="700" y="2100" width="1120" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="left_L18" value="" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fed7d7;strokeColor=#e53e3e;strokeWidth=1.5;fontStyle=8;" vertex="1">
+          <mxGeometry x="60" y="2205" width="620" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_L18" value="L-18
+RETIRED" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c53030;strokeColor=#9b2c2c;strokeWidth=2;fontColor=#ffffff;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1">
+          <mxGeometry x="75" y="2217" width="105" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="text_L18" value="&lt;s style=&quot;font-size:14px;color:#742a2a;font-weight:bold;&quot;&gt;2020 design manual and visual guidelines&lt;/s&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px;color:#9b2c2c;&quot;&gt;Case statement p. 7, Sistema de diseño: &quot;No se hereda un manual de 2020&quot;&lt;/span&gt;&lt;br&gt;&lt;s style=&quot;font-size:12px;color:#742a2a;&quot;&gt;Legacy styling rules, outdated visual components, and non-accessible design.&lt;/s&gt;" parent="1" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1">
+          <mxGeometry x="190" y="2213" width="480" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="crossline_L18" parent="1" style="endArrow=none;strokeColor=#e53e3e;strokeWidth=2.5;opacity=40;" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="2297" as="sourcePoint" />
+            <mxPoint x="680" y="2205" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="reason_L18" value="&lt;b style=&quot;font-size:14px;color:#9b2c2c;&quot;&gt;Reason for Retirement: New Design System for Modern User Experience (Epic 7, PD-154)&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#2d3748;&quot;&gt;Case statement bans inheriting any 2020 user interface manual. Replaced by Challenge Point 7 new design system, establishing 4 accessible visual badges for 7 sack lifecycle states and responsive web guidelines.&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e2e8f0;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="700" y="2205" width="1120" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="fnd_0" value="&lt;b style=&quot;font-size:14px;color:#1a365d;&quot;&gt;1. Primary Cloud &amp; Multi-Account Architecture (ADR-001)&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#2d3748;&quot;&gt;AWS Organizations with us-east-1 primary Region. Three workload accounts (dev, qa, pdn) with isolated IAM roles and network boundaries (ASM-060).&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="1900" y="1680" width="1185" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="fnd_icon_0" value="" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.organizations;" vertex="1">
+          <mxGeometry x="3074" y="1703" width="46" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="fnd_1" value="&lt;b style=&quot;font-size:14px;color:#1a365d;&quot;&gt;2. Prepared Secondary Cloud Target (ADR-001, ASM-035)&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#2d3748;&quot;&gt;Azure RFC 1918 supernet 10.88.0.0/13 reserved as export target, undeployed in pilot. Avoids multi-cloud operational cost while preserving cloud portability.&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="1900" y="1785" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="fnd_2" value="&lt;b style=&quot;font-size:14px;color:#1a365d;&quot;&gt;3. Plan-Only Modular Infrastructure as Code (ADR-003 | D01-D03)&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#2d3748;&quot;&gt;Terraform root stacks consuming public tagged modules. S3 remote state with native locking, automated GitHub Actions CI/CD plan validation.&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="1900" y="1890" width="1185" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="fnd_icon_2" value="" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1">
+          <mxGeometry x="3074" y="1913" width="46" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="fnd_3" value="&lt;b style=&quot;font-size:14px;color:#1a365d;&quot;&gt;4. Standardized Functional Device Classes &amp; 2026 Pricing (A10, A23)&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#2d3748;&quot;&gt;Vendor-neutral device specifications (field telemetry nodes, drone kit, mobile outbox). Current 2026 market pricing for 200 farms under PD-017.&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="1900" y="1995" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="fnd_4" value="&lt;b style=&quot;font-size:14px;color:#1a365d;&quot;&gt;5. Zero-Trust Identity &amp; 5-Year Compliance Audit Pipeline (D06, ASM-067)&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#2d3748;&quot;&gt;X.509 device certs (mTLS), Cognito User Pools (staff MFA / field passwordless). Dual-layer audit with S3 Object Lock 5-year compliance archive.&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="1900" y="2100" width="1185" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="fnd_icon_4" value="" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.single_sign_on;" vertex="1">
+          <mxGeometry x="3074" y="2123" width="46" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="fnd_5" value="&lt;b style=&quot;font-size:14px;color:#1a365d;&quot;&gt;6. Modern Accessible Design System (Epic 7, PD-154)&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#2d3748;&quot;&gt;Modern responsive UI replacing legacy manual. 4 accessible status badges mapping the 7 coffee sack lifecycle states with color + icon redundancy.&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="1900" y="2205" width="1240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="footer_traceability" value="&lt;b style=&quot;font-size:13px;color:#1a202c;&quot;&gt;Decision-Log &amp; Specification Traceability:&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11.5px;color:#4a5568;&quot;&gt;• &lt;b&gt;Decisions Closed:&lt;/b&gt; PD-004 (2020 legacy record), PD-007 (ADR-001 cloud selection), PD-008 (Architecture doc §13), PD-051 (Lookup front door CloudFront/Lambda URL).&lt;br&gt;• &lt;b&gt;Core Architectural Assumptions:&lt;/b&gt; ASM-001 (Spanish prevails), ASM-040 (case statement only source), ASM-041 (mobile networks), ASM-061 (DynamoDB on-demand), ASM-073 (satellite bearer), ASM-083 (center addressing), ASM-150 (60 kg reference weight), PD-017 (2026 pricing schedule).&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf2f7;strokeColor=#cbd5e0;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="40" y="2335" width="1800" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="footer_summary" value="&lt;b style=&quot;font-size:13px;color:#102a43;&quot;&gt;Summary Statistics &amp; IaC Traceability:&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#2d3748;&quot;&gt;• &lt;b&gt;Total 2020 Elements Traced:&lt;/b&gt; 18 elements (L-01 to L-18)&lt;br&gt;• &lt;b&gt;Kept:&lt;/b&gt; 8 (44.4%) | &lt;b&gt;Replaced:&lt;/b&gt; 4 (22.2%) | &lt;b&gt;Retired:&lt;/b&gt; 6 (33.3%)&lt;br&gt;• &lt;b&gt;Track B IaC Badges Referenced:&lt;/b&gt; D04 (VPC &amp; Endpoints), D05 (Transit Gateway &amp; Centers), D08 (Farm Module), D09 (Telemetry Ingestion), D10 (Inference Functions)&lt;/span&gt;" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf8ff;strokeColor=#90cdf4;strokeWidth=1.5;align=left;verticalAlign=middle;spacing=10;html=1;" vertex="1">
+          <mxGeometry x="1880" y="2335" width="1280" height="135" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
