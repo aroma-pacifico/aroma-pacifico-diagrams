@@ -41,8 +41,8 @@
         <mxCell id="cauca_ground" value="Soporte ground station | 10.41.2.10&#10;Support VLAN 102 | flight &amp; capture buffer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#1e3a8a;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=4;" parent="1" vertex="1">
           <mxGeometry x="805" y="385" width="320" height="85" as="geometry" />
         </mxCell>
-        <mxCell id="cfw" value="Perimeter firewall | 10.41.20.0/24&#10;IPsec + cellular backup&#10;Permanent CC-GST-01/02, CC-TEL-02, CC-LNK-01/03/05/07" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e8;strokeColor=#b27824;strokeWidth=2;fontColor=#5a3b08;fontSize=15;align=center;verticalAlign=middle;spacing=5;" parent="1" vertex="1">
-          <mxGeometry x="805" y="500" width="320" height="125" as="geometry" />
+        <mxCell id="cfw" value="Perimeter firewall | 10.41.20.0/24&#10;IPsec + cellular backup&#10;Permanent CC-GST-01/02, CC-TEL-02&#10;CC-LNK-01/03/05/07" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e8;strokeColor=#b27824;strokeWidth=2;fontColor=#5a3b08;fontSize=14;align=center;verticalAlign=middle;spacing=4;" parent="1" vertex="1">
+          <mxGeometry x="795" y="490" width="300" height="135" as="geometry" />
         </mxCell>
         <mxCell id="huila" value="HUILA&#10;10.42.0.0/16&#10;Same zone plan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#a7b8c7;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" parent="1" vertex="1">
           <mxGeometry x="1195" y="255" width="130" height="145" as="geometry" />
@@ -51,13 +51,13 @@
           <mxGeometry x="1345" y="255" width="130" height="145" as="geometry" />
         </mxCell>
         <mxCell id="hub" value="Network account hub&#10;Two IPsec tunnels per center (100 Mbps WAN)&#10;Direct transit gateway peering (D05)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
-          <mxGeometry x="1270" y="480" width="250" height="145" as="geometry" />
+          <mxGeometry x="1320" y="480" width="210" height="145" as="geometry" />
         </mxCell>
         <mxCell id="badge_D05" value="D05" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
-          <mxGeometry x="1465" y="483" width="48" height="25" as="geometry" />
+          <mxGeometry x="1475" y="483" width="48" height="25" as="geometry" />
         </mxCell>
         <mxCell id="center_note" value="Farm telemetry and transporter positions bypass center LAN; ground station uses VLAN 102 -&gt; IPsec -&gt; hub -&gt; transit." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef5fb;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=15;align=center;verticalAlign=middle;spacing=6;" parent="1" vertex="1">
-          <mxGeometry x="785" y="660" width="730" height="65" as="geometry" />
+          <mxGeometry x="785" y="655" width="490" height="75" as="geometry" />
         </mxCell>
         <mxCell id="operator" value="CONTRACTED DRONE OPERATION | combined area + focus contract" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=24;fontStyle=1;align=left;verticalAlign=top;spacingLeft=40;spacingTop=25;" parent="1" vertex="1">
           <mxGeometry x="1570" y="155" width="760" height="590" as="geometry" />
@@ -84,25 +84,28 @@
           <mxGeometry x="2665" y="245" width="245" height="165" as="geometry" />
         </mxCell>
         <mxCell id="transportnote" value="Phone uses public API over TLS; optional municipal seat Wi-Fi / cellular.&#10;Offline SQLite cache drained to regional API.&#10;Public sack query served via CloudFront + public API; no VPC access." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#a7b8c7;fontColor=#172b4d;fontSize=16;align=left;verticalAlign=middle;spacing=10;" parent="1" vertex="1">
-          <mxGeometry x="2395" y="455" width="515" height="175" as="geometry" />
+          <mxGeometry x="2395" y="445" width="515" height="175" as="geometry" />
         </mxCell>
-        <mxCell id="awsorg" value="AWS ORGANIZATION | one account per environment (dev, qa, pdn) + shared security/network accounts (ADR-001)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#1e3a8a;strokeWidth=2.5;fontColor=#1e3a8a;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacingLeft=40;spacingTop=25;" parent="1" vertex="1">
-          <mxGeometry x="40" y="775" width="2890" height="1180" as="geometry" />
+        <mxCell id="awsorg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#1e3a8a;strokeWidth=2.5;" parent="1" vertex="1">
+          <mxGeometry x="40" y="775" width="2890" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="awsorg_title" value="AWS ORGANIZATION | one account per environment (dev, qa, pdn) + shared security/network accounts (ADR-001)" style="text;html=1;align=left;verticalAlign=middle;fontSize=17;fontStyle=1;fontColor=#1e3a8a;" parent="1" vertex="1">
+          <mxGeometry x="220" y="785" width="920" height="30" as="geometry" />
         </mxCell>
         <mxCell id="security" value="SECURITY ACCOUNT&#10;CloudTrail audit archive (D06)&#10;Organization SCPs&#10;AWS GuardDuty" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=2;fontColor=#172b4d;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
-          <mxGeometry x="75" y="860" width="250" height="150" as="geometry" />
+          <mxGeometry x="75" y="855" width="250" height="145" as="geometry" />
         </mxCell>
         <mxCell id="badge_D06" value="D06" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
-          <mxGeometry x="274" y="863" width="46" height="24" as="geometry" />
+          <mxGeometry x="274" y="858" width="46" height="24" as="geometry" />
         </mxCell>
         <mxCell id="dev" value="DEVELOPMENT ACCOUNT&#10;VPC 10.80.0.0/16&#10;Isolated non-prod workloads&#10;Separate S3 state bucket" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=6;" parent="1" vertex="1">
-          <mxGeometry x="345" y="860" width="250" height="150" as="geometry" />
+          <mxGeometry x="345" y="855" width="250" height="145" as="geometry" />
         </mxCell>
         <mxCell id="qa" value="TEST ACCOUNT (qa)&#10;VPC 10.81.0.0/16&#10;Pre-production validation&#10;Separate S3 state bucket" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=6;" parent="1" vertex="1">
-          <mxGeometry x="615" y="860" width="250" height="150" as="geometry" />
+          <mxGeometry x="615" y="855" width="250" height="145" as="geometry" />
         </mxCell>
-        <mxCell id="iac_panel" value="IAC &amp; AUTOMATION | Track B plan-only implementation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=20;fontStyle=1;align=left;verticalAlign=top;spacingLeft=40;spacingTop=25;" parent="1" vertex="1">
-          <mxGeometry x="75" y="1020" width="790" height="915" as="geometry" />
+        <mxCell id="iac_panel" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=20;fontStyle=1;align=left;verticalAlign=top;spacingLeft=55;spacingTop=25;" parent="1" vertex="1">
+          <mxGeometry x="75" y="1020" width="790" height="925" as="geometry" />
         </mxCell>
         <mxCell id="d01_box" value="Infrastructure repo&#10;Private aroma-pacifico-infrastructure&#10;One root per environment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#a7b8c7;fontColor=#172b4d;fontSize=15;align=center;verticalAlign=middle;spacing=5;" parent="1" vertex="1">
           <mxGeometry x="95" y="1085" width="235" height="105" as="geometry" />
@@ -153,118 +156,121 @@
           <mxGeometry x="95" y="1475" width="750" height="85" as="geometry" />
         </mxCell>
         <mxCell id="pdn" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2.5;" parent="1" vertex="1">
-          <mxGeometry x="895" y="855" width="2020" height="1080" as="geometry" />
+          <mxGeometry x="895" y="850" width="2020" height="1100" as="geometry" />
         </mxCell>
         <mxCell id="pdn_title" value="PRODUCTION ACCOUNT (pdn) | us-east-1" style="text;html=1;align=left;verticalAlign=middle;fontSize=22;fontStyle=1;fontColor=#0f172a;" parent="1" vertex="1">
-          <mxGeometry x="1180" y="865" width="450" height="30" as="geometry" />
+          <mxGeometry x="1180" y="860" width="450" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vpc" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#3b82f6;strokeWidth=2;" parent="1" vertex="1">
-          <mxGeometry x="915" y="910" width="1980" height="1005" as="geometry" />
+          <mxGeometry x="915" y="900" width="1980" height="1030" as="geometry" />
         </mxCell>
         <mxCell id="vpc_title" value="PRODUCTION VPC | 10.82.0.0/16 | private network tiers &amp; endpoints (D04)" style="text;html=1;align=left;verticalAlign=middle;fontSize=19;fontStyle=1;fontColor=#1e3a8a;" parent="1" vertex="1">
-          <mxGeometry x="1750" y="915" width="680" height="30" as="geometry" />
+          <mxGeometry x="1750" y="905" width="680" height="30" as="geometry" />
         </mxCell>
         <mxCell id="badge_D04" value="D04" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
-          <mxGeometry x="2830" y="915" width="55" height="26" as="geometry" />
+          <mxGeometry x="2830" y="905" width="55" height="26" as="geometry" />
         </mxCell>
         <mxCell id="tier_transit" value="transit&#10;10.82.240.0/20 (Private)&#10;TGW Attachment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;fontColor=#1e3a8a;fontSize=15;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" parent="1" vertex="1">
-          <mxGeometry x="935" y="960" width="225" height="220" as="geometry" />
+          <mxGeometry x="935" y="940" width="225" height="235" as="geometry" />
         </mxCell>
         <mxCell id="tgw_att" value="VPC Transit Gateway&#10;Attachment (D05)&#10;Routes 10.40.0.0/13" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#1e3a8a;fontSize=14;align=center;verticalAlign=middle;" parent="1" vertex="1">
-          <mxGeometry x="950" y="1035" width="195" height="125" as="geometry" />
+          <mxGeometry x="950" y="1025" width="195" height="130" as="geometry" />
         </mxCell>
         <mxCell id="tier_drone_ing" value="drone_object_ingress&#10;10.82.32.0/20 (RESERVED)&#10;ASM-140, CC-DRN-02&#10;No endpoint in pilot" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;dashPattern=6 4;fontColor=#64748b;fontSize=13;align=center;verticalAlign=middle;spacing=4;" parent="1" vertex="1">
-          <mxGeometry x="1185" y="960" width="220" height="100" as="geometry" />
+          <mxGeometry x="1185" y="940" width="220" height="110" as="geometry" />
         </mxCell>
         <mxCell id="tier_tel" value="telemetry_ingress&#10;10.82.16.0/20 (RESERVED)&#10;CL-TEL-04&#10;Farm routes to IoT Core" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;dashPattern=6 4;fontColor=#64748b;fontSize=13;align=center;verticalAlign=middle;spacing=4;" parent="1" vertex="1">
-          <mxGeometry x="1185" y="1075" width="220" height="105" as="geometry" />
+          <mxGeometry x="1185" y="1065" width="220" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="tier_obj" value="object_storage&#10;10.82.80.0/20 (Private)&#10;S3 Interface Endpoint" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;fontColor=#1e3a8a;fontSize=15;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" parent="1" vertex="1">
-          <mxGeometry x="1430" y="960" width="230" height="220" as="geometry" />
+        <mxCell id="tier_obj" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;fontColor=#1e3a8a;fontSize=15;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="1430" y="940" width="230" height="235" as="geometry" />
         </mxCell>
         <mxCell id="s3ep" value="S3 interface endpoint&#10;com.amazonaws.us-east-1.s3&#10;CC-DRN-03 multipart" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#1e3a8a;fontSize=14;align=center;verticalAlign=middle;" parent="1" vertex="1">
-          <mxGeometry x="1445" y="1035" width="190" height="125" as="geometry" />
+          <mxGeometry x="1445" y="1025" width="190" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="s3" value="Amazon S3&#10;Encrypted drone objects" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=15;fontStyle=1;" parent="1" vertex="1">
-          <mxGeometry x="1735" y="1035" width="130" height="125" as="geometry" />
+        <mxCell id="s3" value="Amazon S3&#10;Encrypted drone objects" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1780" y="1005" width="115" height="105" as="geometry" />
         </mxCell>
         <mxCell id="tier_admin" value="administration&#10;10.82.96.0/20 (Private)&#10;KMS &amp; Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;fontColor=#1e3a8a;fontSize=15;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" parent="1" vertex="1">
-          <mxGeometry x="1890" y="960" width="210" height="220" as="geometry" />
+          <mxGeometry x="1940" y="940" width="210" height="235" as="geometry" />
         </mxCell>
         <mxCell id="admin_ep" value="KMS interface endpoint&#10;CloudTrail auditing&#10;SSE-KMS key policy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#1e3a8a;fontSize=14;align=center;verticalAlign=middle;" parent="1" vertex="1">
-          <mxGeometry x="1905" y="1035" width="180" height="125" as="geometry" />
+          <mxGeometry x="1955" y="1025" width="180" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="tier_public" value="public_query | 10.82.0.0/20 (Public IGW)&#10;Buyer lookup &amp; Transporter GPS front door" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#059669;strokeWidth=2;fontColor=#065f46;fontSize=15;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" parent="1" vertex="1">
-          <mxGeometry x="2480" y="960" width="395" height="220" as="geometry" />
+        <mxCell id="tier_public" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#059669;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="2480" y="940" width="395" height="265" as="geometry" />
+        </mxCell>
+        <mxCell id="tier_public_title" value="public_query | 10.82.0.0/20&#10;Public IGW front door&#10;Buyer lookup &amp; Transporter GPS" style="text;html=1;align=left;verticalAlign=top;fontSize=14;fontStyle=1;fontColor=#065f46;" parent="1" vertex="1">
+          <mxGeometry x="2495" y="945" width="210" height="60" as="geometry" />
         </mxCell>
         <mxCell id="public_front" value="Front door CloudFront&#10;Public query endpoints&#10;Origin verification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#10b981;strokeWidth=1.5;fontColor=#065f46;fontSize=14;align=center;verticalAlign=middle;" parent="1" vertex="1">
-          <mxGeometry x="2505" y="1035" width="160" height="125" as="geometry" />
+          <mxGeometry x="2505" y="1020" width="160" height="135" as="geometry" />
         </mxCell>
-        <mxCell id="casefn" value="Sack API&#10;API Gateway endpoint&#10;Custody verification" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=15;fontStyle=1;" parent="1" vertex="1">
-          <mxGeometry x="2700" y="1035" width="130" height="125" as="geometry" />
+        <mxCell id="casefn" value="Sack API&#10;API Gateway endpoint&#10;Custody verification" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="2700" y="1010" width="130" height="105" as="geometry" />
         </mxCell>
         <mxCell id="tier_app" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;" parent="1" vertex="1">
-          <mxGeometry x="935" y="1210" width="1940" height="220" as="geometry" />
+          <mxGeometry x="935" y="1215" width="1940" height="205" as="geometry" />
         </mxCell>
         <mxCell id="tier_app_title" value="application | 10.82.48.0/20 (Private) | Compute &amp; Ingress Endpoints" style="text;html=1;align=left;verticalAlign=middle;fontSize=16;fontStyle=1;fontColor=#1e3a8a;" parent="1" vertex="1">
-          <mxGeometry x="1150" y="1215" width="570" height="25" as="geometry" />
+          <mxGeometry x="955" y="1220" width="570" height="25" as="geometry" />
         </mxCell>
         <mxCell id="app_ep" value="API &amp; Cognito&#10;Endpoints&#10;(CC-DRN-01 grant)" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.endpoint;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
-          <mxGeometry x="960" y="1265" width="135" height="125" as="geometry" />
+          <mxGeometry x="960" y="1255" width="135" height="105" as="geometry" />
         </mxCell>
         <mxCell id="reception" value="Reception Lambda&#10;Link mission" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
-          <mxGeometry x="1200" y="1265" width="135" height="125" as="geometry" />
+          <mxGeometry x="1200" y="1255" width="135" height="105" as="geometry" />
         </mxCell>
         <mxCell id="vision" value="Bedrock Vision&#10;Inference Lambda" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
-          <mxGeometry x="1520" y="1265" width="140" height="125" as="geometry" />
+          <mxGeometry x="1520" y="1255" width="140" height="105" as="geometry" />
         </mxCell>
         <mxCell id="badge_D10" value="D10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
-          <mxGeometry x="1615" y="1270" width="40" height="22" as="geometry" />
+          <mxGeometry x="1615" y="1260" width="40" height="22" as="geometry" />
         </mxCell>
         <mxCell id="threshold" value="Threshold Lambda&#10;Range eval" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
-          <mxGeometry x="1840" y="1265" width="135" height="125" as="geometry" />
+          <mxGeometry x="1840" y="1255" width="135" height="105" as="geometry" />
         </mxCell>
         <mxCell id="iot" value="IoT Core&#10;Telemetry rule" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.iot_core;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
-          <mxGeometry x="2240" y="1265" width="135" height="125" as="geometry" />
+          <mxGeometry x="2240" y="1255" width="135" height="105" as="geometry" />
         </mxCell>
         <mxCell id="badge_D09" value="D09" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
-          <mxGeometry x="2330" y="1270" width="40" height="22" as="geometry" />
+          <mxGeometry x="2330" y="1260" width="40" height="22" as="geometry" />
         </mxCell>
         <mxCell id="tier_data" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;" parent="1" vertex="1">
-          <mxGeometry x="935" y="1460" width="1940" height="220" as="geometry" />
+          <mxGeometry x="935" y="1490" width="1940" height="225" as="geometry" />
         </mxCell>
         <mxCell id="tier_data_title" value="data | 10.82.64.0/20 (Private - no internet) | Persistence, Queues &amp; Event Bus" style="text;html=1;align=left;verticalAlign=middle;fontSize=16;fontStyle=1;fontColor=#1e3a8a;" parent="1" vertex="1">
-          <mxGeometry x="955" y="1465" width="600" height="25" as="geometry" />
+          <mxGeometry x="955" y="1495" width="600" height="25" as="geometry" />
         </mxCell>
         <mxCell id="eventbridge" value="EventBridge&#10;Pipe + Bus" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.eventbridge;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
-          <mxGeometry x="1200" y="1515" width="135" height="125" as="geometry" />
+          <mxGeometry x="1200" y="1535" width="135" height="105" as="geometry" />
         </mxCell>
         <mxCell id="sqs" value="Per-function SQS&#10;Retry + DLQ" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
-          <mxGeometry x="1520" y="1515" width="135" height="125" as="geometry" />
-        </mxCell>
-        <mxCell id="teleddb" value="Telemetry DynamoDB&#10;5-yr retention" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
-          <mxGeometry x="2240" y="1515" width="135" height="125" as="geometry" />
+          <mxGeometry x="1520" y="1535" width="135" height="105" as="geometry" />
         </mxCell>
         <mxCell id="records" value="Sack / Trip DB&#10;Audit history" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
-          <mxGeometry x="1840" y="1515" width="140" height="125" as="geometry" />
+          <mxGeometry x="1840" y="1535" width="140" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="teleddb" value="Telemetry DynamoDB&#10;5-yr retention" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="2240" y="1535" width="135" height="105" as="geometry" />
         </mxCell>
         <mxCell id="sns" value="SNS Alert&#10;Farmer channel" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
-          <mxGeometry x="2540" y="1515" width="135" height="125" as="geometry" />
+          <mxGeometry x="2540" y="1535" width="135" height="105" as="geometry" />
         </mxCell>
         <mxCell id="endpoints" value="Private center path: network hub -&gt; transit (10.82.240.0/20) -&gt; application (10.82.48.0/20) &amp; object_storage (10.82.80.0/20) interface endpoints. Farm telemetry routes directly to regional IoT Core endpoint." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=middle;spacing=10;" parent="1" vertex="1">
-          <mxGeometry x="935" y="1710" width="950" height="85" as="geometry" />
+          <mxGeometry x="935" y="1755" width="950" height="70" as="geometry" />
         </mxCell>
         <mxCell id="fwpol" value="Cloud firewall (D07): managed security groups, endpoint policies, TGW routes and regional WAF rules. Hub attachment terminates 10.40.0.0/13; no public center ingress." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=middle;spacing=10;" parent="1" vertex="1">
-          <mxGeometry x="1915" y="1710" width="955" height="85" as="geometry" />
+          <mxGeometry x="1915" y="1755" width="955" height="70" as="geometry" />
         </mxCell>
         <mxCell id="badge_D07" value="D07" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
-          <mxGeometry x="2815" y="1715" width="46" height="24" as="geometry" />
+          <mxGeometry x="2815" y="1758" width="46" height="24" as="geometry" />
         </mxCell>
         <mxCell id="centerpath" value="Drone inference path: persisted mission record -&gt; multipart S3 upload -&gt; reception Lambda -&gt; EventBridge Pipe + bus -&gt; per-function SQS queues -&gt; Bedrock vision inference -&gt; Sack/Trip DB." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=middle;spacing=10;" parent="1" vertex="1">
-          <mxGeometry x="935" y="1805" width="950" height="85" as="geometry" />
+          <mxGeometry x="935" y="1835" width="950" height="70" as="geometry" />
         </mxCell>
         <mxCell id="encryption" value="TLS 1.2+ in transit; encrypted device buffers; AES-256 / KMS CMK customer-managed keys (D06). All secrets out of repository and state (ADR-003)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=middle;spacing=10;" parent="1" vertex="1">
-          <mxGeometry x="1915" y="1805" width="955" height="85" as="geometry" />
+          <mxGeometry x="1915" y="1835" width="955" height="70" as="geometry" />
         </mxCell>
         <mxCell id="paths_legacy" value="Farm: encrypted store-and-forward to regional IoT Core endpoint; cellular bearer bypasses centers entirely. | Drone: preloaded mission on offline tablet; ground-station buffer; multipart upload on reconnect. | Transporter: phone GPS every 5 min; store up to 50 readings in SQLite offline; drain to public API. | Legacy components: the 2020 single EC2 web server, shared unencrypted MySQL, and cleartext MQTT broker are retired." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef5fb;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=middle;spacingLeft=15;spacingRight=15;" parent="1" vertex="1">
           <mxGeometry x="40" y="1995" width="2140" height="75" as="geometry" />
@@ -372,81 +378,77 @@
         </mxCell>
         <mxCell id="edge_farm_iot" value="MQTT / TLS 8883 (telemetry)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="farmnet" target="iot" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="735" y="530" /><mxPoint x="735" y="755" /><mxPoint x="2307" y="755" /></Array></mxGeometry>
+            <Array as="points"><mxPoint x="720" y="530" /><mxPoint x="720" y="755" /><mxPoint x="2307" y="755" /></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge_iot_ddb" value="Topic rule writes telemetry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="iot" target="teleddb" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="edge_iot_ddb" value="Topic rule writes telemetry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.5;exitPerimeter=1;entryX=1;entryY=0.5;entryPerimeter=1;" parent="1" source="iot" target="teleddb" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="2430" y="1307" /><mxPoint x="2430" y="1587" /></Array><mxPoint as="offset" x="0" y="0" /></mxGeometry>
         </mxCell>
         <mxCell id="edge_iot_thresh" value="SQS trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0;exitY=0.5;exitPerimeter=1;entryX=1;entryY=0.5;entryPerimeter=1;" parent="1" source="iot" target="threshold" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            </mxGeometry>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_thresh_sns" value="Alert opening" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="threshold" target="sns" edge="1">
+        <mxCell id="edge_thresh_sns" value="Alert opening" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=0;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="threshold" target="sns" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1907" y="1435" /><mxPoint x="2607" y="1435" /></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1907" y="1230" /><mxPoint x="2607" y="1230" /></Array><mxPoint as="offset" x="-120" y="0" /></mxGeometry>
         </mxCell>
         <mxCell id="edge_drone_cfw" value="VLAN 102 (CC-GST-01/02)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="cauca_ground" target="cfw" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="965" y="470" />
-              <mxPoint x="965" y="500" />
+              <mxPoint x="965" y="490" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge_cfw_hub" value="IPsec tunnel (CC-LNK-01)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.4;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="cfw" target="hub" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            </mxGeometry>
+        <mxCell id="edge_cfw_hub" value="IPsec (CC-LNK-01)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=13;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.45;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="cfw" target="hub" edge="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_hub_transit" value="TGW route (10.40.0.0/13)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="hub" target="tier_transit" edge="1">
+        <mxCell id="edge_hub_transit" value="TGW route (10.40.0.0/13)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.64;entryY=0;entryPerimeter=1;" parent="1" source="hub" target="tier_transit" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1395" y="750" /><mxPoint x="1047" y="750" /></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1425" y="720" /><mxPoint x="1080" y="720" /></Array><mxPoint as="offset" x="80" y="0" /></mxGeometry>
         </mxCell>
-        <mxCell id="edge_transit_app" value="CC-DRN-01 (grant, TCP 443)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.4;exitY=1;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="tier_transit" target="app_ep" edge="1">
+        <mxCell id="edge_transit_app" value="CC-DRN-01 (grant, TCP 443)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=13;labelBackgroundColor=#ffffff;spacing=4;exitX=0.41;exitY=1;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="tier_transit" target="app_ep" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_transit_obj" value="CC-DRN-03 (S3 multipart upload)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.75;exitY=0;exitPerimeter=1;entryX=0;entryY=0.25;entryPerimeter=1;" parent="1" source="tier_transit" target="s3ep" edge="1">
           <mxGeometry relative="1" as="geometry">
-            </mxGeometry>
+            <Array as="points"><mxPoint x="1104" y="915" /><mxPoint x="1415" y="915" /><mxPoint x="1415" y="1058" /></Array><mxPoint as="offset" x="-90" y="0" /></mxGeometry>
         </mxCell>
-        <mxCell id="edge_transit_obj" value="CC-DRN-03 (S3 multipart upload)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.75;exitY=0;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="tier_transit" target="s3ep" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1100" y="935" /><mxPoint x="1410" y="935" /><mxPoint x="1410" y="1095" /></Array></mxGeometry>
-        </mxCell>
-        <mxCell id="edge_obj_s3" value="SSE-KMS multipart" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="s3ep" target="s3" edge="1">
+        <mxCell id="edge_obj_s3" value="SSE-KMS multipart" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.45;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="s3ep" target="s3" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="edge_s3_rec" value="S3 event (PutObject)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0;exitY=0.5;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="s3" target="reception" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1680" y="1100" /><mxPoint x="1680" y="1195" /><mxPoint x="1267" y="1195" /></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1730" y="1058" /><mxPoint x="1730" y="1185" /><mxPoint x="1267" y="1185" /></Array><mxPoint as="offset" x="-120" y="0" /></mxGeometry>
         </mxCell>
-        <mxCell id="edge_rec_eb" value="Mission link" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="reception" target="eventbridge" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            </mxGeometry>
+        <mxCell id="edge_rec_eb" value="Mission link" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0;exitY=0.7;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="reception" target="eventbridge" edge="1">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1140" y="1328" /><mxPoint x="1140" y="1587" /></Array><mxPoint as="offset" x="0" y="0" /></mxGeometry>
         </mxCell>
         <mxCell id="edge_eb_sqs" value="Per-function queue" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="eventbridge" target="sqs" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_sqs_vision" value="Inference prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=0;exitPerimeter=1;entryX=0.5;entryY=1;entryPerimeter=1;" parent="1" source="sqs" target="vision" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            </mxGeometry>
+        <mxCell id="edge_sqs_vision" value="Inference prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="sqs" target="vision" edge="1">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1460" y="1587" /><mxPoint x="1460" y="1307" /></Array><mxPoint as="offset" x="0" y="0" /></mxGeometry>
         </mxCell>
         <mxCell id="edge_vision_records" value="Persist result" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="vision" target="records" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1740" y="1327" /><mxPoint x="1740" y="1577" /></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1750" y="1307" /><mxPoint x="1750" y="1587" /></Array><mxPoint as="offset" x="0" y="0" /></mxGeometry>
         </mxCell>
         <mxCell id="edge_drone_offline" value="No signal: buffer flight" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;" parent="1" source="dronebuf" target="droneoffline" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_phone_casefn" value="Public API (GNSS &amp; custody)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.27;entryY=0;entryPerimeter=1;" parent="1" source="phone" target="casefn" edge="1">
+        <mxCell id="edge_phone_casefn" value="Public API (GNSS &amp; custody)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.25;entryY=0;entryPerimeter=1;" parent="1" source="phone" target="casefn" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="2520" y="890" /><mxPoint x="2735" y="890" /></Array></mxGeometry>
+            <Array as="points"><mxPoint x="2520" y="700" /><mxPoint x="2732" y="700" /></Array><mxPoint as="offset" x="-50" y="0" /></mxGeometry>
         </mxCell>
-        <mxCell id="edge_buyer_casefn" value="Public query (limited view)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.65;entryY=0;entryPerimeter=1;" parent="1" source="buyer" target="casefn" edge="1">
+        <mxCell id="edge_buyer_casefn" value="Public query (limited view)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.75;entryY=0;entryPerimeter=1;" parent="1" source="buyer" target="casefn" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="2787" y="890" /><mxPoint x="2785" y="890" /></Array></mxGeometry>
+            <Array as="points"><mxPoint x="2798" y="410" /><mxPoint x="2798" y="1010" /></Array><mxPoint as="offset" x="0" y="-10" /></mxGeometry>
         </mxCell>
-        <mxCell id="edge_casefn_records" value="DynamoDB read/write" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0;exitY=0.5;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="casefn" target="records" edge="1">
+        <mxCell id="edge_casefn_records" value="DynamoDB read/write" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.5;exitPerimeter=1;entryX=1;entryY=0.5;entryPerimeter=1;" parent="1" source="casefn" target="records" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="2680" y="1100" /><mxPoint x="2680" y="1455" /><mxPoint x="1910" y="1455" /></Array></mxGeometry>
+            <Array as="points"><mxPoint x="2865" y="1062" /><mxPoint x="2865" y="1730" /><mxPoint x="2020" y="1730" /><mxPoint x="2020" y="1587" /></Array><mxPoint as="offset" x="150" y="0" /></mxGeometry>
         </mxCell>
-      </root>
+      <mxCell id="iac_panel_title" value="IAC &amp; AUTOMATION | Track B plan-only implementation" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#0f172a;" parent="1" vertex="1"><mxGeometry x="160" y="1035" width="600" height="30" as="geometry" /></mxCell><mxCell id="tier_obj_title" value="object_storage | 10.82.80.0/20 (Private)" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#1e3a8a;" parent="1" vertex="1"><mxGeometry x="1440" y="948" width="210" height="25" as="geometry" /></mxCell></root>
     </mxGraphModel>
   </diagram>
   <diagram id="iac" name="IaC traceability">
