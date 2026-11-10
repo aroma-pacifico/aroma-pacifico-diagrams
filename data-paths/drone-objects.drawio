@@ -39,10 +39,10 @@
           <mxGeometry x="970" y="330" width="155" height="145" as="geometry" />
         </mxCell>
         <mxCell id="appep" value="application tier&#10;API &amp; Cognito endpoints&#10;(CC-DRN-01 mission &amp; grant)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=14;align=center;verticalAlign=middle;spacing=5;" parent="1" vertex="1">
-          <mxGeometry x="1145" y="300" width="175" height="85" as="geometry" />
+          <mxGeometry x="1145" y="295" width="175" height="85" as="geometry" />
         </mxCell>
         <mxCell id="droneep_res" value="drone_object_ingress&#10;10.82.32.0/20&#10;RESERVED (ASM-140, CC-DRN-02)&#10;No endpoint in pilot" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#a7b8c7;strokeWidth=1.5;dashed=1;dashPattern=6 4;fontColor=#61788d;fontSize=13;align=center;verticalAlign=middle;spacing=4;" parent="1" vertex="1">
-          <mxGeometry x="1145" y="395" width="175" height="80" as="geometry" />
+          <mxGeometry x="1145" y="410" width="175" height="80" as="geometry" />
         </mxCell>
         <mxCell id="s3ep" value="object_storage&#10;S3 interface endpoint" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
           <mxGeometry x="1340" y="330" width="175" height="145" as="geometry" />
@@ -86,8 +86,13 @@
         <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.35;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="transit" target="appep">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.75;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="transit" target="s3ep">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;exitX=0.8;exitY=0;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" edge="1" parent="1" source="transit" target="s3ep">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1094" y="240" />
+              <mxPoint x="1428" y="240" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="s3ep" target="s3">
           <mxGeometry relative="1" as="geometry" />

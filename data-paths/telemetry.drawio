@@ -27,7 +27,7 @@
           <mxGeometry x="430" y="350" width="270" height="150" as="geometry" />
         </mxCell>
         <mxCell id="bearer" value="Cellular bearer + public internet&#10;No center relay" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="820" y="350" width="220" height="125" as="geometry" />
+          <mxGeometry x="740" y="350" width="220" height="125" as="geometry" />
         </mxCell>
         <mxCell id="center_note" value="Farm nodes connect directly to the regional public IoT endpoint." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
           <mxGeometry x="80" y="780" width="480" height="85" as="geometry" />
@@ -76,8 +76,14 @@
         <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="lambda" target="sns">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.3;entryY=0;entryPerimeter=1;" edge="1" parent="1" source="ddb" target="history">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;exitX=0;exitY=0.7;exitPerimeter=1;entryX=0.08;entryY=0;entryPerimeter=1;" edge="1" parent="1" source="ddb" target="history">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1340" y="459" />
+              <mxPoint x="1340" y="700" />
+              <mxPoint x="1408" y="700" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="e8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="sns" target="consumer">
           <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48" />
@@ -97,16 +103,16 @@
           <mxGeometry x="500" y="525" width="220" height="48" as="geometry" />
         </mxCell>
         <mxCell id="label-e3" value="MQTT/TLS 1.2+; port 8883 or 443/ALPN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="850" y="525" width="220" height="48" as="geometry" />
+          <mxGeometry x="740" y="525" width="220" height="48" as="geometry" />
         </mxCell>
         <mxCell id="label-e4" value="IoT rule writes accepted telemetry row" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="1200" y="585" width="220" height="48" as="geometry" />
+          <mxGeometry x="1110" y="580" width="200" height="48" as="geometry" />
         </mxCell>
         <mxCell id="label-e5" value="Topic rule sends reading key and payload to SQS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
           <mxGeometry x="1360" y="265" width="220" height="48" as="geometry" />
         </mxCell>
         <mxCell id="label-e7" value="History query; five-year retention" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="1420" y="650" width="220" height="48" as="geometry" />
+          <mxGeometry x="1370" y="580" width="210" height="48" as="geometry" />
         </mxCell>
         <mxCell id="label-e8" value="SNS notification to farmer channel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
           <mxGeometry x="2180" y="585" width="220" height="48" as="geometry" />
