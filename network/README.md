@@ -18,7 +18,7 @@ This folder contains the network architecture and addressing diagrams for Aroma 
   - `data` (`10.E.64.0/20`, /22 subnets): Private routing, no internet route; managed database subnet groups across AZs (DynamoDB is regional managed on-demand, ASM-061).
   - `object_storage` (`10.E.80.0/20`, /22 subnets): Private routing; Amazon S3 interface VPC endpoints reachable from collection centers through TGW.
   - `administration` (`10.E.96.0/20`, /22 subnets): Private routing; interface endpoints for SSM Session Manager, KMS, IAM, CloudWatch Logs, Parameters without bastion hosts.
-  - `Reserved Tiers` (`10.E.112.0/17`, eight /20 blocks): 32,768 unallocated private addresses per environment for future architecture evolution.
+  - `Reserved Tiers` (`10.E.112.0 to 10.E.239.255`, eight /20 blocks, 32,768 addresses): Unallocated private addresses per environment for future architecture evolution without moving existing subnets.
   - `transit` (`10.E.240.0/20`, /28 slots): Private routing; Transit Gateway hub attachments routing `10.40.0.0/13` to centers.
 - **Collection center LAN pattern (`10.4x.Z.0/24`)**: Identical pattern applied across Cauca (`4x = 41`), Huila (`4x = 42`), Tolima (`4x = 43`), and future fourth department (`4x = 44`, ASM-030):
   - Host layout: `.1` firewall gateway, `.2` to `.49` static and DHCP reservations, `.50+` dynamic DHCP pool (ASM-083).
