@@ -1,461 +1,436 @@
 <mxfile host="app.diagrams.net" version="32.4.1" type="device">
   <diagram id="collection-center" name="Collection Center Network Pattern">
-    <mxGraphModel dx="3600" dy="2400" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3600" pageHeight="2400" math="0" shadow="0">
+    <mxGraphModel dx="3600" dy="2350" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3600" pageHeight="2350" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 <mxCell id="title" value="Collection Center Network Pattern (10.4x.0.0/16)" style="text;html=1;align=left;verticalAlign=middle;fontSize=28;fontStyle=1;fontColor=#102a43;" vertex="1" parent="1">
   <mxGeometry x="40" y="20" width="3480" height="45" as="geometry" />
 </mxCell>
-<mxCell id="subtitle" value="One repeatable pattern deployed across three centers: Cauca (10.41.0.0/16), Huila (10.42.0.0/16), Tolima (10.43.0.0/16) inside 10.40.0.0/13. Shows zones, VLANs, SSIDs, perimeter firewall, uplinks, logistics workstations, code-sheet printers, and inter-zone policy intent." style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#334e68;" vertex="1" parent="1">
+<mxCell id="subtitle" value="One repeatable pattern deployed across three centers: Cauca (10.41.0.0/16), Huila (10.42.0.0/16), Tolima (10.43.0.0/16) inside 10.40.0.0/13. Shows zones, VLANs, SSIDs, perimeter firewall [D07], uplinks to hub [D05], production VPC tiers [D04], offline logistics, code-sheet printing, and inter-zone policy intent." style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#334e68;" vertex="1" parent="1">
   <mxGeometry x="40" y="65" width="3480" height="40" as="geometry" />
 </mxCell>
-<mxCell id="card_params" value="CENTER PARAMETERS
-- center_key: cauca | huila | tolima
-- center_octet (4x): 41 | 42 | 43
-- Summary route: 10.40.0.0/13 reached via cloud transit
-- Source: docs/collection-center-network.md" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#627d98;strokeWidth=1;fontColor=#102a43;fontSize=13;align=left;verticalAlign=top;spacing=10;fontStyle=0;" vertex="1" parent="1">
-  <mxGeometry x="40" y="115" width="620" height="115" as="geometry" />
+<mxCell id="card_params" value="CENTER PARAMETERS&#10;- Pattern CIDR: 10.4x.0.0/16 within 10.40.0.0/13&#10;- Cauca: 10.41.0.0/16 | Huila: 10.42.0.0/16 | Tolima: 10.43.0.0/16&#10;- Summary Route: 10.40.0.0/13 routed via AWS Transit Gateway&#10;- Authority: docs/collection-center-network.md &amp; docs/addressing-plan.md" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#627d98;strokeWidth=1;fontColor=#102a43;fontSize=13;align=left;verticalAlign=top;spacing=10;fontStyle=0;" vertex="1" parent="1">
+  <mxGeometry x="40" y="115" width="620" height="100" as="geometry" />
 </mxCell>
-<mxCell id="card_wan" value="WAN CAPACITY &amp; CONCURRENCY (ASM-084, ASM-085)
-- Primary WAN: 100 Mbps symmetric (90 Mbps planned + 10 Mbps IPsec/control)
-- Concurrency peak: 50% planned clients active (34 clients: 75M down / 39M up)
-- Downlink: 83.3% load | Uplink: 43.3% load (never saturated, even at 100% active)
-- Non-operational traffic absorbs any downstream bottleneck" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#627d98;strokeWidth=1;fontColor=#102a43;fontSize=13;align=left;verticalAlign=top;spacing=10;fontStyle=0;" vertex="1" parent="1">
-  <mxGeometry x="680" y="115" width="660" height="115" as="geometry" />
+<mxCell id="card_wan" value="WAN &amp; TRAFFIC CLASSES (ASM-084..086)&#10;- Primary WAN: 100 Mbps symmetric (90M planned + 10M IPsec/control)&#10;- Backup: Cellular LTE+ auto-failover; non-operational traffic dropped&#10;- QoS P1: Network control (2/2M gtd) | P2: Logistics (44/11M gtd)&#10;- QoS P3: Drone (5/20M gtd) | P4: Staff (28/7M gtd) | P5: Non-op (capped)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#627d98;strokeWidth=1;fontColor=#102a43;fontSize=13;align=left;verticalAlign=top;spacing=10;fontStyle=0;" vertex="1" parent="1">
+  <mxGeometry x="680" y="115" width="680" height="100" as="geometry" />
 </mxCell>
-<mxCell id="card_qos" value="TRAFFIC CONTROL &amp; SHAPING (ASM-086)
-- Priority 1: Network control (2/2 Mbps gtd, no cap)
-- Priority 2: Logistics (44/11 Mbps gtd, full 22-client reference)
-- Priority 3: Drone station (5/20 Mbps gtd; bursts into free uplink)
-- Priority 4: Staff (28/7 Mbps gtd) &amp; Transport app (2/1 Mbps gtd)
-- Priority 5: Non-operational (Guest 10/2.5M cap, Transport 20/5M cap, 2/0.5M/client)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#627d98;strokeWidth=1;fontColor=#102a43;fontSize=13;align=left;verticalAlign=top;spacing=10;fontStyle=0;" vertex="1" parent="1">
-  <mxGeometry x="1360" y="115" width="680" height="115" as="geometry" />
+<mxCell id="card_trace" value="TRACEABILITY &amp; IAC BOXES (architecture.md sec 14, ASM-200)&#10;- [D05] Association of Environment with Pattern Center (B05: TGW hub &amp; VPN)&#10;- [D07] Pattern Firewall Rules (B07: Perimeter firewall rule set CC-01..CC-DEF)&#10;- [D04] VPC Tiers of Pattern Environment (B04: Production VPC pdn 10.82.0.0/16)&#10;- Decisions: ASM-080..089, PD-090..096, ASM-079, ASM-124, ASM-140" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#627d98;strokeWidth=1;fontColor=#102a43;fontSize=13;align=left;verticalAlign=top;spacing=10;fontStyle=0;" vertex="1" parent="1">
+  <mxGeometry x="1380" y="115" width="760" height="100" as="geometry" />
 </mxCell>
-<mxCell id="card_trace" value="TRACEABILITY &amp; IAC BOXES (ASM-200)
-- [D05] Association of Environment with Pattern Center (B05)
-- [D07] Pattern Firewall Rules (B07 - firewall-policy.md sec 4)
-- [D04] VPC Tiers of Pattern Environment (B04 - addressing-plan.md)
-- Decision Log: ASM-080 to ASM-089, PD-090 to PD-096" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#627d98;strokeWidth=1;fontColor=#102a43;fontSize=13;align=left;verticalAlign=top;spacing=10;fontStyle=0;" vertex="1" parent="1">
-  <mxGeometry x="2060" y="115" width="660" height="115" as="geometry" />
+<mxCell id="card_legend" value="POLICY INTENT LEGEND&#10;- Solid Green Arrow: Allowed Flow (Stateful rule, port &amp; rule ID labeled)&#10;- Dashed Red Arrow: Denied Flow (Explicit firewall deny / blackhole)&#10;- Blue Line: Physical Uplink / 802.1Q VLAN Trunk&#10;- Client Isolation: Enabled on cc-transport &amp; cc-guest SSIDs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#627d98;strokeWidth=1;fontColor=#102a43;fontSize=13;align=left;verticalAlign=top;spacing=10;fontStyle=0;" vertex="1" parent="1">
+  <mxGeometry x="2160" y="115" width="660" height="100" as="geometry" />
 </mxCell>
-<mxCell id="card_legend" value="POLICY INTENT LEGEND
-- Solid Green Arrow: Allowed Flow (Stateful rule, port &amp; rule ID)
-- Dashed Red Arrow: Denied Flow (Explicit firewall deny / blackhole)
-- Solid Blue Double-Line: 802.1Q VLAN Trunk / Physical Uplink
-- Client Isolation: Host-to-host blocked on cc-transport &amp; cc-guest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#627d98;strokeWidth=1;fontColor=#102a43;fontSize=13;align=left;verticalAlign=top;spacing=10;fontStyle=0;" vertex="1" parent="1">
-  <mxGeometry x="2740" y="115" width="780" height="115" as="geometry" />
+<mxCell id="card_resilience" value="OFFLINE OPERATION GUARANTEE (ASM-079, ASM-124)&#10;- WAN Down: Logistics reception app persists to local encrypted outbox&#10;- Local Printing: Code sheets print locally over LAN (never crosses WAN)&#10;- Local Auth: RADIUS runs on firewall with cached CRL chain&#10;- Automatic Drain: Outbox drains to AWS application tier upon link recovery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#627d98;strokeWidth=1;fontColor=#102a43;fontSize=13;align=left;verticalAlign=top;spacing=10;fontStyle=0;" vertex="1" parent="1">
+  <mxGeometry x="2840" y="115" width="680" height="100" as="geometry" />
 </mxCell>
-<mxCell id="site_cc" value="COLLECTION CENTER SITE BOUNDARY | Parameterized Network 10.4x.0.0/16 (Summary: 10.40.0.0/13)
-[One pattern deployed for Cauca 10.41.0.0/16, Huila 10.42.0.0/16, Tolima 10.43.0.0/16]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334e68;strokeWidth=3;fontColor=#102a43;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacing=15;" vertex="1" parent="1">
-  <mxGeometry x="40" y="275" width="2140" height="1985" as="geometry" />
+<mxCell id="site_cc" value="COLLECTION CENTER SITE BOUNDARY | Parameterized Network 10.4x.0.0/16 (Summary: 10.40.0.0/13)&#10;[Repeatable Pattern for Cauca 10.41.0.0/16, Huila 10.42.0.0/16, Tolima 10.43.0.0/16]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334e68;strokeWidth=3;fontColor=#102a43;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacing=15;" vertex="1" parent="1">
+  <mxGeometry x="40" y="235" width="2100" height="2085" as="geometry" />
 </mxCell>
-<mxCell id="zone_cloudlink" value="ENLACE A LA NUBE (Cloud Link) | VLAN 120 | 10.4x.20.0/24
-Wired only on firewall edge ports (never trunked to switch trunk)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=2;fontColor=#0f172a;fontSize=15;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
-  <mxGeometry x="70" y="330" width="640" height="340" as="geometry" />
+<mxCell id="zone_cloudlink" value="ENLACE A LA NUBE (Cloud Link) | VLAN 120 | 10.4x.20.0/24&#10;Wired only on firewall edge ports (never bridged to switch trunk, ASM-088)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=2;fontColor=#0f172a;fontSize=14;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+  <mxGeometry x="70" y="300" width="600" height="370" as="geometry" />
 </mxCell>
-<mxCell id="node_fw_edge" value="Firewall Edge Interface
-10.4x.20.1
-(Source IP toward Hub)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-  <mxGeometry x="90" y="385" width="230" height="85" as="geometry" />
+<mxCell id="node_fw_edge" value="Firewall Edge Interface&#10;10.4x.20.1&#10;(Source IP toward Hub)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="90" y="365" width="210" height="85" as="geometry" />
 </mxCell>
-<mxCell id="node_isp_pri" value="Primary WAN Equipment
-10.4x.20.2
-100 Mbps Symmetric Fiber
-(Internet Service LAN side)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-  <mxGeometry x="430" y="385" width="260" height="85" as="geometry" />
+<mxCell id="node_isp_pri" value="Primary WAN Equipment&#10;10.4x.20.2&#10;100 Mbps Symmetric Fiber&#10;(Internet Service LAN side)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="410" y="365" width="240" height="85" as="geometry" />
 </mxCell>
-<mxCell id="node_isp_bak" value="Cellular Backup Router
-10.4x.20.3
-LTE+ Backup Link
-(Auto-failover on WAN loss)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-  <mxGeometry x="430" y="495" width="260" height="85" as="geometry" />
+<mxCell id="node_isp_bak" value="Cellular Backup Router&#10;10.4x.20.3&#10;LTE+ Backup Link&#10;(Auto-failover on WAN loss)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="410" y="485" width="240" height="85" as="geometry" />
 </mxCell>
-<mxCell id="note_cloudlink" value="Edge rule: 10.4x.20.0/24 never bridged into switch trunk.
-Public addresses belong to provider and are not part of LAN plan (ASM-088)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#94a3b8;strokeWidth=1;fontColor=#475569;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-  <mxGeometry x="90" y="600" width="600" height="50" as="geometry" />
+<mxCell id="note_cloudlink" value="Edge rule: 10.4x.20.0/24 never bridged into switch trunk.&#10;Provider public IPs are external; WAN failover activates backup tunnel." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#94a3b8;strokeWidth=1;fontColor=#475569;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="90" y="600" width="560" height="55" as="geometry" />
 </mxCell>
-<mxCell id="node_firewall" value="PERIMETER FIREWALL APPLIANCE [D07]
-Edge: 10.4x.20.1 | Mgmt: 10.4x.10.1 | Gateways: 10.4x.Z.1
-- Stateful zone-based inspection (CC-01..CC-DEF)
-- IPsec Site-to-Site VPN: 2 tunnels to Hub (UDP 500/4500, IP 50)
-- Subinterfaces: .1 gateway for each VLAN (101-105, 110)
-- DHCP Server (.1) &amp; DNS conditional forwarder (.1)
-- Local RADIUS Server: 802.1X EAP-TLS with local CRL cache
-- QoS Traffic Classification &amp; Shaper (Priorities 1-5)
-- Virtual Routing Contexts: Main Context vs Internet-Only Context" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=3;fontColor=#991b1b;fontSize=13;fontStyle=0;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
-  <mxGeometry x="740" y="330" width="690" height="340" as="geometry" />
+<mxCell id="node_firewall" value="PERIMETER FIREWALL APPLIANCE [D07]&#10;Edge: 10.4x.20.1 | Mgmt: 10.4x.10.1 | Gateways: 10.4x.Z.1&#10;- Stateful Zone Inspection: Rules CC-01 to CC-DEF (firewall-policy.md sec 4)&#10;- Dual IPsec VPN Tunnels: UDP 500 / 4500 NAT-T, IP 50 ESP to AWS Hub&#10;- Subinterfaces: .1 default gateway for VLANs 101-105 and 110&#10;- Gateway Services: DHCP server &amp; DNS conditional forwarder (.1)&#10;- Local RADIUS Server: 802.1X EAP-TLS with cached CRL for offline auth&#10;- QoS Traffic Shaper: Priority 1 to 5 bandwidth guarantees and caps&#10;- Dual Contexts: Internal LAN context vs Internet-only routing context" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=3;fontColor=#991b1b;fontSize=13;fontStyle=0;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+  <mxGeometry x="700" y="300" width="710" height="370" as="geometry" />
 </mxCell>
-<mxCell id="node_switch" value="MANAGED PoE ACCESS SWITCH
-Management: 10.4x.10.2 to .9 (VLAN 110)
-- 802.1Q Trunk carrying VLANs 101-105 and 110
-- Access ports with 802.1X EAP-TLS port admission
-- MAC-based port security for code-sheet printers
-- PoE feeding Wi-Fi Access Points (10.4x.10.20 to .49)
-- Switches &amp; APs only carry VLAN tags; do not route (ASM-080)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;fontColor=#1e40af;fontSize=13;fontStyle=0;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
-  <mxGeometry x="1460" y="330" width="690" height="195" as="geometry" />
+<mxCell id="badge_d07" value="[D07] Pattern Firewall Rules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dc2626;strokeColor=#991b1b;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1160" y="310" width="230" height="28" as="geometry" />
 </mxCell>
-<mxCell id="node_aps" value="Wi-Fi Access Points: 10.4x.10.20 to .49 (DHCP reservation by MAC)
-- 5 SSIDs broadcast per radio (cc-management, cc-support, cc-logistics, cc-transport, cc-guest)
-- WPA3-Enterprise for Staff zones; WPA3-Personal with Client Isolation for Transport &amp; Guests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;fontColor=#1e40af;fontSize=13;fontStyle=0;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
-  <mxGeometry x="1460" y="540" width="690" height="130" as="geometry" />
+<mxCell id="node_switch_box" value="MANAGED PoE ACCESS SWITCH (VLAN 110)&#10;Management: 10.4x.10.2 to .9 | Static assignment&#10;- 802.1Q Trunk from firewall on dedicated access trunk port&#10;- Access ports with 802.1X EAP-TLS port admission for staff&#10;- MAC-based port security for Code-Sheet Printers (ASM-124)&#10;- Layer 2 only: does not route; switches only carry VLAN tags (ASM-080)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;fontColor=#1e40af;fontSize=13;fontStyle=0;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+  <mxGeometry x="1440" y="300" width="680" height="180" as="geometry" />
 </mxCell>
-<mxCell id="zone_gerencia" value="GERENCIA (Management) | VLAN 101 | 10.4x.1.0/24 | SSID: cc-management (WPA3-Enterprise)
-- Gateway: 10.4x.1.1 on Firewall subinterface
-- Planned clients: 2 wired desktops, 5 Wi-Fi phones (7 clients)
-- Dynamic DHCP pool: 10.4x.1.50 to .69 (20 hosts, lease 12 h)
-- Traffic Class: Staff (Priority 4, 28/7 Mbps guaranteed)
-- Allowed: Cloud application (TCP 443 [CC-STF-01])
-- Allowed: Printers in Servidores Locales (TCP 631 [CC-STF-02])
-- Allowed: Internet breakout (TCP 80/443, UDP 443 [CC-STF-04])
-- DENIED: Inter-zone to Soporte, Logística, Guests [CC-STF-03]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
-  <mxGeometry x="70" y="695" width="640" height="375" as="geometry" />
+<mxCell id="node_aps_box" value="MANAGED Wi-Fi ACCESS POINTS (VLAN 110)&#10;Management: 10.4x.10.20 to .49 | DHCP reservation by MAC&#10;- 5 SSIDs broadcast per radio (cc-management, cc-support, cc-logistics, cc-transport, cc-guest)&#10;- WPA3-Enterprise (802.1X EAP-TLS) for staff zones; WPA3-Personal (SAE) for guests&#10;- Client Isolation enforced on cc-transport &amp; cc-guest SSIDs (ASM-081)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;fontColor=#1e40af;fontSize=13;fontStyle=0;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+  <mxGeometry x="1440" y="500" width="680" height="170" as="geometry" />
 </mxCell>
-<mxCell id="zone_servidores" value="SERVIDORES LOCALES (Local Servers) | VLAN 110 | 10.4x.10.0/24 (Wired only, no SSID)
-Gateway: 10.4x.10.1 (Firewall mgmt) | Switch .2-.9, APs .20-.49 (reservations)
-- No dynamic DHCP pool; unknown devices receive no address
-- Network control traffic class: Priority 1 (2/2 Mbps guaranteed)
-- Ingress management: Accepted ONLY from AWS administration tier (10.82.96.0/20) via SSH/HTTPS [CC-ADM-01 / CL-ADM-03]
-- DENIED: General internet [CC-ADM-07]; client zones cannot reach mgmt [CC-ADM-03]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
-  <mxGeometry x="740" y="695" width="690" height="375" as="geometry" />
+<mxCell id="zone_gerencia" value="GERENCIA (Management) | VLAN 101 | 10.4x.1.0/24&#10;SSID: cc-management | WPA3-Enterprise (802.1X EAP-TLS)&#10;- Gateway: 10.4x.1.1 on Firewall subinterface&#10;- DHCP Pool: 10.4x.1.50 to .69 (20 hosts, lease 12 h)&#10;- Planned Clients: 2 wired desktops, 5 Wi-Fi phones (7 clients)&#10;- Traffic Class: Staff (Priority 4, 28/7 Mbps guaranteed)&#10;- Allowed Flows: Cloud app (CC-STF-01), Printers (CC-STF-02), Web breakout (CC-STF-04)&#10;- DENIED: Inter-zone to Soporte, Logística, Guests [CC-STF-03]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+  <mxGeometry x="70" y="710" width="600" height="470" as="geometry" />
 </mxCell>
-<mxCell id="node_printers" value="Code-Sheet Network Printers: 10.4x.10.50 to .59 (Static IP)
-Two network printers wired to PoE switch with MAC port security
-- Printed locally from Logística (TCP 631 IPP) for un-coded sacks [CC-LOG-02]
-- Printed locally from Gerencia &amp; Soporte (TCP 631 IPP) [CC-STF-02]
-- Local print traffic never crosses WAN; operates offline (ASM-124)
-- Printers never initiate traffic to user zones, cloud or internet [CC-ADM-04]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;fontColor=#14532d;fontSize=12;align=left;verticalAlign=top;spacing=8;fontStyle=0;" vertex="1" parent="1">
-  <mxGeometry x="755" y="885" width="660" height="170" as="geometry" />
+<mxCell id="zone_servidores" value="SERVIDORES LOCALES (Local Servers) | VLAN 110 | 10.4x.10.0/24&#10;Wired only (no SSID) | Gateway: 10.4x.10.1 (Firewall mgmt)&#10;- Addressing: Switches .2-.9, APs .20-.49 (DHCP reservations)&#10;- Dynamic DHCP: NONE; unreserved ports receive no IP&#10;- Traffic Class: Network Control (Priority 1, 2/2 Mbps guaranteed)&#10;- Ingress Administration: Accepted ONLY from Cloud administration tier [CC-ADM-01]&#10;- DENIED: General internet [CC-ADM-07]; clients cannot reach mgmt [CC-ADM-03]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+  <mxGeometry x="700" y="710" width="710" height="470" as="geometry" />
 </mxCell>
-<mxCell id="zone_soporte" value="SOPORTE (Support) | VLAN 102 | 10.4x.2.0/24 | SSID: cc-support (WPA3-Enterprise)
-- Gateway: 10.4x.2.1 on Firewall subinterface
-- Planned clients: 2 wired desktops, 5 Wi-Fi phones (7 clients)
-- Dynamic DHCP pool: 10.4x.2.50 to .69 (20 hosts, lease 12 h)
-- Traffic Class: Staff (Priority 4) &amp; Drone Class (Priority 3, 5/20 Mbps gtd)
-- Allowed: Cloud application (TCP 443 [CC-STF-01]) &amp; Printers (TCP 631 [CC-STF-02])
-- Allowed: Internet breakout (TCP 80/443, UDP 443 [CC-STF-04])
-- DENIED: Inter-zone to Gerencia, Logística, Guests [CC-STF-03]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
-  <mxGeometry x="1460" y="695" width="690" height="375" as="geometry" />
+<mxCell id="node_printers" value="Code-Sheet Network Printers: 10.4x.10.50 to .59 (Static IP)&#10;Two network printers wired to PoE switch with MAC port security (ASM-124)&#10;- Printed from Logística (TCP 631 IPP) for un-coded sacks [CC-LOG-02]&#10;- Printed from Gerencia &amp; Soporte (TCP 631 IPP) [CC-STF-02]&#10;- Local print traffic never crosses WAN; operates offline (ASM-124)&#10;- Printers NEVER initiate connections to user zones, cloud, or internet [CC-ADM-04]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;fontColor=#14532d;fontSize=12;align=left;verticalAlign=top;spacing=10;fontStyle=0;" vertex="1" parent="1">
+  <mxGeometry x="720" y="940" width="670" height="220" as="geometry" />
 </mxCell>
-<mxCell id="node_drone_station" value="Drone Ground Station: 10.4x.2.10/32 (Fixed DHCP reservation)
-Contracted operator device (ADR-002, ASM-082) with private client cert
-- To Cloud application (TCP 443): mission preload &amp; grant [CC-DRN-01]
-- To Cloud object_storage S3 (TCP 443): multipart upload [CC-DRN-03]
-- To AWS IoT Core (TCP 8883): MQTT grant topic via breakout [CC-DRN-04]
-- DENIED: drone_object_ingress tier (reserved, ASM-140) [CC-DRN-02]
-- DENIED: Any other destination [CC-DRN-05]
-- Rest of Soporte denied to drone endpoints [CC-DRN-06]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#d97706;strokeWidth=2;fontColor=#78350f;fontSize=12;align=left;verticalAlign=top;spacing=8;fontStyle=0;" vertex="1" parent="1">
-  <mxGeometry x="1480" y="885" width="650" height="170" as="geometry" />
+<mxCell id="zone_soporte" value="SOPORTE (Support) | VLAN 102 | 10.4x.2.0/24&#10;SSID: cc-support | WPA3-Enterprise (802.1X EAP-TLS)&#10;- Gateway: 10.4x.2.1 on Firewall subinterface&#10;- DHCP Pool: 10.4x.2.50 to .69 (20 hosts, lease 12 h)&#10;- Planned Clients: 2 wired desktops, 5 Wi-Fi phones (7 clients)&#10;- Traffic Class: Staff (Priority 4) &amp; Drone Class (Priority 3, 5/20 Mbps gtd)&#10;- Allowed Flows: Cloud app (CC-STF-01), Printers (CC-STF-02), Web breakout (CC-STF-04)&#10;- DENIED: Inter-zone to Gerencia, Logística, Guests [CC-STF-03]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+  <mxGeometry x="1440" y="710" width="680" height="470" as="geometry" />
 </mxCell>
-<mxCell id="zone_matrix_table" value="INTER-ZONE POLICY INTENT MATRIX (A11 sec 6, A12 sec 4)
-Stateful matrix enforced by Perimeter Firewall:
-
-Source \ Dest.           | Staff | Logística | Servidores | Cloud (Tunnel) | Internet (Breakout)
-Gerencia (101)           | Deny  | Deny      | Allow Print| Allow app      | Allow staff class
-Soporte (102) - Staff    | Deny  | Deny      | Allow Print| Allow app      | Allow staff class
-Soporte (102) - Drone .10| Deny  | Deny      | Deny       | Allow app &amp; S3 | Allow IoT Core 8883
-Logística (103)          | Deny  | Deny      | Allow Print| Allow app      | Deny (no gen net)
-Transporte (104)         | Deny  | Deny      | Deny       | Deny           | Allow API &amp; capped
-Visitantes (105)         | Deny  | Deny      | Deny       | Deny           | Allow capped web
-Servidores locales (110) | Deny  | Deny      | Deny peer  | Allow mgmt logs| Deny (no gen net)
-Cloud administration     | Deny  | Deny      | Allow Mgmt | N/A            | N/A
-Internet inbound         | Deny  | Deny      | Deny       | Deny           | N/A (CC-LNK-08 Deny)
-
-Dual isolation: Visitantes &amp; Transporte reside in Internet-only routing context + explicit policy rules.
-Printers (10.4x.10.50-.59) never initiate traffic (CC-ADM-04). Drone object tier is reserved (CC-DRN-02)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=12;fontFamily=monospace;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
-  <mxGeometry x="70" y="1095" width="640" height="485" as="geometry" />
+<mxCell id="node_drone_station" value="Drone Ground Station: 10.4x.2.10/32 (Fixed DHCP Reservation)&#10;Contracted operator device (ADR-002, ASM-082) with private client certificate&#10;- To Cloud application (TCP 443): mission preload &amp; upload grant [CC-DRN-01]&#10;- To Cloud object_storage S3 (TCP 443): multipart flight upload [CC-DRN-03]&#10;- To AWS IoT Core (TCP 8883): MQTT grant topic via breakout [CC-DRN-04]&#10;- DENIED: drone_object_ingress tier (reserved, ASM-140) [CC-DRN-02]&#10;- DENIED: Any other destination [CC-DRN-05]; rest of Soporte denied drone paths [CC-DRN-06]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#d97706;strokeWidth=2;fontColor=#78350f;fontSize=12;align=left;verticalAlign=top;spacing=10;fontStyle=0;" vertex="1" parent="1">
+  <mxGeometry x="1460" y="940" width="640" height="220" as="geometry" />
 </mxCell>
-<mxCell id="zone_logistica" value="LOGÍSTICA (Logistics Zone) | VLAN 103 (10.4x.3.0/24) | SSID: cc-logistics | Gateway: 10.4x.3.1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=14;fontStyle=1;align=right;verticalAlign=top;spacingRight=30;spacingTop=10;" vertex="1" parent="1">
-  <mxGeometry x="740" y="1095" width="1410" height="485" as="geometry" />
+<mxCell id="zone_logistica" value="LOGÍSTICA (Logistics Yard &amp; Reception) | VLAN 103 | 10.4x.3.0/24&#10;SSID: cc-logistics | WPA3-Enterprise (802.1X EAP-TLS)&#10;- Gateway: 10.4x.3.1 on Firewall subinterface&#10;- DHCP Pool: 10.4x.3.50 to .99 (50 hosts, lease 12 h)&#10;- Planned Clients: 2 wired desktops, 20 handheld phones (22 clients)&#10;- Traffic Class: Logistics (Priority 2, 44/11 Mbps guaranteed)&#10;- Allowed Flows: Cloud app (CC-LOG-01), Code-Sheet Printers (CC-LOG-02)&#10;- DENIED: General internet [CC-LOG-04]; inter-zone to other client zones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+  <mxGeometry x="70" y="1220" width="600" height="480" as="geometry" />
 </mxCell>
-<mxCell id="node_reception_posts" value="Logistics Reception Workstations: 10.4x.3.2 &amp; 10.4x.3.3 (Wired 802.1X)
-Two reception posts running collection-center application with operator MFA login
-- Registers sack arrival, acceptance or rejection, and trip status (Part C)
-- Encrypted local outbox: records receptions locally during WAN outages and drains
-  automatically with original timestamps and responsible identity when link returns (ASM-079)
-- Issues code-sheet requests to cloud and sends print jobs locally to 10.4x.10.50-.59" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=2;fontColor=#1e3a8a;fontSize=13;align=left;verticalAlign=top;spacing=10;fontStyle=0;" vertex="1" parent="1">
-  <mxGeometry x="755" y="1175" width="660" height="385" as="geometry" />
+<mxCell id="node_reception_posts" value="Reception Workstations: 10.4x.3.2 &amp; 10.4x.3.3 (Wired 802.1X)&#10;Two receiving posts running Part C collection app with operator MFA&#10;- Registers sack arrivals, acceptance/rejection, and trips&#10;- Encrypted Local Outbox (ASM-079): holds records during WAN outages&#10;- Sends print requests locally to Code-Sheet Printers (TCP 631) [CC-LOG-02]&#10;- Drains outbox automatically to AWS application tier upon link recovery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=2;fontColor=#1e3a8a;fontSize=12;align=left;verticalAlign=top;spacing=8;fontStyle=0;" vertex="1" parent="1">
+  <mxGeometry x="85" y="1430" width="570" height="130" as="geometry" />
 </mxCell>
-<mxCell id="node_log_phones" value="Logistics Yard Operations (20 Phones)
-- Handheld barcode / code-sheet scanners used across center yard
-- Operates under cc-logistics SSID with 802.1X EAP-TLS client certificates
-- Dynamic DHCP pool: 10.4x.3.50 to .99 (50 hosts, lease 12 h)
-- Receptions recorded during WAN outage store to local encrypted outbox
-- Denied general internet; allowed only cloud app and local printers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#94a3b8;strokeWidth=1;fontColor=#334e68;fontSize=12;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
-  <mxGeometry x="1460" y="1175" width="665" height="385" as="geometry" />
+<mxCell id="node_scanners" value="Logistics Yard Handheld Scanners: 20 Wi-Fi Phones (10.4x.3.50-.99)&#10;Joined to cc-logistics SSID with 802.1X EAP-TLS device certificates&#10;- Yard operators scan barcode / code-sheet on coffee sacks&#10;- Reaches AWS application tier via tunnel [CC-LOG-01]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#1e3a8a;fontSize=12;align=left;verticalAlign=top;spacing=8;fontStyle=0;" vertex="1" parent="1">
+  <mxGeometry x="85" y="1575" width="570" height="105" as="geometry" />
 </mxCell>
-<mxCell id="zone_transporte" value="TRANSPORTE (Transport) | VLAN 104 | 10.4x.4.0/24
-SSID: cc-transport | WPA3-Personal (SAE, passphrase rotated per harvest)
-- Gateway: 10.4x.4.1 on Firewall subinterface | Planned clients: 20 transporter phones
-- Dynamic DHCP pool: 10.4x.4.50 to .89 (40 hosts, lease 4 h)
-- Client Isolation: ENABLED on SSID (phone-to-phone communication blocked)
-- Routing context: INTERNET-ONLY ROUTING CONTEXT (no route to LAN or tunnel)
-- Policy intent:
-  - Allowed: Public App API front door (TCP 443) for positions &amp; custody events (Transport app class, Priority 4, 2/1 Mbps gtd [CC-TEL-02])
-  - Allowed: Public Sack Lookup front door (TCP 443 [CC-PUB-01])
-  - Allowed: Non-operational web (Priority 5, capped at 20/5 Mbps, 2/0.5 Mbps/client [CC-GST-05])
-  - DENIED: Logística &amp; Gerencia [CC-GST-02]
-  - DENIED: Cloud tiers, tunnel, private ranges (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) [CC-GST-03]
-  - DENIED: Port 25 SMTP relaying [CC-GST-04]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
-  <mxGeometry x="70" y="1605" width="980" height="625" as="geometry" />
+<mxCell id="zone_transporte" value="TRANSPORTE (Transport) | VLAN 104 | 10.4x.4.0/24&#10;SSID: cc-transport | WPA3-Personal (SAE, rotated per harvest)&#10;- Gateway: 10.4x.4.1 on Firewall subinterface&#10;- DHCP Pool: 10.4x.4.50 to .89 (40 hosts, lease 4 h) | 20 planned phones&#10;- Client Isolation: ENABLED (phone-to-phone communication blocked)&#10;- Routing Context: INTERNET-ONLY CONTEXT (no route to 10.4x, 10.40.0.0/13 or tunnel)&#10;- Traffic Classes: Transport App (2/1M gtd) &amp; Non-operational (20/5M capped)&#10;- Allowed Flows: Public API front door (CC-TEL-02) &amp; Sack lookup (CC-PUB-01)&#10;- DENIED: Internal LAN &amp; Cloud tiers [CC-GST-02, CC-GST-03], SMTP 25 [CC-GST-04]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+  <mxGeometry x="700" y="1220" width="710" height="480" as="geometry" />
 </mxCell>
-<mxCell id="zone_visitantes" value="VISITANTES (Visitors / Guests) | VLAN 105 | 10.4x.5.0/24
-SSID: cc-guest | WPA3-Personal (SAE, weekly rotated passphrase at reception)
-- Gateway: 10.4x.5.1 on Firewall subinterface | Planned clients: 10 phones
-- Dynamic DHCP pool: 10.4x.5.50 to .69 (20 hosts, lease 1 h)
-- Client Isolation: ENABLED on SSID (guest-to-guest communication blocked)
-- Routing context: INTERNET-ONLY ROUTING CONTEXT (virtual router)
-  Has NO route to 10.4x, 10.40.0.0/13 or the tunnel. Packets to LAN are unroutable.
-- Policy intent:
-  - Allowed: Local breakout non-operational web (TCP 80/443, UDP 443 [CC-GST-05])
-  - Allowed: Public Sack Lookup front door (TCP 443 [CC-PUB-01])
-  - DENIED: Logística &amp; Gerencia [CC-GST-01] (&quot;La VLAN de visitantes no enruta hacia logística ni gerencia&quot;)
-  - DENIED: Cloud tiers, tunnel, private ranges (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) [CC-GST-03]
-  - DENIED: Port 25 SMTP relaying [CC-GST-04]
-- Non-operational traffic class: Priority 5, capped at 10/2.5 Mbps, 2/0.5 Mbps/client (ASM-125)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
-  <mxGeometry x="1090" y="1605" width="1060" height="625" as="geometry" />
+<mxCell id="node_transporte_detail" value="Transporter Operational Context:&#10;- Registered drivers transmit custody transfer events and GPS positions&#10;- Driver phones exit strictly via local internet breakout to Public API front door&#10;- Never permitted to reach internal logistics workstations or servers&#10;- Protected against spoofing and lateral movement via wireless client isolation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+  <mxGeometry x="720" y="1480" width="670" height="200" as="geometry" />
 </mxCell>
-<mxCell id="box_hub" value="AWS NETWORK ACCOUNT HUB [D05] (us-east-1)
-Central hub for collection-center connectivity and cross-account routing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede2fe;strokeColor=#7c3aed;strokeWidth=3;fontColor=#4c1d95;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
-  <mxGeometry x="2520" y="275" width="1040" height="275" as="geometry" />
+<mxCell id="zone_visitantes" value="VISITANTES (Visitors / Guests) | VLAN 105 | 10.4x.5.0/24&#10;SSID: cc-guest | WPA3-Personal (SAE, weekly rotated passphrase at reception)&#10;- Gateway: 10.4x.5.1 on Firewall subinterface&#10;- DHCP Pool: 10.4x.5.50 to .69 (20 hosts, lease 1 h) | 10 planned phones&#10;- Client Isolation: ENABLED (guest-to-guest communication blocked)&#10;- Routing Context: INTERNET-ONLY CONTEXT (no route to 10.4x, 10.40.0.0/13 or tunnel)&#10;- Traffic Class: Non-operational (Priority 5, capped at 10/2.5M, 2/0.5M/client, ASM-125)&#10;- Allowed Flows: Local breakout web [CC-GST-05], Public Sack Lookup [CC-PUB-01]&#10;- DENIED: Internal LAN &amp; Cloud tiers [CC-GST-01, CC-GST-03], SMTP 25 [CC-GST-04]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+  <mxGeometry x="1440" y="1220" width="680" height="480" as="geometry" />
 </mxCell>
-<mxCell id="badge_d05" value="[D05] Association with Pattern Center" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7c3aed;strokeColor=#5b21b6;fontColor=#ffffff;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-  <mxGeometry x="3240" y="285" width="300" height="32" as="geometry" />
+<mxCell id="node_guest_detail" value="Guest Isolation Context (Case Statement Requirement):&#10;- &quot;La VLAN de visitantes no enruta hacia logística ni gerencia&quot; (CC-GST-01)&#10;- Enforced at Layer 3: Internet-only routing context has no routes to 10.4x&#10;- Enforced at Layer 4: Perimeter firewall explicit deny rules CC-GST-01..03&#10;- Enforced at Layer 2: Wi-Fi client isolation prevents guest-to-guest visibility" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+  <mxGeometry x="1460" y="1480" width="640" height="200" as="geometry" />
 </mxCell>
-<mxCell id="node_tgw_hub" value="AWS Transit Gateway Hub (tgw-hub)
-- Site-to-Site VPN Connection per center (2 tunnels: UDP 500 / 4500, IP 50 ESP)
-- Static routing: 10.4x.0.0/16 only; cannot be widened by center firewall (CL-LNK-06)
-- Route Table &#x27;centers&#x27;: static routes to pdn VPC tiers; all other 10.80.0.0/13 blackholed
-- Customer Gateway: certificate-based authentication (PD-120)
-- Hub carries no center-to-center path (CL-LNK-02, CC-LNK-09)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8c4fff;strokeWidth=2;fontColor=#3b0764;fontSize=13;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
-  <mxGeometry x="2540" y="330" width="1000" height="205" as="geometry" />
+<mxCell id="panel_matrix" value="INTER-ZONE POLICY INTENT MATRIX SUMMARY (firewall-policy.md sec 4 &amp; collection-center-network.md sec 6)&#10;Enforced statefully by Perimeter Firewall Appliance [D07]:&#10;- Gerencia (101): Deny other LAN | Allow Printers (631) | Allow Cloud App (443 via Tunnel) | Allow Internet Web Breakout&#10;- Soporte (102): Deny other LAN | Allow Printers (631) | Allow Cloud App (443 via Tunnel) | Allow Internet Web Breakout&#10;- Soporte Drone .10: Allow Cloud App (443) &amp; S3 Object Storage (443) | Allow IoT Core (8883) | DENIED drone_object_ingress&#10;- Logística (103): Deny other LAN | Allow Printers (631) | Allow Cloud App (443 via Tunnel) | DENIED General Internet (no breakout)&#10;- Transporte (104): Client Isolation | Deny Internal LAN &amp; Tunnel | Allow Public API Front Door (443) &amp; Lookup (443)&#10;- Visitantes (105): Client Isolation | Deny Internal LAN &amp; Tunnel | Allow Non-Op Web Breakout (capped) &amp; Lookup (443)&#10;- Servidores (110): Deny Inter-device | Accept Mgmt from Cloud Admin (22/443) | DENIED General Internet | Printers never initiate&#10;- Inbound WAN: DENIED all inbound connection initiations from Internet or Cloud to Center LAN (CC-LNK-07, CC-LNK-08)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+  <mxGeometry x="70" y="1785" width="1340" height="510" as="geometry" />
 </mxCell>
-<mxCell id="box_vpc" value="AWS WORKLOAD ACCOUNT | PRODUCTION VPC (pdn) 10.82.0.0/16 [D04]
-Dedicated tiers reached via Transit Gateway attachment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#15803d;strokeWidth=3;fontColor=#14532d;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
-  <mxGeometry x="2520" y="575" width="1040" height="865" as="geometry" />
+<mxCell id="panel_security" value="SECURITY &amp; ZERO-TRUST CONTROLS (ASM-080..089, PD-090..096)&#10;- 802.1X Network Admission: EAP-TLS certificate auth for staff laptops, workstations, and drone station&#10;- RADIUS Local CRL: Firewall caches certificate revocation list; validates certs locally without WAN&#10;- Printer Hardening: Static IPs, MAC port security, print-only ingress (IPP 631); cannot initiate flows (CC-ADM-04)&#10;- Reception Posts: Dedicated physical cable; local encrypted outbox stores Part C arrivals when offline&#10;- Transporter &amp; Guest Isolation: WPA3-Personal SAE, wireless client isolation, internet-only routing context&#10;- Cloud Management Ingress: Cloud operators enter AWS via IAM Identity Center MFA; session host to center mgmt&#10;- Drone Upload Isolation: Dedicated /32 reservation (10.4x.2.10) restricted to S3 endpoint; no drone ingress endpoint" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=13;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+  <mxGeometry x="1440" y="1785" width="680" height="510" as="geometry" />
 </mxCell>
-<mxCell id="badge_d04" value="[D04] VPC and Tiers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#15803d;strokeColor=#166534;fontColor=#ffffff;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-  <mxGeometry x="3400" y="585" width="140" height="32" as="geometry" />
+<mxCell id="box_hub" value="AWS NETWORK ACCOUNT HUB | us-east-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede2fe;strokeColor=#7c3aed;strokeWidth=3;fontColor=#4c1d95;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+  <mxGeometry x="2540" y="235" width="1020" height="275" as="geometry" />
 </mxCell>
-<mxCell id="tier_transit" value="transit tier | 10.82.0.0/20 (/28 attachment subnets)
-Transit Gateway VPC Attachment. Network ACL allows only 10.40.0.0/13 and 10.82.0.0/16 [CL-LNK-08]." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=2;fontColor=#14532d;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
-  <mxGeometry x="2540" y="625" width="1000" height="75" as="geometry" />
+<mxCell id="badge_d05" value="[D05] Association with Pattern Center" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7c3aed;strokeColor=#5b21b6;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="3250" y="245" width="290" height="30" as="geometry" />
 </mxCell>
-<mxCell id="tier_app" value="application tier | 10.82.48.0/20 - AWS Interface Endpoints (execute-api, cognito-idp) [CL-APP-01, CL-APP-02]
-- Reached on TCP 443 by Logística (reception &amp; sack reads [CC-LOG-01])
-- Reached on TCP 443 by Gerencia &amp; Soporte (reports web &amp; center app [CC-STF-01])
-- Reached on TCP 443 by Drone Ground Station (mission preload &amp; grant [CC-DRN-01])
-- Endpoint policy restricts access strictly to platform private API ARNs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=2;fontColor=#14532d;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
-  <mxGeometry x="2540" y="715" width="1000" height="135" as="geometry" />
+<mxCell id="node_tgw_hub" value="AWS Transit Gateway Hub (tgw-hub)&#10;- Central hub for collection-center connectivity and cross-account routing&#10;- Static routing: 10.4x.0.0/16 only; cannot be widened by center firewall (CL-LNK-06)&#10;- Route Table &#x27;centers&#x27;: static routes to pdn VPC tiers; all other 10.80.0.0/13 blackholed&#10;- Hub carries no center-to-center path (CL-LNK-02, CC-LNK-09)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8c4fff;strokeWidth=2;fontColor=#3b0764;fontSize=13;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+  <mxGeometry x="2565" y="290" width="665" height="195" as="geometry" />
 </mxCell>
-<mxCell id="tier_storage" value="object_storage tier | 10.82.80.0/20 - Amazon S3 Interface Endpoint [CL-DRN-01, CL-DRN-02]
-- Reached on TCP 443 strictly by Drone Ground Station (10.4x.2.10/32 only) [CC-DRN-03]
-- Multipart upload of flight records and high-resolution imagery
-- Endpoint policy restricts access strictly to platform drone object bucket" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=2;fontColor=#14532d;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
-  <mxGeometry x="2540" y="865" width="1000" height="135" as="geometry" />
+<mxCell id="icon_tgw" value="" style="outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.transit_gateway;" vertex="1" parent="1">
+  <mxGeometry x="3160" y="395" width="60" height="60" as="geometry" />
 </mxCell>
-<mxCell id="tier_admin" value="administration tier | 10.82.96.0/20 - Session Host, Route 53 Resolver &amp; Observability [CL-ADM-01..04]
-- Session Host initiates SSH/HTTPS (TCP 22/443) to center mgmt (10.4x.10.1-.49) [CC-ADM-01 / CL-ADM-03]
-- Route 53 Resolver Inbound Endpoint (UDP/TCP 53) resolves private endpoints [CC-LNK-04]
-- CloudWatch Logs / Metrics &amp; Roles Anywhere interface endpoints (TCP 443) [CC-ADM-02]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=2;fontColor=#14532d;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
-  <mxGeometry x="2540" y="1015" width="1000" height="145" as="geometry" />
+<mxCell id="node_vpn_hub" value="Site-to-Site VPN Connection&#10;- 2 IPsec Tunnels per center&#10;- Certificate Customer Gateway&#10;  (PD-120, ASM-078)&#10;- UDP 500 / 4500, IP 50 ESP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8c4fff;strokeWidth=2;fontColor=#3b0764;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="3250" y="290" width="290" height="195" as="geometry" />
 </mxCell>
-<mxCell id="tier_drone_reserved" value="drone_object_ingress tier | 10.82.32.0/20 (RESERVED TIER - NO ENDPOINTS IN PILOT)
-- RESERVED TIER: No interface endpoint created in pilot (ASM-140, CC-DRN-02)
-- Ground station routes directly to application and object_storage endpoints
-- Traffic from center ground station to this tier is explicitly DENIED and blackholed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=2;fontColor=#991b1b;fontSize=13;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
-  <mxGeometry x="2540" y="1175" width="1000" height="110" as="geometry" />
+<mxCell id="icon_vpn" value="" style="outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.site_to_site_vpn;" vertex="1" parent="1">
+  <mxGeometry x="3470" y="395" width="60" height="60" as="geometry" />
 </mxCell>
-<mxCell id="note_vpc_tiers" value="Other VPC tiers (public_query, telemetry_ingress, data) have no route to centers and are blackholed at TGW [CL-LNK-02]. Non-production (dev, qa) never reaches centers [CL-LNK-04]." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#94a3b8;strokeWidth=1;fontColor=#475569;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-  <mxGeometry x="2540" y="1300" width="1000" height="45" as="geometry" />
+<mxCell id="box_vpc" value="AWS WORKLOAD ACCOUNT | PRODUCTION VPC (pdn) 10.82.0.0/16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#15803d;strokeWidth=3;fontColor=#14532d;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+  <mxGeometry x="2540" y="530" width="1020" height="930" as="geometry" />
 </mxCell>
-<mxCell id="box_internet" value="PUBLIC INTERNET &amp; AWS EDGE SERVICES (Local Breakout)
-Direct breakout for staff web, transporter app, public sack lookup &amp; IoT Core" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=3;fontColor=#0369a1;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
-  <mxGeometry x="2520" y="1465" width="1040" height="785" as="geometry" />
+<mxCell id="badge_d04" value="[D04] VPC and Tiers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#15803d;strokeColor=#166534;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="3360" y="540" width="180" height="30" as="geometry" />
+</mxCell>
+<mxCell id="icon_vpc" value="" style="outlineConnect=0;fontColor=#232F3E;fillColor=#ffffff;strokeColor=#232F3E;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.virtual_private_cloud;" vertex="1" parent="1">
+  <mxGeometry x="3300" y="535" width="40" height="40" as="geometry" />
+</mxCell>
+<mxCell id="tier_transit" value="transit tier | 10.82.0.0/20 (/28 attachment subnets)&#10;Transit Gateway VPC Attachment. Network ACL allows only 10.40.0.0/13 and 10.82.0.0/16 [CL-LNK-08]." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=2;fontColor=#14532d;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2565" y="580" width="970" height="80" as="geometry" />
+</mxCell>
+<mxCell id="tier_app" value="application tier | 10.82.48.0/20 - AWS Interface Endpoints (execute-api, cognito-idp)&#10;- Reached on TCP 443 by Logística (reception &amp; sack reads [CC-LOG-01])&#10;- Reached on TCP 443 by Gerencia &amp; Soporte (reports web &amp; center app [CC-STF-01])&#10;- Reached on TCP 443 by Drone Ground Station (mission preload &amp; grant [CC-DRN-01])&#10;- Endpoint policy restricts access strictly to platform private API ARNs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=2;fontColor=#14532d;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2565" y="675" width="970" height="150" as="geometry" />
+</mxCell>
+<mxCell id="icon_cognito" value="" style="outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cognito;" vertex="1" parent="1">
+  <mxGeometry x="3470" y="740" width="55" height="55" as="geometry" />
+</mxCell>
+<mxCell id="tier_storage" value="object_storage tier | 10.82.80.0/20 - Amazon S3 Interface Endpoint [CL-DRN-01, CL-DRN-02]&#10;- Reached on TCP 443 strictly by Drone Ground Station (10.4x.2.10/32 only) [CC-DRN-03]&#10;- Multipart upload of flight records and high-resolution imagery&#10;- Endpoint policy restricts access strictly to platform drone object bucket" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=2;fontColor=#14532d;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2565" y="840" width="970" height="140" as="geometry" />
+</mxCell>
+<mxCell id="icon_s3" value="" style="outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+  <mxGeometry x="3470" y="895" width="55" height="55" as="geometry" />
+</mxCell>
+<mxCell id="tier_admin" value="administration tier | 10.82.96.0/20 - Session Host, Route 53 Resolver &amp; Observability&#10;- Session Host initiates SSH/HTTPS (TCP 22/443) to center mgmt (10.4x.10.1-.49) [CC-ADM-01 / CL-ADM-03]&#10;- Route 53 Resolver Inbound Endpoint (UDP/TCP 53) resolves private endpoints [CC-LNK-04]&#10;- CloudWatch Logs / Metrics &amp; Roles Anywhere interface endpoints (TCP 443) [CC-ADM-02]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=2;fontColor=#14532d;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2565" y="995" width="970" height="160" as="geometry" />
+</mxCell>
+<mxCell id="icon_resolver" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.route_53_resolver;" vertex="1" parent="1">
+  <mxGeometry x="3400" y="1060" width="55" height="55" as="geometry" />
+</mxCell>
+<mxCell id="icon_cw" value="" style="outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_2;" vertex="1" parent="1">
+  <mxGeometry x="3475" y="1060" width="55" height="55" as="geometry" />
+</mxCell>
+<mxCell id="tier_drone_reserved" value="drone_object_ingress tier | 10.82.32.0/20 (RESERVED TIER - NO ENDPOINTS IN PILOT)&#10;- RESERVED TIER: No interface endpoint created in pilot (ASM-140, CC-DRN-02)&#10;- Ground station routes directly to application and object_storage endpoints&#10;- Traffic from center ground station to this tier is explicitly DENIED and blackholed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=2;fontColor=#991b1b;fontSize=13;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+  <mxGeometry x="2565" y="1170" width="970" height="130" as="geometry" />
+</mxCell>
+<mxCell id="note_vpc_tiers" value="Other VPC tiers (public_query, telemetry_ingress, data) have no route to centers and are blackholed at TGW [CL-LNK-02].&#10;Non-production environments (dev, qa) never reach centers [CL-LNK-04]." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#94a3b8;strokeWidth=1;fontColor=#475569;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2565" y="1315" width="970" height="60" as="geometry" />
+</mxCell>
+<mxCell id="box_internet" value="PUBLIC INTERNET &amp; AWS EDGE SERVICES (Local Breakout)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=3;fontColor=#0369a1;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+  <mxGeometry x="2540" y="1480" width="1020" height="785" as="geometry" />
 </mxCell>
 <mxCell id="marker_deny_inbound" value="CC-LNK-08 DENIED: Inbound traffic from Internet to Center LAN or Firewall is dropped and logged. No public management." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=2;fontColor=#991b1b;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-  <mxGeometry x="2540" y="1515" width="1000" height="32" as="geometry" />
+  <mxGeometry x="2565" y="1540" width="970" height="40" as="geometry" />
 </mxCell>
-<mxCell id="node_breakout_gw" value="Local Internet Breakout (ISP Gateway)
-Direct exit for non-operational traffic, transporter app and public cloud endpoints. Relieves WAN tunnel from public traffic." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
-  <mxGeometry x="2540" y="1560" width="1000" height="75" as="geometry" />
+<mxCell id="node_iot_core" value="AWS IoT Core Data Endpoint (Public us-east-1) [CL-TEL-01]&#10;- TCP 8883 (MQTT over TLS, mutual X.509 client certificate authentication)&#10;- Used by Drone Ground Station (10.4x.2.10/32) for grant topic [CC-DRN-04]&#10;- Telemetry ingress reservation in VPC is not used for collection centers (ASM-140)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2565" y="1595" width="970" height="130" as="geometry" />
 </mxCell>
-<mxCell id="node_iot_core" value="AWS IoT Core Data Endpoint (Public us-east-1) [CL-TEL-01]
-- TCP 8883 (MQTT over TLS, mutual X.509 client certificate authentication)
-- Used by Drone Ground Station (10.4x.2.10/32) for grant topic [CC-DRN-04]
-- Telemetry ingress reservation in VPC is not used for collection centers (ASM-140)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
-  <mxGeometry x="2540" y="1650" width="1000" height="110" as="geometry" />
+<mxCell id="icon_iot" value="" style="outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.iot_core;" vertex="1" parent="1">
+  <mxGeometry x="3470" y="1635" width="55" height="55" as="geometry" />
 </mxCell>
-<mxCell id="node_public_api" value="Public Application API Front Door &amp; Sack Lookup [CL-TEL-03, CC-PUB-01]
-- Amazon CloudFront + AWS WAF + Cognito token validation (TCP 443)
-- Reached by Transporters (10.4x.4.0/24) for positions &amp; custody events [CC-TEL-02]
-- Reached by Transporters &amp; Visitors for public sack lookup [CC-PUB-01]
-- Logística reads sacks privately through tunnel application endpoint [CC-LOG-01]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
-  <mxGeometry x="2540" y="1775" width="1000" height="130" as="geometry" />
+<mxCell id="node_public_api" value="Public Application API Front Door &amp; Sack Lookup [CL-TEL-03, CC-PUB-01]&#10;- Amazon CloudFront + AWS WAF + Cognito token validation (TCP 443)&#10;- Reached by Transporters (10.4x.4.0/24) for positions &amp; custody events [CC-TEL-02]&#10;- Reached by Transporters &amp; Visitors for public sack lookup [CC-PUB-01]&#10;- Logística reads sacks privately through tunnel application endpoint [CC-LOG-01]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2565" y="1740" width="970" height="150" as="geometry" />
 </mxCell>
-<mxCell id="node_ext_web" value="External Internet Web &amp; Vendor Update Services [CC-STF-04, CC-GST-05]
-- TCP 80/443, UDP 443 for Gerencia/Soporte staff web access (staff class, 28/7 Mbps gtd)
-- TCP 80/443 for Transporte &amp; Visitantes non-operational web (strictly capped, Priority 5)
-- Vendor OS/device management update allow-list for Logística [CC-LOG-03]
-- DENIED: Port 25 SMTP relaying from guest/transporter phones [CC-GST-04]
-- DENIED: Inbound connection initiation from Internet to center [CC-LNK-08]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
-  <mxGeometry x="2540" y="1920" width="1000" height="155" as="geometry" />
+<mxCell id="icon_cf" value="" style="outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;" vertex="1" parent="1">
+  <mxGeometry x="3400" y="1800" width="55" height="55" as="geometry" />
 </mxCell>
-<mxCell id="note_backup_failover" value="When Primary WAN fails, cellular backup carries IPsec tunnels; non-operational traffic is suspended (ASM-086)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#d97706;strokeWidth=1;fontColor=#78350f;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
-  <mxGeometry x="2540" y="2090" width="1000" height="45" as="geometry" />
+<mxCell id="icon_waf" value="" style="outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.waf;" vertex="1" parent="1">
+  <mxGeometry x="3475" y="1800" width="55" height="55" as="geometry" />
 </mxCell>
-<mxCell id="edge_fw_pri" value="Primary WAN
-(10.4x.20.2)" style="strokeColor=#0284c7;strokeWidth=3;fontColor=#0284c7;fontSize=12;fontStyle=1;endArrow=none;labelBackgroundColor=#ffffff;labelBorderColor=#0284c7;" edge="1" source="node_fw_edge" target="node_isp_pri" parent="1">
-  <mxGeometry relative="1" as="geometry">
-      </mxGeometry>
+<mxCell id="node_ext_web" value="External Internet Web &amp; Vendor Update Services [CC-STF-04, CC-GST-05]&#10;- TCP 80/443, UDP 443 for Gerencia/Soporte staff web access (staff class, 28/7 Mbps gtd)&#10;- TCP 80/443 for Transporte &amp; Visitantes non-operational web (strictly capped, Priority 5)&#10;- Vendor OS/device management update allow-list for Logística [CC-LOG-03]&#10;- Port 25 SMTP relaying from guest/transporter phones [CC-GST-04] DENIED&#10;- Inbound connection initiation from internet to center [CC-LNK-08] DENIED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=13;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2565" y="1905" width="970" height="160" as="geometry" />
 </mxCell>
-<mxCell id="edge_fw_bak" value="Cellular Backup
-(10.4x.20.3)" style="strokeColor=#0284c7;strokeWidth=2;dashed=1;fontColor=#0284c7;fontSize=12;fontStyle=1;endArrow=none;labelBackgroundColor=#ffffff;labelBorderColor=#0284c7;" edge="1" source="node_fw_edge" target="node_isp_bak" parent="1">
+<mxCell id="note_wan_failover" value="When primary WAN fails, cellular backup carries IPsec tunnels; non-operational traffic is suspended (ASM-086)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#94a3b8;strokeWidth=1;fontColor=#475569;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2565" y="2080" width="970" height="55" as="geometry" />
+</mxCell>
+<mxCell id="edge_pri_wan" value="" style="strokeColor=#0284c7;strokeWidth=3;fontColor=#0369a1;fontSize=12;endArrow=none;" edge="1" source="node_fw_edge" target="node_isp_pri" parent="1">
   <mxGeometry relative="1" as="geometry">
     <Array as="points">
-  <mxPoint x="205" y="535" />
-</Array>
+      <mxPoint x="360" y="407" />
+    </Array>
   </mxGeometry>
 </mxCell>
-<mxCell id="edge_wan_pri_tunnel" value="IPsec Tunnel 1 (Primary): UDP 500 / 4500 (NAT-T), IP 50 ESP [CC-LNK-01, CL-LNK-06]" style="strokeColor=#7c3aed;strokeWidth=3;fontColor=#4c1d95;fontSize=13;fontStyle=1;endArrow=block;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.15;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#7c3aed;" edge="1" source="node_isp_pri" target="node_tgw_hub" parent="1">
+<mxCell id="lbl_pri_wan" value="Primary WAN (10.4x.20.2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=1.5;fontColor=#0369a1;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="310" y="392" width="190" height="30" as="geometry" />
+</mxCell>
+<mxCell id="edge_bak_wan" value="" style="strokeColor=#0284c7;strokeWidth=2;dashed=1;dashPattern=6 3;fontColor=#0369a1;fontSize=12;endArrow=none;" edge="1" source="node_fw_edge" target="node_isp_bak" parent="1">
   <mxGeometry relative="1" as="geometry">
     <Array as="points">
-  <mxPoint x="560" y="242" />
-  <mxPoint x="2510" y="242" />
-  <mxPoint x="2510" y="360" />
-</Array>
+      <mxPoint x="200" y="527" />
+      <mxPoint x="360" y="527" />
+    </Array>
   </mxGeometry>
 </mxCell>
-<mxCell id="edge_wan_bak_tunnel" value="IPsec Tunnel 2 (Cellular Backup): UDP 500 / 4500 [CC-LNK-03]" style="strokeColor=#7c3aed;strokeWidth=2;dashed=1;fontColor=#4c1d95;fontSize=12;fontStyle=1;endArrow=block;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#7c3aed;" edge="1" source="node_isp_bak" target="node_tgw_hub" parent="1">
+<mxCell id="lbl_bak_wan" value="Cellular Backup (10.4x.20.3)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=1.5;fontColor=#0369a1;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="210" y="512" width="190" height="30" as="geometry" />
+</mxCell>
+<mxCell id="flow_tunnel_pri" value="" style="strokeColor=#7c3aed;strokeWidth=3;fillColor=#7c3aed;fontColor=#5b21b6;fontSize=12;endArrow=block;" edge="1" source="node_isp_pri" target="node_vpn_hub" parent="1">
   <mxGeometry relative="1" as="geometry">
     <Array as="points">
-  <mxPoint x="410" y="535" />
-  <mxPoint x="410" y="256" />
-  <mxPoint x="2500" y="256" />
-  <mxPoint x="2500" y="390" />
-</Array>
+      <mxPoint x="650" y="407" />
+      <mxPoint x="680" y="407" />
+      <mxPoint x="680" y="275" />
+      <mxPoint x="3250" y="275" />
+      <mxPoint x="3250" y="330" />
+    </Array>
   </mxGeometry>
 </mxCell>
-<mxCell id="edge_fw_switch" value="802.1Q VLAN Trunk (VLANs 101-105, 110)" style="strokeColor=#1e40af;strokeWidth=4;fontColor=#1e40af;fontSize=13;fontStyle=1;endArrow=none;labelBackgroundColor=#ffffff;labelBorderColor=#1e40af;" edge="1" source="node_firewall" target="node_switch" parent="1">
-  <mxGeometry relative="1" as="geometry">
-      </mxGeometry>
+<mxCell id="lbl_tunnel_pri" value="IPsec Tunnel 1 (Primary 100M Fiber): UDP 500 / 4500 (NAT-T), IP 50 ESP [CC-LNK-01, CC-LNK-02]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#7c3aed;strokeWidth=1.5;fontColor=#4c1d95;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1700" y="260" width="620" height="28" as="geometry" />
 </mxCell>
-<mxCell id="edge_switch_aps" value="PoE + 802.1Q Trunk (VLANs 101-105)" style="strokeColor=#2563eb;strokeWidth=3;fontColor=#2563eb;fontSize=12;fontStyle=1;endArrow=none;labelBackgroundColor=#ffffff;labelBorderColor=#2563eb;" edge="1" source="node_switch" target="node_aps" parent="1">
-  <mxGeometry relative="1" as="geometry">
-      </mxGeometry>
-</mxCell>
-<mxCell id="flow_log_printers" value="CC-LOG-02: Code sheets (TCP 631 IPP)" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;fontStyle=1;endArrow=block;exitX=0.3;exitY=0;exitDx=0;exitDy=0;entryX=0.3;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#15803d;" edge="1" source="node_reception_posts" target="node_printers" parent="1">
-  <mxGeometry relative="1" as="geometry">
-      </mxGeometry>
-</mxCell>
-<mxCell id="flow_stf_printers" value="CC-STF-02: Staff printing (TCP 631 IPP)" style="strokeColor=#15803d;strokeWidth=2;fillColor=#15803d;fontColor=#14532d;fontSize=12;fontStyle=1;endArrow=block;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#15803d;" edge="1" source="zone_gerencia" target="node_printers" parent="1">
-  <mxGeometry relative="1" as="geometry">
-      </mxGeometry>
-</mxCell>
-<mxCell id="deny_visitantes_staff" value="CC-GST-01 DENIED: Visitors never route to logistics or management (Point 3, case statement)" style="strokeColor=#dc2626;strokeWidth=3;dashed=1;dashPattern=6 3;fillColor=#dc2626;fontColor=#b91c1c;fontSize=12;fontStyle=1;endArrow=block;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.42;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#dc2626;" edge="1" source="zone_visitantes" target="zone_logistica" parent="1">
-  <mxGeometry relative="1" as="geometry">
-      </mxGeometry>
-</mxCell>
-<mxCell id="deny_transporte_log" value="CC-GST-02 DENIED: Transporter phones cannot route to logistics or staff LAN" style="strokeColor=#dc2626;strokeWidth=3;dashed=1;dashPattern=6 3;fillColor=#dc2626;fontColor=#b91c1c;fontSize=12;fontStyle=1;endArrow=block;exitX=0.8;exitY=0;exitDx=0;exitDy=0;entryX=0.08;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#dc2626;" edge="1" source="zone_transporte" target="zone_logistica" parent="1">
-  <mxGeometry relative="1" as="geometry">
-      </mxGeometry>
-</mxCell>
-<mxCell id="marker_deny_log_inet" value="CC-LOG-04 DENIED: No general internet access for reception workstations or logistics phones (ASM-089)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=2;fontColor=#991b1b;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-  <mxGeometry x="1460" y="1135" width="665" height="32" as="geometry" />
-</mxCell>
-<mxCell id="marker_deny_printers" value="CC-ADM-04 DENIED: Code-sheet printers never initiate traffic to user zones, cloud or internet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=1;fontColor=#991b1b;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-  <mxGeometry x="755" y="845" width="660" height="30" as="geometry" />
-</mxCell>
-<mxCell id="flow_drn_app" value="CC-DRN-01: Mission download &amp; grant request (TCP 443 via Tunnel)" style="strokeColor=#15803d;strokeWidth=2;fillColor=#15803d;fontColor=#14532d;fontSize=12;fontStyle=1;endArrow=block;exitX=1;exitY=0.2;exitDx=0;exitDy=0;entryX=0;entryY=0.6;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#15803d;" edge="1" source="node_drone_station" target="tier_app" parent="1">
+<mxCell id="flow_tunnel_bak" value="" style="strokeColor=#7c3aed;strokeWidth=3;fillColor=#7c3aed;fontColor=#5b21b6;fontSize=12;endArrow=block;" edge="1" source="node_isp_bak" target="node_vpn_hub" parent="1">
   <mxGeometry relative="1" as="geometry">
     <Array as="points">
-  <mxPoint x="2240" y="920" />
-  <mxPoint x="2240" y="795" />
-</Array>
+      <mxPoint x="650" y="527" />
+      <mxPoint x="690" y="527" />
+      <mxPoint x="690" y="245" />
+      <mxPoint x="3250" y="245" />
+      <mxPoint x="3250" y="360" />
+    </Array>
   </mxGeometry>
 </mxCell>
-<mxCell id="flow_drn_s3" value="CC-DRN-03: Multipart upload of flight records &amp; objects (TCP 443 via Tunnel -&gt; S3 endpoint)" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;fontStyle=1;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#15803d;" edge="1" source="node_drone_station" target="tier_storage" parent="1">
+<mxCell id="lbl_tunnel_bak" value="IPsec Tunnel 2 (Cellular Backup): UDP 500 / 4500 [CC-LNK-03]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#7c3aed;strokeWidth=1.5;fontColor=#4c1d95;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1750" y="230" width="520" height="28" as="geometry" />
+</mxCell>
+<mxCell id="flow_fw_switch" value="" style="strokeColor=#2563eb;strokeWidth=3;fontColor=#1e40af;fontSize=12;endArrow=block;" edge="1" source="node_firewall" target="node_switch_box" parent="1">
   <mxGeometry relative="1" as="geometry">
     <Array as="points">
-  <mxPoint x="2255" y="970" />
-  <mxPoint x="2255" y="932" />
-</Array>
+      <mxPoint x="1410" y="390" />
+      <mxPoint x="1440" y="390" />
+    </Array>
   </mxGeometry>
 </mxCell>
-<mxCell id="deny_drn_ingress" value="CC-DRN-02 DENIED: drone_object_ingress tier is RESERVED; holds no endpoint in pilot (ASM-140)" style="strokeColor=#dc2626;strokeWidth=3;dashed=1;dashPattern=6 3;fillColor=#dc2626;fontColor=#b91c1c;fontSize=12;fontStyle=1;endArrow=block;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#dc2626;" edge="1" source="node_drone_station" target="tier_drone_reserved" parent="1">
+<mxCell id="lbl_fw_switch" value="802.1Q VLAN Trunk" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=1.5;fontColor=#1e40af;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1440" y="265" width="150" height="26" as="geometry" />
+</mxCell>
+<mxCell id="flow_switch_aps" value="" style="strokeColor=#2563eb;strokeWidth=3;fontColor=#1e40af;fontSize=12;endArrow=block;" edge="1" source="node_switch_box" target="node_aps_box" parent="1">
   <mxGeometry relative="1" as="geometry">
     <Array as="points">
-  <mxPoint x="2270" y="1020" />
-  <mxPoint x="2270" y="1230" />
-</Array>
+      <mxPoint x="1780" y="480" />
+      <mxPoint x="1780" y="500" />
+    </Array>
   </mxGeometry>
 </mxCell>
-<mxCell id="flow_log_cloud" value="CC-LOG-01: Reception, sack reads, code-sheet requests, MFA sign-in (TCP 443 via Tunnel)" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;fontStyle=1;endArrow=block;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.85;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#15803d;" edge="1" source="node_reception_posts" target="tier_app" parent="1">
+<mxCell id="lbl_switch_aps" value="PoE + Trunk" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=1.5;fontColor=#1e40af;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1800" y="475" width="110" height="25" as="geometry" />
+</mxCell>
+<mxCell id="flow_gerencia_print" value="" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;endArrow=block;" edge="1" source="zone_gerencia" target="node_printers" parent="1">
   <mxGeometry relative="1" as="geometry">
     <Array as="points">
-  <mxPoint x="1085" y="1585" />
-  <mxPoint x="2210" y="1585" />
-  <mxPoint x="2210" y="830" />
-</Array>
+      <mxPoint x="670" y="960" />
+      <mxPoint x="720" y="960" />
+    </Array>
   </mxGeometry>
 </mxCell>
-<mxCell id="flow_stf_app" value="CC-STF-01: Staff reports web &amp; center app (TCP 443 via Tunnel)" style="strokeColor=#15803d;strokeWidth=2;fillColor=#15803d;fontColor=#14532d;fontSize=12;fontStyle=1;endArrow=block;exitX=1;exitY=0.1;exitDx=0;exitDy=0;entryX=0;entryY=0.15;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#15803d;" edge="1" source="zone_soporte" target="tier_app" parent="1">
-  <mxGeometry relative="1" as="geometry">
-      </mxGeometry>
-</mxCell>
-<mxCell id="flow_admin_mgmt" value="CC-ADM-01 / CL-ADM-03: Session-based administration from Cloud (TCP 22 SSH, 443 HTTPS via Tunnel)" style="strokeColor=#15803d;strokeWidth=2;fillColor=#15803d;fontColor=#14532d;fontSize=12;fontStyle=1;endArrow=block;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#15803d;" edge="1" source="tier_admin" target="zone_servidores" parent="1">
+<mxCell id="flow_soporte_print" value="" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;endArrow=block;" edge="1" source="zone_soporte" target="node_printers" parent="1">
   <mxGeometry relative="1" as="geometry">
     <Array as="points">
-  <mxPoint x="2490" y="1085" />
-  <mxPoint x="2490" y="680" />
-  <mxPoint x="1085" y="680" />
-</Array>
+      <mxPoint x="1440" y="960" />
+      <mxPoint x="1390" y="960" />
+    </Array>
   </mxGeometry>
 </mxCell>
-<mxCell id="flow_fw_admin" value="CC-LNK-04: Conditional DNS (UDP/TCP 53) | CC-ADM-02: CloudWatch Logs &amp; Metrics / Roles Anywhere (TCP 443)" style="strokeColor=#15803d;strokeWidth=2;fillColor=#15803d;fontColor=#14532d;fontSize=12;fontStyle=1;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#15803d;" edge="1" source="node_firewall" target="tier_admin" parent="1">
+<mxCell id="lbl_stf_print" value="CC-STF-02: Staff print (TCP 631 IPP)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#15803d;strokeWidth=1.5;fontColor=#14532d;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1040" y="905" width="270" height="26" as="geometry" />
+</mxCell>
+<mxCell id="flow_log_print" value="" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;endArrow=block;" edge="1" source="node_reception_posts" target="node_printers" parent="1">
   <mxGeometry relative="1" as="geometry">
     <Array as="points">
-  <mxPoint x="1440" y="500" />
-  <mxPoint x="2500" y="500" />
-  <mxPoint x="2500" y="1050" />
-</Array>
+      <mxPoint x="655" y="1470" />
+      <mxPoint x="680" y="1470" />
+      <mxPoint x="680" y="1070" />
+      <mxPoint x="720" y="1070" />
+    </Array>
   </mxGeometry>
 </mxCell>
-<mxCell id="flow_drn_iot" value="CC-DRN-04: Kit grant topic via breakout (TCP 8883 MQTT over TLS)" style="strokeColor=#15803d;strokeWidth=2;fillColor=#15803d;fontColor=#14532d;fontSize=12;fontStyle=1;endArrow=block;exitX=1;exitY=0.9;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#15803d;" edge="1" source="node_drone_station" target="node_iot_core" parent="1">
+<mxCell id="lbl_log_print" value="CC-LOG-02: Code sheets (TCP 631 IPP)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#15803d;strokeWidth=1.5;fontColor=#14532d;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="740" y="905" width="280" height="26" as="geometry" />
+</mxCell>
+<mxCell id="flow_fw_admin" value="" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;endArrow=block;" edge="1" source="node_firewall" target="tier_admin" parent="1">
   <mxGeometry relative="1" as="geometry">
     <Array as="points">
-  <mxPoint x="2225" y="1035" />
-  <mxPoint x="2225" y="1705" />
-</Array>
+      <mxPoint x="1350" y="670" />
+      <mxPoint x="1350" y="690" />
+      <mxPoint x="2350" y="690" />
+      <mxPoint x="2350" y="1030" />
+      <mxPoint x="2565" y="1030" />
+    </Array>
   </mxGeometry>
 </mxCell>
-<mxCell id="flow_transporte_api" value="CC-TEL-02: Positions &amp; custody events from yard via local breakout (TCP 443, Transport app class 2/1 Mbps gtd)" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;fontStyle=1;endArrow=block;exitX=1;exitY=0.35;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#15803d;" edge="1" source="zone_transporte" target="node_public_api" parent="1">
+<mxCell id="lbl_fw_admin" value="CC-LNK-04: DNS Forwarding (53) | CC-ADM-02: CloudWatch &amp; Roles Anywhere (443)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#15803d;strokeWidth=1.5;fontColor=#14532d;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1500" y="675" width="540" height="28" as="geometry" />
+</mxCell>
+<mxCell id="flow_admin_mgmt" value="" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;endArrow=block;" edge="1" source="tier_admin" target="zone_servidores" parent="1">
   <mxGeometry relative="1" as="geometry">
     <Array as="points">
-  <mxPoint x="1070" y="1820" />
-  <mxPoint x="1070" y="1790" />
-  <mxPoint x="2500" y="1790" />
-  <mxPoint x="2500" y="1840" />
-</Array>
+      <mxPoint x="2565" y="1075" />
+      <mxPoint x="2370" y="1075" />
+      <mxPoint x="2370" y="1205" />
+      <mxPoint x="1050" y="1205" />
+      <mxPoint x="1050" y="1180" />
+    </Array>
   </mxGeometry>
 </mxCell>
-<mxCell id="flow_guests_internet" value="CC-GST-05: Non-operational web via breakout (Transport 20/5M cap, Visitantes 10/2.5M cap, 2/0.5M/client)" style="strokeColor=#15803d;strokeWidth=2;fillColor=#15803d;fontColor=#14532d;fontSize=12;fontStyle=1;endArrow=block;exitX=1;exitY=0.6;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#15803d;" edge="1" source="zone_visitantes" target="node_ext_web" parent="1">
+<mxCell id="lbl_admin_mgmt" value="CC-ADM-01 / CL-ADM-03: Session Administration from Cloud (SSH 22, HTTPS 443 via Tunnel)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#15803d;strokeWidth=1.5;fontColor=#14532d;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="800" y="1188" width="580" height="28" as="geometry" />
+</mxCell>
+<mxCell id="flow_stf_app" value="" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;endArrow=block;" edge="1" source="zone_soporte" target="tier_app" parent="1">
   <mxGeometry relative="1" as="geometry">
     <Array as="points">
-  <mxPoint x="2165" y="1980" />
-  <mxPoint x="2510" y="1980" />
-  <mxPoint x="2510" y="2000" />
-</Array>
+      <mxPoint x="2120" y="715" />
+      <mxPoint x="2565" y="715" />
+    </Array>
   </mxGeometry>
 </mxCell>
-<mxCell id="deny_guests_cloud" value="CC-GST-03 DENIED: Guests &amp; Transporters have no route or policy to Tunnel, Cloud tiers or 10.40.0.0/13" style="strokeColor=#dc2626;strokeWidth=3;dashed=1;dashPattern=6 3;fillColor=#dc2626;fontColor=#b91c1c;fontSize=12;fontStyle=1;endArrow=block;exitX=1;exitY=0.15;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;labelBorderColor=#dc2626;" edge="1" source="zone_visitantes" target="box_hub" parent="1">
+<mxCell id="lbl_stf_app" value="CC-STF-01: Staff web &amp; center app (TCP 443)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#15803d;strokeWidth=1.5;fontColor=#14532d;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="2190" y="695" width="310" height="26" as="geometry" />
+</mxCell>
+<mxCell id="flow_log_cloud" value="" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;endArrow=block;" edge="1" source="node_reception_posts" target="tier_app" parent="1">
   <mxGeometry relative="1" as="geometry">
     <Array as="points">
-  <mxPoint x="2190" y="1700" />
-  <mxPoint x="2505" y="1700" />
-  <mxPoint x="2505" y="480" />
-</Array>
+      <mxPoint x="655" y="1505" />
+      <mxPoint x="680" y="1505" />
+      <mxPoint x="680" y="1220" />
+      <mxPoint x="2470" y="1220" />
+      <mxPoint x="2470" y="755" />
+      <mxPoint x="2565" y="755" />
+    </Array>
   </mxGeometry>
+</mxCell>
+<mxCell id="lbl_log_cloud" value="CC-LOG-01: Reception, sacks, code-sheets, MFA sign-in (TCP 443 via Tunnel)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#15803d;strokeWidth=1.5;fontColor=#14532d;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1480" y="1205" width="490" height="28" as="geometry" />
+</mxCell>
+<mxCell id="flow_drn_app" value="" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;endArrow=block;" edge="1" source="node_drone_station" target="tier_app" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <Array as="points">
+      <mxPoint x="2100" y="970" />
+      <mxPoint x="2430" y="970" />
+      <mxPoint x="2430" y="795" />
+      <mxPoint x="2565" y="795" />
+    </Array>
+  </mxGeometry>
+</mxCell>
+<mxCell id="lbl_drn_app" value="CC-DRN-01: Mission download &amp; grant (TCP 443)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#15803d;strokeWidth=1.5;fontColor=#14532d;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="2190" y="780" width="320" height="26" as="geometry" />
+</mxCell>
+<mxCell id="flow_drn_s3" value="" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;endArrow=block;" edge="1" source="node_drone_station" target="tier_storage" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <Array as="points">
+      <mxPoint x="2100" y="1010" />
+      <mxPoint x="2390" y="1010" />
+      <mxPoint x="2390" y="890" />
+      <mxPoint x="2565" y="890" />
+    </Array>
+  </mxGeometry>
+</mxCell>
+<mxCell id="lbl_drn_s3" value="CC-DRN-03: S3 multipart upload (TCP 443 via S3 endpoint)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#15803d;strokeWidth=1.5;fontColor=#14532d;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="2170" y="875" width="360" height="26" as="geometry" />
+</mxCell>
+<mxCell id="flow_drn_deny_reserved" value="" style="strokeColor=#dc2626;strokeWidth=3;dashed=1;dashPattern=6 3;fillColor=#dc2626;fontColor=#b91c1c;fontSize=12;endArrow=block;" edge="1" source="node_drone_station" target="tier_drone_reserved" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <Array as="points">
+      <mxPoint x="2100" y="1050" />
+      <mxPoint x="2310" y="1050" />
+      <mxPoint x="2310" y="1225" />
+      <mxPoint x="2565" y="1225" />
+    </Array>
+  </mxGeometry>
+</mxCell>
+<mxCell id="lbl_drn_deny" value="CC-DRN-02 DENIED: drone_object_ingress is RESERVED (ASM-140)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=1.5;fontColor=#991b1b;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="2050" y="1210" width="460" height="28" as="geometry" />
+</mxCell>
+<mxCell id="flow_drn_iot" value="" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;endArrow=block;" edge="1" source="node_drone_station" target="node_iot_core" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <Array as="points">
+      <mxPoint x="2100" y="1090" />
+      <mxPoint x="2270" y="1090" />
+      <mxPoint x="2270" y="1660" />
+      <mxPoint x="2565" y="1660" />
+    </Array>
+  </mxGeometry>
+</mxCell>
+<mxCell id="lbl_drn_iot" value="CC-DRN-04: Kit grant topic via breakout (TCP 8883 MQTT)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#15803d;strokeWidth=1.5;fontColor=#14532d;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="2150" y="1645" width="370" height="26" as="geometry" />
+</mxCell>
+<mxCell id="flow_transporte_api" value="" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;endArrow=block;" edge="1" source="zone_transporte" target="node_public_api" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <Array as="points">
+      <mxPoint x="1055" y="1700" />
+      <mxPoint x="1055" y="1720" />
+      <mxPoint x="2230" y="1720" />
+      <mxPoint x="2230" y="1815" />
+      <mxPoint x="2565" y="1815" />
+    </Array>
+  </mxGeometry>
+</mxCell>
+<mxCell id="lbl_transporte_api" value="CC-TEL-02: Positions &amp; custody events via local breakout (TCP 443)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#15803d;strokeWidth=1.5;fontColor=#14532d;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1500" y="1708" width="450" height="26" as="geometry" />
+</mxCell>
+<mxCell id="flow_guests_internet" value="" style="strokeColor=#15803d;strokeWidth=3;fillColor=#15803d;fontColor=#14532d;fontSize=12;endArrow=block;" edge="1" source="zone_visitantes" target="node_ext_web" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <Array as="points">
+      <mxPoint x="1780" y="1700" />
+      <mxPoint x="1780" y="1750" />
+      <mxPoint x="2190" y="1750" />
+      <mxPoint x="2190" y="1985" />
+      <mxPoint x="2565" y="1985" />
+    </Array>
+  </mxGeometry>
+</mxCell>
+<mxCell id="lbl_guests_internet" value="CC-GST-05: Non-operational web via breakout (Priority 5, 2/0.5M cap [CC-GST-05, CC-PUB-01])" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#15803d;strokeWidth=1.5;fontColor=#14532d;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1460" y="1738" width="560" height="26" as="geometry" />
+</mxCell>
+<mxCell id="flow_gst_deny_internal" value="" style="strokeColor=#dc2626;strokeWidth=3;dashed=1;dashPattern=6 3;fillColor=#dc2626;fontColor=#b91c1c;fontSize=12;endArrow=block;" edge="1" source="zone_transporte" target="zone_logistica" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <Array as="points">
+      <mxPoint x="700" y="1220" />
+      <mxPoint x="685" y="1220" />
+      <mxPoint x="685" y="1205" />
+      <mxPoint x="600" y="1205" />
+      <mxPoint x="600" y="1220" />
+    </Array>
+  </mxGeometry>
+</mxCell>
+<mxCell id="lbl_gst_deny" value="CC-GST-01/02 DENIED: Guests/Transport no route to LAN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=1.5;fontColor=#991b1b;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="520" y="1192" width="380" height="26" as="geometry" />
 </mxCell>
       </root>
     </mxGraphModel>
