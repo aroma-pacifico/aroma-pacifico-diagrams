@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" version="32.4.1" type="device">
+  <diagram id="revocation-sequence" name="Aroma Pacífico Revocation Sequence">
+    <mxGraphModel dx="3840" dy="2520" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3840" pageHeight="2520" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Aroma Pacífico — Authentication with MFA, Public Buyer Lookup &amp; Revocation Protocols" style="text;html=1;align=left;verticalAlign=middle;fontSize=28;fontStyle=1;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="3760" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Sequence Architecture &amp; Precise Time Limits (docs/security-and-identity.md §5, §8, §10 | ASM-058, ASM-091..ASM-098, PD-100)" style="text;html=1;align=left;verticalAlign=middle;fontSize=14.5;fontColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="40" y="68" width="3760" height="32" as="geometry" />
+        </mxCell>
+<mxCell id="c_scen1_boundary" value="1. AUTHENTICATION PROTOCOLS &amp; SENSITIVE OPERATION STEP-UP MFA (Sections 5.1, 5.2, ASM-091, ASM-092)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;fontColor=#0f172a;fontSize=15;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+  <mxGeometry x="40" y="115" width="1860" height="1180" as="geometry" />
+</mxCell>
+<mxCell id="ll1_fusr_box" value="Field User&#10;(Farmer / Transporter)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f9ff;strokeColor=#0284c7;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="65" y="160" width="150" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll1_fusr_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="140" y="208" as="sourcePoint" />
+    <mxPoint x="140" y="1270" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll1_susr_box" value="Staff User&#10;(Agronomist / Operator)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#7c3aed;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="365" y="160" width="150" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll1_susr_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="440" y="208" as="sourcePoint" />
+    <mxPoint x="440" y="1270" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll1_app_box" value="Mobile App / Web Client&#10;(Keystore / Local Unlock)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#334155;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="675" y="160" width="170" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll1_app_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="760" y="208" as="sourcePoint" />
+    <mxPoint x="760" y="1270" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll1_cog_box" value="Cognito User Pools&#10;(staff &amp; field pools | D06)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff1f2;strokeColor=#e11d48;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1020" y="160" width="160" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll1_cog_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1100" y="208" as="sourcePoint" />
+    <mxPoint x="1100" y="1270" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll1_api_box" value="API Gateway &amp; Lambda&#10;(Application API | D04)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1360" y="160" width="160" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll1_api_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1440" y="208" as="sourcePoint" />
+    <mxPoint x="1440" y="1270" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll1_db_box" value="Transactional DB&#10;(DynamoDB | CMK records)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1670" y="160" width="160" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll1_db_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1750" y="208" as="sourcePoint" />
+    <mxPoint x="1750" y="1270" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="box_step1a_hdr" value="PART 1A: STAFF SIGN-IN WITH MANDATORY TOTP MFA (Security §5.1 | Collection-Center Op, Drone Op, Agronomist, Platform Op)" style="rounded=0;fillColor=#ede9fe;strokeColor=#8b5cf6;fontColor=#4c1d95;fontSize=11.5;fontStyle=1;align=left;spacing=6;" vertex="1" parent="1">
+  <mxGeometry x="60" y="225" width="1820" height="26" as="geometry" />
+</mxCell>
+<mxCell id="m101" value="1.1: Submit username + password" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="440" y="265" as="sourcePoint" />
+    <mxPoint x="760" y="265" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m102" value="1.2: InitiateAuth(USER_PASSWORD_AUTH)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="760" y="285" as="sourcePoint" />
+    <mxPoint x="1100" y="285" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m103" value="1.3: CHALLENGE: SOFTWARE_TOKEN_MFA" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=1.5;dashed=1;fontSize=11.5;fontColor=#065f46;align=center;verticalAlign=bottom;endArrow=open;endSize=8;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1100" y="310" as="sourcePoint" />
+    <mxPoint x="760" y="310" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m104" value="1.4: Prompt for 6-digit TOTP code" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=1.5;dashed=1;fontSize=11.5;fontColor=#065f46;align=center;verticalAlign=bottom;endArrow=open;endSize=8;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="760" y="330" as="sourcePoint" />
+    <mxPoint x="440" y="330" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m105" value="1.5: Enter TOTP code from Authenticator App" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="440" y="355" as="sourcePoint" />
+    <mxPoint x="760" y="355" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m106" value="1.6: RespondToAuthChallenge(SOFTWARE_TOKEN_MFA, TOTP)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="760" y="375" as="sourcePoint" />
+    <mxPoint x="1100" y="375" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m107" value="1.7: Validates TOTP -&gt; Issues JWT (ID, Access, Refresh) with auth_time = NOW" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=1.5;dashed=1;fontSize=11.5;fontColor=#065f46;align=center;verticalAlign=bottom;endArrow=open;endSize=8;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1100" y="405" as="sourcePoint" />
+    <mxPoint x="760" y="405" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="box_c1a_callout" value="STAFF POOL TOKEN LIFETIMES (ASM-092):&#10;• Access Token: 60 minutes&#10;• ID Token: 60 minutes&#10;• Refresh Token: 30 days&#10;• Claims: sub, email, cognito:groups, auth_time" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#7c3aed;strokeWidth=1.5;fontColor=#4c1d95;fontSize=11.5;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="1190" y="310" width="310" height="85" as="geometry" />
+</mxCell>
+<mxCell id="box_step1b_hdr" value="PART 1B: SENSITIVE STAFF OPERATION STEP-UP AUTHENTICATION (Security §4.3, §5.1 | auth_time &lt;= 10 min | ASM-092)" style="rounded=0;fillColor=#fef3c7;strokeColor=#f59e0b;fontColor=#78350f;fontSize=11.5;fontStyle=1;align=left;spacing=6;" vertex="1" parent="1">
+  <mxGeometry x="60" y="440" width="1820" height="26" as="geometry" />
+</mxCell>
+<mxCell id="m108" value="2.1: Request sensitive action (e.g., Authorize Fumigation Order ADR-002)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="440" y="480" as="sourcePoint" />
+    <mxPoint x="760" y="480" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m109" value="2.2: POST /orders/{id}/authorize (Bearer Access Token)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="760" y="500" as="sourcePoint" />
+    <mxPoint x="1440" y="500" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m110" value="2.3: Lambda evaluates token claim: (current_time - auth_time) &gt; 10 minutes?" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=1.5;fontSize=11.5;fontColor=#334155;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1440" y="525" as="sourcePoint" />
+    <mxPoint x="1590" y="525" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m111" value="2.4: 401 Unauthorized: Step-Up Required (auth_time older than 10 minutes | ASM-092)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#dc2626;strokeWidth=1.5;fontSize=11.5;fontColor=#991b1b;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1440" y="555" as="sourcePoint" />
+    <mxPoint x="760" y="555" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m112" value="2.5: App prompts Agronomist for immediate fresh TOTP code" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#dc2626;strokeWidth=1.5;fontSize=11.5;fontColor=#991b1b;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="760" y="575" as="sourcePoint" />
+    <mxPoint x="440" y="575" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m113" value="2.6: Provide fresh TOTP code" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="440" y="600" as="sourcePoint" />
+    <mxPoint x="760" y="600" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m114" value="2.7: Fresh auth against Cognito -&gt; New token with auth_time = NOW" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="760" y="620" as="sourcePoint" />
+    <mxPoint x="1100" y="620" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m115" value="2.8: Fresh token issued (auth_time &lt;= 10 min)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=1.5;dashed=1;fontSize=11.5;fontColor=#065f46;align=center;verticalAlign=bottom;endArrow=open;endSize=8;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1100" y="640" as="sourcePoint" />
+    <mxPoint x="760" y="640" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m116" value="2.9: Re-submit POST /orders/{id}/authorize (Fresh Bearer Token)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="760" y="665" as="sourcePoint" />
+    <mxPoint x="1440" y="665" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m117" value="2.10: Validates auth_time &lt;= 10m &amp; Separation of Duties (caller_id != operator_id | ADR-002)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=1.5;fontSize=11.5;fontColor=#334155;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1440" y="690" as="sourcePoint" />
+    <mxPoint x="1620" y="690" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m118" value="2.11: Conditional PutItem: state=authorized, authorizer=sub, window (CMK records)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1440" y="715" as="sourcePoint" />
+    <mxPoint x="1750" y="715" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m119" value="2.12: Order authorized successfully (200 OK)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=1.5;dashed=1;fontSize=11.5;fontColor=#065f46;align=center;verticalAlign=bottom;endArrow=open;endSize=8;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1440" y="740" as="sourcePoint" />
+    <mxPoint x="760" y="740" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="box_c1b_callout" value="SEPARATION OF DUTIES ENFORCEMENT (§4.3):&#10;• Agronomist authorizes fumigation; CANNOT fly.&#10;• Drone Pilot flies missions; CANNOT authorize.&#10;• authorizer_id == operator_id is REJECTED by API." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=1.5;fontColor=#78350f;fontSize=11.5;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="1490" y="525" width="330" height="80" as="geometry" />
+</mxCell>
+<mxCell id="box_step1c_hdr" value="PART 1C: FIELD USER PASSWORDLESS SIGN-IN (Security §5.2 | NO MFA, Justified Decision | ASM-091 | Farmer &amp; Transporter)" style="rounded=0;fillColor=#e0f2fe;strokeColor=#38bdf8;fontColor=#0369a1;fontSize=11.5;fontStyle=1;align=left;spacing=6;" vertex="1" parent="1">
+  <mxGeometry x="60" y="780" width="1820" height="26" as="geometry" />
+</mxCell>
+<mxCell id="m120" value="3.1: Open app; unlock via phone biometric / screen lock PIN (Local Unlock | ASM-095)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="140" y="820" as="sourcePoint" />
+    <mxPoint x="760" y="820" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m121" value="3.2: Enter registered phone number (Zero password to remember or write in notebook)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="140" y="845" as="sourcePoint" />
+    <mxPoint x="760" y="845" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m122" value="3.3: InitiateAuth(CUSTOM_AUTH / PASSWORDLESS_SMS)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="760" y="870" as="sourcePoint" />
+    <mxPoint x="1100" y="870" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m123" value="3.4: Cognito dispatches SMS with One-Time Code via AWS End User Messaging" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=1.5;dashed=1;fontSize=11.5;fontColor=#065f46;align=center;verticalAlign=bottom;endArrow=open;endSize=8;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1100" y="900" as="sourcePoint" />
+    <mxPoint x="140" y="900" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m124" value="3.5: Enter SMS One-Time Code" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="140" y="925" as="sourcePoint" />
+    <mxPoint x="760" y="925" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m125" value="3.6: RespondToAuthChallenge(SMS_OTP)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="760" y="945" as="sourcePoint" />
+    <mxPoint x="1100" y="945" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m126" value="3.7: Validates OTP -&gt; Issues JWT (Access 60m, Refresh 30 days | ASM-092)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=1.5;dashed=1;fontSize=11.5;fontColor=#065f46;align=center;verticalAlign=bottom;endArrow=open;endSize=8;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1100" y="975" as="sourcePoint" />
+    <mxPoint x="760" y="975" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m127" value="3.8: App stores refresh token in OS Keystore; generates hardware-backed outbox key (ASM-095)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=1.5;fontSize=11.5;fontColor=#334155;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="760" y="1005" as="sourcePoint" />
+    <mxPoint x="940" y="1005" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="box_c1c_callout" value="JUSTIFIED ABSENCE OF MFA FOR FIELD (ASM-091):&#10;1. Adoption: Overcomes distrust of leaving notebook; app has few screens.&#10;2. Connectivity: Works offline in remote rural veredas; queues outbox.&#10;3. Limited Scope: User sees ONLY own farms / trips; small blast radius.&#10;4. Compensating Controls: Hardware keystore outbox encryption (ASM-095),&#10;   device_id binding, local screen lock, server-side scope enforcement." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f9ff;strokeColor=#0284c7;strokeWidth=1.5;fontColor=#0c4a6e;fontSize=11.5;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="790" y="1025" width="620" height="95" as="geometry" />
+</mxCell>
+<mxCell id="m128" value="3.9: Offline Work: Record sack harvest / custody event -&gt; Encrypted in hardware keystore outbox" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="140" y="1135" as="sourcePoint" />
+    <mxPoint x="760" y="1135" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m129" value="3.10: Reconnection: Flushes queued outbox events to API Gateway with device_id (A10 §7)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="760" y="1165" as="sourcePoint" />
+    <mxPoint x="1440" y="1165" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m130" value="3.11: API checks caller owns farm/trip; conditional put in sack_event_log -&gt; Returns 201 Created" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1440" y="1195" as="sourcePoint" />
+    <mxPoint x="1750" y="1195" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m131" value="3.12: Outbox releases event ONLY after server acknowledges commit (Un despliegue no pierde eventos)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=1.5;dashed=1;fontSize=11.5;fontColor=#065f46;align=center;verticalAlign=bottom;endArrow=open;endSize=8;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1440" y="1225" as="sourcePoint" />
+    <mxPoint x="760" y="1225" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="c_scen2_boundary" value="2. ANONYMOUS PUBLIC SACK LOOKUP &amp; BUYER VIEW PROJECTION (Section 8, ASM-058, ASM-094, ASM-096, ASM-154)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;fontColor=#0f172a;fontSize=15;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+  <mxGeometry x="1930" y="115" width="1870" height="1180" as="geometry" />
+</mxCell>
+<mxCell id="ll2_byr_box" value="Public Reader / Buyer&#10;(Holding Sack QR / Code)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1925" y="160" width="170" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll2_byr_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2010" y="208" as="sourcePoint" />
+    <mxPoint x="2010" y="1270" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll2_cf_box" value="CloudFront + AWS WAF&#10;(Rate Limit &lt;= 30 req/min)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="2250" y="160" width="180" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll2_cf_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2340" y="208" as="sourcePoint" />
+    <mxPoint x="2340" y="1270" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll2_lmb_box" value="Lambda Function URL&#10;(Lookup Role | PD-051)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#ea580c;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="2605" y="160" width="170" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll2_lmb_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2690" y="208" as="sourcePoint" />
+    <mxPoint x="2690" y="1270" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll2_bv_box" value="DynamoDB: buyer_view&#10;(Projection | CMK public_view)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#7c3aed;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="2960" y="160" width="180" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll2_bv_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="3050" y="208" as="sourcePoint" />
+    <mxPoint x="3050" y="1270" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll2_int_box" value="Internal Tables &amp; CMKs&#10;(records, personal, telemetry)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#dc2626;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="3320" y="160" width="180" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll2_int_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="3410" y="208" as="sourcePoint" />
+    <mxPoint x="3410" y="1270" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll2_aud_box" value="CloudWatch &amp; S3 Audit&#10;(Security Acct | 5-yr Lock)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="3635" y="160" width="170" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll2_aud_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="3720" y="208" as="sourcePoint" />
+    <mxPoint x="3720" y="1270" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="box_step2_hdr" value="SACK CODE QUERY PROTOCOL, RATE LIMITING, BUYER VIEW FILTERING &amp; AUDITING (§8, Sack &amp; Trip §7.2 [PD-051])" style="rounded=0;fillColor=#ede9fe;strokeColor=#8b5cf6;fontColor=#4c1d95;fontSize=11.5;fontStyle=1;align=left;spacing=6;" vertex="1" parent="1">
+  <mxGeometry x="1950" y="225" width="1830" height="26" as="geometry" />
+</mxCell>
+<mxCell id="m201" value="1: Scan QR code / enter 80-bit Crockford Base32 sack code: XXXX-XXXX-XXXX-XXXX-C (ASM-094)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2010" y="270" as="sourcePoint" />
+    <mxPoint x="2340" y="270" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m202" value="2: HTTPS GET /sack/{code} (TLSv1.2_2021 | No authentication required | ASM-058)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2010" y="300" as="sourcePoint" />
+    <mxPoint x="2340" y="300" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m203" value="3: AWS WAF evaluates rate limit rule: &lt;= 30 reads per minute per source IP (PD-102)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=1.5;fontSize=11.5;fontColor=#334155;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2340" y="330" as="sourcePoint" />
+    <mxPoint x="2520" y="330" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m204" value="4: CloudFront forwards request to Lambda Function URL via Origin Access Control (OAC)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2340" y="360" as="sourcePoint" />
+    <mxPoint x="2690" y="360" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m205" value="5: Lambda executes GetItem(sack_code) against buyer_view table ONLY" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2690" y="400" as="sourcePoint" />
+    <mxPoint x="3050" y="400" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m206" value="BLOCK: Lookup IAM role holds ZERO permissions on records, personal, or telemetry tables!" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#dc2626;strokeWidth=1.5;fontSize=11.5;fontColor=#991b1b;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2690" y="435" as="sourcePoint" />
+    <mxPoint x="3410" y="435" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m207" value="BLOCK: Lookup IAM role holds ZERO permissions on records, personal, or telemetry KMS keys!" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#dc2626;strokeWidth=1.5;fontSize=11.5;fontColor=#991b1b;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2690" y="465" as="sourcePoint" />
+    <mxPoint x="3410" y="465" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="box_c2_isolation" value="ARCHITECTURAL ISOLATION GATE (Security §8.4, Sack &amp; Trip §10):&#10;• The buyer view is a separate physical projection store (buyer_view table).&#10;• Lookup IAM role holds grants ONLY on buyer_view and public_view KMS key.&#10;• A coding error in the lookup service CANNOT return fields from transactional,&#10;  personal, or telemetry stores because IAM and KMS deny access at infrastructure level." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#dc2626;strokeWidth=1.5;fontColor=#7f1d1d;fontSize=11.5;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2690" y="500" width="680" height="95" as="geometry" />
+</mxCell>
+<mxCell id="m208" value="6: buyer_view returns projection record (origin, dates, status, drying variables | ASM-096)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=1.5;dashed=1;fontSize=11.5;fontColor=#065f46;align=center;verticalAlign=bottom;endArrow=open;endSize=8;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="3050" y="620" as="sourcePoint" />
+    <mxPoint x="2690" y="620" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="box_c2_fields" value="DATA WITHHOLDING INVARIANTS (Security §8.2, §8.3):&#10;EXACTLY 4 GROUPS RETURNED:&#10;1. Origin: sack_code, department, municipality (coarse geography only).&#10;2. Processing Dates: drying_start_date, drying_end_date, packing_date (calendar dates, no times).&#10;3. Status: current sack state (in preparation, en route center, center accepted/rejected, en route port, port accepted/rejected).&#10;4. Drying Variables: final_coffee_moisture_pct, grain_temperature_min/mean/max_c.&#10;&#10;STRICTLY WITHHELD (NEVER EXPOSED):&#10;• Farmer name, cédula, phone, subject_id.&#10;• Farm name, coordinates, polygon, vereda.&#10;• Farm node IDs, raw telemetry series.&#10;• Transporter identity, vehicle plate, trip ID, positions.&#10;• Custody event timestamps, weights, collection center, rejection reasons, pest records." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#7c3aed;strokeWidth=1.5;fontColor=#4c1d95;fontSize=11.5;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="1960" y="650" width="710" height="235" as="geometry" />
+</mxCell>
+<mxCell id="m209" value="7: Asynchronously write Event 1: Sack Read to /aws/application/audit (ASM-069, A08 §7.2)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2690" y="910" as="sourcePoint" />
+    <mxPoint x="3720" y="910" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m210" value="8: Subscription filter -&gt; Data Firehose -&gt; S3 Audit Archive (5-yr Object Lock compliance | ASM-067)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=1.5;fontSize=11.5;fontColor=#334155;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="3640" y="940" as="sourcePoint" />
+    <mxPoint x="3720" y="940" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m211" value="9: 200 OK JSON response: 4 authorized groups rendered cleanly" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=1.5;dashed=1;fontSize=11.5;fontColor=#065f46;align=center;verticalAlign=bottom;endArrow=open;endSize=8;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2690" y="975" as="sourcePoint" />
+    <mxPoint x="2340" y="975" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m212" value="10: Cache headers: Cache-Control: public, max-age=60; response rendered on public web page" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=1.5;dashed=1;fontSize=11.5;fontColor=#065f46;align=center;verticalAlign=bottom;endArrow=open;endSize=8;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2340" y="1005" as="sourcePoint" />
+    <mxPoint x="2010" y="1005" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="box_c2_audit" value="AUDIT OF SACK READ (Event 1 | Landing Zone §7.2):&#10;• Identity recorded: &#x27;anonymous&#x27; for public reader, or buyer Cognito sub for registered buyer.&#10;• Payload recorded: sack_code, source IP, user agent, timestamp, request ID.&#10;• Tamper-proof storage: 5 years in Security Account under S3 Object Lock compliance mode." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#064e3b;fontSize=11.5;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2690" y="1030" width="680" height="95" as="geometry" />
+</mxCell>
+<mxCell id="c_scen3_boundary" value="3. REVOCATION PROTOCOLS &amp; ENFORCED TIME LIMITS (Section 10 | Target SLA: Complete within 4 hours of report | ASM-098)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;fontColor=#0f172a;fontSize=15;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+  <mxGeometry x="40" y="1320" width="3760" height="1140" as="geometry" />
+</mxCell>
+<mxCell id="ll3_rep_box" value="Reporting Entity&#10;(Farmer / Installer / Co / Support)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#475569;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="45" y="1365" width="190" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll3_rep_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="140" y="1413" as="sourcePoint" />
+    <mxPoint x="140" y="2420" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll3_ops_box" value="Platform Operator&#10;(Reports Web | Fresh TOTP &lt;= 10m)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="550" y="1365" width="200" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll3_ops_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="1413" as="sourcePoint" />
+    <mxPoint x="650" y="2420" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll3_iot_box" value="AWS IoT Core API&#10;(Device Registry | D08, D09)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1155" y="1365" width="190" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll3_iot_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1250" y="1413" as="sourcePoint" />
+    <mxPoint x="1250" y="2420" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll3_cog_box" value="Amazon Cognito IDP API&#10;(User Admin &amp; Sessions | D06)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff1f2;strokeColor=#e11d48;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="1750" y="1365" width="200" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll3_cog_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1850" y="1413" as="sourcePoint" />
+    <mxPoint x="1850" y="2420" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll3_app_box" value="App API &amp; Database&#10;(Scope &amp; revoked_after | D04)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="2355" y="1365" width="190" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll3_app_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2450" y="1413" as="sourcePoint" />
+    <mxPoint x="2450" y="2420" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll3_tgt_box" value="Target Entity / Device&#10;(Node / Drone / Pilot / Phone)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#dc2626;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="2955" y="1365" width="190" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll3_tgt_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="3050" y="1413" as="sourcePoint" />
+    <mxPoint x="3050" y="2420" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="ll3_aud_box" value="CloudTrail &amp; S3 Audit&#10;(Security Account | ASM-067)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+  <mxGeometry x="3555" y="1365" width="190" height="48" as="geometry" />
+</mxCell>
+<mxCell id="ll3_aud_line" value="" style="strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;html=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="3650" y="1413" as="sourcePoint" />
+    <mxPoint x="3650" y="2420" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="box_step3a_hdr" value="SCENARIO 3A: DECOMMISSIONED FARM NODE OR LOST DRONE KIT (Security §10 | Case Statement Point 2 | Hardware Revocation)" style="rounded=0;fillColor=#fee2e2;strokeColor=#ef4444;fontColor=#991b1b;fontSize=11.5;fontStyle=1;align=left;spacing=6;" vertex="1" parent="1">
+  <mxGeometry x="60" y="1430" width="3720" height="26" as="geometry" />
+</mxCell>
+<mxCell id="m301" value="1.1: Incident reported: Farm node stolen/replaced, or Drone lost during flight (Contracted operator reports | ASM-098)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="140" y="1470" as="sourcePoint" />
+    <mxPoint x="650" y="1470" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m302" value="1.2: Operator authenticates with fresh TOTP (auth_time &lt;= 10m); executes Revoke on Operations Screen (Fallback: DeviceRevocation role | §5.3)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="1500" as="sourcePoint" />
+    <mxPoint x="1250" y="1500" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m303" value="1.3: Step 1: iot:UpdateCertificate(certificateId, newStatus=&#x27;REVOKED&#x27;) [Cert preserved revoked for audit trail]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="1525" as="sourcePoint" />
+    <mxPoint x="1250" y="1525" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m304" value="1.4: Step 2: iot:DetachPolicy(policyName, target=certArn) [Revokes all publish/connect rights immediately]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="1550" as="sourcePoint" />
+    <mxPoint x="1250" y="1550" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m305" value="1.5: Step 3: iot:DetachThingPrincipal(thingName, principal=certArn) [Disassociates certificate from device thing]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="1575" as="sourcePoint" />
+    <mxPoint x="1250" y="1575" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m306" value="1.6: Step 4: iot:UpdateThing(thingName, attributes={status: &#x27;decommissioned&#x27;|&#x27;lost&#x27;}) [Silent-node alarm ignores decommissioned node]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="1600" as="sourcePoint" />
+    <mxPoint x="1250" y="1600" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m307" value="1.7: Within minutes of leaving ACTIVE: IoT Core forcefully terminates active MQTT sessions and refuses new TLS handshakes (PD-100)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#dc2626;strokeWidth=1.5;fontSize=11.5;fontColor=#991b1b;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1250" y="1635" as="sourcePoint" />
+    <mxPoint x="3050" y="1635" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m308" value="1.8: Any incoming MQTT publish denied by detached policy; node buffer cannot drain and readings expire locally after 24h (ASM-074)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=1.5;fontSize=11.5;fontColor=#334155;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="3050" y="1665" as="sourcePoint" />
+    <mxPoint x="3250" y="1665" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m309" value="1.9: For lost drone: API refuses upload grants; issued pre-signed S3 URLs expire in 15 min (ASM-093); late uploads quarantined" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#dc2626;strokeWidth=1.5;fontSize=11.5;fontColor=#991b1b;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2450" y="1695" as="sourcePoint" />
+    <mxPoint x="3050" y="1695" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m310" value="1.10: CloudTrail logs all 4 IoT management API calls to central audit archive in Security Account (A08 §7.1)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1250" y="1725" as="sourcePoint" />
+    <mxPoint x="3650" y="1725" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="box_c3a_callout" value="TIME LIMITS &amp; RECOVERY (Scenario 3A):&#10;• SLA Target: Revocation completed within 4 hours of report (ASM-098).&#10;• Disconnection: Active TLS sessions killed within minutes of leaving ACTIVE (PD-100).&#10;• Edge Buffer Expiry: Node buffer expires after 24 hours on device (ASM-074).&#10;• S3 URL Expiry: Drone upload pre-signed URLs expire after 15 minutes (ASM-093).&#10;• Replacement: Replacement node receives new CSR-registered X.509 certificate." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#dc2626;strokeWidth=1.5;fontColor=#7f1d1d;fontSize=11.5;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2650" y="1470" width="720" height="95" as="geometry" />
+</mxCell>
+<mxCell id="box_step3b_hdr" value="SCENARIO 3B: DEPARTING DRONE PILOT OR AGRONOMIST (Security §10 | Staff User Revocation | Zero Token Delay)" style="rounded=0;fillColor=#ede9fe;strokeColor=#8b5cf6;fontColor=#4c1d95;fontSize=11.5;fontStyle=1;align=left;spacing=6;" vertex="1" parent="1">
+  <mxGeometry x="60" y="1765" width="3720" height="26" as="geometry" />
+</mxCell>
+<mxCell id="m311" value="2.1: Contract company reports drone pilot left contract (or Federation reports departing agronomist)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="140" y="1805" as="sourcePoint" />
+    <mxPoint x="650" y="1805" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m312" value="2.2: Operator authenticates with fresh TOTP (auth_time &lt;= 10m); executes Staff Revocation on Operations Screen (Fallback: IdentitySupport | §5.3)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="1835" as="sourcePoint" />
+    <mxPoint x="1850" y="1835" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m313" value="2.3: Step 1: cognito-idp:AdminDisableUser(Username=sub) [User can no longer sign in]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="1860" as="sourcePoint" />
+    <mxPoint x="1850" y="1860" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m314" value="2.4: Step 2: cognito-idp:AdminUserGlobalSignOut(Username=sub) [Revokes all active refresh tokens immediately]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="1885" as="sourcePoint" />
+    <mxPoint x="1850" y="1885" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m315" value="2.5: Step 3: cognito-idp:AdminRemoveUserFromGroup(GroupName=&#x27;drone_operator&#x27;|&#x27;agronomist&#x27;)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="1910" as="sourcePoint" />
+    <mxPoint x="1850" y="1910" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m316" value="2.6: Step 4: Application sets revoked_after = NOW() in database; unassigns pilot from pending orders (orders need new authorization)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="1935" as="sourcePoint" />
+    <mxPoint x="2450" y="1935" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m317" value="2.7: IMMEDIATE ENFORCEMENT (0 min): API checks token auth_time &lt; revoked_after; denies ANY request immediately without waiting for 60m expiry!" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#dc2626;strokeWidth=1.5;fontSize=11.5;fontColor=#991b1b;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2450" y="1970" as="sourcePoint" />
+    <mxPoint x="3050" y="1970" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m318" value="2.8: CloudTrail logs Cognito admin calls; application audit records incident reference, requester, and reason (A08 §7)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="1850" y="2000" as="sourcePoint" />
+    <mxPoint x="3650" y="2000" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="box_c3b_callout" value="IMMEDIATE REVOCATION ENFORCEMENT (§3.3, §10):&#10;• Zero Token Wait: Token revoked_after comparison terminates access in 0 minutes.&#10;  Does NOT wait for standard 60-minute access token expiration!&#10;• Identity Preserved: User account is disabled, NOT deleted, so historical flight orders&#10;  and fumigation authorizations preserve a valid operator_id for auditability." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#7c3aed;strokeWidth=1.5;fontColor=#4c1d95;fontSize=11.5;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2650" y="1805" width="720" height="90" as="geometry" />
+</mxCell>
+<mxCell id="box_step3c_hdr" value="SCENARIO 3C: LOST PHONE OF FARMER OR TRANSPORTER (Security §10 | Field User &amp; Device Installation Revocation)" style="rounded=0;fillColor=#e0f2fe;strokeColor=#38bdf8;fontColor=#0369a1;fontSize=11.5;fontStyle=1;align=left;spacing=6;" vertex="1" parent="1">
+  <mxGeometry x="60" y="2040" width="3720" height="26" as="geometry" />
+</mxCell>
+<mxCell id="m319" value="3.1: Farmer or transporter reports lost phone to Collection Center or Federation support telephone line" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="140" y="2080" as="sourcePoint" />
+    <mxPoint x="650" y="2080" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m320" value="3.2: Operator authenticates with fresh TOTP; executes Mobile Device Revocation on Operations Screen" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="2110" as="sourcePoint" />
+    <mxPoint x="1850" y="2110" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m321" value="3.3: Step 1: cognito-idp:AdminUserGlobalSignOut(Username=sub) [Invalidates active 30-day refresh token]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="2135" as="sourcePoint" />
+    <mxPoint x="1850" y="2135" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m322" value="3.4: Step 2: Application marks installation device_id as REVOKED in database [Blocks any pending outbox uploads]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="2160" as="sourcePoint" />
+    <mxPoint x="2450" y="2160" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m323" value="3.5: Step 3: cognito-idp:AdminDisableUser(Username=sub) [Prevents attacker who stole SIM from receiving SMS OTP code]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="2185" as="sourcePoint" />
+    <mxPoint x="1850" y="2185" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m324" value="3.6: IMMEDIATE EFFECT: Any incoming API request carrying revoked device_id is rejected; outbox events on lost phone never enter platform" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#dc2626;strokeWidth=1.5;fontSize=11.5;fontColor=#991b1b;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2450" y="2215" as="sourcePoint" />
+    <mxPoint x="3050" y="2215" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m325" value="3.7: In-Person Re-Enrollment: User presents in person at Collection Center; identity verified; phone number updated; new device registered" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="140" y="2255" as="sourcePoint" />
+    <mxPoint x="650" y="2255" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m326" value="3.8: Operator calls cognito-idp:AdminEnableUser; updates phone attribute; user signs in on new phone via SMS OTP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="2285" as="sourcePoint" />
+    <mxPoint x="1850" y="2285" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m327" value="3.9: (Note for Staff Phone Loss): Follows same procedure + AdminSetUserMFAPreference resets software token, re-associated at next sign-in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=1.5;fontSize=11.5;fontColor=#334155;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="650" y="2315" as="sourcePoint" />
+    <mxPoint x="1850" y="2315" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="m328" value="3.10: Audit trail records complete lifecycle: loss report, device_id revocation, in-person re-enrollment, and token reset" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=11.5;fontColor=#1e3a8a;align=center;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="2450" y="2345" as="sourcePoint" />
+    <mxPoint x="3650" y="2345" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="box_c3c_callout" value="FIELD PHONE LOSS &amp; SIM HIJACK PROTECTION (§10):&#10;• Immediate device_id Revocation: Outbox queue on lost phone is permanently rejected.&#10;• AdminDisableUser: Critical protection against SIM swap or thief intercepting SMS OTP.&#10;• In-Person Re-Enrollment: User MUST verify identity in person at Collection Center&#10;  before account is re-enabled on a replacement smartphone." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f9ff;strokeColor=#0284c7;strokeWidth=1.5;fontColor=#0c4a6e;fontSize=11.5;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+  <mxGeometry x="2650" y="2080" width="720" height="95" as="geometry" />
+</mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
