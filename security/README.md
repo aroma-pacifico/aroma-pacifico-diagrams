@@ -23,9 +23,9 @@ security/
 
 The architecture diagram illustrates the end-to-end identity and access boundary of the Aroma Pacífico platform across its five functional tiers:
 1. **Kinds of Identity (Actors)**: Covers workforce administrators, staff application operators, field users, anonymous and registered coffee buyers, edge IoT devices, and automated CI/CD deployment pipelines.
-2. **Directories & Registries**: Models identity stores including centralized workforce federation in AWS IAM Identity Center (D06), dual Amazon Cognito user pools (`staff` and `field`, D06), AWS IoT Core device registry for farm node certificates (D08), and GitHub OIDC trust.
+2. **Directories & Registries**: Models identity stores including centralized workforce directory in AWS IAM Identity Center (D06), dual Amazon Cognito user pools (`staff` and `field`, D06), AWS IoT Core device registry for farm node certificates (D08), and GitHub OIDC trust.
 3. **Entry Points & Front Doors**: Outlines unauthenticated and authenticated perimeters including the AWS Management Console/SSO portal, Amazon API Gateway custom domain with Cognito JWT authorizer, Amazon CloudFront with AWS WAF rate limiting for public sack lookups, and AWS IoT Core MQTT TLS endpoint on port 8883.
-4. **Processing & Execution Roles**: Delineates least-privilege Lambda and service roles, dynamic database profile scope evaluation (enforcing immediate 0-minute updates), telemetry ingestion in the IoT rules engine (D09), and strict separation of duties between agricultural engineers (who authorize fumigation) and drone pilots (who execute flights).
+4. **Processing & Execution Roles**: Delineates least-privilege Lambda and service roles, dynamic database profile scope evaluation (enforcing immediate profile scoping), telemetry ingestion in the IoT rules engine (D09), and strict separation of duties between agricultural engineers (who authorize fumigation) and drone pilots (who execute flights).
 5. **KMS CMK Protection & Protected Stores**: Displays the eight customer-managed keys (CMKs) within the workload environment and their protected datastores (including the S3 state bucket and `state` key badged D02), as well as cross-account keys for the central audit archive and management budget notifications.
 
 ### Source Documents and Sections
@@ -52,13 +52,13 @@ In accordance with `docs/architecture.md` section 14, components are badged only
 
 | Identity Kind | Directory | Entry Point | Authentication & MFA | Session / Token Lifetimes |
 |---|---|---|---|---|
-| **Workforce** | AWS IAM Identity Center (D06) | AWS Console / CLI / SSO Portal | Enterprise IdP (SAML 2.0) + Mandatory MFA | `PlatformReadOnly`/`Auditor`: 4h; `DeviceRevocation`/`IdentitySupport`/`BreakGlass`: 1h (§5.3) |
+| **Workforce** | AWS IAM Identity Center (D06) | AWS Console / CLI / SSO Portal | Mandatory MFA on every sign-in (§5.3) | `PlatformReadOnly`/`Auditor`: 4h; `DeviceRevocation`/`IdentitySupport`/`BreakGlass`: 1h (§5.3) |
 | **Staff Users** | Cognito User Pool: `staff` (D06) | Amazon API Gateway | Username + Password + Mandatory TOTP MFA | Access/ID: 30 min, Refresh: 12 h (Step-up: $\le$ 10 min) |
 | **Field Users** | Cognito User Pool: `field` (D06) | Amazon API Gateway | Passwordless SMS OTP (No MFA, justified ASM-091) | Access/ID: 60 min, Refresh: 30 days |
 | **Registered Buyers** | Cognito User Pool: `field` (D06) | Amazon API Gateway | Passwordless Email OTP (No MFA, read-only) | Access/ID: 60 min, Refresh: 1 day |
 | **Public Buyers** | None (Unauthenticated) | CloudFront + AWS WAF | Anonymous HTTPS GET `/s/{sack_code}` | None (WAF rate limit $\le$ 100 req/5 min) |
 | **IoT Devices** | AWS IoT Core Registry (D08) | AWS IoT Core MQTT | X.509 client certificate (mTLS, port 8883) | Revocation takes effect within minutes of leaving ACTIVE |
-| **CI/CD Pipelines** | GitHub OIDC Provider | AWS STS OIDC Endpoint | Federated OIDC Web Identity Token | Ephemeral STS session: max 1h |
+| **CI/CD Pipelines** | GitHub OIDC Provider | AWS STS OIDC Endpoint | Federated OIDC Web Identity Token | Short-lived role credentials (§3.4, ADR-003) |
 
 ### KMS Customer-Managed Keys (CMKs) Protection
 
@@ -114,8 +114,8 @@ The sequence diagram details the three core operational authentication and revoc
 | **Step-Up Authentication** | $\le$ 10 minutes max | ASM-092 | Operations requiring step-up reject tokens where `now - auth_time > 10 min`. |
 | **Staff Token Lifetimes** | Access/ID: 30m, Refresh: 12h | ASM-092 | Enforced by Cognito `staff` user pool settings. |
 | **Field Token Lifetimes** | Access/ID: 60m, Refresh: 30d | ASM-092 | Enforced by Cognito `field` user pool settings (Buyer refresh: 1 day). |
-| **Token Invalidation** | Immediate (0 min) | ASM-098 | `AdminUserGlobalSignOut` revokes refresh tokens; `revoked_after` checks reject active access tokens. |
-| **Public Lookup Rate Limit** | $\le$ 100 req / 5 min per IP | ASM-155 | AWS WAF rate-based rule blocks abusive source IPs with HTTP 429. |
+| **Token Invalidation** | Immediate | docs/security-and-identity.md §10 | `AdminUserGlobalSignOut` revokes refresh tokens; active access tokens refused at once through database `revoked_after` check (§10). |
+| **Public Lookup Rate Limit** | $\le$ 100 req / 5 min per IP | ASM-155 | AWS WAF rate-based rule blocks requests from source IPs exceeding rate budget (ASM-155, sack-and-trip.md §7.3). |
 | **Personal Data Retention** | 5 years | ASM-098 | Personal data table TTL clock keyed by pseudonymous `subject_id`. |
 
 ---
