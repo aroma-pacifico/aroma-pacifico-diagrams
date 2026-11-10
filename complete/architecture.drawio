@@ -1,4 +1,3 @@
-<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" version="32.4.1" type="device">
   <diagram id="runtime" name="Complete architecture">
     <mxGraphModel dx="2970" dy="2500" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="2970" pageHeight="2500" math="0" shadow="0">
@@ -57,7 +56,7 @@
           <mxGeometry x="1475" y="483" width="48" height="25" as="geometry" />
         </mxCell>
         <mxCell id="center_note" value="Farm telemetry and transporter positions bypass center LAN; ground station uses VLAN 102 -&gt; IPsec -&gt; hub -&gt; transit." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef5fb;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=15;align=center;verticalAlign=middle;spacing=6;" parent="1" vertex="1">
-          <mxGeometry x="785" y="655" width="490" height="75" as="geometry" />
+          <mxGeometry x="785" y="655" width="440" height="75" as="geometry" />
         </mxCell>
         <mxCell id="operator" value="CONTRACTED DRONE OPERATION | area + focus contract" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=21;fontStyle=1;align=left;verticalAlign=top;spacingLeft=40;spacingTop=20;" parent="1" vertex="1">
           <mxGeometry x="1570" y="155" width="760" height="590" as="geometry" />
@@ -189,7 +188,7 @@
           <mxGeometry x="1445" y="1025" width="175" height="130" as="geometry" />
         </mxCell>
         <mxCell id="s3" value="Amazon S3&#10;Encrypted drone objects" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
-          <mxGeometry x="1780" y="1005" width="115" height="105" as="geometry" />
+          <mxGeometry x="1800" y="1005" width="115" height="105" as="geometry" />
         </mxCell>
         <mxCell id="tier_admin" value="administration&#10;10.82.96.0/20 (Private)&#10;KMS &amp; Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;fontColor=#1e3a8a;fontSize=15;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" parent="1" vertex="1">
           <mxGeometry x="1940" y="940" width="210" height="235" as="geometry" />
@@ -371,13 +370,13 @@
         <mxCell id="edge_farm_net" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;" parent="1" source="farmbuf" target="farmnet" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_farm_offline" value="No signal: buffer locally" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.1;exitY=1;exitPerimeter=1;entryX=0.03;entryY=0;entryPerimeter=1;" parent="1" source="farmnodes" target="farmoffline" edge="1">
+        <mxCell id="edge_farm_offline" value="No signal: buffer locally" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.25;exitY=1;exitPerimeter=1;entryX=0.1;entryY=0;entryPerimeter=1;" parent="1" source="farmnodes" target="farmoffline" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="100" y="395" />
-              <mxPoint x="100" y="650" />
+              <mxPoint x="140" y="395" />
+              <mxPoint x="140" y="650" />
             </Array>
-          </mxGeometry>
+          <mxPoint as="offset" x="85" y="0" /></mxGeometry>
         </mxCell>
         <mxCell id="edge_farm_iot" value="MQTT / TLS 8883 (telemetry)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="farmnet" target="iot" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -385,7 +384,7 @@
         </mxCell>
         <mxCell id="edge_iot_ddb" value="Topic rule writes telemetry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.5;exitPerimeter=1;entryX=1;entryY=0.5;entryPerimeter=1;" parent="1" source="iot" target="teleddb" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="2430" y="1307" /><mxPoint x="2430" y="1587" /></Array><mxPoint as="offset" x="0" y="0" /></mxGeometry>
+            <Array as="points"><mxPoint x="2430" y="1307" /><mxPoint x="2430" y="1587" /></Array><mxPoint as="offset" x="-110" y="0" /></mxGeometry>
         </mxCell>
         <mxCell id="edge_iot_thresh" value="SQS trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0;exitY=0.5;exitPerimeter=1;entryX=1;entryY=0.5;entryPerimeter=1;" parent="1" source="iot" target="threshold" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -409,7 +408,7 @@
         </mxCell>
         <mxCell id="edge_hub_transit" value="TGW route (10.40.0.0/13)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.64;entryY=0;entryPerimeter=1;" parent="1" source="hub" target="tier_transit" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1425" y="720" /><mxPoint x="1080" y="720" /></Array><mxPoint as="offset" x="80" y="0" /></mxGeometry>
+            <Array as="points"><mxPoint x="1425" y="720" /><mxPoint x="1080" y="720" /></Array><mxPoint as="offset" x="165" y="0" /></mxGeometry>
         </mxCell>
         <mxCell id="edge_transit_app" value="CC-DRN-01 (grant, TCP 443)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=13;labelBackgroundColor=#ffffff;spacing=4;exitX=0.41;exitY=1;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="tier_transit" target="app_ep" edge="1">
           <mxGeometry relative="1" as="geometry"><mxPoint as="offset" x="80" y="-24" /></mxGeometry>
@@ -419,19 +418,19 @@
             <Array as="points"><mxPoint x="1104" y="915" /><mxPoint x="1415" y="915" /><mxPoint x="1415" y="1058" /></Array><mxPoint as="offset" x="-90" y="0" /></mxGeometry>
         </mxCell>
         <mxCell id="edge_obj_s3" value="SSE-KMS multipart" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=13;labelBackgroundColor=#ffffff;spacing=3;exitX=1;exitY=0.25;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="s3ep" target="s3" edge="1">
-          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" x="-8" y="0" /></mxGeometry>
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" x="15" y="-14" /></mxGeometry>
         </mxCell>
         <mxCell id="edge_s3_rec" value="S3 event (PutObject)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0;exitY=0.9;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="s3" target="reception" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="1740" y="1100" /><mxPoint x="1740" y="1175" /><mxPoint x="1267" y="1175" /></Array><mxPoint as="offset" x="0" y="14" /></mxGeometry>
         </mxCell>
         <mxCell id="edge_rec_eb" value="Mission link" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0;exitY=0.7;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="reception" target="eventbridge" edge="1">
-          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1140" y="1328" /><mxPoint x="1140" y="1587" /></Array><mxPoint as="offset" x="0" y="0" /></mxGeometry>
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1140" y="1328" /><mxPoint x="1140" y="1587" /></Array><mxPoint as="offset" x="-55" y="0" /></mxGeometry>
         </mxCell>
         <mxCell id="edge_eb_sqs" value="Per-function queue" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="eventbridge" target="sqs" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_sqs_vision" value="Inference prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=13;labelBackgroundColor=#ffffff;spacing=4;exitX=0.25;exitY=0;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="sqs" target="vision" edge="1">
+        <mxCell id="edge_sqs_vision" value="Inference prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=13;labelBackgroundColor=#ffffff;spacing=4;exitX=0.25;exitY=0;exitPerimeter=1;entryX=0.22;entryY=0.5;entryPerimeter=1;" parent="1" source="sqs" target="vision" edge="1">
           <mxGeometry relative="1" as="geometry"><mxPoint as="offset" x="58" y="0" /><Array as="points"><mxPoint x="1554" y="1455" /><mxPoint x="1440" y="1455" /><mxPoint x="1440" y="1307" /></Array></mxGeometry>
         </mxCell>
         <mxCell id="edge_vision_records" value="Persist result" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="vision" target="records" edge="1">
@@ -453,7 +452,7 @@
         </mxCell>
         <mxCell id="edge_casefn_records" value="DynamoDB read/write" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.6;exitY=1;exitPerimeter=1;entryX=1;entryY=0.5;entryPerimeter=1;" parent="1" source="casefn" target="records" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="2780" y="1725" /><mxPoint x="2020" y="1725" /><mxPoint x="2020" y="1587" /></Array><mxPoint as="offset" x="115" y="-380" />
+            <Array as="points"><mxPoint x="2780" y="1725" /><mxPoint x="2020" y="1725" /><mxPoint x="2020" y="1587" /></Array><mxPoint as="offset" x="80" y="-380" />
           </mxGeometry>
         </mxCell>
       <mxCell id="iac_panel_title" value="IAC &amp; AUTOMATION | Track B plan-only implementation" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#0f172a;" parent="1" vertex="1"><mxGeometry x="160" y="1035" width="600" height="30" as="geometry" /></mxCell><mxCell id="tier_obj_title" value="object_storage&#10;10.82.80.0/20 (Private)" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#1e3a8a;whiteSpace=wrap;" parent="1" vertex="1"><mxGeometry x="1435" y="945" width="220" height="38" as="geometry" /></mxCell></root>
