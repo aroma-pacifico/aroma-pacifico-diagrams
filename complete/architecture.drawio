@@ -450,9 +450,9 @@
             <mxPoint as="offset" x="-45" y="-18" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge_casefn_records" value="DynamoDB read/write" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.6;exitY=1;exitPerimeter=1;entryX=1;entryY=0.5;entryPerimeter=1;" parent="1" source="casefn" target="records" edge="1">
+        <mxCell id="edge_casefn_records" value="DynamoDB read/write" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.5;exitPerimeter=1;entryX=1;entryY=0.5;entryPerimeter=1;" parent="1" source="casefn" target="records" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="2780" y="1725" /><mxPoint x="2020" y="1725" /><mxPoint x="2020" y="1587" /></Array><mxPoint as="offset" x="60" y="-380" />
+            <Array as="points"><mxPoint x="2850" y="1062" /><mxPoint x="2850" y="1725" /><mxPoint x="2020" y="1725" /><mxPoint x="2020" y="1587" /></Array><mxPoint as="offset" x="60" y="-380" />
           </mxGeometry>
         </mxCell>
       <mxCell id="iac_panel_title" value="IAC &amp; AUTOMATION | Track B plan-only implementation" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#0f172a;" parent="1" vertex="1"><mxGeometry x="160" y="1035" width="600" height="30" as="geometry" /></mxCell><mxCell id="tier_obj_title" value="object_storage&#10;10.82.80.0/20 (Private)" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#1e3a8a;whiteSpace=wrap;" parent="1" vertex="1"><mxGeometry x="1435" y="945" width="220" height="38" as="geometry" /></mxCell></root>
