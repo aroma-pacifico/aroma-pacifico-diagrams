@@ -1,6 +1,6 @@
 # Complete Architecture Diagram
 
-`architecture.drawio` is the editable, uncompressed source. Page 1, **Complete architecture**, shows runtime paths and trust boundaries. Page 2, **IaC traceability**, maps Track B to boxes D01 through D13 and shows the reviewable plan pipeline. The SVG files are publication exports; the PNG files are 2400-pixel previews.
+`architecture.drawio` is the editable, uncompressed source. Page 1, **Complete architecture**, shows runtime paths, trust boundaries, D01-D13 badges on runtime and IaC components, and labelled flow arrows. Page 2, **IaC traceability**, maps Track B to boxes D01 through D13 and shows the reviewable plan pipeline. The SVG files are publication exports; the PNG files are 2400-pixel previews.
 
 The source architecture documents and ADRs were read from `origin/main` of `aroma-pacifico-architecture` at revision `0140564f1b4d9a8378db3d4d0f59e9d1934e6c18`. Requirements were checked against `docs/case/case-statement.pdf` in that repository. Draw.io CLI 32.4.1 rendered both pages and the updated A13 diagrams. This CLI uses one-based page indexing, so page 2 was exported with `-p 2`.
 
@@ -52,7 +52,7 @@ Solid arrows show ordered business or data progression. Orange dashed arrows sho
 
 ## Architecture Notes
 
-The runtime page includes AWS `dev`, `qa` and `pdn` environments in `us-east-1`, their VPC CIDRs and tiers, the three collection-center ranges, firewall policy references, the separate public farm and transporter paths, the center VPN path, the private drone upload path, and the municipal-seat public S3 path. It also shows the buyer's limited sack view, five-year retention, encrypted store-and-forward, and the AWS organization and shared security/network accounts. Azure is a prepared, undeployed export target under ADR-001; the diagram adds no Azure account or cross-cloud link.
+The runtime page includes AWS `dev`, `qa` and `pdn` environments in `us-east-1`, with the production VPC nested inside the production account boundary (`pdn`), their VPC CIDRs and tiers, the three collection-center ranges, firewall policy references, the separate public farm and transporter paths, the center VPN path, the private drone upload path via `application` and `object_storage` endpoints (with `drone_object_ingress` reserved under ASM-140 and CC-DRN-02), and the municipal-seat public S3 path. It also shows the buyer's limited sack view, five-year retention, encrypted store-and-forward, and the AWS organization and shared security/network accounts. Azure is represented as a prepared, undeployed export target under ADR-001 (`10.88.0.0/13`); the diagram adds no Azure account or cross-cloud link. All runtime flows are drawn as labelled directional arrows.
 
 The legacy note records what the update retains from 2020 (farm telemetry, alerts and sack traceability) and retires (assumed farm coverage, direct device-to-ingestion publishing and mobile-generation dependence). Vessel tracking remains out of scope.
 
