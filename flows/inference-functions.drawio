@@ -26,43 +26,43 @@
           <mxGeometry x="40" y="160" width="460" height="1430" as="geometry" />
         </mxCell>
 
-        <mxCell id="card_drone_source" value="Contracted Drone Operator Ground Station (ASM-140)&#10;• Ingress: Support VLAN 102 (10.4x.2.10) to private S3 endpoints&#10;• Flights: Confirmation, Verification, Estimation missions&#10;• Pre-Upload Screen: On-device detector screens all frames (ASM-164)&#10;• Uploads: Flight record, manifest, and raw imagery to S3&#10;• Reception Function (A15): Validates checksums and links objects" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=top;spacing=8;spacingLeft=22;spacingTop=10;spacingRight=60;" vertex="1" parent="1">
-          <mxGeometry x="55" y="210" width="430" height="125" as="geometry" />
+        <mxCell id="card_drone_source" value="Contracted Drone Operator Ground Station (ASM-140)&#10;• Ingress: Support VLAN 102 (10.4x.2.10) to private S3 endpoints&#10;• Flights: Confirmation, Verification, Estimation missions&#10;• Pre-Upload Screen: On-device detector screens all frames (ASM-164)&#10;• Uploads: Flight record, manifest, and raw imagery to S3&#10;• Reception Function (A15): Validates checksums and links objects" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=top;spacing=6;spacingLeft=22;spacingTop=10;spacingRight=45;" vertex="1" parent="1">
+          <mxGeometry x="55" y="210" width="430" height="145" as="geometry" />
         </mxCell>
         <mxCell id="icon_drone_source" value="Reception" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="1">
           <mxGeometry x="435" y="218" width="40" height="40" as="geometry" />
         </mxCell>
 
-        <mxCell id="card_dynamo_missions" value="Amazon DynamoDB: missions Table (ASM-149)&#10;• Reception writes record_persisted in atomic transaction&#10;• DynamoDB Stream captures mission status change (single reader)&#10;• Stream Payload: Identifiers only (mission_id, farm_id, case_id)&#10;• Zero raw imagery or personal data in event stream" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=top;spacing=8;spacingLeft=22;spacingTop=10;spacingRight=60;" vertex="1" parent="1">
-          <mxGeometry x="55" y="350" width="430" height="115" as="geometry" />
+        <mxCell id="card_dynamo_missions" value="Amazon DynamoDB: missions Table (ASM-149)&#10;• Reception writes record_persisted in atomic transaction&#10;• DynamoDB Stream captures mission status change (single reader)&#10;• Stream Payload: Identifiers only (mission_id, farm_id, case_id)&#10;• Zero raw imagery or personal data in event stream" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=top;spacing=6;spacingLeft=22;spacingTop=10;spacingRight=45;" vertex="1" parent="1">
+          <mxGeometry x="55" y="390" width="430" height="135" as="geometry" />
         </mxCell>
         <mxCell id="icon_dynamo_missions" value="Missions" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#2E27AD;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;" vertex="1" parent="1">
-          <mxGeometry x="435" y="358" width="40" height="40" as="geometry" />
+          <mxGeometry x="435" y="398" width="40" height="40" as="geometry" />
         </mxCell>
 
         <mxCell id="card_eb_pipe" value="Amazon EventBridge Pipe (ASM-161)&#10;• Reads DynamoDB Stream from missions table&#10;• Filter pattern: status = record_persisted&#10;• Upstream Pipe DLQ: SQS &lt;prefix&gt;-pdn-sqs-pipedlq&#10;• Target: Custom EventBus drone-service" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=top;spacing=8;spacingLeft=22;spacingTop=10;spacingRight=60;" vertex="1" parent="1">
-          <mxGeometry x="55" y="480" width="430" height="105" as="geometry" />
+          <mxGeometry x="55" y="560" width="430" height="110" as="geometry" />
         </mxCell>
         <mxCell id="icon_eb_pipe" value="Pipes" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.eventbridge_pipes;" vertex="1" parent="1">
-          <mxGeometry x="435" y="488" width="40" height="40" as="geometry" />
+          <mxGeometry x="435" y="568" width="40" height="40" as="geometry" />
         </mxCell>
 
         <mxCell id="card_eb_bus" value="Custom EventBridge Bus: drone-service&#10;• Decoupled event distribution for drone mission lifecycle&#10;• Event Detail-Type: mission_record_persisted&#10;• Subscribers: A21 observability and future platform consumers" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=top;spacing=8;spacingLeft=22;spacingTop=10;spacingRight=60;" vertex="1" parent="1">
-          <mxGeometry x="55" y="600" width="430" height="95" as="geometry" />
+          <mxGeometry x="55" y="705" width="430" height="105" as="geometry" />
         </mxCell>
         <mxCell id="icon_eb_bus" value="EventBus" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.eventbridge;" vertex="1" parent="1">
-          <mxGeometry x="435" y="608" width="40" height="40" as="geometry" />
+          <mxGeometry x="435" y="713" width="40" height="40" as="geometry" />
         </mxCell>
 
         <mxCell id="card_eb_rules" value="EventBridge Routing Rules (One Per Mission Type | ASM-161)&#10;&#10;1. Rule: rule-inf-confirmation&#10;   • Pattern: mission_type = confirmation&#10;   • Target: SQS Confirmation Queue (retry 2x, target DLQ)&#10;&#10;2. Rule: rule-inf-verification&#10;   • Pattern: mission_type = verification&#10;   • Target: SQS Verification Queue (retry 2x, target DLQ)&#10;&#10;3. Rule: rule-inf-estimation&#10;   • Pattern: mission_type = estimation&#10;   • Target: SQS Estimation Queue (retry 2x, target DLQ)" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=top;spacing=8;spacingLeft=22;spacingTop=10;" vertex="1" parent="1">
-          <mxGeometry x="55" y="710" width="430" height="215" as="geometry" />
+          <mxGeometry x="55" y="845" width="430" height="215" as="geometry" />
         </mxCell>
 
-        <mxCell id="card_telemetry_trigger" value="TRIGGER 4: TELEMETRY BATCH INGESTION (ADR-003, Section 3 | D09)&#10;&#10;Field IoT Nodes (200 Pilot Farms x 2 Nodes | ASM-070)&#10;• Soil &amp; drying sensors; encrypted 24h buffer during outages (ASM-074)&#10;• MQTT over mTLS 1.2+ with per-node X.509 client certificate&#10;&#10;AWS IoT Core Regional Ingestion Endpoint (us-east-1 | D09)&#10;• Topic: aroma/telemetry/v1/farms/{farm_id}/nodes/{node_id}/readings&#10;• Zero private cloud IPs consumed (identity-based ingestion | ASM-032)&#10;• Peak harvest load: 3,600 readings/day (scales to 18,000/day at 1,000 farms)&#10;&#10;Dual Parallel Topic Rule Actions (PD-112)&#10;• Action 1 (DynamoDB PutItem):&#10;   - Direct write of reading to DynamoDB telemetry table&#10;   - Primary key: node_id (PK), reading_timestamp (SK) | KMS: telemetry&#10;• Action 2 (SQS SendMessage):&#10;   - Forwards reading key and payload to SQS Threshold Queue&#10;   - Decoupled ingestion; function reads stored reading with strongly&#10;     consistent GetItem from DynamoDB&#10;• Error Action (SQS SendMessage):&#10;   - If Action 1 or 2 fails, payload routed to &lt;prefix&gt;-pdn-sqs-ioterror&#10;   - Monitored by Alarm: &lt;prefix&gt;-pdn-alarm-infthresholdstore" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=top;spacing=8;spacingLeft=22;spacingTop=10;spacingRight=60;" vertex="1" parent="1">
-          <mxGeometry x="55" y="940" width="430" height="630" as="geometry" />
+        <mxCell id="card_telemetry_trigger" value="TRIGGER 4: TELEMETRY BATCH INGESTION (ADR-003, Section 3 | D09)&#10;&#10;Field IoT Nodes (200 Pilot Farms x 2 Nodes | ASM-070)&#10;• Soil &amp; drying sensors; encrypted 24h buffer during outages (ASM-074)&#10;• MQTT over mTLS 1.2+ with per-node X.509 client certificate&#10;&#10;AWS IoT Core Regional Ingestion Endpoint (us-east-1 | D09)&#10;• Topic: aroma/telemetry/v1/farms/{farm_id}/nodes/{node_id}/readings&#10;• Zero private cloud IPs consumed (identity-based ingestion | ASM-032)&#10;• Peak harvest load: 3,600 readings/day (scales to 18,000/day at 1,000 farms)&#10;&#10;Dual Parallel Topic Rule Actions (PD-112)&#10;• Action 1 (DynamoDB PutItem):&#10;   - Direct write of reading to DynamoDB telemetry table&#10;   - Primary key: node_id (PK), reading_timestamp (SK) | KMS: telemetry&#10;• Action 2 (SQS SendMessage):&#10;   - Forwards reading key and payload to SQS Threshold Queue&#10;   - Decoupled ingestion; function reads stored reading with strongly&#10;     consistent GetItem from DynamoDB&#10;• Error Action (SQS SendMessage):&#10;   - If Action 1 or 2 fails, payload routed to &lt;prefix&gt;-pdn-sqs-ioterror&#10;   - Monitored by Alarm: &lt;prefix&gt;-pdn-alarm-infthresholdstore" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=top;spacing=6;spacingLeft=22;spacingTop=10;spacingRight=45;" vertex="1" parent="1">
+          <mxGeometry x="55" y="1085" width="430" height="485" as="geometry" />
         </mxCell>
         <mxCell id="icon_iot_core" value="IoT Core" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.iot_core;" vertex="1" parent="1">
-          <mxGeometry x="435" y="948" width="40" height="40" as="geometry" />
+          <mxGeometry x="435" y="1093" width="40" height="40" as="geometry" />
         </mxCell>
 
         <mxCell id="col2_container" value="SQS BUFFERING &amp; RETRIES (Section 6.1)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=14;fontStyle=1;align=left;verticalAlign=top;spacingLeft=25;spacingTop=10;" vertex="1" parent="1">
@@ -177,14 +177,14 @@
         </mxCell>
 
         <mxCell id="card_obs_signals" value="ERROR OBSERVATION ARCHITECTURE (Section 7)&#10;&#10;State Invariance &amp; Reliability Contract:&#10;If invocation fails, the source object remains permanent and&#10;the case state does not change. The design defines retries,&#10;dead-letter queues, and centralized error observation.&#10;&#10;Observation Principles:&#10;• Dual Observation Locus: The observation point is the&#10;  function DLQ TOGETHER WITH missions reaching&#10;  record_persisted without a result (catches upstream drops).&#10;• Immediate Alarm on First Failure: Alarms trigger on&#10;  ApproximateNumberOfMessagesVisible &gt; 0 (14-day limit).&#10;• Decoupled Operational Surface: Feeds A21 dashboard.&#10;• Structured JSON Logging: CloudWatch Logs under KMS logs;&#10;  records event_id, outcome, result_id, model ID, error class&#10;  (zero personal data, zero image payloads)." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=top;spacing=8;spacingLeft=22;spacingTop=10;spacingRight=65;" vertex="1" parent="1">
-          <mxGeometry x="2375" y="210" width="370" height="390" as="geometry" />
+          <mxGeometry x="2375" y="210" width="370" height="480" as="geometry" />
         </mxCell>
         <mxCell id="icon_obs_signals" value="Observation" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_2;" vertex="1" parent="1">
           <mxGeometry x="2670" y="218" width="40" height="40" as="geometry" />
         </mxCell>
 
         <mxCell id="card_alarms" value="PROPOSED CLOUDWATCH ALARMS FOR A21 (PC-IAC-003)&#10;&#10;1. Dead-Letter Queue Depth (MessagesVisible &gt; 0):&#10;   • &lt;prefix&gt;-pdn-alarm-infconfirmdlq (Confirmation DLQ depth &gt; 0)&#10;   • &lt;prefix&gt;-pdn-alarm-infverifydlq (Verification DLQ depth &gt; 0)&#10;   • &lt;prefix&gt;-pdn-alarm-infestimatedlq (Estimation DLQ depth &gt; 0)&#10;   • &lt;prefix&gt;-pdn-alarm-infthresholddlq (Threshold DLQ depth &gt; 0)&#10;&#10;2. Upstream Event Ingestion &amp; Routing Drop:&#10;   • &lt;prefix&gt;-pdn-alarm-infroutedlq&#10;   Monitors EventBridge Pipe DLQ, Rule Target DLQs,&#10;   and FailedInvocations metric.&#10;&#10;3. Oldest Message Age (Queue Processing Lag):&#10;   • &lt;prefix&gt;-pdn-alarm-inf{confirm,verify,estimate,threshold}age&#10;   Monitors ApproximateAgeOfOldestMessage on primary queues.&#10;&#10;4. Invocations Failed Without State Change (State Invariance):&#10;   • &lt;prefix&gt;-pdn-alarm-inffailed&#10;   Custom metric: InferenceFailed in AromaPacifico/Inference.&#10;&#10;5. Missions Awaiting Result (Pipeline Disconnect):&#10;   • &lt;prefix&gt;-pdn-alarm-infawaiting&#10;   Custom metric: MissionsAwaitingResult (&gt; timeout threshold).&#10;&#10;6. Reading Not Persisted Before Evaluation:&#10;   • &lt;prefix&gt;-pdn-alarm-infthresholdstore&#10;   Custom metric: ReadingNotPersisted &amp; IoT error queue depth.&#10;&#10;7. Bedrock Model Throttling &amp; Quotas:&#10;   • &lt;prefix&gt;-pdn-alarm-infthrottle&#10;   Monitors AWS/Bedrock throttles &amp; metric InferenceThrottled.&#10;&#10;8. Person Detected in Crop Object (Privacy Incident):&#10;   • &lt;prefix&gt;-pdn-alarm-infperson&#10;   Custom metric: ModelPersonDetected &gt; 0 (operator incident)." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=top;spacing=8;spacingLeft=22;spacingTop=10;" vertex="1" parent="1">
-          <mxGeometry x="2375" y="620" width="370" height="950" as="geometry" />
+          <mxGeometry x="2375" y="710" width="370" height="860" as="geometry" />
         </mxCell>
 
         <mxCell id="panel_sovereignty" value="DATA SOVEREIGNTY: WHAT LEAVES COLOMBIA (Section 8.2 | PD-013, ASM-002)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=15;fontStyle=1;align=left;verticalAlign=top;spacingLeft=25;spacingTop=10;" vertex="1" parent="1">
@@ -403,26 +403,26 @@
           <mxGeometry x="2055" y="2035" width="690" height="270" as="geometry" />
         </mxCell>
 
-        <mxCell id="e_drone_to_dynamo" value="Write: record_persisted" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;fontSize=11;fontColor=#0f172a;align=center;labelBackgroundColor=#ffffff;labelBorderColor=#cbd5e1;spacing=4;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="card_drone_source" target="card_dynamo_missions">
+        <mxCell id="e_drone_to_dynamo" value="Write: record_persisted" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;fontSize=11;fontColor=#0f172a;align=center;labelBackgroundColor=#ffffff;labelBorderColor=#cbd5e1;spacing=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="card_drone_source" target="card_dynamo_missions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="e_dynamo_to_pipe" value="DynamoDB Streams" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;fontSize=11;fontColor=#0f172a;align=center;labelBackgroundColor=#ffffff;labelBorderColor=#cbd5e1;spacing=4;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="card_dynamo_missions" target="card_eb_pipe">
+        <mxCell id="e_dynamo_to_pipe" value="DynamoDB Streams" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;fontSize=11;fontColor=#0f172a;align=center;labelBackgroundColor=#ffffff;labelBorderColor=#cbd5e1;spacing=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="card_dynamo_missions" target="card_eb_pipe">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="e_pipe_to_bus" value="Filter: record_persisted" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;fontSize=11;fontColor=#0f172a;align=center;labelBackgroundColor=#ffffff;labelBorderColor=#cbd5e1;spacing=4;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="card_eb_pipe" target="card_eb_bus">
+        <mxCell id="e_pipe_to_bus" value="Filter: record_persisted" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;fontSize=11;fontColor=#0f172a;align=center;labelBackgroundColor=#ffffff;labelBorderColor=#cbd5e1;spacing=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="card_eb_pipe" target="card_eb_bus">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="e_bus_to_rules" value="mission_record_persisted" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;fontSize=11;fontColor=#0f172a;align=center;labelBackgroundColor=#ffffff;labelBorderColor=#cbd5e1;spacing=4;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="card_eb_bus" target="card_eb_rules">
+        <mxCell id="e_bus_to_rules" value="mission_record_persisted" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;fontSize=11;fontColor=#0f172a;align=center;labelBackgroundColor=#ffffff;labelBorderColor=#cbd5e1;spacing=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="card_eb_bus" target="card_eb_rules">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
         <mxCell id="e_rule_to_sqs_conf" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284c7;strokeWidth=2;exitX=1;exitY=0.20;entryX=0;entryY=0.5;" edge="1" parent="1" source="card_eb_rules" target="card_sqs_conf">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="555" y="753" />
+              <mxPoint x="555" y="888" />
               <mxPoint x="555" y="322" />
             </Array>
           </mxGeometry>
@@ -434,7 +434,7 @@
         <mxCell id="e_rule_to_sqs_ver" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284c7;strokeWidth=2;exitX=1;exitY=0.50;entryX=0;entryY=0.5;" edge="1" parent="1" source="card_eb_rules" target="card_sqs_ver">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="555" y="817" />
+              <mxPoint x="555" y="953" />
               <mxPoint x="555" y="562" />
             </Array>
           </mxGeometry>
@@ -446,7 +446,7 @@
         <mxCell id="e_rule_to_sqs_est" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284c7;strokeWidth=2;exitX=1;exitY=0.80;entryX=0;entryY=0.5;" edge="1" parent="1" source="card_eb_rules" target="card_sqs_est">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="555" y="882" />
+              <mxPoint x="555" y="1017" />
               <mxPoint x="555" y="802" />
             </Array>
           </mxGeometry>
@@ -455,10 +455,10 @@
           <mxGeometry x="515" y="760" width="80" height="26" as="geometry" />
         </mxCell>
 
-        <mxCell id="e_telemetry_to_sqs" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284c7;strokeWidth=2;exitX=1;exitY=0.18;entryX=0;entryY=0.45;" edge="1" parent="1" source="card_telemetry_trigger" target="card_sqs_thresh">
+        <mxCell id="e_telemetry_to_sqs" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284c7;strokeWidth=2;exitX=1;exitY=0.04;entryX=0;entryY=0.45;" edge="1" parent="1" source="card_telemetry_trigger" target="card_sqs_thresh">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="555" y="1053" />
+              <mxPoint x="555" y="1104" />
               <mxPoint x="555" y="1058" />
             </Array>
           </mxGeometry>
@@ -594,11 +594,11 @@
           <mxGeometry x="1703" y="1440" width="104" height="26" as="geometry" />
         </mxCell>
 
-        <mxCell id="e_stores_to_alarms" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#64748b;strokeWidth=1.5;exitX=1;exitY=0.50;entryX=0;entryY=0.12;" edge="1" parent="1" source="card_stores" target="card_alarms">
+        <mxCell id="e_stores_to_alarms" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#64748b;strokeWidth=1.5;exitX=1;exitY=0.50;entryX=0;entryY=0.04;" edge="1" parent="1" source="card_stores" target="card_alarms">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2320" y="698" />
-              <mxPoint x="2320" y="735" />
+              <mxPoint x="2320" y="744" />
             </Array>
           </mxGeometry>
         </mxCell>
