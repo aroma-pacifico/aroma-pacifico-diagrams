@@ -25,11 +25,13 @@ This diagram models the complete lifecycle of a coffee sack across the seven sta
 
 ### Boxes D01–D13 shown
 
-| Box | Name | Architectural Role in Diagram |
+| Box | Catalog Name (`architecture.md` sec 14) | Architectural Scope in Diagram |
 |---|---|---|
-| `D04` | Application Services | VPC private application tier hosting Lambda handlers (`sack-events`, `sack-applier`, `sack-exporter`) and API endpoints |
-| `D05` | Collection Center Operations | Receiving post in Cauca, Huila, and Tolima collection centers, managing local physical intake and outbound staging |
-| `D06` | Data Stores & Security | DynamoDB tables (`sack_event_log`, `sacks`, `sack_history`, `trips`, `buyer_view`), Cognito pools, and customer KMS keys |
+| `D04` | VPC and tiers of the pattern environment | VPC private subnets and routing boundaries enclosing the application and data tiers |
+| `D05` | Association of the environment with one pattern collection center | Physical collection center association (Cauca, Huila, Tolima receiving posts, LAN/printer links) |
+| `D06` | Identities, KMS keys and initial access controls | Customer-managed KMS keys (`records`, `telemetry`, `public_view`), IAM execution roles, and Cognito user pools |
+
+*Components belonging to no box*: The DynamoDB transactional tables (`sack_event_log`, `sacks`, `sack_history`, `trips`, `transport_positions`, `buyer_view`) and application worker functions are application workload components and belong to no IaC D-box (marked `-` in `architecture.md` section 14).
 
 ---
 
@@ -57,9 +59,11 @@ This diagram illustrates the end-to-end operational sequence of sack registratio
 
 ### Boxes D01–D13 shown
 
-| Box | Name | Architectural Role in Diagram |
+| Box | Catalog Name (`architecture.md` sec 14) | Architectural Scope in Diagram |
 |---|---|---|
-| `D04` | Application Services | VPC private application tier and serverless compute (Lambda handlers, Lookup Function URL with OAC) |
-| `D05` | Collection Center Operations | Center receiving post and local network IPP code-sheet printer (TCP 631) |
-| `D06` | Data Stores & Security | DynamoDB tables (`sack_event_log`, `sacks`, `trips`, `transport_positions`, `buyer_view`), CloudWatch Logs audit, customer KMS keys |
-| `D07` | Public Lookup Edge Security | Amazon CloudFront distribution and AWS WAF web ACL (`CL-PUB-01`) enforcing TLS 1.2+ termination and rate limiting |
+| `D04` | VPC and tiers of the pattern environment | Private application tier subnets and endpoints (hosting application APIs and handlers) |
+| `D05` | Association of the environment with one pattern collection center | Center receiving post and local network IPP code-sheet printer (TCP 631) |
+| `D06` | Identities, KMS keys and initial access controls | Customer-managed KMS keys (`records`, `telemetry`, `public_view`), IAM execution roles, and Cognito pools |
+| `D07` | The pattern firewall rules | Cloud firewall controls and AWS WAF web ACL (`CL-PUB-01`) terminating TLS 1.2+ and rate-limiting at edge |
+
+*Components belonging to no box*: The DynamoDB tables (`sack_event_log`, `sacks`, `trips`, `transport_positions`, `buyer_view`), Application Lambdas (`sack-events`, `sack-applier`, `sack-exporter`), CloudWatch Logs audit log group (`/aws/application/audit`), and public lookup components (CloudFront distribution, Lookup Lambda Function URL) are application workload components and belong to no IaC D-box (marked `-` in `architecture.md` section 14).

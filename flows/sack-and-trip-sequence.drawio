@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <mxfile host="app.diagrams.net" version="32.4.1">
   <diagram id="sack-and-trip-sequence" name="Sack, Trip and Public Lookup Sequence">
-    <mxGraphModel dx="3500" dy="3520" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3500" pageHeight="3520" math="0" shadow="0">
+    <mxGraphModel dx="3500" dy="3680" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3500" pageHeight="3680" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
@@ -17,7 +17,7 @@
         <mxCell id="hdr_meta" value="Refs aroma-pacifico/aroma-pacifico-roadmap#19 | Closes ALPH-29 | Source: docs/sack-and-trip.md sec 2-7, docs/security-and-identity.md sec 8 | Box badges: D04, D05, D06, D07" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontStyle=2;fontColor=#9fb3c8;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="65" y="84" width="2300" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="hdr_badge" value="PUBLIC LOOKUP: UNAUTHENTICATED (ASM-058)&#10;RATE LIMIT: 100 REQ / 5 MIN PER IP (ASM-155)&#10;BUYER PROJECTION: KMS 'public_view' (ASM-154)&#10;RPO: 15 MIN (ASM-157) | RTO: 4 H (PD-153)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d97706;strokeColor=#ffffff;strokeWidth=2;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+        <mxCell id="hdr_badge" value="PUBLIC LOOKUP: UNAUTHENTICATED (ASM-058)&#10;RATE LIMIT: 100 REQ / 5 MIN PER IP (ASM-155)&#10;BUYER PROJECTION: KMS 'public_view' [Box D06]&#10;RPO: 15 MIN (ASM-157) | RTO: 4 H (PD-153)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d97706;strokeColor=#ffffff;strokeWidth=2;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="2840" y="28" width="590" height="78" as="geometry"/>
         </mxCell>
         <mxCell id="zone_farm" value="ZONE 1: FARM &amp; FIELD&#10;Wet Mill Packaging &amp; Scale" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;fontColor=#166534;fontSize=14;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
@@ -29,617 +29,617 @@
         <mxCell id="zone_transit" value="ZONE 3: TRANSPORT &amp; TRANSIT&#10;Feeder Roads &amp; Highway Transit (ASM-159)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontColor=#1e40af;fontSize=14;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
           <mxGeometry x="980" y="130" width="450" height="85" as="geometry"/>
         </mxCell>
-        <mxCell id="zone_app" value="ZONE 4: VPC APPLICATION TIER [Box D04, D06]&#10;Application Services &amp; Processing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=2;fontColor=#6b21a8;fontSize=14;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+        <mxCell id="zone_app" value="ZONE 4: VPC APPLICATION TIER [Box D04]&#10;Application Services &amp; Processing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=2;fontColor=#6b21a8;fontSize=14;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
           <mxGeometry x="1460" y="130" width="490" height="85" as="geometry"/>
         </mxCell>
-        <mxCell id="zone_data" value="ZONE 5: VPC DATA &amp; AUDIT TIER [Box D04, D06]&#10;DynamoDB Stores &amp; CloudWatch Logs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdfa;strokeColor=#0d9488;strokeWidth=2;fontColor=#115e59;fontSize=14;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+        <mxCell id="zone_data" value="ZONE 5: VPC DATA &amp; AUDIT TIER&#10;DynamoDB Stores &amp; CloudWatch Logs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdfa;strokeColor=#0d9488;strokeWidth=2;fontColor=#115e59;fontSize=14;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
           <mxGeometry x="1980" y="130" width="490" height="85" as="geometry"/>
         </mxCell>
-        <mxCell id="zone_edge" value="ZONE 6: PUBLIC EDGE &amp; LOOKUP FRONT DOOR [Box D04, D07]&#10;Lookup Function URL (OAC), CloudFront, AWS WAF &amp; Buyer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff1f2;strokeColor=#e11d48;strokeWidth=2;fontColor=#9f1239;fontSize=14;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+        <mxCell id="zone_edge" value="ZONE 6: PUBLIC EDGE &amp; LOOKUP FRONT DOOR [Box D07]&#10;Lookup Function URL (OAC), CloudFront, AWS WAF &amp; Buyer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff1f2;strokeColor=#e11d48;strokeWidth=2;fontColor=#9f1239;fontSize=14;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
           <mxGeometry x="2500" y="130" width="950" height="85" as="geometry"/>
         </mxCell>
         <mxCell id="icon_l1" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.mobile_client;fillColor=#22c55e;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="225" y="230" width="50" height="50" as="geometry"/>
+          <mxGeometry x="225" y="205" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="l1_farmer" value="Farmer &amp; Farmer App&#10;Cognito field pool (no MFA)&#10;Encrypted Outbox (ASM-079)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=60;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;fontColor=#166534;fontSize=13;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
-          <mxGeometry x="150" y="280" width="200" height="2950" as="geometry"/>
+        <mxCell id="l1_farmer" value="Farmer &amp; Farmer App&#10;Cognito field pool (no MFA)&#10;Encrypted Outbox (ASM-079)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=85;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;fontColor=#166534;fontSize=12.5;fontStyle=1;align=center;verticalAlign=top;spacingTop=4;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="150" y="255" width="200" height="3125" as="geometry"/>
         </mxCell>
         <mxCell id="icon_l2" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.traditional_server;fillColor=#ca8a04;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="695" y="230" width="50" height="50" as="geometry"/>
+          <mxGeometry x="695" y="205" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="l2_center" value="Center Operator &amp; Printer [Box D05]&#10;Cognito staff pool (TOTP MFA)&#10;IPP Printer (TCP 631, ASM-124)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=60;fillColor=#fefce8;strokeColor=#ca8a04;strokeWidth=2;fontColor=#854d0e;fontSize=13;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
-          <mxGeometry x="620" y="280" width="200" height="2950" as="geometry"/>
+        <mxCell id="l2_center" value="Center Operator &amp; Printer [Box D05]&#10;Cognito staff pool (TOTP MFA)&#10;IPP Printer (TCP 631, ASM-124)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=85;fillColor=#fefce8;strokeColor=#ca8a04;strokeWidth=2;fontColor=#854d0e;fontSize=12.5;fontStyle=1;align=center;verticalAlign=top;spacingTop=4;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="620" y="255" width="200" height="3125" as="geometry"/>
         </mxCell>
         <mxCell id="icon_l3" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.mobile_client;fillColor=#2563eb;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1175" y="230" width="50" height="50" as="geometry"/>
+          <mxGeometry x="1175" y="205" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="l3_transporter" value="Transporter &amp; App&#10;Cognito field pool (no MFA)&#10;5-min GNSS Fixes &amp; Outbox" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=60;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontColor=#1e40af;fontSize=13;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
-          <mxGeometry x="1100" y="280" width="200" height="2950" as="geometry"/>
+        <mxCell id="l3_transporter" value="Transporter &amp; App&#10;Cognito field pool (no MFA)&#10;5-min GNSS Fixes &amp; Outbox" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=85;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontColor=#1e40af;fontSize=12.5;fontStyle=1;align=center;verticalAlign=top;spacingTop=4;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="255" width="200" height="3125" as="geometry"/>
         </mxCell>
         <mxCell id="icon_l4" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda_function;fillColor=#9333ea;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1675" y="230" width="50" height="50" as="geometry"/>
+          <mxGeometry x="1675" y="205" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="l4_api" value="Application API &amp; Lambdas [Box D04, D06]&#10;sack-events, applier, exporter" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=60;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=2;fontColor=#6b21a8;fontSize=13;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
-          <mxGeometry x="1600" y="280" width="200" height="2950" as="geometry"/>
+        <mxCell id="l4_api" value="Application API &amp; Lambdas [Box D04]&#10;sack-events, applier, exporter" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=85;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=2;fontColor=#6b21a8;fontSize=12.5;fontStyle=1;align=center;verticalAlign=top;spacingTop=4;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="255" width="200" height="3125" as="geometry"/>
         </mxCell>
         <mxCell id="icon_l5" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;fillColor=#0d9488;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="2070" y="230" width="50" height="50" as="geometry"/>
+          <mxGeometry x="2070" y="205" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="l5_db" value="DynamoDB Stores [Box D06]&#10;sack_event_log, sacks, trips,&#10;buyer_view, transport_positions" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=60;fillColor=#f0fdfa;strokeColor=#0d9488;strokeWidth=2;fontColor=#115e59;fontSize=13;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
-          <mxGeometry x="1990" y="280" width="210" height="2950" as="geometry"/>
+        <mxCell id="l5_db" value="DynamoDB Stores&#10;sack_event_log, sacks, trips,&#10;buyer_view (KMS keys: Box D06)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=85;fillColor=#f0fdfa;strokeColor=#0d9488;strokeWidth=2;fontColor=#115e59;fontSize=12.5;fontStyle=1;align=center;verticalAlign=top;spacingTop=4;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="1990" y="255" width="210" height="3125" as="geometry"/>
         </mxCell>
         <mxCell id="icon_l6" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_2;fillColor=#E7157B;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="2310" y="230" width="50" height="50" as="geometry"/>
+          <mxGeometry x="2310" y="205" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="l6_cw" value="CloudWatch Logs [Box D06]&#10;/aws/application/audit&#10;Anonymous audit trace (ASM-069)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=60;fillColor=#fdf2f8;strokeColor=#db2777;strokeWidth=2;fontColor=#9d174d;fontSize=13;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
-          <mxGeometry x="2240" y="280" width="190" height="2950" as="geometry"/>
+        <mxCell id="l6_cw" value="CloudWatch Logs&#10;/aws/application/audit&#10;Anonymous trace (ASM-069)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=85;fillColor=#fdf2f8;strokeColor=#db2777;strokeWidth=2;fontColor=#9d174d;fontSize=12.5;fontStyle=1;align=center;verticalAlign=top;spacingTop=4;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="2240" y="255" width="190" height="3125" as="geometry"/>
         </mxCell>
         <mxCell id="icon_l7" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda_function;fillColor=#e11d48;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="2600" y="230" width="50" height="50" as="geometry"/>
+          <mxGeometry x="2600" y="205" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="l7_lookup" value="Lookup Function URL [Box D04, D06]&#10;Origin Access Control (AWS_IAM)&#10;Reserved Concurrency 10 (ASM-155)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=60;fillColor=#fff1f2;strokeColor=#e11d48;strokeWidth=2;fontColor=#9f1239;fontSize=13;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
-          <mxGeometry x="2520" y="280" width="210" height="2950" as="geometry"/>
+        <mxCell id="l7_lookup" value="Lookup Function URL&#10;Origin Access Control (OAC)&#10;Reserved Concurrency 10 (ASM-155)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=85;fillColor=#fff1f2;strokeColor=#e11d48;strokeWidth=2;fontColor=#9f1239;fontSize=12.5;fontStyle=1;align=center;verticalAlign=top;spacingTop=4;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="2520" y="255" width="210" height="3125" as="geometry"/>
         </mxCell>
         <mxCell id="icon_l8_cf" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;fillColor=#8C4FFF;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="2900" y="230" width="40" height="40" as="geometry"/>
+          <mxGeometry x="2900" y="205" width="40" height="40" as="geometry"/>
         </mxCell>
         <mxCell id="icon_l8_waf" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.waf;fillColor=#DD344C;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="2950" y="230" width="40" height="40" as="geometry"/>
+          <mxGeometry x="2950" y="205" width="40" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="l8_cf" value="CloudFront &amp; AWS WAF [Box D04, D07]&#10;Edge TLS 1.2+ &amp; Web ACL CL-PUB-01&#10;Rate-based rule: 100 req / 5 min" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=60;fillColor=#faf5ff;strokeColor=#8C4FFF;strokeWidth=2;fontColor=#581c87;fontSize=13;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
-          <mxGeometry x="2830" y="280" width="220" height="2950" as="geometry"/>
+        <mxCell id="l8_cf" value="CloudFront &amp; AWS WAF [Box D07]&#10;Edge TLS 1.2+ &amp; WAF (CL-PUB-01)&#10;Rate limit: 100 req / 5 min" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=85;fillColor=#faf5ff;strokeColor=#8C4FFF;strokeWidth=2;fontColor=#581c87;fontSize=12.5;fontStyle=1;align=center;verticalAlign=top;spacingTop=4;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="2830" y="255" width="220" height="3125" as="geometry"/>
         </mxCell>
         <mxCell id="icon_l9" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.mobile_client;fillColor=#334e68;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="3265" y="230" width="50" height="50" as="geometry"/>
+          <mxGeometry x="3265" y="205" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="l9_buyer" value="Buyer Phone / Browser&#10;Unauthenticated Public User (ASM-058)&#10;HTTPS QR Scan / URL Query" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=60;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#1e293b;fontSize=13;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
-          <mxGeometry x="3190" y="280" width="200" height="2950" as="geometry"/>
+        <mxCell id="l9_buyer" value="Buyer Phone / Browser&#10;Unauthenticated Public User&#10;HTTPS Lookup (ASM-058)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=85;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#1e293b;fontSize=12.5;fontStyle=1;align=center;verticalAlign=top;spacingTop=4;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="3190" y="255" width="200" height="3125" as="geometry"/>
         </mxCell>
         <mxCell id="ph1" value="PHASE 1: PRE-PRINTED CODE SHEET GENERATION &amp; LOCAL PRINTING AT COLLECTION CENTER (DOCS SEC 6)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=none;fontColor=#f8fafc;fontSize=14;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
-          <mxGeometry x="40" y="340" width="3420" height="36" as="geometry"/>
+          <mxGeometry x="40" y="365" width="3420" height="36" as="geometry"/>
         </mxCell>
         <mxCell id="arr_1_1" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#854d0e;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="720" y="400" as="sourcePoint"/>
-            <mxPoint x="1700" y="400" as="targetPoint"/>
+            <mxPoint x="720" y="430" as="sourcePoint"/>
+            <mxPoint x="1700" y="430" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_1_1" value="1.1: Request code sheet batch for farm or center reserve (TOTP MFA session)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#854d0e;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="735" y="376" width="950" height="22" as="geometry"/>
+          <mxGeometry x="735" y="406" width="950" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_1_2" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="440" as="sourcePoint"/>
-            <mxPoint x="1700" y="464" as="targetPoint"/>
+            <mxPoint x="1700" y="475" as="sourcePoint"/>
+            <mxPoint x="1700" y="499" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="1760" y="440"/>
-              <mxPoint x="1760" y="464"/>
+              <mxPoint x="1760" y="475"/>
+              <mxPoint x="1760" y="499"/>
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_1_2" value="1.2: Generate 80-bit random codes (16 Crockford Base32 symbols + mod 37 check symbol, ASM-094)" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1775" y="438" width="700" height="24" as="geometry"/>
+          <mxGeometry x="1775" y="473" width="700" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="arr_1_3" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="495" as="sourcePoint"/>
-            <mxPoint x="2095" y="495" as="targetPoint"/>
+            <mxPoint x="1700" y="525" as="sourcePoint"/>
+            <mxPoint x="2095" y="525" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_1_3" value="1.3: PutItem batch in sack_codes (state = 'issued', allocation = farm_id or reserve) [KMS 'records']" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="471" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="501" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_1_4" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#115e59;strokeWidth=2;endArrow=block;endFill=1;strokeDashed=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2095" y="535" as="sourcePoint"/>
-            <mxPoint x="1700" y="535" as="targetPoint"/>
+            <mxPoint x="2095" y="570" as="sourcePoint"/>
+            <mxPoint x="1700" y="570" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_1_4" value="1.4: Batch persisted confirmation (200 OK)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#115e59;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="511" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="546" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_1_5" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;strokeDashed=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="575" as="sourcePoint"/>
-            <mxPoint x="720" y="575" as="targetPoint"/>
+            <mxPoint x="1700" y="615" as="sourcePoint"/>
+            <mxPoint x="720" y="615" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_1_5" value="1.5: Return code sheet print payload (codes &amp; QR targets)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="735" y="551" width="950" height="22" as="geometry"/>
+          <mxGeometry x="735" y="591" width="950" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_1_6" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#854d0e;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="720" y="615" as="sourcePoint"/>
-            <mxPoint x="720" y="639" as="targetPoint"/>
+            <mxPoint x="720" y="660" as="sourcePoint"/>
+            <mxPoint x="720" y="684" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="780" y="615"/>
-              <mxPoint x="780" y="639"/>
+              <mxPoint x="780" y="660"/>
+              <mxPoint x="780" y="684"/>
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_1_6" value="1.6: Send raw print job to local code-sheet printer via IPP over TCP 631 (A11 sec 5, ASM-124)" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#854d0e;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="795" y="613" width="680" height="24" as="geometry"/>
+          <mxGeometry x="795" y="658" width="680" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="arr_1_7" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#166534;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="720" y="660" as="sourcePoint"/>
-            <mxPoint x="250" y="660" as="targetPoint"/>
+            <mxPoint x="720" y="705" as="sourcePoint"/>
+            <mxPoint x="250" y="705" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_1_7" value="1.7: Physical label sheet distributed to farmer at wet mill (labels contain NO personal data, sec 6.2)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#166534;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="260" y="636" width="450" height="22" as="geometry"/>
+          <mxGeometry x="260" y="681" width="450" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="note_ph1" value="Code Sheet &amp; Label Format (Sec 6.2):&#10;• Sheet Margin: Batch ID, allocation (farm or center reserve), print timestamp, operator ID, 'Sheet n of m'.&#10;• Each Label: QR code (https://&lt;lookup-host&gt;/s/XXXXXXXXXXXXXXXXC), human Crockford Base32 code, 'Consulta del saco'.&#10;• Zero personal data, farm name, weight, or date printed on label! (A09 sec 8.1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fefce8;strokeColor=#ca8a04;strokeWidth=1;fontColor=#854d0e;fontSize=13;align=left;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="500" y="705" width="1400" height="85" as="geometry"/>
+          <mxGeometry x="500" y="745" width="1400" height="85" as="geometry"/>
         </mxCell>
         <mxCell id="ph2" value="PHASE 2: SACK REGISTRATION AT WET MILL &amp; OFFLINE OUTBOX PERSISTENCE (DOCS SEC 2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=none;fontColor=#f8fafc;fontSize=14;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
-          <mxGeometry x="40" y="805" width="3420" height="36" as="geometry"/>
+          <mxGeometry x="40" y="855" width="3420" height="36" as="geometry"/>
         </mxCell>
         <mxCell id="arr_2_1" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#166534;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="250" y="855" as="sourcePoint"/>
-            <mxPoint x="250" y="879" as="targetPoint"/>
+            <mxPoint x="250" y="920" as="sourcePoint"/>
+            <mxPoint x="250" y="944" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="310" y="855"/>
-              <mxPoint x="310" y="879"/>
+              <mxPoint x="310" y="920"/>
+              <mxPoint x="310" y="944"/>
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_2_1" value="2.1: Wet mill packing: scale measures 60 kg sack (measured kg recorded with 1 decimal, ASM-150)" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#166534;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="325" y="853" width="760" height="24" as="geometry"/>
+          <mxGeometry x="325" y="918" width="760" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="arr_2_2" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#166534;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="250" y="900" as="sourcePoint"/>
-            <mxPoint x="250" y="924" as="targetPoint"/>
+            <mxPoint x="250" y="965" as="sourcePoint"/>
+            <mxPoint x="250" y="989" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="310" y="900"/>
-              <mxPoint x="310" y="924"/>
+              <mxPoint x="310" y="965"/>
+              <mxPoint x="310" y="989"/>
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_2_2" value="2.2: Scan pre-printed label QR (app reads Crockford code without cellular data, A09 sec 8.1)" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#166534;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="325" y="898" width="760" height="24" as="geometry"/>
+          <mxGeometry x="325" y="963" width="760" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="arr_2_3" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#166534;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="250" y="945" as="sourcePoint"/>
-            <mxPoint x="250" y="969" as="targetPoint"/>
+            <mxPoint x="250" y="1010" as="sourcePoint"/>
+            <mxPoint x="250" y="1034" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="310" y="945"/>
-              <mxPoint x="310" y="969"/>
+              <mxPoint x="310" y="1010"/>
+              <mxPoint x="310" y="1034"/>
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_2_3" value="2.3: Confirm drying lot ID (links sack to drying dates &amp; variables for buyer view, ASM-096)" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#166534;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="325" y="943" width="760" height="24" as="geometry"/>
+          <mxGeometry x="325" y="1008" width="760" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="arr_2_4" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#166534;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="250" y="990" as="sourcePoint"/>
-            <mxPoint x="250" y="1014" as="targetPoint"/>
+            <mxPoint x="250" y="1055" as="sourcePoint"/>
+            <mxPoint x="250" y="1079" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="310" y="990"/>
-              <mxPoint x="310" y="1014"/>
+              <mxPoint x="310" y="1055"/>
+              <mxPoint x="310" y="1079"/>
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_2_4" value="2.4: Create sack_registered event &amp; persist in encrypted local outbox with recorded_at (ASM-079)" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#166534;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="325" y="988" width="760" height="24" as="geometry"/>
+          <mxGeometry x="325" y="1053" width="760" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="arr_2_5" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#166534;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="250" y="1045" as="sourcePoint"/>
-            <mxPoint x="1700" y="1045" as="targetPoint"/>
+            <mxPoint x="250" y="1110" as="sourcePoint"/>
+            <mxPoint x="1700" y="1110" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_2_5" value="2.5: Cellular uplink available (LTE-M/NB-IoT/Cat-1): POST /sack-events over TLS 1.2+ (Cognito field token)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#166534;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="270" y="1021" width="1410" height="22" as="geometry"/>
+          <mxGeometry x="270" y="1086" width="1410" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_2_6" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="1090" as="sourcePoint"/>
-            <mxPoint x="2095" y="1090" as="targetPoint"/>
+            <mxPoint x="1700" y="1155" as="sourcePoint"/>
+            <mxPoint x="2095" y="1155" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_2_6" value="2.6: Conditional PutItem in sack_event_log (PK event_id, state check) [KMS 'records', immutable]" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="1066" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="1131" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_2_7" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#115e59;strokeWidth=2;endArrow=block;endFill=1;strokeDashed=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2095" y="1130" as="sourcePoint"/>
-            <mxPoint x="1700" y="1130" as="targetPoint"/>
+            <mxPoint x="2095" y="1195" as="sourcePoint"/>
+            <mxPoint x="1700" y="1195" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_2_7" value="2.7: DynamoDB confirms durable write across AZs (201 Created)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#115e59;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="1106" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="1171" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_2_8" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;strokeDashed=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="1170" as="sourcePoint"/>
-            <mxPoint x="250" y="1170" as="targetPoint"/>
+            <mxPoint x="1700" y="1235" as="sourcePoint"/>
+            <mxPoint x="250" y="1235" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_2_8" value="2.8: API returns 201 Created acknowledgment -&gt; Farmer App releases event from outbox" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="270" y="1146" width="1410" height="22" as="geometry"/>
+          <mxGeometry x="270" y="1211" width="1410" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_2_9" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#0d9488;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2095" y="1215" as="sourcePoint"/>
-            <mxPoint x="1700" y="1215" as="targetPoint"/>
+            <mxPoint x="2095" y="1280" as="sourcePoint"/>
+            <mxPoint x="1700" y="1280" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_2_9" value="2.9: DynamoDB Stream triggers sack-applier Lambda (new_image event)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#0d9488;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="1191" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="1256" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_2_10" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="1255" as="sourcePoint"/>
-            <mxPoint x="2095" y="1255" as="targetPoint"/>
+            <mxPoint x="1700" y="1320" as="sourcePoint"/>
+            <mxPoint x="2095" y="1320" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_2_10" value="2.10: sack-applier: write sacks (state = in_preparation), write sack_history, update buyer_view [KMS 'public_view']" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="1231" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="1296" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_2_11" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#0d9488;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="1295" as="sourcePoint"/>
-            <mxPoint x="2095" y="1295" as="targetPoint"/>
+            <mxPoint x="1700" y="1360" as="sourcePoint"/>
+            <mxPoint x="2095" y="1360" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_2_11" value="2.11: sack-exporter streams JSON Lines batch to S3 export prefix (ADR-001, RPO &lt;= 15 min)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#0d9488;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="1271" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="1336" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="ph3" value="PHASE 3: TRANSPORTER CUSTODY HANDOVER &amp; 5-MINUTE GNSS TRIP LOGGING (DOCS SEC 3.2, SEC 5, A10)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=none;fontColor=#f8fafc;fontSize=14;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
-          <mxGeometry x="40" y="1345" width="3420" height="36" as="geometry"/>
+          <mxGeometry x="40" y="1410" width="3420" height="36" as="geometry"/>
         </mxCell>
         <mxCell id="arr_3_1" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#1e40af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1200" y="1395" as="sourcePoint"/>
-            <mxPoint x="1200" y="1419" as="targetPoint"/>
+            <mxPoint x="1200" y="1475" as="sourcePoint"/>
+            <mxPoint x="1200" y="1499" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="1260" y="1395"/>
-              <mxPoint x="1260" y="1419"/>
+              <mxPoint x="1260" y="1475"/>
+              <mxPoint x="1260" y="1499"/>
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_3_1" value="3.1: Open farm_to_center trip on Transporter App (Cognito field pool, vehicle plate reference)" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#1e40af;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1275" y="1393" width="700" height="24" as="geometry"/>
+          <mxGeometry x="1275" y="1473" width="700" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="arr_3_2" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#1e40af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1200" y="1445" as="sourcePoint"/>
-            <mxPoint x="250" y="1445" as="targetPoint"/>
+            <mxPoint x="1200" y="1525" as="sourcePoint"/>
+            <mxPoint x="250" y="1525" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_3_2" value="3.2: Scan sack QR at farm wet mill: record picked_up_at_farm (sack_custody) with device recorded_at" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#1e40af;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="265" y="1421" width="920" height="22" as="geometry"/>
+          <mxGeometry x="265" y="1501" width="920" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_3_3" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#1e40af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1200" y="1490" as="sourcePoint"/>
-            <mxPoint x="1200" y="1514" as="targetPoint"/>
+            <mxPoint x="1200" y="1570" as="sourcePoint"/>
+            <mxPoint x="1200" y="1594" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="1260" y="1490"/>
-              <mxPoint x="1260" y="1514"/>
+              <mxPoint x="1260" y="1570"/>
+              <mxPoint x="1260" y="1594"/>
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_3_3" value="3.3: Write picked_up_at_farm to encrypted outbox; start 5-minute GNSS position fix logger" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#1e40af;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1275" y="1488" width="700" height="24" as="geometry"/>
+          <mxGeometry x="1275" y="1568" width="700" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="arr_3_4" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#1e40af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1200" y="1535" as="sourcePoint"/>
-            <mxPoint x="1200" y="1559" as="targetPoint"/>
+            <mxPoint x="1200" y="1615" as="sourcePoint"/>
+            <mxPoint x="1200" y="1639" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="1260" y="1535"/>
-              <mxPoint x="1260" y="1559"/>
+              <mxPoint x="1260" y="1615"/>
+              <mxPoint x="1260" y="1639"/>
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_3_4" value="3.4: Feeder road dead zone: log 5-min GNSS fixes to local buffer (store-and-forward, ASM-076)" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#1e40af;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1275" y="1533" width="700" height="24" as="geometry"/>
+          <mxGeometry x="1275" y="1613" width="700" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="arr_3_5" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#1e40af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1200" y="1585" as="sourcePoint"/>
-            <mxPoint x="1700" y="1585" as="targetPoint"/>
+            <mxPoint x="1200" y="1665" as="sourcePoint"/>
+            <mxPoint x="1700" y="1665" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_3_5" value="3.5: Cellular signal restored: Drain outbox (custody events first, then GNSS positions oldest first)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#1e40af;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1215" y="1561" width="470" height="22" as="geometry"/>
+          <mxGeometry x="1215" y="1641" width="470" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_3_6" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="1630" as="sourcePoint"/>
-            <mxPoint x="2095" y="1630" as="targetPoint"/>
+            <mxPoint x="1700" y="1710" as="sourcePoint"/>
+            <mxPoint x="2095" y="1710" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_3_6" value="3.6: PutItem 5-min GNSS fixes into transport_positions (PK trip_id, SK sequence_no) [KMS 'telemetry', PD-110]" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="1606" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="1686" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_3_7" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="1675" as="sourcePoint"/>
-            <mxPoint x="2095" y="1675" as="targetPoint"/>
+            <mxPoint x="1700" y="1755" as="sourcePoint"/>
+            <mxPoint x="2095" y="1755" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_3_7" value="3.7: Conditional PutItem picked_up_at_farm in sack_event_log [KMS 'records']" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="1651" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="1731" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_3_8" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2095" y="1720" as="sourcePoint"/>
-            <mxPoint x="1700" y="1720" as="targetPoint"/>
+            <mxPoint x="2095" y="1800" as="sourcePoint"/>
+            <mxPoint x="1700" y="1800" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_3_8" value="3.8: Stream triggers sack-applier: deterministic fold -&gt; update sacks &amp; buyer_view to in_transit_to_center" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="1696" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="1776" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_3_9" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;strokeDashed=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="1765" as="sourcePoint"/>
-            <mxPoint x="1200" y="1765" as="targetPoint"/>
+            <mxPoint x="1700" y="1845" as="sourcePoint"/>
+            <mxPoint x="1200" y="1845" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_3_9" value="3.9: Return 200 OK acknowledgment -&gt; Transporter App clears drained outbox entries" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1215" y="1741" width="470" height="22" as="geometry"/>
+          <mxGeometry x="1215" y="1821" width="470" height="22" as="geometry"/>
         </mxCell>
-        <mxCell id="note_ph3" value="Transporter Position Store (Closes PD-110, Sec 10):&#10;• Positions logged to transport_positions table (KMS 'telemetry').&#10;• Conditional put on (trip_id, sequence_no) makes duplicate drains harmless.&#10;• GPS trace is accessible ONLY to transporter and center operator while trip is open.&#10;• ZERO GPS coordinates or transporter identities ever exposed to buyer view! (ASM-096)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=1;fontColor=#1e40af;fontSize=13;align=left;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="1100" y="1800" width="1250" height="80" as="geometry"/>
+        <mxCell id="note_ph3" value="Transporter Position Store (Closes PD-110, Sec 10):&#10;• Positions logged to transport_positions table (KMS 'telemetry' [Box D06]).&#10;• Conditional put on (trip_id, sequence_no) makes duplicate drains harmless.&#10;• GPS trace is accessible ONLY to transporter and center operator while trip is open.&#10;• ZERO GPS coordinates or transporter identities ever exposed to buyer view! (ASM-096)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=1;fontColor=#1e40af;fontSize=13;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="1880" width="1250" height="80" as="geometry"/>
         </mxCell>
         <mxCell id="ph4" value="PHASE 4: COLLECTION CENTER RECEPTION &amp; CODE-SHEET BINDING FOR UNLABELED SACKS (DOCS SEC 3.2, 6.3)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=none;fontColor=#f8fafc;fontSize=14;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
-          <mxGeometry x="40" y="1905" width="3420" height="36" as="geometry"/>
+          <mxGeometry x="40" y="1980" width="3420" height="36" as="geometry"/>
         </mxCell>
         <mxCell id="arr_4_1" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#1e40af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1200" y="1955" as="sourcePoint"/>
-            <mxPoint x="720" y="1955" as="targetPoint"/>
+            <mxPoint x="1200" y="2045" as="sourcePoint"/>
+            <mxPoint x="720" y="2045" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_4_1" value="4.1: Transporter arrives at collection center yard: records arrived_at_center event" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#1e40af;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="735" y="1931" width="450" height="22" as="geometry"/>
+          <mxGeometry x="735" y="2021" width="450" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_4_2" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#854d0e;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="720" y="2000" as="sourcePoint"/>
-            <mxPoint x="1700" y="2000" as="targetPoint"/>
+            <mxPoint x="720" y="2090" as="sourcePoint"/>
+            <mxPoint x="1700" y="2090" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_4_2" value="4.2: Case A (Normal Labeled Sack): Scan QR -&gt; POST received_at_center [outcome = accepted | rejected, reason]" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#854d0e;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="735" y="1976" width="950" height="22" as="geometry"/>
+          <mxGeometry x="735" y="2066" width="950" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_4_3" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#854d0e;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="720" y="2045" as="sourcePoint"/>
-            <mxPoint x="1700" y="2045" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="lbl_4_3" value="4.3: Case B (Sack Without Code, Sec 6.3): Bind reserve label (&gt;= 400 codes, ASM-153) -&gt; POST bound_at_center" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#854d0e;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="735" y="2021" width="950" height="22" as="geometry"/>
-        </mxCell>
-        <mxCell id="arr_4_4" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="2090" as="sourcePoint"/>
-            <mxPoint x="2095" y="2090" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="lbl_4_4" value="4.4: Conditional PutItem received_at_center / bound_at_center into sack_event_log [KMS 'records']" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="2066" width="375" height="22" as="geometry"/>
-        </mxCell>
-        <mxCell id="arr_4_5" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2095" y="2135" as="sourcePoint"/>
+            <mxPoint x="720" y="2135" as="sourcePoint"/>
             <mxPoint x="1700" y="2135" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
+        <mxCell id="lbl_4_3" value="4.3: Case B (Sack Without Code, Sec 6.3): Bind reserve label (&gt;= 400 codes, ASM-153) -&gt; POST bound_at_center" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#854d0e;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="735" y="2111" width="950" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="arr_4_4" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1700" y="2180" as="sourcePoint"/>
+            <mxPoint x="2095" y="2180" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_4_4" value="4.4: Conditional PutItem received_at_center / bound_at_center into sack_event_log [KMS 'records']" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="1710" y="2156" width="375" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="arr_4_5" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2095" y="2225" as="sourcePoint"/>
+            <mxPoint x="1700" y="2225" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="lbl_4_5" value="4.5: Stream invokes sack-applier -&gt; fold history: if accepted -&gt; at_center_accepted; if rejected -&gt; at_center_rejected (terminal, ASM-151)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="2111" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="2201" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_4_6" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#0d9488;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="2180" as="sourcePoint"/>
-            <mxPoint x="1700" y="2204" as="targetPoint"/>
+            <mxPoint x="1700" y="2270" as="sourcePoint"/>
+            <mxPoint x="1700" y="2294" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="1760" y="2180"/>
-              <mxPoint x="1760" y="2204"/>
+              <mxPoint x="1760" y="2270"/>
+              <mxPoint x="1760" y="2294"/>
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_4_6" value="4.6: Receiver Authoritative Rule (ASM-152): Reception applied even if pickup still buffered; missing step flagged" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#0d9488;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1775" y="2178" width="750" height="24" as="geometry"/>
+          <mxGeometry x="1775" y="2268" width="750" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="arr_4_7" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="2225" as="sourcePoint"/>
-            <mxPoint x="2095" y="2225" as="targetPoint"/>
+            <mxPoint x="1700" y="2335" as="sourcePoint"/>
+            <mxPoint x="2095" y="2335" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_4_7" value="4.7: Update buyer_view projection: status = at_center_accepted (or at_center_rejected) [KMS 'public_view']" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="2201" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="2311" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_4_8" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;strokeDashed=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="2265" as="sourcePoint"/>
-            <mxPoint x="720" y="2265" as="targetPoint"/>
+            <mxPoint x="1700" y="2375" as="sourcePoint"/>
+            <mxPoint x="720" y="2375" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_4_8" value="4.8: Return 200 OK reception confirmation to Logistics App" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="735" y="2241" width="950" height="22" as="geometry"/>
+          <mxGeometry x="735" y="2351" width="950" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_4_9" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#854d0e;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="720" y="2305" as="sourcePoint"/>
-            <mxPoint x="1700" y="2305" as="targetPoint"/>
+            <mxPoint x="720" y="2415" as="sourcePoint"/>
+            <mxPoint x="1700" y="2415" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_4_9" value="4.9: Center Operator stages accepted sacks onto outbound trip: POST assigned_to_trip" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#854d0e;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="735" y="2281" width="950" height="22" as="geometry"/>
+          <mxGeometry x="735" y="2391" width="950" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_4_10" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="2345" as="sourcePoint"/>
-            <mxPoint x="2095" y="2345" as="targetPoint"/>
+            <mxPoint x="1700" y="2455" as="sourcePoint"/>
+            <mxPoint x="2095" y="2455" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_4_10" value="4.10: Record assigned_to_trip in trips and sacks tables (KMS 'records')" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="2321" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="2431" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="ph5" value="PHASE 5: HIGHWAY DEPARTURE &amp; BUENAVENTURA MARITIME PORT HANDOVER (DOCS SEC 3.2, SEC 5)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=none;fontColor=#f8fafc;fontSize=14;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
-          <mxGeometry x="40" y="2390" width="3420" height="36" as="geometry"/>
+          <mxGeometry x="40" y="2505" width="3420" height="36" as="geometry"/>
         </mxCell>
         <mxCell id="arr_5_1" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#1e40af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1200" y="2440" as="sourcePoint"/>
-            <mxPoint x="1700" y="2440" as="targetPoint"/>
+            <mxPoint x="1200" y="2570" as="sourcePoint"/>
+            <mxPoint x="1700" y="2570" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_5_1" value="5.1: Transporter opens center_to_port trip: records departed_to_port (sack_custody) -&gt; API" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#1e40af;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1215" y="2416" width="470" height="22" as="geometry"/>
+          <mxGeometry x="1215" y="2546" width="470" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_5_2" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="2480" as="sourcePoint"/>
-            <mxPoint x="2095" y="2480" as="targetPoint"/>
+            <mxPoint x="1700" y="2610" as="sourcePoint"/>
+            <mxPoint x="2095" y="2610" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_5_2" value="5.2: Stream triggers sack-applier: update sacks &amp; buyer_view status = in_transit_to_port" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="2456" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="2586" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_5_3" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#1e40af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1200" y="2525" as="sourcePoint"/>
-            <mxPoint x="1700" y="2525" as="targetPoint"/>
+            <mxPoint x="1200" y="2655" as="sourcePoint"/>
+            <mxPoint x="1700" y="2655" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_5_3" value="5.3: Transporter delivers at Buenaventura port: records delivered_at_port [outcome, receiver_reference] (ASM-057, ASM-077)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#1e40af;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1215" y="2501" width="470" height="22" as="geometry"/>
+          <mxGeometry x="1215" y="2631" width="470" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_5_4" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="2570" as="sourcePoint"/>
-            <mxPoint x="2095" y="2570" as="targetPoint"/>
+            <mxPoint x="1700" y="2700" as="sourcePoint"/>
+            <mxPoint x="2095" y="2700" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_5_4" value="5.4: Conditional PutItem delivered_at_port in sack_event_log [KMS 'records']" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="2546" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="2676" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_5_5" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2095" y="2615" as="sourcePoint"/>
-            <mxPoint x="1700" y="2615" as="targetPoint"/>
+            <mxPoint x="2095" y="2745" as="sourcePoint"/>
+            <mxPoint x="1700" y="2745" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_5_5" value="5.5: Stream triggers sack-applier: fold history -&gt; status = delivered_at_port_accepted (or rejected) [TERMINAL STATE]" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="2591" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="2721" width="375" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_5_6" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#6b21a8;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1700" y="2655" as="sourcePoint"/>
-            <mxPoint x="2095" y="2655" as="targetPoint"/>
+            <mxPoint x="1700" y="2785" as="sourcePoint"/>
+            <mxPoint x="2095" y="2785" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_5_6" value="5.6: Update buyer_view table: status = delivered_at_port_accepted [KMS 'public_view']" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6b21a8;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1710" y="2631" width="375" height="22" as="geometry"/>
+          <mxGeometry x="1710" y="2761" width="375" height="22" as="geometry"/>
         </mxCell>
-        <mxCell id="ph6" value="PHASE 6: BUYER PUBLIC LOOKUP BY SACK CODE (UNAUTHENTICATED, DOCS SEC 7, SEC 8) [Box D04, D06, D07]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=none;fontColor=#f8fafc;fontSize=14;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
-          <mxGeometry x="40" y="2705" width="3420" height="36" as="geometry"/>
+        <mxCell id="ph6" value="PHASE 6: BUYER PUBLIC LOOKUP BY SACK CODE (UNAUTHENTICATED, DOCS SEC 7, SEC 8) [Box D07]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=none;fontColor=#f8fafc;fontSize=14;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2835" width="3420" height="36" as="geometry"/>
         </mxCell>
         <mxCell id="arr_6_1" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#e11d48;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="3290" y="2755" as="sourcePoint"/>
-            <mxPoint x="2940" y="2755" as="targetPoint"/>
+            <mxPoint x="3290" y="2900" as="sourcePoint"/>
+            <mxPoint x="2940" y="2900" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_6_1" value="6.1: GET https://&lt;lookup-host&gt;/s/XXXXXXXXXXXXXXXXC (unauthenticated HTTPS QR scan, ASM-058)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#e11d48;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="2950" y="2731" width="330" height="22" as="geometry"/>
+          <mxGeometry x="2950" y="2876" width="330" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_6_2" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#e11d48;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2940" y="2795" as="sourcePoint"/>
-            <mxPoint x="2940" y="2819" as="targetPoint"/>
+            <mxPoint x="2940" y="2945" as="sourcePoint"/>
+            <mxPoint x="2940" y="2975" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="3000" y="2795"/>
-              <mxPoint x="3000" y="2819"/>
+              <mxPoint x="2995" y="2945"/>
+              <mxPoint x="2995" y="2975"/>
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="lbl_6_2" value="6.2: WAF Web ACL (CL-PUB-01): IP reputation, bad inputs, rate-based rule (100 req / 5 min per IP, ASM-155)" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#e11d48;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="3015" y="2793" width="440" height="24" as="geometry"/>
+        <mxCell id="lbl_6_2" value="6.2: WAF Web ACL (CL-PUB-01): rate-based rule (100 req / 5 min, ASM-155)&#10;IP reputation, input inspection &amp; path regex matching" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#e11d48;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="3010" y="2945" width="310" height="36" as="geometry"/>
         </mxCell>
         <mxCell id="arr_6_3" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#e11d48;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2940" y="2840" as="sourcePoint"/>
-            <mxPoint x="2625" y="2840" as="targetPoint"/>
+            <mxPoint x="2940" y="3010" as="sourcePoint"/>
+            <mxPoint x="2625" y="3010" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="lbl_6_3" value="6.3: Route to Function URL via Origin Access Control (OAC, AWS_IAM auth, reserved concurrency 10, ASM-155)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#e11d48;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="2635" y="2816" width="295" height="22" as="geometry"/>
+        <mxCell id="lbl_6_3" value="6.3: Route to Function URL via OAC (AWS_IAM auth)&#10;Origin Access Control, reserved concurrency 10 (ASM-155)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#e11d48;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="2640" y="2980" width="280" height="32" as="geometry"/>
         </mxCell>
         <mxCell id="arr_6_4" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#9f1239;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2625" y="2880" as="sourcePoint"/>
-            <mxPoint x="2625" y="2904" as="targetPoint"/>
+            <mxPoint x="2625" y="3050" as="sourcePoint"/>
+            <mxPoint x="2625" y="3074" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="2685" y="2880"/>
-              <mxPoint x="2685" y="2904"/>
+              <mxPoint x="2685" y="3050"/>
+              <mxPoint x="2685" y="3074"/>
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_6_4" value="6.4: Validate Crockford Base32 syntax + Check Symbol mod 37 (rejects 36/37 random guesses without DB read!)" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#9f1239;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="2700" y="2878" width="480" height="24" as="geometry"/>
+          <mxGeometry x="2700" y="3048" width="480" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="arr_6_5" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#9f1239;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2625" y="2925" as="sourcePoint"/>
-            <mxPoint x="2095" y="2925" as="targetPoint"/>
+            <mxPoint x="2625" y="3095" as="sourcePoint"/>
+            <mxPoint x="2095" y="3095" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_6_5" value="6.5: dynamodb:GetItem on buyer_view by PK sack_code [KMS 'public_view', least privilege, ASM-154]" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#9f1239;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="2110" y="2901" width="500" height="22" as="geometry"/>
+          <mxGeometry x="2110" y="3071" width="500" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_6_6" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#0d9488;strokeWidth=2;endArrow=block;endFill=1;strokeDashed=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2095" y="2965" as="sourcePoint"/>
-            <mxPoint x="2625" y="2965" as="targetPoint"/>
+            <mxPoint x="2095" y="3135" as="sourcePoint"/>
+            <mxPoint x="2625" y="3135" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_6_6" value="6.6: Return projected record (only the 4 authorized buyer view data groups)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#0d9488;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="2110" y="2941" width="500" height="22" as="geometry"/>
+          <mxGeometry x="2110" y="3111" width="500" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_6_7" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#db2777;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2625" y="3010" as="sourcePoint"/>
-            <mxPoint x="2335" y="3010" as="targetPoint"/>
+            <mxPoint x="2625" y="3180" as="sourcePoint"/>
+            <mxPoint x="2335" y="3180" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_6_7" value="6.7: PutLogEvents to /aws/application/audit (anonymous client IP, code, timestamp, result, ASM-069)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#db2777;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="2345" y="2986" width="270" height="22" as="geometry"/>
+          <mxGeometry x="2345" y="3156" width="270" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_6_8" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#e11d48;strokeWidth=2;endArrow=block;endFill=1;strokeDashed=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2625" y="3055" as="sourcePoint"/>
-            <mxPoint x="2940" y="3055" as="targetPoint"/>
+            <mxPoint x="2625" y="3225" as="sourcePoint"/>
+            <mxPoint x="2940" y="3225" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_6_8" value="6.8: Return server-rendered HTML (Cache-Control: no-store, X-Robots-Tag: noindex, Referrer-Policy: no-referrer)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#e11d48;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="2635" y="3031" width="295" height="22" as="geometry"/>
+          <mxGeometry x="2635" y="3201" width="295" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="arr_6_9" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#e11d48;strokeWidth=2;endArrow=block;endFill=1;strokeDashed=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2940" y="3095" as="sourcePoint"/>
-            <mxPoint x="3290" y="3095" as="targetPoint"/>
+            <mxPoint x="2940" y="3265" as="sourcePoint"/>
+            <mxPoint x="3290" y="3265" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_6_9" value="6.9: Deliver rendered HTML page to buyer mobile browser" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#e11d48;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="2950" y="3071" width="330" height="22" as="geometry"/>
+          <mxGeometry x="2950" y="3241" width="330" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="card_bv" value="THE FOUR AUTHORIZED DATA GROUPS RETURNED TO BUYER (ASM-096, SEC 8.2):&#10;--------------------------------------------------------------------------------------------------------------------------------&#10;1. Origin: sack_code, department, municipality&#10;2. Processing Dates: drying_start_date, drying_end_date, packing_date (calendar dates, no time of day)&#10;3. Status: current Part C state only (in preparation, in transit to center, at center, in transit to port, delivered at port)&#10;4. Drying Variables: final_coffee_moisture_pct, grain_temperature_min_c, grain_temperature_mean_c, grain_temperature_max_c" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=2;fontColor=#065f46;fontSize=13;align=left;spacing=8;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1980" y="3140" width="1480" height="95" as="geometry"/>
+          <mxGeometry x="1980" y="3305" width="1480" height="95" as="geometry"/>
         </mxCell>
         <mxCell id="panel_sec" value="SECURITY &amp; PRIVACY BOUNDARY: FIELDS THE BUYER VIEW NEVER RETURNS (DOCS SEC 8.3, CASE STATEMENT POINT 2)&#10;--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------&#10;• NO Personal Data: Farmer name, cédula (national ID), phone number, or subject_id are NEVER returned. Point 2 strictly forbids exposing farmer cédula to the buyer.&#10;• NO Geographic Identifiers: Farm name, farm ID, vereda, polygon coordinates, or plot boundaries are NEVER returned (prevents locating or identifying the producer).&#10;• NO Telemetry Series: Farm IoT node identifiers, device X.509 certificates, and raw sensor readings series are completely withheld.&#10;• NO Custody Trace: Transporter identity, vehicle plate, GPS transit points, event timestamps, receiver references, and receiving operator IDs are withheld.&#10;• NO Commercial Details: Collection center name, rejection reasons, sack scale weights, and internal sack_id are NEVER exposed to the public view.&#10;• Uniform Error Response: Malformed check symbols, void codes, unknown codes, and unregistered codes return identical 'not found' status (zero enumeration oracle)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#dc2626;strokeWidth=2;fontColor=#991b1b;fontSize=13;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
-          <mxGeometry x="40" y="3260" width="3420" height="220" as="geometry"/>
+          <mxGeometry x="40" y="3425" width="3420" height="220" as="geometry"/>
         </mxCell>
       </root>
     </mxGraphModel>
