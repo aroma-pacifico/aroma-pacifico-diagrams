@@ -1,0 +1,356 @@
+<mxfile host="app.diagrams.net" version="32.4.1" type="device">
+  <diagram id="addressing_plan" name="Cloud and Site Addressing Plan">
+    <mxGraphModel dx="2800" dy="2050" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="2800" pageHeight="2050" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Cloud and Site Addressing Plan" style="text;html=1;align=left;verticalAlign=middle;fontSize=32;fontStyle=1;fontColor=#102a43;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="40" y="30" width="2720" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Non-overlapping private IPv4 allocations across AWS environments, VPC tiers, on-premises collection centers, and prepared Azure space (ADR-001, ASM-030 to ASM-036, PD-009)" style="text;html=1;align=left;verticalAlign=middle;fontSize=16;fontColor=#334e68;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="40" y="80" width="2720" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="box_super_cc" value="&lt;b&gt;10.40.0.0/13 | ON-PREMISES &amp;amp; WAN COLLECTION CENTERS&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;10.41.0.0/16&lt;/b&gt; : Cauca Collection Center &amp;amp; site LAN growth (active)&lt;br/&gt;• &lt;b&gt;10.42.0.0/16&lt;/b&gt; : Huila Collection Center &amp;amp; site LAN growth (active)&lt;br/&gt;• &lt;b&gt;10.43.0.0/16&lt;/b&gt; : Tolima Collection Center &amp;amp; site LAN growth (active)&lt;br/&gt;• &lt;b&gt;10.44.0.0/16&lt;/b&gt; : Future fourth department space (ASM-030)&lt;br/&gt;• &lt;b&gt;10.45.0.0/16 - 10.47.255.255&lt;/b&gt; : Reserved for future center growth&lt;br/&gt;&lt;br/&gt;&lt;i&gt;Rule: Kept strictly out of the cloud. Reached from cloud transit tier via single summary route 10.40.0.0/13.&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf8ff;strokeColor=#3182ce;strokeWidth=2;fontColor=#1a365d;fontSize=13;align=left;verticalAlign=top;spacing=14;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="40" y="130" width="660" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="box_super_aws" value="&lt;b&gt;10.80.0.0/13 | AWS PRIMARY CLOUD SUPERNET (us-east-1)&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;10.80.0.0/16&lt;/b&gt; : Development VPC (dev), Development account&lt;br/&gt;• &lt;b&gt;10.81.0.0/16&lt;/b&gt; : Test / Pattern VPC (qa), Test account&lt;br/&gt;• &lt;b&gt;10.82.0.0/16&lt;/b&gt; : Production VPC (pdn), Production account&lt;br/&gt;• &lt;b&gt;10.83.0.0/16&lt;/b&gt; : AWS Reserve (network / security account VPC, ASM-034)&lt;br/&gt;• &lt;b&gt;10.84.0.0/14&lt;/b&gt; : AWS Reserve for future accounts (10.84.0.0 - 10.87.255.255)&lt;br/&gt;&lt;br/&gt;&lt;i&gt;Rule: Each environment owns one distinct /16 VPC with distinct second octet (80, 81, 82).&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=2;fontColor=#102a43;fontSize=13;align=left;verticalAlign=top;spacing=14;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="720" y="130" width="720" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="box_super_azure" value="&lt;b&gt;10.88.0.0/13 | AZURE SECONDARY CLOUD (PREPARED, NOT DEPLOYED)&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;10.88.0.0/16&lt;/b&gt; : Reserved for Azure dev&lt;br/&gt;• &lt;b&gt;10.89.0.0/16&lt;/b&gt; : Reserved for Azure qa&lt;br/&gt;• &lt;b&gt;10.90.0.0/16&lt;/b&gt; : Reserved for Azure pdn&lt;br/&gt;• &lt;b&gt;10.91.0.0/16 to 10.95.0.0/16&lt;/b&gt; : Azure reserve space (ASM-035)&lt;br/&gt;&lt;br/&gt;&lt;i&gt;Rule: Prepared export target only (ADR-001, ASM-035). No live deployments, no cross-cloud VPN or link.&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#718096;strokeWidth=2;dashed=1;fontColor=#2d3748;fontSize=13;align=left;verticalAlign=top;spacing=14;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1460" y="130" width="620" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="box_super_verify" value="&lt;b&gt;NON-OVERLAP VERIFICATION (PROVED)&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Centers vs AWS Supernet&lt;/b&gt;: 10.47.255.255 &amp;lt; 10.80.0.0 [PASS]&lt;br/&gt;• &lt;b&gt;AWS Supernet vs Azure&lt;/b&gt;: 10.87.255.255 &amp;lt; 10.88.0.0 [PASS]&lt;br/&gt;• &lt;b&gt;AWS Environments&lt;/b&gt;: 10.80.255.255 &amp;lt; 10.81.0.0 &amp;lt; 10.82.0.0 [PASS]&lt;br/&gt;• &lt;b&gt;Prefix Boundary Alignment&lt;/b&gt;:&lt;br/&gt;&amp;nbsp;&amp;nbsp;* /13 on mod-8 octet (40, 80, 88)&lt;br/&gt;&amp;nbsp;&amp;nbsp;* /14 on mod-4 octet (84)&lt;br/&gt;&amp;nbsp;&amp;nbsp;* /22 on mod-4 octet (all tier subnets: 0, 4, 8, 12, ...)&lt;br/&gt;&amp;nbsp;&amp;nbsp;* /28 on mod-16 octet (transit subnets: 0, 16, 32, 48)&lt;br/&gt;&lt;i&gt;Verified with Python ipaddress module and exact prefix boundaries.&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fff4;strokeColor=#38a169;strokeWidth=2;fontColor=#22543d;fontSize=12;align=left;verticalAlign=top;spacing=12;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2100" y="130" width="660" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="container_aws_vpc" value="AWS VPC Environment Subnet Hierarchy (us-east-1) | Pattern VPC Layout across Availability Zones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7fafc;strokeColor=#486581;strokeWidth=2;fontColor=#102a43;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=16;spacingLeft=65;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="40" y="390" width="1620" height="1090" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_aws_vpc_main" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.virtual_private_cloud;outlineConnect=0;fontColor=#232F3E;strokeColor=#232F3E;fillColor=#ffffff;aspect=fixed;html=1;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="55" y="400" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d04" value="D04" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=22;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1540" y="402" width="90" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="env_dev" value="&lt;b&gt;Development (dev)&lt;/b&gt;&lt;br/&gt;Account: dev | VPC CIDR: &lt;b&gt;10.80.0.0/16&lt;/b&gt; (E = 80)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#a0aec0;strokeWidth=1.5;fontColor=#2d3748;fontSize=13;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="70" y="455" width="460" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="env_qa" value="&lt;b&gt;Test / Pattern Environment (qa) - B04 Reference Pattern&lt;/b&gt;&lt;br/&gt;Account: qa | VPC CIDR: &lt;b&gt;10.81.0.0/16&lt;/b&gt; (E = 81)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=2;fontColor=#234e52;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="550" y="455" width="490" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="env_pdn" value="&lt;b&gt;Production (pdn)&lt;/b&gt;&lt;br/&gt;Account: pdn | VPC CIDR: &lt;b&gt;10.82.0.0/16&lt;/b&gt; (E = 82)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#a0aec0;strokeWidth=1.5;fontColor=#2d3748;fontSize=13;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1060" y="455" width="460" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="th_tier" value="&lt;b&gt;Tier Key &amp;amp; Case Subnet Name&lt;/b&gt;&lt;br/&gt;Tier Block: /20 (4,096 IPs)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#232f3e;strokeColor=#1a202c;fontColor=#ffffff;fontSize=13;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="70" y="520" width="350" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="th_az1" value="&lt;b&gt;Availability Zone 1 (az1)&lt;/b&gt;&lt;br/&gt;/22 (1,019 usable IPs)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#232f3e;strokeColor=#1a202c;fontColor=#ffffff;fontSize=13;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="420" y="520" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="th_az2" value="&lt;b&gt;Availability Zone 2 (az2)&lt;/b&gt;&lt;br/&gt;/22 (1,019 usable IPs)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#232f3e;strokeColor=#1a202c;fontColor=#ffffff;fontSize=13;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="650" y="520" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="th_az3" value="&lt;b&gt;Availability Zone 3 (az3)&lt;/b&gt;&lt;br/&gt;/22 (1,019 usable IPs)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#232f3e;strokeColor=#1a202c;fontColor=#ffffff;fontSize=13;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="880" y="520" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="th_notes" value="&lt;b&gt;AZ Slot 4 (az4 Reserved) &amp;amp; Architecture Notes&lt;/b&gt;&lt;br/&gt;Routing, endpoints &amp;amp; service mappings" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#232f3e;strokeColor=#1a202c;fontColor=#ffffff;fontSize=13;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1110" y="520" width="440" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_tier_0" value="&lt;b&gt;public_query&lt;/b&gt; (Index 0)&lt;br/&gt;Case: &lt;i&gt;consulta pública&lt;/i&gt;&lt;br/&gt;Block: &lt;b&gt;10.E.0.0/20&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=1;fontColor=#234e52;fontSize=12;align=left;verticalAlign=middle;spacing=10;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="70" y="570" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az1_0" value="&lt;b&gt;10.E.0.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=1;fontColor=#234e52;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="420" y="570" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az2_0" value="&lt;b&gt;10.E.4.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=1;fontColor=#234e52;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="650" y="570" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az3_0" value="&lt;b&gt;10.E.8.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=1;fontColor=#234e52;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="880" y="570" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_notes_0" value="az4 slot: &lt;b&gt;10.E.12.0/22&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PUBLIC ROUTING (Internet Gateway)&lt;/b&gt;&lt;br/&gt;Front door is CloudFront + AWS WAF; no ALB, no NAT GW (ASM-127, PD-051). Subnets created empty in pilot." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=1;fontColor=#234e52;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1110" y="570" width="440" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_tier_1" value="&lt;b&gt;telemetry_ingress&lt;/b&gt; (Index 1)&lt;br/&gt;Case: &lt;i&gt;ingreso de telemetría&lt;/i&gt;&lt;br/&gt;Block: &lt;b&gt;10.E.16.0/20&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a202c;fontSize=12;align=left;verticalAlign=middle;spacing=10;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="70" y="665" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az1_1" value="&lt;b&gt;10.E.16.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a202c;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="420" y="665" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az2_1" value="&lt;b&gt;10.E.20.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a202c;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="650" y="665" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az3_1" value="&lt;b&gt;10.E.24.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a202c;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="880" y="665" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_notes_1" value="az4 slot: &lt;b&gt;10.E.28.0/22&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PRIVATE ROUTING&lt;/b&gt;&lt;br/&gt;Farm nodes publish to regional AWS IoT Core endpoint. No interface VPC endpoint created in pilot (CL-TEL-04, ASM-032). Tier empty &amp;amp; denied." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a202c;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1110" y="665" width="440" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_tier_2" value="&lt;b&gt;drone_object_ingress&lt;/b&gt; (Index 2)&lt;br/&gt;Case: &lt;i&gt;ingreso de objetos de dron&lt;/i&gt;&lt;br/&gt;Block: &lt;b&gt;10.E.32.0/20&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#e53e3e;strokeWidth=1;fontColor=#742a2a;fontSize=12;align=left;verticalAlign=middle;spacing=10;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="70" y="760" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az1_2" value="&lt;b&gt;10.E.32.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#e53e3e;strokeWidth=1;fontColor=#742a2a;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="420" y="760" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az2_2" value="&lt;b&gt;10.E.36.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#e53e3e;strokeWidth=1;fontColor=#742a2a;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="650" y="760" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az3_2" value="&lt;b&gt;10.E.40.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#e53e3e;strokeWidth=1;fontColor=#742a2a;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="880" y="760" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_notes_2" value="az4 slot: &lt;b&gt;10.E.44.0/22&lt;/b&gt;&lt;br/&gt;&lt;b&gt;RESERVED TIER - NO ACTIVE PATH (ASM-140, CC-DRN-02)&lt;/b&gt;&lt;br/&gt;Ground station (10.4x.2.10) uploads directly to application and object_storage endpoints. Tier holds no endpoint." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#e53e3e;strokeWidth=1;fontColor=#742a2a;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1110" y="760" width="440" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_tier_3" value="&lt;b&gt;application&lt;/b&gt; (Index 3)&lt;br/&gt;Case: &lt;i&gt;aplicación&lt;/i&gt;&lt;br/&gt;Block: &lt;b&gt;10.E.48.0/20&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=12;align=left;verticalAlign=middle;spacing=10;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="70" y="855" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az1_3" value="&lt;b&gt;10.E.48.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="420" y="855" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az2_3" value="&lt;b&gt;10.E.52.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="650" y="855" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az3_3" value="&lt;b&gt;10.E.56.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="880" y="855" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_notes_3" value="az4 slot: &lt;b&gt;10.E.60.0/22&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PRIVATE ROUTING&lt;/b&gt;&lt;br/&gt;Network interfaces of Lambda application functions; API Gateway and Cognito interface endpoints; ground station mission downloads." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1110" y="855" width="440" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_tier_4" value="&lt;b&gt;data&lt;/b&gt; (Index 4)&lt;br/&gt;Case: &lt;i&gt;datos&lt;/i&gt;&lt;br/&gt;Block: &lt;b&gt;10.E.64.0/20&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#dd6b20;strokeWidth=1;fontColor=#7b341e;fontSize=12;align=left;verticalAlign=middle;spacing=10;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="70" y="950" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az1_4" value="&lt;b&gt;10.E.64.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#dd6b20;strokeWidth=1;fontColor=#7b341e;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="420" y="950" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az2_4" value="&lt;b&gt;10.E.68.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#dd6b20;strokeWidth=1;fontColor=#7b341e;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="650" y="950" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az3_4" value="&lt;b&gt;10.E.72.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#dd6b20;strokeWidth=1;fontColor=#7b341e;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="880" y="950" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_notes_4" value="az4 slot: &lt;b&gt;10.E.76.0/22&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PRIVATE ROUTING (Isolated, no route to internet)&lt;/b&gt;&lt;br/&gt;Database instances and managed DB subnet groups across AZs. DynamoDB is regional managed on-demand (ASM-061)." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#dd6b20;strokeWidth=1;fontColor=#7b341e;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1110" y="950" width="440" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_tier_5" value="&lt;b&gt;object_storage&lt;/b&gt; (Index 5)&lt;br/&gt;Case: &lt;i&gt;object storage&lt;/i&gt;&lt;br/&gt;Block: &lt;b&gt;10.E.80.0/20&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=12;align=left;verticalAlign=middle;spacing=10;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="70" y="1045" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az1_5" value="&lt;b&gt;10.E.80.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="420" y="1045" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az2_5" value="&lt;b&gt;10.E.84.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="650" y="1045" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az3_5" value="&lt;b&gt;10.E.88.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="880" y="1045" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_notes_5" value="az4 slot: &lt;b&gt;10.E.92.0/22&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PRIVATE ROUTING&lt;/b&gt;&lt;br/&gt;Amazon S3 interface VPC endpoints (PrivateLink), reachable from collection center ground station (10.4x.2.10) via TGW hub." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1110" y="1045" width="440" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_tier_6" value="&lt;b&gt;administration&lt;/b&gt; (Index 6)&lt;br/&gt;Case: &lt;i&gt;administración&lt;/i&gt;&lt;br/&gt;Block: &lt;b&gt;10.E.96.0/20&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=12;align=left;verticalAlign=middle;spacing=10;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="70" y="1140" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az1_6" value="&lt;b&gt;10.E.96.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="420" y="1140" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az2_6" value="&lt;b&gt;10.E.100.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="650" y="1140" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az3_6" value="&lt;b&gt;10.E.104.0/22&lt;/b&gt;&lt;br/&gt;(1,019 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="880" y="1140" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_notes_6" value="az4 slot: &lt;b&gt;10.E.108.0/22&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PRIVATE ROUTING&lt;/b&gt;&lt;br/&gt;Interface endpoints for SSM Session Manager, KMS, IAM, CW Logs, Parameters. Admin without bastion hosts. Reaches center devices." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1;fontColor=#102a43;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1110" y="1140" width="440" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_tier_7" value="&lt;b&gt;Reserved Tiers&lt;/b&gt; (Indices 7 to 14)&lt;br/&gt;10.E.112.0 to 10.E.239.255&lt;br/&gt;Block: &lt;b&gt;8 x /20 tiers&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#edf2f7;strokeColor=#a0aec0;strokeWidth=1;fontColor=#4a5568;fontSize=12;align=left;verticalAlign=middle;spacing=10;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="70" y="1235" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az1_7" value="Reserved" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#edf2f7;strokeColor=#a0aec0;strokeWidth=1;fontColor=#4a5568;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="420" y="1235" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az2_7" value="Reserved" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#edf2f7;strokeColor=#a0aec0;strokeWidth=1;fontColor=#4a5568;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="650" y="1235" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az3_7" value="Reserved" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#edf2f7;strokeColor=#a0aec0;strokeWidth=1;fontColor=#4a5568;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="880" y="1235" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_notes_7" value="az4 slot: &lt;b&gt;Reserved&lt;/b&gt;&lt;br/&gt;&lt;b&gt;UNALLOCATED RESERVES (32,768 addresses per env)&lt;/b&gt;&lt;br/&gt;Reserved for future tier expansion at free indices without moving existing subnets (128 values of 3rd octet x 256)." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#edf2f7;strokeColor=#a0aec0;strokeWidth=1;fontColor=#4a5568;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1110" y="1235" width="440" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_tier_8" value="&lt;b&gt;transit&lt;/b&gt; (Index 15, added ASM-033)&lt;br/&gt;Case: &lt;i&gt;none (TGW Hub attachment)&lt;/i&gt;&lt;br/&gt;Block: &lt;b&gt;10.E.240.0/20&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#805ad5;strokeWidth=1;fontColor=#44337a;fontSize=12;align=left;verticalAlign=middle;spacing=10;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="70" y="1330" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az1_8" value="&lt;b&gt;10.E.240.0/28&lt;/b&gt;&lt;br/&gt;(11 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#805ad5;strokeWidth=1;fontColor=#44337a;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="420" y="1330" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az2_8" value="&lt;b&gt;10.E.240.16/28&lt;/b&gt;&lt;br/&gt;(11 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#805ad5;strokeWidth=1;fontColor=#44337a;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="650" y="1330" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_az3_8" value="&lt;b&gt;10.E.240.32/28&lt;/b&gt;&lt;br/&gt;(11 usable)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#805ad5;strokeWidth=1;fontColor=#44337a;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="880" y="1330" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_notes_8" value="az4 slot: &lt;b&gt;10.E.240.48/28&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PRIVATE ROUTING (TGW Hub Attachment)&lt;/b&gt;&lt;br/&gt;Attachment interfaces to Transit Gateway. Routes 10.40.0.0/13 to hub. Free block: 10.E.240.64 to 10.E.255.255 (4,032 free IPs)." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#805ad5;strokeWidth=1;fontColor=#44337a;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1110" y="1330" width="440" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="container_cc_lan" value="Collection Center Network Pattern (10.4x.Z.0/24) | One Pattern, Three Centers (D05: Track B B05 / #25)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf8ff;strokeColor=#3182ce;strokeWidth=2;fontColor=#1a365d;fontSize=17;fontStyle=1;align=left;verticalAlign=top;spacing=16;spacingLeft=20;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1700" y="390" width="1060" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d05" value="D05" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=22;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2650" y="402" width="90" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_param_banner" value="&lt;b&gt;Pattern Parameters&lt;/b&gt;: Cauca (4x = 41 | 10.41.0.0/16) | Huila (4x = 42 | 10.42.0.0/16) | Tolima (4x = 43 | 10.43.0.0/16)&lt;br/&gt;&lt;b&gt;Host Addressing Rule (ASM-083)&lt;/b&gt;: .1 Gateway on firewall | .2 to .49 Static / DHCP reservations | .50+ Dynamic DHCP pool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#63b3ed;strokeWidth=1.5;fontColor=#2b6cb0;fontSize=12;align=center;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1730" y="455" width="1000" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="th_cc_zone" value="&lt;b&gt;Zone &amp;amp; Case Name&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2b6cb0;strokeColor=#1a365d;fontColor=#ffffff;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1730" y="515" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="th_cc_net" value="&lt;b&gt;Network &amp;amp; VLAN&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2b6cb0;strokeColor=#1a365d;fontColor=#ffffff;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1930" y="515" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="th_cc_ssid" value="&lt;b&gt;SSID &amp;amp; Admission&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2b6cb0;strokeColor=#1a365d;fontColor=#ffffff;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2090" y="515" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="th_cc_details" value="&lt;b&gt;Planned Clients, DHCP Pool &amp;amp; Routing Intent&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2b6cb0;strokeColor=#1a365d;fontColor=#ffffff;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2350" y="515" width="380" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_name_0" value="&lt;b&gt;Gerencia&lt;/b&gt;&lt;br/&gt;(management)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1730" y="555" width="200" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_net_0" value="&lt;b&gt;10.4x.1.0/24&lt;/b&gt;&lt;br/&gt;VLAN 101" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1930" y="555" width="160" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_ssid_0" value="&lt;b&gt;cc-management&lt;/b&gt;&lt;br/&gt;WPA3-Enterprise EAP-TLS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2090" y="555" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_det_0" value="7 clients (2 desktops, 5 phones) | Pool: .50-.69 (20) | Lease: 12h&lt;br/&gt;Local internet breakout. Reaches cloud application tier." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2350" y="555" width="380" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_name_1" value="&lt;b&gt;Soporte&lt;/b&gt;&lt;br/&gt;(support)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1730" y="630" width="200" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_net_1" value="&lt;b&gt;10.4x.2.0/24&lt;/b&gt;&lt;br/&gt;VLAN 102" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1930" y="630" width="160" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_ssid_1" value="&lt;b&gt;cc-support&lt;/b&gt;&lt;br/&gt;WPA3-Enterprise EAP-TLS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2090" y="630" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_det_1" value="7 clients | Pool: .50-.69 | &lt;b&gt;Ground Station fixed at 10.4x.2.10 (/32)&lt;/b&gt;&lt;br/&gt;Ground station reaches application &amp;amp; object_storage S3 endpoints via VPN." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2350" y="630" width="380" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_name_2" value="&lt;b&gt;Logística&lt;/b&gt;&lt;br/&gt;(logistics)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1730" y="705" width="200" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_net_2" value="&lt;b&gt;10.4x.3.0/24&lt;/b&gt;&lt;br/&gt;VLAN 103" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1930" y="705" width="160" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_ssid_2" value="&lt;b&gt;cc-logistics&lt;/b&gt;&lt;br/&gt;WPA3-Enterprise EAP-TLS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2090" y="705" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_det_2" value="22 clients (2 desktop reception posts, 20 phones) | Pool: .50-.99 (50)&lt;br/&gt;Local encrypted outbox. Reaches cloud application tier. No open internet." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2350" y="705" width="380" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_name_3" value="&lt;b&gt;Transporte&lt;/b&gt;&lt;br/&gt;(transport)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1730" y="780" width="200" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_net_3" value="&lt;b&gt;10.4x.4.0/24&lt;/b&gt;&lt;br/&gt;VLAN 104" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1930" y="780" width="160" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_ssid_3" value="&lt;b&gt;cc-transport&lt;/b&gt;&lt;br/&gt;WPA3-Personal (SAE)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2090" y="780" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_det_3" value="20 driver phones | Pool: .50-.89 (40) | Lease: 4h | Client isolation&lt;br/&gt;Local internet breakout only. Cloud tunnel access strictly DENIED." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2350" y="780" width="380" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_name_4" value="&lt;b&gt;Visitantes&lt;/b&gt;&lt;br/&gt;(visitors)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1730" y="855" width="200" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_net_4" value="&lt;b&gt;10.4x.5.0/24&lt;/b&gt;&lt;br/&gt;VLAN 105" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1930" y="855" width="160" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_ssid_4" value="&lt;b&gt;cc-guest&lt;/b&gt;&lt;br/&gt;WPA3-Personal (SAE)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2090" y="855" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_det_4" value="10 guest phones | Pool: .50-.69 (20) | Lease: 1h | Client isolation&lt;br/&gt;Local internet breakout only. DOES NOT ROUTE to logistics/management." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2350" y="855" width="380" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_name_5" value="&lt;b&gt;Servidores locales&lt;/b&gt;&lt;br/&gt;(local servers)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1730" y="930" width="200" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_net_5" value="&lt;b&gt;10.4x.10.0/24&lt;/b&gt;&lt;br/&gt;VLAN 110" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1930" y="930" width="160" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_ssid_5" value="Wired ports only&lt;br/&gt;No wireless SSID" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2090" y="930" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_det_5" value="FW: .1 | Switches: .2-.9 | APs: .20-.49 | Code printers: .50-.59&lt;br/&gt;No dynamic pool. Managed from cloud administration tier via VPN." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2350" y="930" width="380" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_name_6" value="&lt;b&gt;Enlace a la nube&lt;/b&gt;&lt;br/&gt;(cloud link)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1730" y="1005" width="200" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_net_6" value="&lt;b&gt;10.4x.20.0/24&lt;/b&gt;&lt;br/&gt;VLAN 120" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=12;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1930" y="1005" width="160" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_ssid_6" value="Wired edge ports&lt;br/&gt;Edge interface" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2090" y="1005" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cc_cell_det_6" value="FW Edge: &lt;b&gt;10.4x.20.1&lt;/b&gt; | ISP LAN: .2 | Cellular Backup: .3&lt;br/&gt;Dual IPsec tunnels to AWS Transit Gateway Hub over 100 Mbps WAN." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e0;strokeWidth=1;fontColor=#1a365d;fontSize=11;align=left;verticalAlign=middle;spacing=6;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2350" y="1005" width="380" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="container_wan_tgw" value="WAN Interconnection &amp; AWS Transit Gateway Hub (Network Account Hub)
+Single Summary Route: 10.40.0.0/13 routed through transit subnets (10.E.240.0/28)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7fafc;strokeColor=#805ad5;strokeWidth=2;fontColor=#44337a;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1700" y="1115" width="1060" height="365" as="geometry" />
+        </mxCell>
+        <mxCell id="wan_hub_card1" value="&lt;b&gt;Primary WAN &amp;amp; Tunnel Link&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;100 Mbps symmetric internet service&lt;/b&gt; (90 Mbps usable payload + 10 Mbps IPsec encapsulation &amp;amp; keepalives)&lt;br/&gt;• &lt;b&gt;Cellular backup link&lt;/b&gt; with automatic failover (ASM-088)&lt;br/&gt;• &lt;b&gt;Dual IPsec VPN tunnels&lt;/b&gt; from Center Firewall (10.4x.20.1) to AWS Transit Gateway Hub&lt;br/&gt;• &lt;b&gt;Staff Wi-Fi admission (RADIUS / EAP-TLS)&lt;/b&gt; validates locally against cached CRL when WAN is down" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6bcfa;strokeWidth=1.5;fontColor=#44337a;fontSize=12;align=left;verticalAlign=top;spacing=10;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1730" y="1175" width="490" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="wan_hub_card2" value="&lt;b&gt;Hub Routing &amp;amp; Inter-Zone Policy Enforcement&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;TGW Hub&lt;/b&gt; terminates center VPN tunnels and attaches to each VPC transit tier (/28)&lt;br/&gt;• &lt;b&gt;Route 10.40.0.0/13&lt;/b&gt; covers present (Cauca, Huila, Tolima) and future departments (10.44.0.0/16, ASM-030)&lt;br/&gt;• &lt;b&gt;Allowed paths through tunnel&lt;/b&gt;:&lt;br/&gt;&amp;nbsp;&amp;nbsp;* Logística (10.4x.3.0/24) to VPC application tier (sacks &amp;amp; trips API)&lt;br/&gt;&amp;nbsp;&amp;nbsp;* Ground Station (10.4x.2.10/32) to VPC application and object_storage (S3 interface endpoint)&lt;br/&gt;&amp;nbsp;&amp;nbsp;* Cloud administration tier to Servidores locales (10.4x.10.0/24) for device management&lt;br/&gt;• &lt;b&gt;Strictly denied&lt;/b&gt;: telemetry_ingress (bypassed), drone_object_ingress (reserved)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6bcfa;strokeWidth=1.5;fontColor=#44337a;fontSize=12;align=left;verticalAlign=top;spacing=10;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2240" y="1175" width="490" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_center_fw" value="&lt;b&gt;Center Firewall&lt;/b&gt;&lt;br/&gt;10.4x.20.1&lt;br/&gt;(Edge VLAN 120)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf8ff;strokeColor=#3182ce;strokeWidth=1.5;fontColor=#1a365d;fontSize=11;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1730" y="1360" width="170" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_wan_pipe" value="&lt;b&gt;Dual IPsec VPN&lt;/b&gt;&lt;br/&gt;100 Mbps WAN + Cellular&lt;br/&gt;Encrypted Tunnel Bearer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#805ad5;strokeWidth=1.5;fontColor=#44337a;fontSize=11;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1980" y="1360" width="180" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_tgw_hub" value="&lt;b&gt;AWS Transit Gateway&lt;/b&gt;&lt;br/&gt;Network Account Hub&lt;br/&gt;Summary: 10.40.0.0/13" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#805ad5;strokeWidth=2;fontColor=#44337a;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2240" y="1360" width="180" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_vpc_transit" value="&lt;b&gt;VPC transit Tier&lt;/b&gt;&lt;br/&gt;10.E.240.0/28&lt;br/&gt;TGW Attachment ENIs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#805ad5;strokeWidth=1.5;fontColor=#44337a;fontSize=11;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2490" y="1360" width="150" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_vpc_dest" value="&lt;b&gt;Target Endpoints&lt;/b&gt;&lt;br/&gt;application / S3&lt;br/&gt;(10.E.48 / 80)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4f8;strokeColor=#486581;strokeWidth=1.5;fontColor=#102a43;fontSize=11;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="2680" y="1360" width="130" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_flow_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#44337a;strokeWidth=2;endArrow=block;endFill=1;" vertex="1" edge="1" parent="1" source="flow_center_fw" target="flow_wan_pipe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_flow_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#44337a;strokeWidth=2;endArrow=block;endFill=1;" vertex="1" edge="1" parent="1" source="flow_wan_pipe" target="flow_tgw_hub">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_flow_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#44337a;strokeWidth=2;endArrow=block;endFill=1;" vertex="1" edge="1" parent="1" source="flow_tgw_hub" target="flow_vpc_transit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_flow_4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#44337a;strokeWidth=2;endArrow=block;endFill=1;" vertex="1" edge="1" parent="1" source="flow_vpc_transit" target="flow_vpc_dest">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="container_scaling_inset" value="INSET: SCALING PATH FROM 200 TO 1,000 FARMS | Technical Constraint &amp; Capacity Headroom Analysis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#805ad5;strokeWidth=2;fontColor=#44337a;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=16;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="40" y="1500" width="2720" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="scaling_constraint_quote" value="&lt;b&gt;Case Statement Technical Constraint&lt;/b&gt;: &quot;The network and ingestion pattern scales from 200 to 1,000 farms without redesigning the addressing or the ingestion point.&quot; (Point 3 &amp;amp; Part A, ASM-032, ASM-036)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b794f4;strokeWidth=1.5;fontColor=#553c9e;fontSize=14;align=center;verticalAlign=middle;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="70" y="1550" width="2660" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="scale_panel_1" value="&lt;b&gt;1. Architectural Scalability: Identity, Not IP&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Zero Cloud Private IP Consumption&lt;/b&gt;: Farms DO NOT receive private cloud IP addresses (ASM-032).&lt;br/&gt;• &lt;b&gt;Public Cellular Bearer&lt;/b&gt;: Nodes publish over cellular data (or satellite IP bearer) to the regional public endpoint (AWS IoT Core).&lt;br/&gt;• &lt;b&gt;Authentication by Identity&lt;/b&gt;: Devices authenticate via mutual TLS with X.509 certificates and FarmId identities, not IP addresses.&lt;br/&gt;• &lt;b&gt;Linear Expansion&lt;/b&gt;: Scaling from 200 to 1,000 farms adds 800 device identities to the existing endpoint.&lt;br/&gt;• &lt;b&gt;Zero Network Topology Changes&lt;/b&gt;: ZERO subnet, route table, interface endpoint, or CIDR block changes required.&lt;br/&gt;• &lt;b&gt;Store-and-Forward&lt;/b&gt;: Local non-volatile encrypted outbox buffers up to 24 hours of readings when signal is absent.&lt;br/&gt;• &lt;b&gt;Transporters &amp;amp; Drones&lt;/b&gt;: Transporter phones and drone uploads over public cellular operate on the same identity principle." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6bcfa;strokeWidth=1.5;fontColor=#2d3748;fontSize=13;align=left;verticalAlign=top;spacing=12;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="70" y="1610" width="860" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="scale_panel_2" value="&lt;b&gt;2. Ingestion Load Scaling (5x Volume)&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Pilot Baseline Load at 200 Farms (Case Statement Part A)&lt;/b&gt;:&lt;br/&gt;&amp;nbsp;&amp;nbsp;* Cultivation: 200 farms x 6 readings/day = 1,200 readings/day&lt;br/&gt;&amp;nbsp;&amp;nbsp;* Active drying (harvest): 100 farms x 24 readings/day = 2,400 readings/day&lt;br/&gt;&amp;nbsp;&amp;nbsp;* Total pilot daily load: &lt;b&gt;3,600 readings/day (~0.04 readings/sec average)&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Expanded Load at 1,000 Farms (ASM-036)&lt;/b&gt;:&lt;br/&gt;&amp;nbsp;&amp;nbsp;* Cultivation: 1,000 farms x 6 readings/day = 6,000 readings/day&lt;br/&gt;&amp;nbsp;&amp;nbsp;* Active drying (harvest): 500 farms x 24 readings/day = 12,000 readings/day&lt;br/&gt;&amp;nbsp;&amp;nbsp;* Total expanded load: &lt;b&gt;18,000 readings/day (~0.21 readings/sec average)&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Capacity Impact&lt;/b&gt;: 0.21 readings/second is trivial for managed AWS IoT Core data plane. Ingestion capacity scales elastically without any network redesign." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6bcfa;strokeWidth=1.5;fontColor=#2d3748;fontSize=13;align=left;verticalAlign=top;spacing=12;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="960" y="1610" width="860" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="scale_panel_3" value="&lt;b&gt;3. Pessimistic Address Headroom Analysis (telemetry_ingress)&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Even under a deliberately pessimistic hypothetical bound where every farm consumed one private VPC IP:&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Usable addresses in telemetry_ingress active AZ slots&lt;/b&gt;: 3 x 1,019 = &lt;b&gt;3,057 usable IPs&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;200 farms consumption&lt;/b&gt;: 200 IPs (6.5% of tier capacity) -&amp;gt; &lt;b&gt;2,857 free IPs&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;1,000 farms consumption&lt;/b&gt;: 1,000 IPs (32.7% of tier capacity) -&amp;gt; &lt;b&gt;2,057 free IPs&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;Worst-case single AZ concentration&lt;/b&gt;: 1,000 farms fits within ONE single /22 slot (1,019 usable IPs)!&lt;br/&gt;• &lt;b&gt;Additional tier headroom without readdressing&lt;/b&gt;:&lt;br/&gt;&amp;nbsp;&amp;nbsp;* az4 slot reserved: 1,019 additional IPs&lt;br/&gt;&amp;nbsp;&amp;nbsp;* 8 reserved tier blocks (10.E.112.0/17): 32,768 IPs per environment&lt;br/&gt;• &lt;b&gt;Collection Centers&lt;/b&gt;: 10.40.0.0/13 summary route already encompasses fourth department (10.44.0.0/16)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6bcfa;strokeWidth=1.5;fontColor=#2d3748;fontSize=13;align=left;verticalAlign=top;spacing=12;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="1850" y="1610" width="880" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="footer_traceability" value="&lt;b&gt;Traceability &amp;amp; Badges&lt;/b&gt;: D04 = Pattern VPC and Tiers (B04 / #24) | D05 = Collection Center Pattern &amp;amp; Association (B05 / #25) | ADR-001 (cloud choice) | ASM-030 to ASM-036 (addressing assumptions) | ASM-080 to ASM-089 (LAN pattern) | PD-009 (closed non-overlapping CIDRs) | PD-050 (Terraform vars) | PD-052 (firewall policies)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontColor=#4a5568;" vertex="1" edge="0" parent="1">
+          <mxGeometry x="40" y="1980" width="2720" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
