@@ -548,47 +548,47 @@
         </mxCell>
         <mxCell id="arr_6_1" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#e11d48;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="3290" y="2880" as="sourcePoint" />
-            <mxPoint x="2940" y="2880" as="targetPoint" />
+            <mxPoint x="3290" y="2915" as="sourcePoint" />
+            <mxPoint x="2940" y="2915" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lbl_6_1" value="6.1: GET https://&lt;lookup-host&gt;/s/XXXXXXXXXXXXXXXXC (unauthenticated HTTPS QR scan, ASM-058)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#e11d48;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="2955" y="2850" width="320" height="24" as="geometry" />
+        <mxCell id="lbl_6_1" value="6.1: GET https://&lt;lookup-host&gt;/s/XXXXXXXXXXXXXXXXC (unauthenticated HTTPS QR scan, ASM-058)" style="text;html=1;align=center;verticalAlign=middle;fontSize=12.5;fontStyle=1;fontColor=#e11d48;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2955" y="2885" width="320" height="24" as="geometry" />
         </mxCell>
         <mxCell id="arr_6_2" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#e11d48;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2940" y="2920" as="sourcePoint" />
-            <mxPoint x="2940" y="2960" as="targetPoint" />
+            <mxPoint x="2940" y="2950" as="sourcePoint" />
+            <mxPoint x="2940" y="2990" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="2995" y="2920" />
-              <mxPoint x="2995" y="2960" />
+              <mxPoint x="2995" y="2950" />
+              <mxPoint x="2995" y="2990" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_6_2" value="6.2: WAF Web ACL (CL-PUB-01)&#10;Rate-based: 100 req / 5 min (ASM-155)&#10;IP reputation &amp; path inspection" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#e11d48;fillColor=none;strokeColor=none;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="3005" y="2918" width="260" height="48" as="geometry" />
+          <mxGeometry x="3005" y="2946" width="260" height="48" as="geometry" />
         </mxCell>
         <mxCell id="arr_6_3" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#e11d48;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2940" y="3050" as="sourcePoint" />
-            <mxPoint x="2625" y="3050" as="targetPoint" />
+            <mxPoint x="2940" y="3070" as="sourcePoint" />
+            <mxPoint x="2625" y="3070" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_6_3" value="6.3: Route to Function URL via OAC&#10;(AWS_IAM auth, concurrency 10, ASM-155)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=11.5;fontStyle=1;fontColor=#e11d48;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="2638" y="3008" width="288" height="34" as="geometry" />
+          <mxGeometry x="2638" y="3028" width="288" height="34" as="geometry" />
         </mxCell>
         <mxCell id="arr_6_4" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#9f1239;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2625" y="3095" as="sourcePoint" />
-            <mxPoint x="2625" y="3120" as="targetPoint" />
+            <mxPoint x="2625" y="3110" as="sourcePoint" />
+            <mxPoint x="2625" y="3145" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="2685" y="3095" />
-              <mxPoint x="2685" y="3120" />
+              <mxPoint x="2685" y="3110" />
+              <mxPoint x="2685" y="3145" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="lbl_6_4" value="6.4: Validate Crockford Base32 syntax + Check Symbol mod 37 (rejects 36/37 random guesses without DB read!)" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#9f1239;fillColor=none;strokeColor=none;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="2695" y="3095" width="490" height="26" as="geometry" />
+        <mxCell id="lbl_6_4" value="6.4: Validate Crockford Base32 syntax&#10;+ Check Symbol mod 37 (rejects 36/37&#10;random guesses without DB read!)" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11.5;fontStyle=1;fontColor=#9f1239;fillColor=none;strokeColor=none;spacing=1;" vertex="1" parent="1">
+          <mxGeometry x="2695" y="3105" width="235" height="45" as="geometry" />
         </mxCell>
         <mxCell id="arr_6_5" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#9f1239;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
@@ -632,8 +632,8 @@
             <mxPoint x="3290" y="3410" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lbl_6_9" value="6.9: Deliver rendered HTML page to buyer mobile browser" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#e11d48;fillColor=none;strokeColor=none;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="2950" y="3386" width="330" height="20" as="geometry" />
+        <mxCell id="lbl_6_9" value="6.9: Deliver rendered HTML page&#10;to buyer mobile browser" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=11.5;fontStyle=1;fontColor=#e11d48;fillColor=none;strokeColor=none;spacing=1;" vertex="1" parent="1">
+          <mxGeometry x="2960" y="3380" width="280" height="32" as="geometry" />
         </mxCell>
         <mxCell id="card_bv" value="THE FOUR AUTHORIZED DATA GROUPS RETURNED TO BUYER (ASM-096, SEC 8.2):&#10;--------------------------------------------------------------------------------------------------------------------------------&#10;1. Origin: sack_code, department, municipality&#10;2. Processing Dates: drying_start_date, drying_end_date, packing_date (calendar dates, no time of day)&#10;3. Status: current Part C state only (in preparation, in transit to center, at center, in transit to port, delivered at port)&#10;4. Drying Variables: final_coffee_moisture_pct, grain_temperature_min_c, grain_temperature_mean_c, grain_temperature_max_c" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=2;fontColor=#065f46;fontSize=13;align=left;spacing=8;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="1980" y="3445" width="1480" height="95" as="geometry" />

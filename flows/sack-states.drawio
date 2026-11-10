@@ -71,16 +71,16 @@
         <mxCell id="lbl_t2" value="T2: picked_up_at_farm&#10;(custody handover)&#10;[Transporter | recorded_at]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#bfdbfe;strokeWidth=1;fontColor=#1e40af;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=2;" vertex="1" parent="1">
           <mxGeometry x="700" y="305" width="140" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="edge_t3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#059669;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.21;entryX=0;entryY=0.24;" edge="1" parent="1" source="s2_transit_center" target="s3_center_accepted">
+        <mxCell id="edge_t3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#059669;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.25;entryX=0;entryY=0.28;" edge="1" parent="1" source="s2_transit_center" target="s3_center_accepted">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1220" y="270" /><mxPoint x="1570" y="270" /></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1220" y="280" /><mxPoint x="1570" y="280" /></Array></mxGeometry>
         </mxCell>
         <mxCell id="lbl_t3" value="T3: received_at_center [accepted]&#10;[Center Operator (MFA) | recorded_at]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#a7f3d0;strokeWidth=1;fontColor=#065f46;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1280" y="225" width="270" height="38" as="geometry" />
+          <mxGeometry x="1280" y="235" width="270" height="38" as="geometry" />
         </mxCell>
         <mxCell id="edge_t4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#dc2626;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.77;entryX=0;entryY=0.38;" edge="1" parent="1" source="s2_transit_center" target="s4_center_rejected">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1220" y="440" /><mxPoint x="1245" y="440" /><mxPoint x="1245" y="570" /><mxPoint x="1570" y="570" /></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1220" y="440" /><mxPoint x="1238" y="440" /><mxPoint x="1238" y="570" /><mxPoint x="1570" y="570" /></Array></mxGeometry>
         </mxCell>
         <mxCell id="lbl_t4" value="T4: received_at_center [rejected, reason]&#10;[Center Operator (MFA) | recorded_at]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#fecaca;strokeWidth=1;fontColor=#991b1b;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=2;" vertex="1" parent="1">
           <mxGeometry x="1280" y="525" width="270" height="38" as="geometry" />
@@ -89,8 +89,8 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="460" y="275" />
-              <mxPoint x="460" y="230" />
-              <mxPoint x="1800" y="230" />
+              <mxPoint x="460" y="210" />
+              <mxPoint x="1800" y="210" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -99,7 +99,7 @@
         </mxCell>
         <mxCell id="edge_t5_acc" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#d97706;strokeWidth=2;endArrow=block;endFill=1;exitX=0.2;exitY=0;entryX=0;entryY=0.81;" edge="1" parent="1" source="start_unlabeled" target="s3_center_accepted">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1383" y="735" /><mxPoint x="1245" y="735" /><mxPoint x="1245" y="390" /><mxPoint x="1570" y="390" /></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1383" y="735" /><mxPoint x="1252" y="735" /><mxPoint x="1252" y="390" /><mxPoint x="1570" y="390" /></Array></mxGeometry>
         </mxCell>
         <mxCell id="lbl_t5_acc" value="T5: bound_at_center [accepted]&#10;[Center Operator (MFA) | Reserve &gt;= 400 codes (ASM-153)]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#fde68a;strokeWidth=1;fontColor=#92400e;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=2;" vertex="1" parent="1">
           <mxGeometry x="1280" y="345" width="270" height="38" as="geometry" />
