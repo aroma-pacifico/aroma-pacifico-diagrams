@@ -1,0 +1,394 @@
+<mxfile host="app.diagrams.net" version="32.4.1">
+  <diagram id="farm-monitoring-sequence" name="Farm Monitoring and Pilot Alerts Sequence">
+    <mxGraphModel dx="3000" dy="2860" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3000" pageHeight="2860" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hdr_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#102a43;strokeColor=none;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="2920" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr_title" value="FARM MONITORING AND PILOT ALERTS: END-TO-END EVENT SEQUENCE" style="text;html=1;align=left;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#ffffff;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="65" y="28" width="2000" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr_subtitle" value="Sequence from sensor reading to farmer push &amp; SMS: ingestion, Federation threshold evaluation, episode deduplication, and 5-minute latency budget split." style="text;html=1;align=left;verticalAlign=middle;fontSize=14;fontColor=#bcccdc;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="65" y="60" width="2100" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr_meta" value="Refs aroma-pacifico/aroma-pacifico-roadmap#19 | Closes ALPH-27 | Normative: docs/farm-monitoring.md, docs/connectivity.md sec 8 | Box badges: D08, D09, D10, D06" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontStyle=2;fontColor=#9fb3c8;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="65" y="84" width="2100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr_sla_badge" value="TARGET SLA: &amp;lt; 5 MINUTES (300 s)&#10;Actual Budget: 210 s Target + 90 s Margin&#10;Store-and-forward drain: within 24 hours" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d97706;strokeColor=#ffffff;strokeWidth=2;fontColor=#ffffff;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="2550" y="30" width="380" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_farm" value="FIELD &amp; SENSORS [Box D08]&#10;Cauca, Huila, Tolima Farms (200 Pilot, Scale to 1,000)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf8ff;strokeColor=#3182ce;strokeWidth=2;fontColor=#1a202c;fontSize=13;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="130" width="330" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_ingest" value="INGESTION &amp; PERSISTENCE [Box D09]&#10;AWS IoT Core &amp; DynamoDB Telemetry Store (KMS &#x27;telemetry&#x27;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=2;fontColor=#1a202c;fontSize=13;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="390" y="130" width="580" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_eval" value="EVALUATION &amp; FEDERATION DATA [Box D10]&#10;SQS Decoupling, DynamoDB Thresholds Table, Lambda Rules Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fefcbf;strokeColor=#d69e2e;strokeWidth=2;fontColor=#1a202c;fontSize=13;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="990" y="130" width="830" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_alert" value="ALERT DEDUPLICATION &amp; DISPATCH [Box D10]&#10;Episode Manager, DynamoDB Alert Store, SNS Alert Topic, PII Isolation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#feebc8;strokeColor=#dd6b20;strokeWidth=2;fontColor=#1a202c;fontSize=13;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="130" width="590" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_client" value="NOTIFICATION CHANNELS &amp; CLIENT&#10;AWS EUM SMS, Amazon SNS Push, Farmer Phone &amp; App" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf2f7;strokeColor=#4a5568;strokeWidth=2;fontColor=#1a202c;fontSize=13;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="2450" y="130" width="510" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_p_node" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.freertos;fillColor=#232F3E;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="174" y="240" width="52" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="p_node" value="Crop / Drying Node&#10;[Box D08]&#10;Sensors &amp; 24h Buffer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=68;fillColor=#ebf8ff;strokeColor=#2b6cb0;strokeWidth=2;fontColor=#1a202c;fontSize=12;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="115" y="298" width="170" height="1632" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_p_iot" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.iot_core;fillColor=#232F3E;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="494" y="240" width="52" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="p_iot" value="AWS IoT Core&#10;[Box D09]&#10;MQTT Ingress &amp; Rules" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=68;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=2;fontColor=#1a202c;fontSize=12;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="435" y="298" width="170" height="1632" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_p_ddb_tel" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;fillColor=#232F3E;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="784" y="240" width="52" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="p_ddb_tel" value="DynamoDB Telemetry&#10;[Box D09]&#10;KMS &#x27;telemetry&#x27; | 5y TTL" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=68;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=2;fontColor=#1a202c;fontSize=12;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="725" y="298" width="170" height="1632" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_p_sqs_thresh" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;fillColor=#232F3E;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1064" y="240" width="52" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="p_sqs_thresh" value="SQS Threshold Queue&#10;[Box D10]&#10;Decoupling &amp; DLQ" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=68;fillColor=#fefcbf;strokeColor=#d69e2e;strokeWidth=2;fontColor=#1a202c;fontSize=12;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="298" width="170" height="1632" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_p_ddb_rules" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;fillColor=#232F3E;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1344" y="240" width="52" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="p_ddb_rules" value="DynamoDB Thresholds&#10;Federation Config Data&#10;T-01..T-10 | KMS &#x27;records&#x27;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=68;fillColor=#fefcbf;strokeColor=#d69e2e;strokeWidth=2;fontColor=#1a202c;fontSize=12;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="1285" y="298" width="170" height="1632" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_p_lambda_thresh" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fillColor=#232F3E;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1644" y="240" width="52" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="p_lambda_thresh" value="Threshold Lambda&#10;[Box D10]&#10;Rules &amp; Episodes Engine" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=68;fillColor=#fefcbf;strokeColor=#d69e2e;strokeWidth=2;fontColor=#1a202c;fontSize=12;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="1585" y="298" width="170" height="1632" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_p_alert_sns" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns;fillColor=#232F3E;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1944" y="240" width="52" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="p_alert_sns" value="Alert Store &amp; SNS&#10;[Box D10]&#10;Episodes &amp; Alert Topic" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=68;fillColor=#feebc8;strokeColor=#dd6b20;strokeWidth=2;fontColor=#1a202c;fontSize=12;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="1885" y="298" width="170" height="1632" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_p_dispatcher" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fillColor=#232F3E;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2244" y="240" width="52" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="p_dispatcher" value="Notification Dispatcher&#10;Lambda &amp; Personal DB&#10;KMS &#x27;personal&#x27; Isolation" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=68;fillColor=#feebc8;strokeColor=#dd6b20;strokeWidth=2;fontColor=#1a202c;fontSize=12;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="2185" y="298" width="170" height="1632" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_p_channels" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.end_user_messaging;fillColor=#232F3E;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2534" y="240" width="52" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="p_channels" value="Push &amp; SMS Providers&#10;AWS EUM SMS &amp; SNS Push&#10;Carrier Gateways" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=68;fillColor=#edf2f7;strokeColor=#4a5568;strokeWidth=2;fontColor=#1a202c;fontSize=12;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="2475" y="298" width="170" height="1632" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_p_farmer" value="" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#4a5568;strokeColor=#2d3748;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="2820" y="240" width="40" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p_farmer" value="Farmer Phone &amp; App&#10;SMS Inbox &amp; App Views&#10;Offline Local History" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=68;fillColor=#edf2f7;strokeColor=#2d3748;strokeWidth=2;fontColor=#1a202c;fontSize=12;fontStyle=1;align=center;verticalAlign=top;lifelineDashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry x="2755" y="298" width="170" height="1632" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr_hop1" value="HOP 1 (Target: 10 s) | SENSOR READING TAKEN TO MESSAGE READY ON NODE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf8ff;strokeColor=#3182ce;strokeWidth=1.5;fontColor=#2b6cb0;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="415" width="680" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="act_101" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bee3f8;strokeColor=#3182ce;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="190" y="450" width="20" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="e_self_102" value="1. Reading captured: Crop (moisture, temp, pH/NPK ref) or Drying (coffee moisture, temp)&#10;Package payload with node_id, farm_id, original_timestamp (UTC), seq_no" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;strokeColor=#2b6cb0;strokeWidth=2;fontSize=12;fontColor=#1a202c;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="455" as="sourcePoint" />
+            <mxPoint x="200" y="485" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note_103" value="Local write: encrypted ring buffer (max 24 h)&#10;Nodes never evaluate thresholds (A10 sec 4.2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#a0aec0;fontColor=#4a5568;fontSize=11;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="260" y="455" width="260" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr_hop2" value="HOP 2 (Target: 60 s) | RADIO WAKE, NETWORK ATTACH AND TLS MUTUAL AUTHENTICATION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf8ff;strokeColor=#3182ce;strokeWidth=1.5;fontColor=#2b6cb0;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="530" width="740" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="act_104" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bee3f8;strokeColor=#3182ce;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="190" y="565" width="20" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act_105" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b2f5ea;strokeColor=#319795;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="510" y="580" width="20" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="call_106" value="2. Radio wake &amp; network attach: LTE-M / NB-IoT / Cat-1 (or satellite IP bearer for out-of-coverage farms, ASM-073)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=0;endArrow=block;endFill=1;endSize=9;strokeColor=#2b6cb0;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="575" as="sourcePoint" />
+            <mxPoint x="200" y="575" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="call_107" value="3. Mutual TLS 1.2+ handshake (X.509 client cert, port 8883 / 443 ALPN) to regional IoT endpoint in us-east-1 (ASM-070, A09 sec 6)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=0;endArrow=block;endFill=1;endSize=9;strokeColor=#2b6cb0;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="610" as="sourcePoint" />
+            <mxPoint x="520" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hdr_hop3" value="HOP 3 (Target: 20 s) | MQTT PUBLISH TO PUBACK AT REGIONAL IOT CORE ENDPOINT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=1.5;fontColor=#234e52;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="650" width="740" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="act_108" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bee3f8;strokeColor=#3182ce;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="190" y="685" width="20" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="act_109" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b2f5ea;strokeColor=#319795;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="510" y="685" width="20" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="call_110" value="4. MQTT PUBLISH (QoS 1) topic: farms/{farm_id}/nodes/{node_id}/telemetry&#10;Payload: {node_id, farm_id, original_timestamp, seq_no, readings}" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=0;endArrow=block;endFill=1;endSize=9;strokeColor=#319795;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="705" as="sourcePoint" />
+            <mxPoint x="520" y="705" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="call_111" value="5. MQTT PUBACK returned -&gt; Node immediately releases reading from encrypted buffer (ASM-074)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;dashPattern=6 4;endArrow=open;endSize=8;strokeColor=#319795;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="750" as="sourcePoint" />
+            <mxPoint x="200" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_box_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#dd6b20;strokeWidth=1.5;strokeDashArray=6 4;" vertex="1" parent="1">
+          <mxGeometry x="60" y="780" width="860" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="alt_box_lbl" value="ALT: NO SIGNAL / CELLULAR OUTAGE - STORE-AND-FORWARD DRAIN UP TO 24 HOURS (ASM-074, A10 SEC 4.3)" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#c05621;" vertex="1" parent="1">
+          <mxGeometry x="75" y="786" width="830" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="alt_box_desc" value="• Signal loss: Reading retained in encrypted non-volatile RAM (max 24 h). Evicted readings counted and reported in telemetry_gap event.&#10;• Reconnection: Live reading published first, then buffered records drain oldest first. Evaluated at original_timestamp.&#10;• Delayed flag: Readings with (arrival_time - original_timestamp) &amp;gt; 300 s marked delayed = true. Deduplication guarantees 1 alert per drain." style="text;html=1;align=left;verticalAlign=top;fontSize=11;fontColor=#7b341e;" vertex="1" parent="1">
+          <mxGeometry x="75" y="806" width="830" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr_hop4" value="HOP 4 (Target: 10 s) | IOT TOPIC RULE EXECUTION: DUAL PARALLEL ACTIONS (STORAGE &amp; DECOUPLING)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6fffa;strokeColor=#319795;strokeWidth=1.5;fontColor=#234e52;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="390" y="895" width="880" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="act_112" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b2f5ea;strokeColor=#319795;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="510" y="930" width="20" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="act_113" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b2f5ea;strokeColor=#319795;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="800" y="940" width="20" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_114" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fefcbf;strokeColor=#d69e2e;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="970" width="20" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="call_115" value="6a. Action 1: PutItem to DynamoDB telemetry table: {node_id (PK), reading_timestamp (SK), readings, cert_id, ip, seq_no}&#10;Encrypted under KMS &#x27;telemetry&#x27; | 5-year retention by TTL | Fulfills A08 telemetry audit (ASM-067)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=0;endArrow=block;endFill=1;endSize=9;strokeColor=#319795;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="947" as="sourcePoint" />
+            <mxPoint x="810" y="947" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="call_116" value="6b. Action 2: SendMessage to SQS Threshold Queue: {node_id, farm_id, reading_timestamp}&#10;Decouples ingestion rate from Lambda evaluation (ADR-003, ASM-161) | Dead-letter queue attached" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=0;endArrow=block;endFill=1;endSize=9;strokeColor=#319795;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="990" as="sourcePoint" />
+            <mxPoint x="1090" y="990" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hdr_hop5" value="HOP 5 (Target: 20 s) | THRESHOLD LAMBDA: RULES EVALUATION, EPISODE DEDUPLICATION &amp; SNS PUBLISH" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fefcbf;strokeColor=#d69e2e;strokeWidth=1.5;fontColor=#744210;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="790" y="1030" width="990" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="act_117" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fefcbf;strokeColor=#d69e2e;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="1065" width="20" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="act_118" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fefcbf;strokeColor=#d69e2e;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1660" y="1075" width="20" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="act_119" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b2f5ea;strokeColor=#319795;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1095" width="20" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_120" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fefcbf;strokeColor=#d69e2e;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="1145" width="20" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_121" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#feebc8;strokeColor=#dd6b20;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="1245" width="20" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="call_122" value="7. SQS invokes Threshold Lambda (batch size 10, concurrency 10, ASM-162)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=0;endArrow=block;endFill=1;endSize=9;strokeColor=#d69e2e;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1090" y="1078" as="sourcePoint" />
+            <mxPoint x="1670" y="1078" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="call_123" value="8. Strongly consistent GetItem from telemetry table: ensures record is persisted before evaluation (ASM-161)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;dashPattern=6 4;endArrow=open;endSize=8;strokeColor=#319795;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1670" y="1115" as="sourcePoint" />
+            <mxPoint x="810" y="1115" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="call_124" value="9. Query active Federation threshold version at original_timestamp (sort key effective_from &amp;lt;= ts, KMS &#x27;records&#x27;)&#10;Resolves farm-specific override if present, else pilot rule (ASM-138) | Zero cache (sec 4.4)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;dashPattern=6 4;endArrow=open;endSize=8;strokeColor=#d69e2e;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1670" y="1160" as="sourcePoint" />
+            <mxPoint x="1370" y="1160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_self_125" value="10. Classify reading: in_range, below, above, closure_reached (sec 5)&#10;Compare against active bounds (e.g., Soil Temp 14-30 °C, Coffee Moisture 12%)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;strokeColor=#d69e2e;strokeWidth=2;fontSize=12;fontColor=#1a202c;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1670" y="1200" as="sourcePoint" />
+            <mxPoint x="1670" y="1230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="call_126" value="11. Episode Deduplication &amp; Update in Alert Store (TransactWriteItems, KMS &#x27;records&#x27;, 5y TTL):&#10;• First out-of-range: conditional put opens Episode; emits crop_alert_raised (triggers ADR-002 pest case for drone)&#10;• Subsequent out-of-range: attaches to open episode (updates reading count &amp; extremes; suppresses duplicate alert)&#10;• In-range reading: closes episode (alert_resolved) | Drying 12%: emits single drying_closure_notice per lot" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=0;endArrow=block;endFill=1;endSize=9;strokeColor=#dd6b20;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1670" y="1270" as="sourcePoint" />
+            <mxPoint x="1970" y="1270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="call_127" value="12. Publish alert event to SNS Alert Topic (episode_id, farm_alias, node_id, var, val, range, version, delayed_flag)&#10;Note: No PII/names/phones in SNS message (sec 7.3) | Async Bedrock Nova Pro plausibility check (ASM-167)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=0;endArrow=block;endFill=1;endSize=9;strokeColor=#dd6b20;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1670" y="1330" as="sourcePoint" />
+            <mxPoint x="1970" y="1330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hdr_hop6" value="HOP 6 (Target: 30 s) | NOTIFICATION DISPATCHER: PII RESOLUTION &amp; SMS COALESCING" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#feebc8;strokeColor=#dd6b20;strokeWidth=1.5;fontColor=#7b341e;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="1365" width="740" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="act_128" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#feebc8;strokeColor=#dd6b20;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="1400" width="20" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_129" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#feebc8;strokeColor=#dd6b20;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="2260" y="1410" width="20" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="act_130" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e2e8f0;strokeColor=#4a5568;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="2550" y="1505" width="20" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="call_131" value="13. Fanout: SNS Alert Topic delivers message to SQS Notification Queue (with DLQ)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=0;endArrow=block;endFill=1;endSize=9;strokeColor=#dd6b20;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1970" y="1417" as="sourcePoint" />
+            <mxPoint x="2270" y="1417" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_self_132" value="14. Dispatcher resolves farmer identity &amp; queries DynamoDB personal-data table (KMS &#x27;personal&#x27;)&#10;Retrieves phone number &amp; push endpoint token | Strict PII isolation: Threshold function never sees PII" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;strokeColor=#dd6b20;strokeWidth=2;fontSize=12;fontColor=#1a202c;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2270" y="1447" as="sourcePoint" />
+            <mxPoint x="2270" y="1477" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_self_133" value="15. SMS coalescing logic (ASM-135): First SMS sent immediately;&#10;further alert openings for same farm within 10 min combined into follow-up SMS" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;strokeColor=#dd6b20;strokeWidth=2;fontSize=12;fontColor=#1a202c;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2270" y="1489" as="sourcePoint" />
+            <mxPoint x="2270" y="1519" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hdr_hop7" value="HOP 7 (Target: 60 s) | MULTI-CHANNEL DELIVERY: PUSH &amp; SMS DISPATCH TO FARMER PHONE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf2f7;strokeColor=#4a5568;strokeWidth=1.5;fontColor=#1a202c;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="2240" y="1545" width="720" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="act_134" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#feebc8;strokeColor=#dd6b20;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="2260" y="1580" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="act_135" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e2e8f0;strokeColor=#4a5568;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="2550" y="1590" width="20" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="act_136" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e2e8f0;strokeColor=#2d3748;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="2830" y="1620" width="20" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="call_137" value="16a. Dispatch SMS: AWS End User Messaging SMS (sends SMS to enrollment phone, works over cellular without data balance)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=0;endArrow=block;endFill=1;endSize=9;strokeColor=#dd6b20;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2270" y="1600" as="sourcePoint" />
+            <mxPoint x="2560" y="1600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="call_138" value="16b. Dispatch Push: Amazon SNS Mobile Push to platform application (Android FCM / iOS APNs endpoints)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=0;endArrow=block;endFill=1;endSize=9;strokeColor=#dd6b20;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2270" y="1635" as="sourcePoint" />
+            <mxPoint x="2560" y="1635" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="call_139" value="17a. SMS delivered to farmer phone: plain text, farm alias, measured time (Colombia), no PII, no links (sec 8)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=0;endArrow=block;endFill=1;endSize=9;strokeColor=#4a5568;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2560" y="1670" as="sourcePoint" />
+            <mxPoint x="2840" y="1670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="call_140" value="17b. Mobile Push delivered to farmer app: displays alert banner; syncs history when data returns (sec 8)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=0;endArrow=block;endFill=1;endSize=9;strokeColor=#4a5568;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2560" y="1705" as="sourcePoint" />
+            <mxPoint x="2840" y="1705" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_self_141" value="18. What the Farmer sees (sec 8):&#10;• SMS: &#x27;Aroma Pacifico: farm &amp;lt;alias&amp;gt;, soil moisture 34 % (range 40-80 %), measured 14:02. Check the app.&#x27;&#10;• App Status Card: alert status highlighted | Alerts List: episode details | History: 24h curve &amp; bands" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;strokeColor=#2d3748;strokeWidth=2;fontSize=12;fontColor=#1a202c;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2840" y="1735" as="sourcePoint" />
+            <mxPoint x="2840" y="1775" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="call_142" value="19. Delivery receipts: Carrier SMS receipt &amp; App push receipt update episode in Alert Store (A21 SLO tracking, PD-134)" style="html=1;verticalAlign=bottom;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;dashPattern=6 4;endArrow=open;endSize=8;strokeColor=#718096;strokeWidth=2;fontSize=12;fontColor=#1a202c;fontStyle=0;labelBackgroundColor=#ffffff;spacingTop=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2840" y="1795" as="sourcePoint" />
+            <mxPoint x="1970" y="1795" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sla_bar_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#102a43;strokeColor=#d97706;strokeWidth=2.5;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1835" width="2920" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="sla_bar_title" value="END-TO-END 5-MINUTE LATENCY BUDGET ALLOCATION (CONNECTIVITY SEC 8.2 &amp; FARM MONITORING SEC 7.2):" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1841" width="800" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="seg_143" value="Hop 1: 10 s&#10;Node Ready" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3182ce;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1865" width="170" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="seg_144" value="Hop 2: 60 s&#10;Radio Attach &amp; TLS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2b6cb0;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="240" y="1865" width="250" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="seg_145" value="Hop 3: 20 s&#10;MQTT PUBACK" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#319795;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1865" width="190" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="seg_146" value="Hop 4: 10 s&#10;Topic Rule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#38a169;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1865" width="170" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="seg_147" value="Hop 5: 20 s&#10;Eval &amp; Deduplication" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d69e2e;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="880" y="1865" width="210" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="seg_148" value="Hop 6: 30 s&#10;PII &amp; SMS Coalesce" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dd6b20;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="1865" width="220" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="seg_149" value="Hop 7: 60 s&#10;SMS &amp; Push Delivery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#805ad5;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="1865" width="250" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="seg_150" value="Total Target: 210 s&#10;(3.5 minutes)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#38a169;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1590" y="1865" width="280" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="seg_151" value="Margin: 90 s&#10;Retries &amp; Network Jitter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e53e3e;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="1865" width="280" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="seg_152" value="CASE STATEMENT SLA LIMIT: &amp;lt; 300 s (&amp;lt; 5 MINUTES)&#10;Satisfied with 90 s Safety Margin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d97706;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="2170" y="1865" width="680" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7fafc;strokeColor=#3182ce;strokeWidth=2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1940" width="700" height="820" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_hdr" value="1. 5-MINUTE LATENCY BUDGET &amp; SLO ARCHITECTURE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3182ce;strokeColor=none;fontColor=#ffffff;fontSize=14;fontStyle=1;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1940" width="700" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_txt" value="Latency Budget per Hop (Connectivity sec 8.2, ASM-075):&#10;Runs from original reading timestamp to receipt on farmer phone.&#10;• Hop 1 (10 s): Reading taken to message ready. Node publishes every reading immediately; no batching or threshold logic on device.&#10;• Hop 2 (60 s): Radio wake, network attach, TLS session setup. Cellular LTE-M/NB-IoT/Cat-1 or satellite IP contact.&#10;• Hop 3 (20 s): MQTT publish QoS 1 to PUBACK at IoT Core endpoint in us-east-1. Release from local buffer on PUBACK.&#10;• Hop 4 (10 s): Topic rule execution. Telemetry table write + SQS threshold queue enqueue (ASM-161).&#10;• Hop 5 (20 s): Threshold Lambda execution. Strongly consistent read of telemetry record, query active Federation threshold version, episode deduplication, write alert store, publish to SNS alert topic.&#10;• Hop 6 (30 s): Alert topic to channel provider. SNS fanout to SQS, notification dispatcher Lambda reads PII from personal DB (KMS &#x27;personal&#x27;), renders messages, applies SMS coalescing.&#10;• Hop 7 (60 s): Provider to phone. Parallel dispatch via AWS EUM SMS and Amazon SNS Mobile Push (FCM/APNs).&#10;------------------------------------------------------------------------------------------------------------------------&#10;Totals: Target Sum = 210 s | Retry Margin = 90 s | SLA Limit = 300 s (5 min).&#10;&#10;Tie to Point 6 Alert-Delivery SLO (A21, PD-082, PD-134):&#10;• Live Alert SLI: Share of out-of-range readings published live (not from buffer) delivered within 300 seconds of original reading timestamp.&#10;• Trace points: reading_ts, puback_ts, function_start_ts, alert_persisted_ts, sns_ts, send_ts, delivery_receipt_ts.&#10;• Offline Buffer Drain SLI: Drained readings delivered within 24 hours of capture; measured separately from live SLO." style="text;html=1;align=left;verticalAlign=top;fontSize=11;fontColor=#2d3748;fontFamily=Helvetica;spacing=10;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="45" y="1980" width="690" height="775" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7fafc;strokeColor=#d69e2e;strokeWidth=2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1940" width="720" height="820" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_hdr" value="2. FEDERATION THRESHOLDS (CONFIGURABLE DATA, NEVER IN CODE)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d69e2e;strokeColor=none;fontColor=#ffffff;fontSize=14;fontStyle=1;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1940" width="720" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_txt" value="Initial Ranges Table from Case Statement (Sec 4.1):&#10;• T-01 [Crop]: pH outside 4.5 - 6.0 (Recommended 4.9 - 5.6) | Unit: pH | Source: Soil analysis (ASM-053).&#10;• T-02 [Crop]: Air moisture outside 40 % - 80 % relative humidity | Source: Crop node.&#10;• T-03 [Crop]: Soil moisture outside 40 % - 80 % | Source: Crop node (ASM-131).&#10;• T-04 [Crop]: Air temperature outside 14 °C - 30 °C (Recommended 17 °C - 23 °C) | Source: Crop node.&#10;• T-05 [Crop]: Soil temperature outside 14 °C - 30 °C (Recommended 17 °C - 23 °C) | Source: Crop node.&#10;• T-06..T-08 [Crop]: NPK (Nitrogen, Phosphorus, Potassium) | Pending publication by Federation (ASM-054). Stored without alerts until published.&#10;• T-09 [Drying]: Coffee moisture lot closure near 12 % | Tolerance: 0 (ASM-133) | Notice, not alert (ASM-059).&#10;• T-10 [Drying]: Grain temperature alert above 40 °C | Source: Drying node.&#10;&#10;Configuration &amp; Scope Model (Sec 4.2, ASM-138):&#10;• Threshold store: DynamoDB &#x27;thresholds&#x27; table in workload account, encrypted with customer-managed key &#x27;records&#x27; (ASM-097). PK: rule_key, SK: effective_from.&#10;• Scope resolution: Farm-specific rule (crop#soil_moisture#farm#&lt;farm_id&gt;) overrides Pilot rule (crop#soil_moisture#pilot). NPK is pilot-wide.&#10;• Historical immutability: Version in force at original_timestamp is evaluated, ensuring drained readings evaluate identically to live ones.&#10;• No cache in Lambda: Strongly consistent query on every invocation; updates apply to the immediate next reading.&#10;• Audit trail: CloudTrail data events (write-only) + DynamoDB Streams audit consumer delivering to S3 Object Lock archive (5-year retention, ASM-067)." style="text;html=1;align=left;verticalAlign=top;fontSize=11;fontColor=#2d3748;fontFamily=Helvetica;spacing=10;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="765" y="1980" width="710" height="775" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7fafc;strokeColor=#dd6b20;strokeWidth=2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1500" y="1940" width="720" height="820" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_hdr" value="3. EPISODE MODEL, DEDUPLICATION &amp; STORE-AND-FORWARD DRAIN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dd6b20;strokeColor=none;fontColor=#ffffff;fontSize=14;fontStyle=1;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="1500" y="1940" width="720" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_txt" value="Why Deduplicate (Sec 6.1, ASM-135):&#10;• Crop variables stay out of range for hours; drying grain stays hot until turned.&#10;• Without deduplication: 1 alert every 4 hours per crop variable (or every hour in drying); 24 messages per drain.&#10;• Prevents drone pest case explosion under ADR-002: unit of alerting is the episode, not the reading.&#10;&#10;Episode State Machine (Sec 6.2, Alert Store, KMS &#x27;records&#x27;):&#10;• Open Episode: First out-of-range reading for a key with no open episode executes conditional put. Winner emits notification and persists crop_alert_raised (ADR-002 mode switch); loser attaches.&#10;• Attach Reading: Subsequent out-of-range readings of same key update count, latest value, and extreme value. Zero notifications sent.&#10;• Close Episode: First in-range reading with timestamp later than latest out-of-range reading closes episode (alert_resolved). Push notification sent.&#10;• 24-Hour Reminder: If episode remains open after 24 hours, push reminder sent once per 24 hours (push only, no SMS, ASM-135).&#10;• Drying Lot Closure: Coffee moisture &lt;= 12% emits single drying_closure_notice per lot; marks lot ready to close (sec 6.5).&#10;&#10;Store-and-Forward Drain Behavior (Sec 6.4, ASM-074):&#10;• Buffer sizing: Encrypted non-volatile ring buffer holds at least 24 hours of readings (6 crop, 24 drying).&#10;• Drainage order: On reconnection, live reading sent first, then buffered records drain oldest first.&#10;• Delayed alert handling: Receive time &gt; 300 s after original timestamp flagged delayed = true. Farmer sees &#x27;measured at&#x27; and &#x27;received at&#x27;.&#10;• Single notification per drain: Oldest drained reading opens episode; following readings attach. 1 notification, not 24." style="text;html=1;align=left;verticalAlign=top;fontSize=11;fontColor=#2d3748;fontFamily=Helvetica;spacing=10;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1505" y="1980" width="710" height="775" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7fafc;strokeColor=#4a5568;strokeWidth=2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="2240" y="1940" width="720" height="820" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_hdr" value="4. WHAT THE FARMER SEES &amp; ARCHITECTURAL TRACEABILITY" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4a5568;strokeColor=none;fontColor=#ffffff;fontSize=14;fontStyle=1;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="2240" y="1940" width="720" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_txt" value="Multi-Channel Strategy (Closes PD-085, ASM-136):&#10;• Dual channel: Push + SMS for alert openings and closure notices. Push only for reminders &amp; resolutions.&#10;• SMS: Reaches farmer over cellular connection even without data plan (LTE or later, A10 sec 11).&#10;• Push: Enriches farmer app with full history and charts when phone enters data coverage (town/road).&#10;• SMS Coalescing: First SMS sent immediately; further alerts for same farm within 10 min combined into 1 SMS (ASM-135).&#10;&#10;Farmer Perception &amp; Example Messages (Sec 8, Colombia Time America/Bogota):&#10;• SMS, Live: &#x27;Aroma Pacifico: farm El Mirador, soil moisture 34 % (range 40-80 %), measured 14:02. Check the app.&#x27;&#10;• SMS, Delayed: &#x27;Aroma Pacifico: farm El Mirador, drying grain 43 C (limit 40 C), measured yesterday 23:10, received 06:15.&#x27;&#10;• SMS, Closure: &#x27;Aroma Pacifico: farm El Mirador, drying lot at 12 % moisture. The lot can be closed.&#x27;&#10;• Push, Resolution: &#x27;Soil moisture back in range (52 %) at 18:02.&#x27;&#10;• Messages carry farm alias only; zero farmer names, cedulas, coordinates, or clickable links.&#10;• Farmer App (3 views): Farm Status Card (active alerts, last heard), Alerts List, History Charts (with recommended bands).&#10;&#10;IaC &amp; Box Traceability (Architecture sec 14, Track B):&#10;• Box D08: Reusable Farm Module (field node, sensors, 24h buffer, X.509 cert) -&gt; B08.&#10;• Box D09: Telemetry Ingestion Pattern (IoT Core, topic rules, DynamoDB telemetry table, error SQS) -&gt; B09.&#10;• Box D10: Event-Driven Inference &amp; Function Pattern (Threshold queue, Lambda rules engine, Alert Store, SNS) -&gt; B10.&#10;• Box D06: Identity &amp; KMS Encryption Keys (&#x27;telemetry&#x27;, &#x27;records&#x27;, &#x27;personal&#x27;) -&gt; B06." style="text;html=1;align=left;verticalAlign=top;fontSize=11;fontColor=#2d3748;fontFamily=Helvetica;spacing=10;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="2245" y="1980" width="710" height="775" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
