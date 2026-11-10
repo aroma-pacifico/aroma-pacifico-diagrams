@@ -565,8 +565,8 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="lbl_6_2" value="6.2: WAF Web ACL (CL-PUB-01): rate-based rule (100 req / 5 min, ASM-155)&#10;IP reputation, input inspection &amp; path regex matching" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#e11d48;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="3010" y="2945" width="310" height="36" as="geometry"/>
+        <mxCell id="lbl_6_2" value="6.2: WAF Web ACL (CL-PUB-01)&#10;Rate-based: 100 req / 5 min (ASM-155)&#10;IP reputation &amp; path inspection" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#e11d48;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="3005" y="2940" width="260" height="48" as="geometry"/>
         </mxCell>
         <mxCell id="arr_6_3" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#e11d48;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
@@ -596,8 +596,8 @@
             <mxPoint x="2095" y="3095" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="lbl_6_5" value="6.5: dynamodb:GetItem on buyer_view by PK sack_code [KMS 'public_view', least privilege, ASM-154]" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#9f1239;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="2110" y="3071" width="500" height="22" as="geometry"/>
+        <mxCell id="lbl_6_5" value="6.5: dynamodb:GetItem on buyer_view by PK sack_code&#10;[KMS 'public_view', least privilege, ASM-154]" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#9f1239;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="2120" y="3068" width="480" height="34" as="geometry"/>
         </mxCell>
         <mxCell id="arr_6_6" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#0d9488;strokeWidth=2;endArrow=block;endFill=1;strokeDashed=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
@@ -614,8 +614,8 @@
             <mxPoint x="2335" y="3180" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="lbl_6_7" value="6.7: PutLogEvents to /aws/application/audit (anonymous client IP, code, timestamp, result, ASM-069)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#db2777;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="2345" y="3156" width="270" height="22" as="geometry"/>
+        <mxCell id="lbl_6_7" value="6.7: PutLogEvents to /aws/application/audit&#10;(anonymous client IP, code, timestamp, result, ASM-069)" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#db2777;labelBackgroundColor=#ffffff;fillColor=#ffffff;rounded=1;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="2350" y="3154" width="260" height="34" as="geometry"/>
         </mxCell>
         <mxCell id="arr_6_8" value="" style="edgeStyle=straight;rounded=0;html=1;strokeColor=#e11d48;strokeWidth=2;endArrow=block;endFill=1;strokeDashed=1;dashPattern=4 4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
