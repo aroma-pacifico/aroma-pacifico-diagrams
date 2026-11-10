@@ -70,7 +70,7 @@ This folder contains the architectural diagrams for the Aroma Pacífico cloud op
 
 ### Boxes D01-D13 shown
 
-- `D02`: One S3 state bucket per environment with native locking (`aroma-pdn-tfstate`, `aroma-qa-tfstate`, `aroma-dev-tfstate`).
+- `D02`: One S3 state bucket per environment with S3 native locking (State bucket (pdn), State bucket (qa), State bucket (dev); ADR-003).
 - `D03`: Per-environment configuration, secrets management, and transversal tags (`common_tags`).
 - `D04`: VPC boundaries, tiers, and private endpoints of pattern environment (`pdn`, `qa`, `dev`).
 - `D06`: Identities (IAM Identity Center, Cognito User Pools, GitHub OIDC federation), customer-managed KMS keys, and access controls.
