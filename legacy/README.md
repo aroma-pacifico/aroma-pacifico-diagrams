@@ -8,35 +8,37 @@ This folder contains the architectural legacy traceability diagrams for the Arom
 
 ### What the diagram shows
 
-- **Full 18-element legacy traceability matrix**: Every element of the 2020 pilot design identified in the case statement (rows L-01 through L-18 of `docs/legacy-2020.md`) is mapped to its authoritative 2026 architectural outcome:
-  - **Kept requirements (L-01 to L-08)**: 2020 business and functional capabilities that remain in force for 2026:
-    - `L-01`: Traceability chain from farm to buyer through wet mill, overland transport, collection center, and port of Buenaventura (A16). The 60 kg sack is the immutable traced unit with a 5-year compliance audit trail (S3 Object Lock, ASM-067).
-    - `L-02`: Geographic scope covering Cauca, Huila, and Tolima with one regional collection center per department (A07, B05 / D05). Centers allocated dedicated RFC 1918 supernet `10.40.0.0/13` (Cauca `10.41.0.0/16`, Huila `10.42.0.0/16`, Tolima `10.43.0.0/16`) with room for a 4th department at `10.44.0.0/16` (ASM-030).
-    - `L-03`: Crop and solar drying monitoring with alerts to the coffee grower (A10, B08-B10 / D08, D09, D10). Two nodes per farm (crop 6 readings/day, drying 24 readings/day while active), AWS IoT Core mTLS ingestion, DynamoDB telemetry store, and alert deduplication by episode (ASM-135) dispatched via SMS and mobile push.
-    - `L-04`: Harvest recording and packing in 60 kg sacks (A16). Measured digital scale weight captured at wet mill registration with 60 kg reference (ASM-150) and cryptographic sack ID code generation.
-    - `L-05`: Overland journey tracking to collection centers and Buenaventura port (A10, A16). Two trip legs tracked via transporter app with 5-minute GNSS fixes (`transport_position`) and explicit custody transitions (`sack_custody`).
-    - `L-06`: Public sack lookup by code for farmer, center, and buyer (A09, A16, B04 / D04). Unauthenticated public front door via Amazon CloudFront, AWS WAF, and Lambda function URL (ASM-058, PD-051) strictly limited to the buyer view (variety, cup score, certifications; farmer cédula and internal trace withheld).
-    - `L-07`: Five drone flight missions preserved (ADR-002, A15): plot delimitation, alert confirmation, targeted spot fumigation, treatment verification, and harvest estimation. Governed under combined flight mode (contracted operator, ASM-141) with agronomist MFA authorization and S3 telemetry audit.
-    - `L-08`: Three target application API contracts (A09): farmer mobile app, transporter mobile app, and public web lookup. Case statement establishes apps are planned but not constructed in challenge scope; 2026 delivers REST/GraphQL APIs, Cognito authentication pools (staff MFA / field passwordless), and ingestion backend contracts.
-  - **Replaced elements (L-09 to L-12)**: 2020 connectivity assumptions and missing infrastructure replaced with resilient cloud-native designs:
-    - `L-09`: Assumption of continuous cellular coverage across farms replaced with explicit no-signal handling for every data flow and satellite IP bearer for out-of-coverage farms (A10, ASM-073, PD-081).
-    - `L-10`: Direct unbuffered telemetry publishing replaced with a 24-hour encrypted non-volatile local store-and-forward buffer (A10, B08, B09 / D08, D09). Live readings transmit first on reconnect; oldest readings drain in background; AWS IoT Core PUBACK releases buffer entries.
-    - `L-11`: Collection centers without LAN or WAN replaced with standardized center network (A11, A07, B05 / D05): 7 isolated VLANs (101-120), edge perimeter firewall (`10.4x.20.1`), and dual IPsec VPN tunnels over 100 Mbps broadband + cellular backup to AWS Transit Gateway hub (ASM-083).
-    - `L-12`: Port of Buenaventura without LAN or WAN replaced with zero Federation infrastructure at the port (case statement mandate). Transporter app records maritime delivery and custody handoff via commercial mobile carrier directly to public ingestion API (A10, A16, ASM-077).
-  - **Retired elements (L-13 to L-18)**: Legacy elements dropped without direct replacement, crossed out with red strike line and strikethrough typography, accompanied by explicit justification citing case statement mandates:
-    - `L-13`: Dependence on 2G/3G mobile generation retired due to carrier generation sunset (ASM-041, ASM-072); pure packet-switched IP bearer (4G LTE / Satellite IP) enforced.
-    - `L-14`: 2020 prices retired under case statement mandate ("Precios de 2020 no son cotización válida"); priced at current 2026 market rates by A23 (PD-017).
-    - `L-15`: 2020 device models retired under case statement mandate ("Dispositivos de 2020 no son cotización válida"); replaced by standardized functional device classes (field nodes, ground station, mobile outbox) specified by A10 and priced by A23.
-    - `L-16`: 2020 cloud services retired under case statement mandate ("Servicios de nube de 2020 no son cotización válida"); AWS primary cloud (`us-east-1`) and Azure prepared target chosen anew under ADR-001.
-    - `L-17`: The 2020 architecture as a whole retired under case statement mandate ("No se replica la arquitectura de 2020"); replaced by modern event-driven serverless architecture documented in A19.
-    - `L-18`: 2020 design manual retired under case statement mandate ("No se hereda un manual de 2020"); replaced by Challenge Point 7 new design system (Epic 7, PD-154).
-  - **2026 Architectural Foundations**: Right-hand panel detailing the modern infrastructure paradigm that supersedes the legacy system:
-    1. Primary cloud & multi-account architecture (AWS Organizations, `dev`/`qa`/`pdn` workload accounts in `us-east-1`, ADR-001).
-    2. Prepared secondary cloud target (Azure `10.88.0.0/13` export target, undeployed in pilot, ASM-035).
-    3. Plan-only modular Infrastructure as Code (Terraform tagged modules, S3 remote state with native locking, ADR-003, D01-D03).
-    4. Standardized functional device classes and 2026 pricing schedule (A10, A23, PD-017).
-    5. Zero-trust identity and 5-year compliance audit pipeline (X.509 mTLS device certs, Cognito pools, S3 Object Lock compliance archive, D06, ASM-067).
-    6. Modern accessible design system (Epic 7, PD-154) with 4 status badges for 7 sack lifecycle states.
+The diagram maps every element of the 2020 pilot design identified in the case statement (`docs/legacy-2020.md`) to its authoritative 2026 architectural outcome: Keep, Retire or Replace.
+
+| ID | 2020 Element | Decision | 2026 Target Design | Source Section | IaC Box |
+|---|---|---|---|---|---|
+| L-01 | Traceability from farm to buyer, through wet mill, transport, collection center and port | Keep | End-to-end 60 kg sack traceability with 5-year compliance audit log (S3 Object Lock, ASM-067) | A16 (Sack &amp; Trip §3) | None |
+| L-02 | Geographic scope: Cauca, Huila and Tolima | Keep | Three regional collection centers allocated RFC 1918 supernet 10.40.0.0/13 (Cauca 10.41.0.0/16, Huila 10.42.0.0/16, Tolima 10.43.0.0/16; 4th department reserved at 10.44.0.0/16, ASM-030) | A07 (Addressing §2) | D05 |
+| L-03 | Crop and drying monitoring with an alert to the farmer | Keep | 2 nodes/farm (crop 6/day, drying 24/day). IoT Core mTLS ingestion, DynamoDB telemetry store, deduplicated alert episodes (ASM-135) via SMS and mobile push | A10 (Farm Monitoring §1) | D08, D09, D10 |
+| L-04 | Harvest record and packing in 60 kg sacks | Keep | Scale-measured digital weight recorded at wet mill registration with 60 kg nominal commercial reference (ASM-150) and cryptographic sack ID generation | A16 (Sack &amp; Trip §2) | None |
+| L-05 | Journey tracking to the collection center and to Buenaventura | Keep | Two-leg overland journey tracking (farm-to-center and center-to-port) via transporter app with 5-min GNSS fixes (transport_position) and custody handoffs (sack_custody) | A10 / A16 (Sack &amp; Trip §5) | None |
+| L-06 | Lookup of a sack by code for the farmer, the collection center and the buyer | Keep | Unauthenticated public sack lookup front door via CloudFront + AWS WAF + Lambda URL (ASM-058, PD-051), restricted to buyer view (cédula and internal trace withheld) | A09 / A16 (Sack &amp; Trip §7) | D04 |
+| L-07 | Drone service: delimit the lot, confirm the alert, fumigate, verify and estimate the harvest | Keep | All five flight missions preserved under combined flight mode (contracted operator, ASM-141) with agronomist MFA authorization and S3 flight record audit | ADR-002 / A15 (Drone Service §5.2) | None |
+| L-08 | Three applications: farmer, transporter, and web reports with sack code reading | Keep | Target application API contracts (REST/GraphQL), Cognito User Pools (staff MFA / field passwordless), and ingestion backends delivered for planned client applications | A09 (Automation &amp; Pipelines §2) | None |
+| L-09 | Assumption of data coverage on most farms | Replace | Explicit offline behavior for every data flow; satellite IP bearer for farms out of cellular coverage (dual-mode modules, contact at least every 4h, ASM-073, PD-081) | A10 (Connectivity §4.4) | None |
+| L-10 | Device publishing telemetry directly to the ingestion point | Replace | 24-hour encrypted non-volatile local store-and-forward buffer; live reading sent first upon reconnect, background buffer drain, AWS IoT PUBACK release | A10 (Connectivity §4.3) | D08, D09 |
+| L-11 | Collection center without LAN or WAN link | Replace | Standardized center pattern: 7 isolated VLANs (101-120), edge firewall (10.4x.20.1), dual IPsec tunnels over 100 Mbps broadband + cellular backup to Transit Gateway hub (ASM-083) | A11 / A07 (Collection-Center Network) | D05 |
+| L-12 | Port of Buenaventura without LAN or WAN link | Replace | Zero Federation infrastructure deployed at port (case statement mandate); transporter app records maritime delivery &amp; custody handoff via commercial mobile carrier sync | A10 / A16 (Connectivity §10) | None |
+| L-13 | Dependence on a mobile access network generation | Retire | Dependence on a mobile access network generation switched off before or during the pilot (ASM-041). The case statement names no generation (ASM-041); pure IP bearer without generation dependency is enforced (ASM-072) | Case statement p. 2 / ASM-041, ASM-072 | None |
+| L-14 | 2020 prices | Retire | Case statement explicitly states 2020 prices are not a valid quote (p. 1); all cloud infrastructure, devices, and operations priced at current 2026 market rates under open decision PD-017 | Case statement p. 1 / A23, PD-017 | None |
+| L-15 | 2020 devices (none named in the case statement) | Retire | Case statement states 2020 devices are not a valid quote (p. 1) and names no specific device; replaced by functional device classes defined by A10 and priced by A23 | Case statement p. 1 / A10, A23 | None |
+| L-16 | 2020 cloud services (none named in the case statement) | Retire | Case statement states 2020 cloud services are not a valid quote (p. 1) and names none; cloud architecture chosen and justified anew under ADR-001 (AWS primary in us-east-1, Azure secondary prepared) | Case statement p. 1 / ADR-001 | None |
+| L-17 | The 2020 architecture as a whole | Retire | Case statement mandates: "No se replica la arquitectura de 2020" (p. 1); superseded completely by the 2026 architecture document and complete architecture diagram (A19) | Case statement p. 1 / A19 | None |
+| L-18 | 2020 design manual | Retire | Case statement mandates: "No se hereda un manual de 2020" (p. 7); Challenge Point 7 establishes a new design system with 4 standardized badges for the 7 sack lifecycle states | Case statement p. 7 / Epic 7, PD-154 | None |
+
+#### 2026 Architectural Foundations Panel
+
+1. **Primary Cloud & Multi-Account Architecture (ADR-001)**: AWS Organizations with us-east-1 primary Region. Three workload accounts (dev, qa, pdn) with isolated IAM roles and network boundaries (ASM-060).
+2. **Prepared Secondary Cloud Target (ADR-001, ASM-035)**: Azure RFC 1918 supernet 10.88.0.0/13 reserved as export target, undeployed in pilot. Avoids multi-cloud operational cost while preserving cloud portability.
+3. **Plan-Only Modular Infrastructure as Code (ADR-003, D01-D03)**: Terraform root stacks consuming public tagged modules. S3 remote state with native locking, automated GitHub Actions CI/CD plan validation.
+4. **Standardized Functional Device Classes & 2026 Pricing (A10, A23)**: Vendor-neutral device specifications (field telemetry nodes, drone kit, mobile outbox). Current 2026 market pricing for 200 farms under open decision PD-017.
+5. **Zero-Trust Identity & 5-Year Compliance Audit Pipeline (D06, ASM-067)**: X.509 device certificates (mTLS), Cognito User Pools (staff MFA / field passwordless). Dual-layer audit with S3 Object Lock 5-year compliance archive.
+6. **Modern Accessible Design System (Epic 7, PD-154)**: Modern responsive UI replacing legacy manual. 4 accessible status badges mapping the 7 coffee sack lifecycle states with color and icon redundancy.
 
 ### Source documents
 
