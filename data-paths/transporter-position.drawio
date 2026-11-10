@@ -44,7 +44,7 @@
           <mxGeometry x="1920" y="440" width="260" height="125" as="geometry" />
         </mxCell>
         <mxCell id="store" value="DynamoDB transport_positions table&#10;Key: trip_id + sequence_no&#10;Five-year retention; idempotent event_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="2240" y="420" width="240" height="150" as="geometry" />
+          <mxGeometry x="2240" y="435" width="240" height="135" as="geometry" />
         </mxCell>
         <mxCell id="consumer" value="Trip trace + sack history&#10;transporter and center ops" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
           <mxGeometry x="2580" y="440" width="250" height="125" as="geometry" />
@@ -62,11 +62,11 @@
         <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;dashed=1;dashPattern=8 6;strokeColor=#61788d;" edge="1" parent="1" source="vlan" target="fw">
           <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48" />
         </mxCell>
-        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;dashed=1;dashPattern=8 6;strokeColor=#61788d;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0.5;entryY=1;entryPerimeter=1;" edge="1" parent="1" source="fw" target="net">
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#61788d;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;dashed=1;dashPattern=8 6;exitX=1;exitY=0.077;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="fw" target="net">
           <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48">
             <Array as="points">
-              <mxPoint x="1190" y="395" />
-              <mxPoint x="1320" y="395" />
+              <mxPoint x="1190" y="340" />
+              <mxPoint x="1320" y="340" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -111,10 +111,10 @@
           <mxGeometry x="1730" y="380" width="220" height="48" as="geometry" />
         </mxCell>
         <mxCell id="label-e7" value="Persist + deduplicate event_id; five years" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="2030" y="380" width="220" height="48" as="geometry" />
+          <mxGeometry x="2030" y="345" width="220" height="48" as="geometry" />
         </mxCell>
         <mxCell id="label-e8" value="Trip trace; custody updates sack history" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="2370" y="380" width="220" height="48" as="geometry" />
+          <mxGeometry x="2370" y="345" width="220" height="48" as="geometry" />
         </mxCell>
         <mxCell id="label-e9" value="NO DATA: encrypted outbox; retry on reconnect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
           <mxGeometry x="710" y="600" width="220" height="48" as="geometry" />
