@@ -1,4 +1,3 @@
-<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" version="32.4.1" type="device">
   <diagram id="connectivity" name="End-to-end connectivity architecture">
     <mxGraphModel dx="3700" dy="2300" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3700" pageHeight="2300" math="0" shadow="0">
@@ -45,7 +44,7 @@
           <mxGeometry x="855" y="308" width="410" height="105" as="geometry" />
         </mxCell>
         <mxCell id="net_public_ip" value="Public Internet Backhaul&#10;TLS 1.2+ end-to-end encryption&#10;Zero cleartext exposure (Case pt 2)&#10;Direct route to AWS us-east-1 endpoints&#10;(Farm &amp; transport bypass centers &amp; VPC)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="855" y="430" width="410" height="200" as="geometry" />
+          <mxGeometry x="855" y="430" width="410" height="170" as="geometry" />
         </mxCell>
         <mxCell id="grp_ingest" value="3A. AWS INGESTION FRONT DOORS (us-east-1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=17;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
           <mxGeometry x="1360" y="125" width="590" height="525" as="geometry" />
@@ -69,7 +68,7 @@
           <mxGeometry x="1500" y="425" width="430" height="95" as="geometry" />
         </mxCell>
         <mxCell id="note_direct_ingest" value="Direct Ingestion Contract: Farm nodes and phones publish straight to AWS public endpoints. They hold no cloud private IP. Adding farms scales identities, never subnets." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#334155;fontSize=11;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
-          <mxGeometry x="1390" y="545" width="540" height="85" as="geometry" />
+          <mxGeometry x="1390" y="545" width="490" height="85" as="geometry" />
         </mxCell>
         <mxCell id="grp_drone_port" value="1B. DRONE OPERATOR &amp; PORT OF BUENAVENTURA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=17;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
           <mxGeometry x="40" y="670" width="760" height="480" as="geometry" />
@@ -89,8 +88,8 @@
         <mxCell id="sub_port_box" value="Port of Buenaventura (ASM-077, Case Point 3)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=14;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
           <mxGeometry x="60" y="970" width="720" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="port_desc" value="Port Delivery Handoff (No Federation Equipment Deployed at Port)&#10;Transporter smartphone records sack delivery via mobile data (HTTPS TLS 1.2+)&#10;Event: sack_custody with outcome=accepted/rejected, receiver reference, and recorded_at&#10;Buffered in outbox if mobile signal drops in port terminal; closes trip trace on upload." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#0f172a;fontSize=13;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
-          <mxGeometry x="80" y="1010" width="680" height="100" as="geometry" />
+        <mxCell id="port_desc" value="Port Delivery Handoff (No Federation Equipment Deployed at Port)&#10;Transporter smartphone records sack delivery via mobile data (HTTPS TLS 1.2+)&#10;Event: sack_custody with outcome=accepted/rejected, receiver reference, and recorded_at&#10;Buffered in outbox if mobile signal drops in port terminal; closes trip trace on upload." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#0f172a;fontSize=11.5;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1005" width="460" height="110" as="geometry" />
         </mxCell>
         <mxCell id="grp_center" value="2B. COLLECTION CENTER PATTERN (10.4x.0.0/16 in 10.40.0.0/13)  [D05, D07]&#10;Cauca: 10.41.0.0/16 | Huila: 10.42.0.0/16 | Tolima: 10.43.0.0/16 (Same pattern x3)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=14;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
           <mxGeometry x="830" y="670" width="850" height="480" as="geometry" />
@@ -192,31 +191,40 @@
           <mxGeometry x="2130" y="655" width="1470" height="45" as="geometry" />
         </mxCell>
         <mxCell id="sub_alert_pipeline" value="Crop Alert &amp; Inference Pipeline (&lt;5 min Latency Budget)  [D10: Event-Driven Inference]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=14;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
-          <mxGeometry x="2110" y="740" width="1510" height="230" as="geometry" />
+          <mxGeometry x="2110" y="740" width="1510" height="255" as="geometry" />
         </mxCell>
-        <mxCell id="icon_sqs" value="Threshold SQS" style="shape=mxgraph.aws4.resourceIcon;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=13;fontStyle=1;resIcon=mxgraph.aws4.sqs;" vertex="1" parent="1">
-          <mxGeometry x="2130" y="785" width="85" height="95" as="geometry" />
+        <mxCell id="icon_sqs" value="" style="shape=mxgraph.aws4.resourceIcon;verticalLabelPosition=None;verticalAlign=None;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=13;fontStyle=1;resIcon=mxgraph.aws4.sqs;" vertex="1" parent="1">
+          <mxGeometry x="2125" y="785" width="70" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="desc_sqs" value="Threshold Queue [D10]&#10;Decouples IoT Rule&#10;Dead-letter queue enabled&#10;Hop 4 Target: 10 s" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#0f172a;fontSize=13;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
-          <mxGeometry x="2230" y="785" width="245" height="80" as="geometry" />
+        <mxCell id="lbl_sqs" value="Threshold Queue" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2105" y="860" width="110" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="icon_lambda" value="Threshold Lambda" style="shape=mxgraph.aws4.resourceIcon;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=13;fontStyle=1;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="1">
-          <mxGeometry x="2500" y="785" width="85" height="95" as="geometry" />
+        <mxCell id="desc_sqs" value="Threshold Queue [D10]&#10;Decouples IoT Rule&#10;Dead-letter queue enabled&#10;Hop 4 Target: 10 s" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="2205" y="785" width="205" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="desc_lambda" value="Threshold Lambda [D10]&#10;Evaluates reading vs ranges&#10;Persists alert; publishes SNS&#10;Hop 5 Target: 20 s" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#0f172a;fontSize=13;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
-          <mxGeometry x="2600" y="785" width="260" height="80" as="geometry" />
+        <mxCell id="icon_lambda" value="" style="shape=mxgraph.aws4.resourceIcon;verticalLabelPosition=None;verticalAlign=None;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=13;fontStyle=1;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="1">
+          <mxGeometry x="2540" y="785" width="70" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="icon_sns" value="SNS Alert Topic" style="shape=mxgraph.aws4.resourceIcon;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=13;fontStyle=1;resIcon=mxgraph.aws4.sns;" vertex="1" parent="1">
-          <mxGeometry x="2890" y="785" width="85" height="95" as="geometry" />
+        <mxCell id="lbl_lambda" value="Threshold Lambda" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2515" y="860" width="120" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="desc_sns" value="Amazon SNS Topic&#10;Dispatches to SMS / Push&#10;Hop 6 Target: 30 s" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#0f172a;fontSize=13;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
-          <mxGeometry x="2990" y="785" width="220" height="80" as="geometry" />
+        <mxCell id="desc_lambda" value="Threshold Lambda [D10]&#10;Evaluates reading vs ranges&#10;Persists alert; publishes SNS&#10;Hop 5 Target: 20 s" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="2620" y="785" width="210" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="desc_alert_deliv" value="Farmer Notification Channel&#10;Push Notification or SMS&#10;Hop 7 Target: 60 s&#10;TOTAL BUDGET: 210 s (&lt;300 s Limit)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=1.5;fontColor=#92400e;fontSize=13;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
-          <mxGeometry x="3240" y="785" width="360" height="80" as="geometry" />
+        <mxCell id="icon_sns" value="" style="shape=mxgraph.aws4.resourceIcon;verticalLabelPosition=None;verticalAlign=None;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=13;fontStyle=1;resIcon=mxgraph.aws4.sns;" vertex="1" parent="1">
+          <mxGeometry x="2965" y="785" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_sns" value="SNS Alert" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2945" y="860" width="110" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="desc_sns" value="Amazon SNS Topic&#10;Dispatches to SMS / Push&#10;Hop 6 Target: 30 s" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="3040" y="785" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="desc_alert_deliv" value="Farmer Notification Channel&#10;Push Notification or SMS&#10;Hop 7 Target: 60 s&#10;TOTAL BUDGET: 210 s (&lt;300 s Limit)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=1.5;fontColor=#92400e;fontSize=11.5;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="3390" y="785" width="215" height="80" as="geometry" />
         </mxCell>
         <mxCell id="note_alert_hop" value="Hop Breakdown: Hop 1: Sensor to Node (10 s) -&gt; Hop 2: Radio Attach/TLS (60 s) -&gt; Hop 3: MQTT to PUBACK (20 s) -&gt; Hop 4: Rule to SQS (10 s) -&gt; Hop 5: Lambda (20 s) -&gt; Hop 6: SNS (30 s) -&gt; Hop 7: Notification to Phone (60 s) = 210 s Target (90 s margin to 300 s limit)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#10b981;fontColor=#065f46;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="2130" y="895" width="1470" height="45" as="geometry" />
+          <mxGeometry x="2130" y="925" width="1470" height="45" as="geometry" />
         </mxCell>
         <mxCell id="grp_table" value="5. SUMMARY OF CONNECTIVITY FLOWS &amp; TRACEABILITY TO TRACK B  (docs/connectivity.md Section 3 &amp; docs/architecture.md Section 14)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=17;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
           <mxGeometry x="40" y="1180" width="3620" height="1080" as="geometry" />
@@ -289,27 +297,27 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="1265" y="355" /><mxPoint x="1330" y="355" /><mxPoint x="1330" y="240" /><mxPoint x="1390" y="240" /></Array><mxPoint as="offset" x="-25" y="-12" /></mxGeometry>
         </mxCell>
-        <mxCell id="e1008" value="IoT Rule -&gt; DynamoDB Store" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0d9488;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=12;fontColor=#0f766e;" edge="1" parent="1" source="desc_iot" target="desc_ddb_tel">
+        <mxCell id="e1008" value="IoT Rule -&gt; DynamoDB Store" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0d9488;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=11.5;fontColor=#0f766e;" edge="1" parent="1" source="desc_iot" target="desc_ddb_tel">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1930" y="205" /><mxPoint x="1980" y="205" /><mxPoint x="1980" y="445" /><mxPoint x="2270" y="445" /><mxPoint x="2270" y="515" /></Array><mxPoint as="offset" y="-12" /></mxGeometry>
+            <Array as="points"><mxPoint x="1930" y="205" /><mxPoint x="1980" y="205" /><mxPoint x="1980" y="465" /><mxPoint x="2490" y="465" /><mxPoint x="2490" y="515" /></Array><mxPoint as="offset" x="180" y="-2" /></mxGeometry>
         </mxCell>
-        <mxCell id="e1009" value="IoT Rule enqueues to SQS (Hop 4)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0d9488;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=12;fontColor=#0f766e;" edge="1" parent="1" source="desc_iot" target="desc_sqs">
+        <mxCell id="e1009" value="IoT Rule enqueues to SQS (Hop 4)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0d9488;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=11.5;fontColor=#0f766e;" edge="1" parent="1" source="desc_iot" target="icon_sqs">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1930" y="225" /><mxPoint x="2000" y="225" /><mxPoint x="2000" y="715" /><mxPoint x="2230" y="715" /><mxPoint x="2230" y="785" /></Array><mxPoint as="offset" y="-12" /></mxGeometry>
+            <Array as="points"><mxPoint x="1930" y="225" /><mxPoint x="2000" y="225" /><mxPoint x="2000" y="730" /><mxPoint x="2098" y="730" /><mxPoint x="2098" y="820" /><mxPoint x="2125" y="820" /></Array><mxPoint as="offset" x="235" y="182" /></mxGeometry>
         </mxCell>
-        <mxCell id="e1010" value="SQS Triggers Lambda&#10;Hop 5 (20 s)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0d9488;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=12;fontColor=#0f766e;" edge="1" parent="1" source="desc_sqs" target="desc_lambda">
+        <mxCell id="e1010" value="SQS Triggers Lambda&#10;Hop 5 (20 s)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0d9488;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=11;fontColor=#0f766e;" edge="1" parent="1" source="desc_sqs" target="icon_lambda">
           <mxGeometry relative="1" as="geometry">
-            
+            <mxPoint as="offset" y="-20" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="e1011" value="Alert Evaluated -&gt; Publish SNS&#10;Hop 6 (30 s)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0d9488;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=12;fontColor=#0f766e;" edge="1" parent="1" source="desc_lambda" target="desc_sns">
+        <mxCell id="e1011" value="Alert Evaluated -&gt; SNS&#10;Hop 6 (30 s)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0d9488;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=11;fontColor=#0f766e;" edge="1" parent="1" source="desc_lambda" target="icon_sns">
           <mxGeometry relative="1" as="geometry">
-            
+            <mxPoint as="offset" y="-20" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="e1012" value="SNS -&gt; Provider -&gt; Farmer Phone&#10;Hop 7 (60 s, Total 210 s &lt; 300 s)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0d9488;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=12;fontColor=#0f766e;" edge="1" parent="1" source="desc_sns" target="desc_alert_deliv">
+        <mxCell id="e1012" value="SNS -&gt; Provider -&gt; Phone&#10;Hop 7 (60 s, 210 s &lt; 300 s)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0d9488;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=11;fontColor=#0f766e;" edge="1" parent="1" source="desc_sns" target="desc_alert_deliv">
           <mxGeometry relative="1" as="geometry">
-            
+            <mxPoint as="offset" y="-20" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1013" value="Sack Registration (HTTPS)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=12;fontColor=#1d4ed8;" edge="1" parent="1" source="app_farmer" target="net_public_ip">
@@ -332,14 +340,15 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="2695" y="350" /><mxPoint x="2695" y="475" /><mxPoint x="2735" y="475" /><mxPoint x="2735" y="515" /></Array><mxPoint as="offset" y="-12" /></mxGeometry>
         </mxCell>
-        <mxCell id="e1018" value="delivered_at_port event&#10;Accepted/rejected (HTTPS TLS 1.2+)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=12;fontColor=#1d4ed8;" edge="1" parent="1" source="port_desc" target="net_public_ip">
+        <mxCell id="e1018" value="delivered_at_port event&#10;Accepted/rejected (HTTPS TLS 1.2+)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=11.5;fontColor=#1d4ed8;" edge="1" parent="1" source="port_desc" target="net_public_ip">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="760" y="1060" /><mxPoint x="815" y="1060" /><mxPoint x="815" y="560" /><mxPoint x="860" y="560" /></Array>
+            <Array as="points"><mxPoint x="540" y="1060" /><mxPoint x="815" y="1060" /><mxPoint x="815" y="560" /><mxPoint x="855" y="560" /></Array>
+            <mxPoint as="offset" x="-145" y="115" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1019" value="Municipal Pre-signed S3 Upload" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7c3aed;strokeWidth=2.5;endArrow=block;endFill=1;fontSize=12;fontColor=#6d28d9;" edge="1" parent="1" source="drone_routes" target="desc_s3_pub">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="760" y="910" /><mxPoint x="810" y="910" /><mxPoint x="810" y="655" /><mxPoint x="1365" y="655" /><mxPoint x="1365" y="465" /><mxPoint x="1390" y="465" /></Array><mxPoint as="offset" y="-12" /></mxGeometry>
+            <Array as="points"><mxPoint x="760" y="910" /><mxPoint x="810" y="910" /><mxPoint x="810" y="660" /><mxPoint x="1365" y="660" /><mxPoint x="1365" y="465" /><mxPoint x="1390" y="465" /></Array><mxPoint as="offset" x="120" y="-10" /></mxGeometry>
         </mxCell>
         <mxCell id="e1020" value="Ground Station (10.4x.2.10/32)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=3;endArrow=block;endFill=1;fontSize=12;fontColor=#b45309;" edge="1" parent="1" source="zone_soporte" target="fw_box">
           <mxGeometry relative="1" as="geometry">
@@ -389,9 +398,9 @@
         </mxCell>
         <mxCell id="e1031" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;endArrow=block;endFill=1;fontSize=12;fontColor=#334155;" edge="1" parent="1" source="fw_box" target="net_public_ip">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint as="offset" x="-15" y="0" /><Array as="points"><mxPoint x="855" y="1020" /><mxPoint x="815" y="1020" /><mxPoint x="815" y="655" /><mxPoint x="1050" y="655" /><mxPoint x="1050" y="630" /></Array></mxGeometry>
+            <mxPoint as="offset" x="-15" y="0" /><Array as="points"><mxPoint x="855" y="1020" /><mxPoint x="820" y="1020" /><mxPoint x="820" y="628" /><mxPoint x="1050" y="628" /><mxPoint x="1050" y="600" /></Array></mxGeometry>
         </mxCell>
-      <mxCell id="lbl_iot" parent="1" vertex="1" value="AWS IoT Core" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;"><mxGeometry as="geometry" x="1370" y="258" width="120" height="22" /></mxCell><mxCell id="lbl_cf" parent="1" vertex="1" value="CloudFront / API" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;"><mxGeometry as="geometry" x="1370" y="383" width="120" height="22" /></mxCell><mxCell id="lbl_s3_pub" parent="1" vertex="1" value="Public S3 Endpoint" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;"><mxGeometry as="geometry" x="1365" y="508" width="130" height="22" /></mxCell><mxCell id="lbl_ddb_tel" parent="1" vertex="1" value="Telemetry DynamoDB" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;"><mxGeometry as="geometry" x="2115" y="600" width="120" height="26" /></mxCell><mxCell id="lbl_ddb_sack" parent="1" vertex="1" value="Sack &amp; Trip DB" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;"><mxGeometry as="geometry" x="2605" y="600" width="120" height="26" /></mxCell><mxCell id="lbl_s3_bucket" parent="1" vertex="1" value="Amazon S3" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;"><mxGeometry as="geometry" x="3125" y="600" width="120" height="26" /></mxCell><mxCell id="lbl_breakout" parent="1" vertex="1" value="Local Breakout -&gt; Public Internet" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontColor=#0f766e;fontStyle=1;"><mxGeometry as="geometry" x="870" y="645" width="180" height="20" /></mxCell><mxCell id="lbl_cf_app" parent="1" vertex="1" value="CloudFront -&gt; application tier (TCP 443)" style="text;html=1;align=center;verticalAlign=middle;fontSize=10.5;fontColor=#1d4ed8;fontStyle=1;"><mxGeometry as="geometry" x="2540" y="186" width="240" height="20" /></mxCell><mxCell id="lbl_drone_s3" parent="1" vertex="1" value="Drone S3 Multipart Upload (CC-DRN-03)" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#7c3aed;fontStyle=1;"><mxGeometry as="geometry" x="2650" y="198" width="230" height="20" /></mxCell><mxCell id="lbl_session_adm" parent="1" vertex="1" value="Session Administration (CC-ADM-01)" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#7c3aed;fontStyle=1;"><mxGeometry as="geometry" x="2950" y="212" width="210" height="20" /></mxCell><mxCell id="lbl_dns_cw" parent="1" vertex="1" value="DNS forwarding (CC-LNK-04) &amp; CloudWatch logs (CC-ADM-02)" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#475569;fontStyle=1;"><mxGeometry as="geometry" x="2700" y="226" width="320" height="20" /></mxCell><mxCell id="lbl_ipsec" parent="1" vertex="1" value="2x IPsec Tunnels (IKEv2)" style="text;html=1;align=center;verticalAlign=middle;fontSize=10.5;fontColor=#c2410c;fontStyle=1;"><mxGeometry as="geometry" x="1650" y="1032" width="130" height="20" /></mxCell></root>
+      <mxCell id="lbl_iot" parent="1" vertex="1" value="AWS IoT Core" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;"><mxGeometry as="geometry" x="1370" y="258" width="120" height="22" /></mxCell><mxCell id="lbl_cf" parent="1" vertex="1" value="CloudFront / API" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;"><mxGeometry as="geometry" x="1370" y="383" width="120" height="22" /></mxCell><mxCell id="lbl_s3_pub" parent="1" vertex="1" value="Public S3 Endpoint" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;"><mxGeometry as="geometry" x="1365" y="508" width="130" height="22" /></mxCell><mxCell id="lbl_ddb_tel" parent="1" vertex="1" value="Telemetry DynamoDB" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;"><mxGeometry as="geometry" x="2115" y="600" width="120" height="26" /></mxCell><mxCell id="lbl_ddb_sack" parent="1" vertex="1" value="Sack &amp; Trip DB" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;"><mxGeometry as="geometry" x="2605" y="600" width="120" height="26" /></mxCell><mxCell id="lbl_s3_bucket" parent="1" vertex="1" value="Amazon S3" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#172b4d;fontStyle=1;"><mxGeometry as="geometry" x="3125" y="600" width="120" height="26" /></mxCell><mxCell id="lbl_breakout" parent="1" vertex="1" value="Local Breakout -&gt; Public Internet" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontColor=#0f766e;fontStyle=1;"><mxGeometry as="geometry" x="860" y="604" width="185" height="20" /></mxCell><mxCell id="lbl_cf_app" parent="1" vertex="1" value="CloudFront -&gt; application tier (TCP 443)" style="text;html=1;align=center;verticalAlign=middle;fontSize=10.5;fontColor=#1d4ed8;fontStyle=1;"><mxGeometry as="geometry" x="2540" y="186" width="240" height="20" /></mxCell><mxCell id="lbl_drone_s3" parent="1" vertex="1" value="Drone S3 Multipart Upload (CC-DRN-03)" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#7c3aed;fontStyle=1;"><mxGeometry as="geometry" x="2650" y="198" width="230" height="20" /></mxCell><mxCell id="lbl_session_adm" parent="1" vertex="1" value="Session Administration (CC-ADM-01)" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#7c3aed;fontStyle=1;"><mxGeometry as="geometry" x="2950" y="212" width="210" height="20" /></mxCell><mxCell id="lbl_dns_cw" parent="1" vertex="1" value="DNS forwarding (CC-LNK-04) &amp; CloudWatch logs (CC-ADM-02)" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#475569;fontStyle=1;"><mxGeometry as="geometry" x="2700" y="226" width="320" height="20" /></mxCell><mxCell id="lbl_ipsec" parent="1" vertex="1" value="2x IPsec Tunnels (IKEv2)" style="text;html=1;align=center;verticalAlign=middle;fontSize=10.5;fontColor=#c2410c;fontStyle=1;"><mxGeometry as="geometry" x="1650" y="1032" width="130" height="20" /></mxCell></root>
     </mxGraphModel>
   </diagram>
 </mxfile>
