@@ -20,8 +20,8 @@
         <mxCell id="badge_D08" value="D08" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
           <mxGeometry x="280" y="248" width="46" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="farmbuf" value="Encrypted, non-volatile buffer&#10;Store-and-forward, maximum 24 h&#10;Live first, then oldest; PUBACK releases" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=18;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
-          <mxGeometry x="365" y="245" width="285" height="150" as="geometry" />
+        <mxCell id="farmbuf" value="Encrypted, non-volatile buffer&#10;Store-and-forward, max 24h&#10;Live first, then oldest; PUBACK releases" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=17;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
+          <mxGeometry x="365" y="245" width="305" height="150" as="geometry" />
         </mxCell>
         <mxCell id="farmnet" value="Cellular or satellite bearer&#10;Public internet to regional endpoint&#10;Farm traffic bypasses centers and VPC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=18;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
           <mxGeometry x="365" y="460" width="285" height="140" as="geometry" />
@@ -32,7 +32,7 @@
         <mxCell id="centers" value="COLLECTION CENTERS | same pattern x3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=24;fontStyle=1;align=left;verticalAlign=top;spacingLeft=40;spacingTop=25;" parent="1" vertex="1">
           <mxGeometry x="760" y="155" width="780" height="590" as="geometry" />
         </mxCell>
-        <mxCell id="cauca" value="CAUCA | pattern shown in detail (10.41.0.0/16)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=17;fontStyle=1;align=left;verticalAlign=top;spacingLeft=25;spacingTop=16;" parent="1" vertex="1">
+        <mxCell id="cauca" value="CAUCA | pattern shown in detail" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacingLeft=25;spacingTop=16;" parent="1" vertex="1">
           <mxGeometry x="785" y="230" width="360" height="415" as="geometry" />
         </mxCell>
         <mxCell id="cstaff" value="Gerencia 10.41.1.0/24 | Logistics 10.41.3.0/24&#10;Transport 10.41.4.0/24 | Visitors 10.41.5.0/24&#10;Servers 10.41.10.0/24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#a7b8c7;fontColor=#172b4d;fontSize=15;align=center;verticalAlign=middle;spacing=4;" parent="1" vertex="1">
@@ -186,7 +186,7 @@
           <mxGeometry x="1430" y="940" width="230" height="235" as="geometry" />
         </mxCell>
         <mxCell id="s3ep" value="S3 interface endpoint&#10;com.amazonaws.us-east-1.s3&#10;CC-DRN-03 multipart" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#1e3a8a;fontSize=14;align=center;verticalAlign=middle;" parent="1" vertex="1">
-          <mxGeometry x="1445" y="1025" width="190" height="130" as="geometry" />
+          <mxGeometry x="1445" y="1025" width="175" height="130" as="geometry" />
         </mxCell>
         <mxCell id="s3" value="Amazon S3&#10;Encrypted drone objects" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
           <mxGeometry x="1780" y="1005" width="115" height="105" as="geometry" />
@@ -418,12 +418,12 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="1104" y="915" /><mxPoint x="1415" y="915" /><mxPoint x="1415" y="1058" /></Array><mxPoint as="offset" x="-90" y="0" /></mxGeometry>
         </mxCell>
-        <mxCell id="edge_obj_s3" value="SSE-KMS multipart" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.45;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="s3ep" target="s3" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="edge_obj_s3" value="SSE-KMS multipart" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=13;labelBackgroundColor=#ffffff;spacing=3;exitX=1;exitY=0.25;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="s3ep" target="s3" edge="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" x="-8" y="0" /></mxGeometry>
         </mxCell>
-        <mxCell id="edge_s3_rec" value="S3 event (PutObject)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0;exitY=0.5;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="s3" target="reception" edge="1">
+        <mxCell id="edge_s3_rec" value="S3 event (PutObject)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0;exitY=0.9;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" parent="1" source="s3" target="reception" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1730" y="1058" /><mxPoint x="1730" y="1175" /><mxPoint x="1267" y="1175" /></Array><mxPoint as="offset" x="0" y="14" /></mxGeometry>
+            <Array as="points"><mxPoint x="1740" y="1100" /><mxPoint x="1740" y="1175" /><mxPoint x="1267" y="1175" /></Array><mxPoint as="offset" x="0" y="14" /></mxGeometry>
         </mxCell>
         <mxCell id="edge_rec_eb" value="Mission link" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0;exitY=0.7;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="reception" target="eventbridge" edge="1">
           <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1140" y="1328" /><mxPoint x="1140" y="1587" /></Array><mxPoint as="offset" x="0" y="0" /></mxGeometry>
@@ -431,8 +431,8 @@
         <mxCell id="edge_eb_sqs" value="Per-function queue" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="eventbridge" target="sqs" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_sqs_vision" value="Inference prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.5;exitY=0;exitPerimeter=1;entryX=0.5;entryY=1;entryPerimeter=1;" parent="1" source="sqs" target="vision" edge="1">
-          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" x="0" y="0" /></mxGeometry>
+        <mxCell id="edge_sqs_vision" value="Inference prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=13;labelBackgroundColor=#ffffff;spacing=4;exitX=0.25;exitY=0;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="sqs" target="vision" edge="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset" x="58" y="0" /><Array as="points"><mxPoint x="1554" y="1455" /><mxPoint x="1440" y="1455" /><mxPoint x="1440" y="1307" /></Array></mxGeometry>
         </mxCell>
         <mxCell id="edge_vision_records" value="Persist result" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" parent="1" source="vision" target="records" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -451,9 +451,9 @@
             <mxPoint as="offset" x="-45" y="-18" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge_casefn_records" value="DynamoDB read/write" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=1;exitY=0.8;exitPerimeter=1;entryX=1;entryY=0.5;entryPerimeter=1;" parent="1" source="casefn" target="records" edge="1">
+        <mxCell id="edge_casefn_records" value="DynamoDB read/write" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=14;labelBackgroundColor=#ffffff;spacing=4;exitX=0.6;exitY=1;exitPerimeter=1;entryX=1;entryY=0.5;entryPerimeter=1;" parent="1" source="casefn" target="records" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="2840" y="1094" /><mxPoint x="2840" y="1725" /><mxPoint x="2020" y="1725" /><mxPoint x="2020" y="1587" /></Array><mxPoint as="offset" x="120" y="-380" />
+            <Array as="points"><mxPoint x="2780" y="1725" /><mxPoint x="2020" y="1725" /><mxPoint x="2020" y="1587" /></Array><mxPoint as="offset" x="115" y="-380" />
           </mxGeometry>
         </mxCell>
       <mxCell id="iac_panel_title" value="IAC &amp; AUTOMATION | Track B plan-only implementation" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#0f172a;" parent="1" vertex="1"><mxGeometry x="160" y="1035" width="600" height="30" as="geometry" /></mxCell><mxCell id="tier_obj_title" value="object_storage&#10;10.82.80.0/20 (Private)" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#1e3a8a;whiteSpace=wrap;" parent="1" vertex="1"><mxGeometry x="1435" y="945" width="220" height="38" as="geometry" /></mxCell></root>
