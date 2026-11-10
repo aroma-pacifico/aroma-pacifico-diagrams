@@ -1,0 +1,421 @@
+<mxfile host="app.diagrams.net" version="32.4.1" type="device">
+  <diagram id="no_signal_sequence" name="No-signal sequence and crop alert budget">
+    <mxGraphModel dx="3700" dy="2300" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3700" pageHeight="2300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="No-Signal Handling &amp; Crop Alert Latency Budget | Aroma Pacífico 2026" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontStyle=1;fontColor=#102a43;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="3620" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Part 1: Offline buffering, reconnection, ordered replay, and idempotent deduplication. Part 2: 7-hop end-to-end crop alert delivery budget (&lt;5 min). Source: docs/connectivity.md sections 4.3, 7, and 8." style="text;html=1;align=left;verticalAlign=middle;fontSize=16;fontColor=#334e68;" vertex="1" parent="1">
+          <mxGeometry x="40" y="68" width="3620" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="grp_part1" value="PART 1: THE NO-SIGNAL CASE — OFFLINE BUFFERING, RECONNECTION, ORDERED REPLAY &amp; DEDUPLICATION&#10;(docs/connectivity.md Sections 4.3, 7, 9 &amp; ASM-074, ASM-076, ASM-079)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=17;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="125" width="1780" height="2140" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_sensor" value="Sensor / GNSS / Scanner&#10;(Soil Probe / GPS Fix)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="70" y="190" width="180" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_node" value="Node / App Controller&#10;(Crop Node / Mobile App)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="320" y="190" width="190" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_buf" value="Encrypted Local Buffer&#10;(24 h Ring / Phone Outbox)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="580" y="190" width="190" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_bearer" value="Bearer / Network Link&#10;(Cellular / Satellite / WAN)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="840" y="190" width="190" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_cloud" value="AWS Ingestion Endpoint&#10;(IoT Core / App API)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="190" width="190" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_db" value="Cloud Store (Idempotent)&#10;(DynamoDB / S3 / RDS)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="190" width="190" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_lambda" value="Threshold Lambda [D10]&#10;(Alert Evaluation)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="1610" y="190" width="170" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_phase1" value="1. NORMAL CONNECTED STATE — Direct Ingestion &amp; Acknowledgment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#94a3b8;fontColor=#334155;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="275" width="1740" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2001" value="1. Periodic reading taken (Crop: 4 h, Drying: 1 h, GNSS: 5 min)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="320" as="sourcePoint" />
+            <mxPoint x="415" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2002" value="2. MQTT Publish (QoS 1) / HTTPS POST (TLS 1.2+)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="415" y="350" as="sourcePoint" />
+            <mxPoint x="935" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2003" value="3. Deliver payload to regional endpoint" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="935" y="375" as="sourcePoint" />
+            <mxPoint x="1195" y="375" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2004" value="4. Idempotent write (Key: node_id + reading_timestamp / event_id)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1195" y="400" as="sourcePoint" />
+            <mxPoint x="1455" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2005" value="5. Persistence confirmed (HTTP 200 / Store OK)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1455" y="425" as="sourcePoint" />
+            <mxPoint x="1195" y="425" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2006" value="6. MQTT PUBACK / HTTP 2xx response" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1195" y="450" as="sourcePoint" />
+            <mxPoint x="935" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2007" value="7. Acknowledgment delivered to device" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="935" y="475" as="sourcePoint" />
+            <mxPoint x="415" y="475" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p1_phase2" value="2. SIGNAL LOSS &amp; OFFLINE BUFFERING — Store-and-Forward (Max 24 h Retention)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="510" width="1740" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="box_signal_drop" value="LINK LOST: Cellular RAN unavailable / Satellite contact pass ended / Center WAN service severed&#10;link_state = offline. Devices &amp; apps switch to offline store-and-forward mode." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#f87171;fontColor=#991b1b;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="800" y="550" width="480" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2008" value="8. Reading / GNSS fix taken offline (original recorded_at timestamp)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="620" as="sourcePoint" />
+            <mxPoint x="415" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2009" value="9. Write to local encrypted buffer (node_id, sequence_no, recorded_at, values)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="415" y="650" as="sourcePoint" />
+            <mxPoint x="675" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2010" value="10. Stored in non-volatile flash (survives reboot/battery depletion)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="675" y="680" as="sourcePoint" />
+            <mxPoint x="415" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box_buf_rules" value="BUFFER RETENTION CONSTRAINTS (ASM-074, ASM-076, ASM-079):&#10;- Field Telemetry: Non-volatile ring buffer. Sized with margin (&gt;=30 readings). Max retention 24 hours.&#10;  Readings older than 24 h without ACK are evicted; local drop_counter is incremented.&#10;- Transporter Phone Outbox: 7 days capacity (2,016 fixes). Custody events are NEVER evicted.&#10;- Logistics Post: Encrypted outbox. Reception events held until persistence ACK. Zero data loss." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=1.5;fontColor=#92400e;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="715" width="800" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2011" value="11. Multiple readings accumulate during outage (sequence numbers increment)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="820" as="sourcePoint" />
+            <mxPoint x="415" y="820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2012" value="12. Append to buffer; buffer ring tracks oldest and newest sequence numbers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="415" y="850" as="sourcePoint" />
+            <mxPoint x="675" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p1_phase3" value="3. RECONNECTION &amp; ORDERED REPLAY — Live Reading First, Then Oldest First (ASM-074)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#f59e0b;fontColor=#b45309;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="895" width="1740" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="box_reconnect" value="LINK RESTORED: Radio attaches to network; TLS 1.2+ mutual authentication re-established." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#10b981;fontColor=#065f46;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="800" y="935" width="480" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2013" value="13. Reconnection Event: Fresh live reading taken at reconnect" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="990" as="sourcePoint" />
+            <mxPoint x="415" y="990" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2014" value="14. [LIVE FIRST] Publish live reading immediately (Never waits behind history!)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="415" y="1020" as="sourcePoint" />
+            <mxPoint x="935" y="1020" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2015" value="15. Live reading arrives at IoT Core (QoS 1)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="935" y="1050" as="sourcePoint" />
+            <mxPoint x="1195" y="1050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2016" value="16. Persist live reading in DynamoDB" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1195" y="1080" as="sourcePoint" />
+            <mxPoint x="1455" y="1080" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2017" value="17. Evaluate live reading (raises live alert if out-of-range)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1195" y="1110" as="sourcePoint" />
+            <mxPoint x="1695" y="1110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2018" value="18. MQTT PUBACK for live reading delivered to device" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1195" y="1140" as="sourcePoint" />
+            <mxPoint x="415" y="1140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box_drain_rule" value="DRAIN ORDER: Now buffer drains OLDEST FIRST in batches.&#10;First drain message carries drop_counter, oldest sequence_no, and newest sequence_no (gap report)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1170" width="750" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2019" value="19. Fetch oldest buffered reading (chronological sequence)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="415" y="1230" as="sourcePoint" />
+            <mxPoint x="675" y="1230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2020" value="20. Return buffered record with original recorded_at timestamp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="675" y="1260" as="sourcePoint" />
+            <mxPoint x="415" y="1260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2021" value="21. [DRAIN OLDEST] Publish buffered message (includes drop_counter &amp; original time)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="415" y="1290" as="sourcePoint" />
+            <mxPoint x="935" y="1290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2022" value="22. Ingest drained message at regional endpoint" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="935" y="1320" as="sourcePoint" />
+            <mxPoint x="1195" y="1320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p1_phase4" value="4. IDEMPOTENT DEDUPLICATION &amp; RELEASE ON ACKNOWLEDGMENT (ADR-003, ASM-011)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;fontColor=#1e40af;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1360" width="1740" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2023" value="23. Primary key lookup &amp; upsert (node_id + reading_timestamp / event_id)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1195" y="1410" as="sourcePoint" />
+            <mxPoint x="1455" y="1410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box_dedup" value="IDEMPOTENT DEDUPLICATION:&#10;If duplicate delivery occurs (e.g. lost PUBACK/ACK),&#10;cloud upserts harmlessly. Zero duplicate alerts or ghost records." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#1e40af;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="1435" width="420" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2024" value="24. Store confirmed; duplicate absorbed harmlessly" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1455" y="1510" as="sourcePoint" />
+            <mxPoint x="1195" y="1510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2025" value="25. Evaluate drained reading vs alert thresholds (evaluated as if live)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1195" y="1540" as="sourcePoint" />
+            <mxPoint x="1695" y="1540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box_eval_drain" value="DRAINED READING EVALUATION:&#10;Alert emitted at drain time, within 24 hours. Delay is measured from&#10;original timestamp, clearly distinguishing drained alerts from live ones." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=1.5;fontColor=#92400e;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="1565" width="340" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2026" value="26. MQTT PUBACK / HTTP 200 confirmed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1195" y="1645" as="sourcePoint" />
+            <mxPoint x="935" y="1645" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2027" value="27. Verified ACK delivered to node controller" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="935" y="1675" as="sourcePoint" />
+            <mxPoint x="415" y="1675" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2028" value="28. RELEASE ON ACK: Delete acknowledged record from buffer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="415" y="1705" as="sourcePoint" />
+            <mxPoint x="675" y="1705" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box_release_ack" value="RELEASE CONTRACT: A record leaves the local buffer ONLY when verified cloud ACK is received.&#10;If session drops mid-drain, remaining records stay and drain resumes at next reconnect." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1735" width="750" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_summary_box" value="PART 1 CONTRACT SUMMARY — OFFLINE BEHAVIOR &amp; PROTOCOL PROPERTIES:&#10;1. Store-and-Forward: Max 24 h retention for farm &amp; wet mill telemetry (ASM-074). Unacknowledged records &gt;24 h evicted with gap report.&#10;2. Transporter Outbox: 7 days capacity (2,016 fixes at 5 min interval). Custody events are never evicted; oldest fixes thinned to 15 min if full.&#10;3. Drone Buffer: Storage on drone &amp; ground station has NO time limit. Fumigation cannot close until flight record is persisted in cloud.&#10;4. Replay Ordering: LIVE reading taken at reconnect published FIRST (never waits behind history); then buffered history drains OLDEST FIRST.&#10;5. Release on ACK: Record released ONLY after MQTT PUBACK, HTTP 2xx, or verified S3 multipart checksum. Lost ACK causes safe duplicate.&#10;6. Idempotency: Cloud stores keyed by (node_id + reading_timestamp) or UUID event_id. Duplicate delivery is harmlessly deduped." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1800" width="1740" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_obs_box" value="OBSERVABILITY OF SILENT NODES (Case Point 6 &amp; A21):&#10;Nodes and farms silent for more than 24 hours are detected by CloudWatch metric alarms and reported in daily operational dashboard.&#10;Drained alerts are measured against the 24-hour limit, keeping the live &lt;5 minute SLO unpolluted by buffer drains." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=1.5;fontColor=#92400e;fontSize=12;align=left;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1990" width="1740" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="grp_part2" value="PART 2: CROP ALERT IN UNDER 5 MINUTES — PER-HOP LATENCY BUDGET (ROUTE AVAILABLE)&#10;(docs/connectivity.md Section 8 &amp; Case Statement Point 3: &#x27;menos de 5 minutos desde la lectura fuera de rango&#x27;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=17;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+          <mxGeometry x="1860" y="125" width="1800" height="2140" as="geometry" />
+        </mxCell>
+        <mxCell id="ll2_probe" value="Soil / Weather Probe&#10;(NPK / Temp / Humidity)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="190" width="180" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="ll2_node" value="Crop Node Controller&#10;(Autonomous Solar/Batt)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="2100" y="190" width="190" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="ll2_bearer" value="Cellular / Satellite Link&#10;(LTE-M / Satellite IP)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="2330" y="190" width="190" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="ll2_iot" value="AWS IoT Core [D09]&#10;(Regional Endpoint)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="2560" y="190" width="180" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="ll2_sqs" value="IoT Rule &amp; SQS [D10]&#10;(Threshold Queue)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="2780" y="190" width="180" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="ll2_lambda" value="Threshold Lambda [D10]&#10;(Evaluation &amp; Persistence)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="3000" y="190" width="190" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="ll2_sns" value="Amazon SNS Topic&#10;(Alert Fanout)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="3230" y="190" width="180" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="ll2_phone" value="Provider &amp; Farmer Phone&#10;(Push / SMS Delivery)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
+          <mxGeometry x="3450" y="190" width="190" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_hop1" value="HOP 1: SENSOR READING TO MESSAGE READY ON NODE — Target: 10 s (Cumulative: 10 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="275" width="1760" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2029" value="1. Soil probe samples soil NPK, moisture &amp; temp; detects out-of-range value" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1970" y="330" as="sourcePoint" />
+            <mxPoint x="2195" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2030" value="2. Node packages MQTT payload (node_id, sequence_no, timestamp, values)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2195" y="365" as="sourcePoint" />
+            <mxPoint x="2195" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box_hop1_desc" value="HOP 1 DESIGN (ASM-075):&#10;Target: 10 s. Node does NOT evaluate alert ranges locally (ranges configured in cloud).&#10;Node formats message immediately without batching delays." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="2000" y="395" width="520" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_hop2" value="HOP 2: RADIO WAKE, NETWORK ATTACH &amp; TLS CONNECTION — Target: 60 s (Cumulative: 70 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="465" width="1760" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2031" value="3. Wake radio modem from low-power sleep; initiate LTE-M / NB-IoT cell attach" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2195" y="515" as="sourcePoint" />
+            <mxPoint x="2425" y="515" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2032" value="4. Attach to cellular network / acquire satellite carrier IP bearer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2425" y="545" as="sourcePoint" />
+            <mxPoint x="2425" y="545" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2033" value="5. TCP handshake &amp; TLS 1.2+ mutual auth negotiation (X.509 client cert, port 8883/443)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2425" y="580" as="sourcePoint" />
+            <mxPoint x="2650" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2034" value="6. TLS session established successfully" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2650" y="610" as="sourcePoint" />
+            <mxPoint x="2195" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box_hop2_desc" value="HOP 2 DESIGN (Largest Field Hop, ASM-075, PD-081):&#10;Target: 60 s. Covers modem cold-wake, multi-network SIM cell attach, IP allocation, and TLS mutual auth handshake.&#10;For satellite bearer, contact pass window timing verified during procurement." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="2220" y="635" width="620" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_hop3" value="HOP 3: MQTT PUBLISH TO BROKER PUBACK AT IOT CORE — Target: 20 s (Cumulative: 90 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="710" width="1760" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2035" value="7. MQTT PUBLISH (QoS 1, topic: farms/{farmId}/nodes/{nodeId}/telemetry)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2195" y="760" as="sourcePoint" />
+            <mxPoint x="2650" y="760" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2036" value="8. MQTT PUBACK returned to device (confirms receipt at broker)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2650" y="795" as="sourcePoint" />
+            <mxPoint x="2195" y="795" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box_hop3_desc" value="HOP 3 DESIGN (ASM-003, ASM-075):&#10;Target: 20 s. Includes WAN latency Colombia -&gt; us-east-1 and absorbs transient MQTT packet retransmission at QoS 1.&#10;PUBACK arrival authorizes buffer release." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="2350" y="820" width="580" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_hop4" value="HOP 4: TOPIC RULE TO THRESHOLD FUNCTION INVOCATION (SQS) — Target: 10 s (Cumulative: 100 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="890" width="1760" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2037" value="9. IoT Topic Rule triggers: writes telemetry to DynamoDB &amp; enqueues to Threshold SQS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2650" y="940" as="sourcePoint" />
+            <mxPoint x="2870" y="940" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2038" value="10. SQS invokes Threshold Lambda via Event Source Mapping (batchSize=1)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2870" y="975" as="sourcePoint" />
+            <mxPoint x="3095" y="975" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box_hop4_desc" value="HOP 4 DESIGN (ADR-003, ASM-161):&#10;Target: 10 s. SQS queue decouples IoT ingestion from function scaling. Event source mapping triggers Lambda immediately." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="2600" y="1005" width="580" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_hop5" value="HOP 5: THRESHOLD LAMBDA EVALUATION &amp; PERSISTENCE — Target: 20 s (Cumulative: 120 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="1070" width="1760" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2039" value="11. Read configured ranges (data-driven); evaluate out-of-range condition" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3095" y="1120" as="sourcePoint" />
+            <mxPoint x="3095" y="1120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2040" value="12. Persist alert record in DynamoDB (opens crop_alert_raised case)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3095" y="1150" as="sourcePoint" />
+            <mxPoint x="3095" y="1150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2041" value="13. Publish structured alert message to Amazon SNS alert topic" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3095" y="1180" as="sourcePoint" />
+            <mxPoint x="3320" y="1180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box_hop5_desc" value="HOP 5 DESIGN (A17, ADR-002, PD-018):&#10;Target: 20 s. Evaluates ranges, writes alert to DB, opens drone confirmation case, and publishes to SNS." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="2850" y="1205" width="550" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_hop6" value="HOP 6: SNS TOPIC TO NOTIFICATION CHANNEL PROVIDER — Target: 30 s (Cumulative: 150 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="1270" width="1760" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2042" value="14. Amazon SNS HTTPS dispatch to Notification Channel Provider (Push / SMS Gateway)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3320" y="1320" as="sourcePoint" />
+            <mxPoint x="3545" y="1320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box_hop6_desc" value="HOP 6 DESIGN (A14, PD-085):&#10;Target: 30 s. Cloud-to-gateway dispatch over resilient HTTPS API." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="3050" y="1345" width="500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_hop7" value="HOP 7: NOTIFICATION PROVIDER TO FARMER SMARTPHONE — Target: 60 s (Cumulative: 210 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="1405" width="1760" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_2043" value="15. Cellular carrier transmission of Push Notification / SMS to farmer&#x27;s handset" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3545" y="1455" as="sourcePoint" />
+            <mxPoint x="3545" y="1455" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2044" value="16. Farmer receives audible alert &amp; opens app with plot focus (Target: 210 s total)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3545" y="1490" as="sourcePoint" />
+            <mxPoint x="3545" y="1490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box_hop7_desc" value="HOP 7 DESIGN (PD-085, Case Point 3):&#10;Target: 60 s. Mobile network delivery to farmer&#x27;s phone.&#10;Total Budget Sum: 210 s  |  Safety Margin: 90 s  |  Case Limit: 300 s (&lt;5 minutes)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="3150" y="1515" width="480" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_table_box" value="CROP ALERT LATENCY BUDGET TABLE (docs/connectivity.md Section 8.2):&#10;| Hop | From and To | Target | Cumulative | Notes |&#10;|---|---|---|---|---|&#10;| 1 | Reading taken to message ready on node | 10 s | 10 s | Node publishes every reading immediately; no local threshold evaluation |&#10;| 2 | Radio wake, network attach and TLS connection | 60 s | 70 s | Largest field hop; multi-network SIM attaches to best available carrier |&#10;| 3 | MQTT publish to PUBACK at IoT Core endpoint | 20 s | 90 s | QoS 1 with PUBACK; includes transient retransmission over public internet |&#10;| 4 | Topic rule to threshold function invocation | 10 s | 100 s | Routing rule through SQS threshold queue; decouples ingestion scaling |&#10;| 5 | Threshold function evaluation &amp; persistence | 20 s | 120 s | Reads configured ranges, persists alert in DynamoDB, publishes to SNS |&#10;| 6 | Alert topic to notification channel provider | 30 s | 150 s | Amazon SNS HTTPS dispatch to push notification or SMS channel provider |&#10;| 7 | Channel provider to farmer&#x27;s smartphone | 60 s | 210 s | Push notification or SMS delivered to farmer&#x27;s device |&#10;| — | Total of Targets | 210 s | 210 s | Design target (3.5 minutes) |&#10;| — | Margin to Case Statement Limit | 90 s | 300 s | Absorbs network jitter, cell attach retries, and queuing delay |&#10;| — | Case Statement Hard Limit | 300 s | 300 s | &#x27;menos de 5 minutos desde la lectura fuera de rango&#x27; (Case Point 3) |" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="1590" width="1760" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_slo_box" value="TRACEABILITY TO A21 ALERT-DELIVERY SLO (docs/connectivity.md Section 8.3 &amp; Roadmap #34):&#10;- Proposed SLI: Share of out-of-range readings published live (not from buffer) whose notification arrives on farmer phone within 300 s.&#10;- Trace Points: 1. Reading timestamp (Hop 1) | 2. Broker PUBACK (Hop 3) | 3. Lambda execution start &amp; alert persist (Hop 5) | 4. SNS handoff (Hop 6) | 5. Delivery receipt (Hop 7).&#10;- Hop timestamps allow A21 to attribute any SLO breach to the exact failing hop (field attach vs cloud queue vs carrier SMS).&#10;- Drained readings (offline buffer) are measured separately against the 24-hour limit; drying alerts use the identical budget." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=1.5;fontColor=#1e40af;fontSize=12;align=left;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="1850" width="1760" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_global_note" value="DIAGRAM METADATA &amp; NORMATIVE RULES: Part of ALPH-20 / ALPH-23. Repository aroma-pacifico-diagrams (network/). Refs aroma-pacifico/aroma-pacifico-roadmap#19. Closes ALPH-23.&#10;All timings and latencies are design targets defined in docs/connectivity.md. Diagram adheres to zero-emoji policy and strict Draw.io XML standards." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=1;fontColor=#334155;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2180" width="3620" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
