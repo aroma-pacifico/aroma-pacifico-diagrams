@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" version="32.4.1" type="device">
+  <diagram id="landing-zone" name="AWS Landing Zone, Controls, Identity, Budgets and Auditing">
+    <mxGraphModel dx="3900" dy="2650" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3900" pageHeight="2650" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="AWS Landing Zone, Controls, Identity, Budgets and Auditing" style="text;html=1;align=left;verticalAlign=middle;fontSize=28;fontStyle=1;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="3800" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Aroma Pacífico AWS Organization Baseline (us-east-1, all features enabled | ASM-060, ASM-061): multi-account tree, root controls &amp; SCPs, identity entry points, budgets &amp; cost alerts, audit pipeline for the four mandatory events, and tagging scheme." style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="40" y="68" width="3800" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="org_boundary" value="AWS Organization: aroma-pacifico (Region: us-east-1 | All Features Enabled | Single Organization | ASM-060, ASM-061)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="115" width="3800" height="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="root_controls" value="ORGANIZATION ROOT CONTROLS &amp; POLICIES (Applied from Root | Section 3)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#334155;strokeWidth=2;fontColor=#0f172a;fontSize=15;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="65" y="160" width="715" height="765" as="geometry" />
+        </mxCell>
+        <mxCell id="box_tag_policy" value="TAG POLICY (Attached to Root | Section 3.2 &amp; Section 5)&#10;• Enforces PascalCase keys across all pilot cloud resources&#10;• Standard Mandatory Keys:&#10;   Client, Project, Environment, Owner, CostCenter, FarmId, CollectionCenter, Name&#10;• Enforced Allowed Values:&#10;   - Environment: dev, qa, pdn, shared (ASM-006, ASM-063)&#10;   - CostCenter: farms, drones, collection-centers, trips, shared (ASM-064)&#10;   - CollectionCenter: cauca, huila, tolima (case statement octets 41, 42, 43)&#10;• Key capitalization enforced for Client and Project (values set after PD-070)&#10;• Tag policy validates compliance upon update/tag; creation presence enforced via SCP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="85" y="200" width="675" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="box_scps" value="SERVICE CONTROL POLICIES (SCPs | Attached to Root &amp; OUs | Section 3.1)&#10;1. Deny leaving organization (Attached: Root)&#10;   Denies organizations:LeaveOrganization (prevents accounts escaping trail/budgets/tags)&#10;2. Deny Regions other than us-east-1 (Attached: Root)&#10;   Denies any action outside us-east-1 (exempts global: IAM, Organizations, Budgets | ADR-001)&#10;3. Protect audit trail and storage (Attached: Root)&#10;   Denies cloudtrail:StopLogging, DeleteTrail, UpdateTrail, PutEventSelectors;&#10;   Protects audit archive bucket policy, Object Lock compliance, and KMS key deletion/disabling&#10;4. Deny long-term IAM credentials (Attached: Root)&#10;   Denies iam:CreateUser, iam:CreateAccessKey, iam:CreateLoginProfile (ADR-003)&#10;5. Deny root user of member accounts (Attached: Root)&#10;   Denies all actions by member account root principals (centralized root access mgmt)&#10;6. Require cost tags on creation (Attached: Workloads OU)&#10;   Denies resource creation if Environment or CostCenter tag is missing (aws:RequestTag)&#10;7. Production changes only via pipeline (Attached: Production OU)&#10;   Denies write actions by human IAM Identity Center sessions in pdn (reads allowed);&#10;   Break-glass and narrow ops exempt under incident reference (ADR-003, ASM-007)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="85" y="445" width="675" height="465" as="geometry" />
+        </mxCell>
+        <mxCell id="box_azure" value="Azure (Prepared, not deployed | 10.88.0.0/13 | ADR-001)&#10;• Multi-cloud posture: Azure prepared as an export target and disaster-recovery option.&#10;• No Azure subscription, management group, or deployed resources in the pilot (ADR-001).&#10;• Retains address reservation 10.88.0.0/13 in the addressing plan (A07) without duplicate spend." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#94a3b8;strokeWidth=2;strokeDasharray=4 4;fontColor=#334155;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="65" y="940" width="715" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="org_root_junction" value="AWS Organization Root (All Features Enabled | Master Account: Management Account | ASM-060)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0f172a;fontColor=#ffffff;fontSize=13.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="130" width="2400" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_root_to_junction" value="Applies Root SCPs &amp; Tag Policy" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;fontSize=12;fontColor=#0f172a;align=center;exitX=1;exitY=0.03;entryX=0;entryY=0.5;" edge="1" parent="1" source="root_controls" target="org_root_junction">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt_acct" value="Management Account (Root Level, outside OUs | Environment: shared | ASM-060)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f9ff;strokeColor=#0284c7;strokeWidth=2;fontColor=#0c4a6e;fontSize=15;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="805" y="180" width="680" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_mgmt_org" value="Organizations" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.organizations;fillColor=#E7157B;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11.5;" vertex="1" parent="1">
+          <mxGeometry x="835" y="220" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_mgmt_budgets" value="Budgets Engine" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.budgets_2;fillColor=#7AA116;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11.5;" vertex="1" parent="1">
+          <mxGeometry x="935" y="220" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_mgmt_sso" value="Identity Center" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.single_sign_on;fillColor=#DD344C;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11.5;" vertex="1" parent="1">
+          <mxGeometry x="1035" y="220" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d06_mgmt" value="D06" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="210" width="28" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_mgmt_sns" value="SNS Alert Topic" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns;fillColor=#E7157B;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11.5;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="220" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt_text" value="Roles and Capabilities:&#10;• AWS Organizations Root: master account for SCPs, Tag Policy, and Member Accounts.&#10;• Consolidated Billing: aggregated invoicing across all 6 linked accounts in us-east-1.&#10;• Cost Allocation Tags &amp; Cost Categories: activates Environment, CostCenter, CollectionCenter,&#10;  FarmId, Project; maps CostCenter lines to farms, drones, collection-centers, trips, testing, shared.&#10;• AWS Budgets &amp; Anomaly Detection: 5 cost line budgets, 6 account budgets, 2 anomaly monitors.&#10;• IAM Identity Center Organization Instance [D06]: directory root; administered from Security acct.&#10;• Amazon SNS Topic (KMS-encrypted): broadcasts budget &amp; anomaly alerts to Operator and Cost Owner.&#10;• Automated Budget Guardrail: Testing budget action at 100% applies SCP to NonProduction OU (manual).&#10;• Boundary Rule: Holds NO workload, NO Terraform remote state bucket, NO app identities (ASM-060)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#bae6fd;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="820" y="290" width="650" height="355" as="geometry" />
+        </mxCell>
+        <mxCell id="sec_ou" value="Security OU" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=2;fontColor=#064e3b;fontSize=15;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="180" width="780" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="sec_acct" value="Security Account (Environment: shared | Delegated Administrator | ASM-061)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#10b981;strokeWidth=1.5;fontColor=#064e3b;fontSize=13.5;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1525" y="215" width="750" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_sec_trail" value="CloudTrail Admin" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudtrail;fillColor=#E7157B;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11.5;" vertex="1" parent="1">
+          <mxGeometry x="1545" y="255" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_sec_s3" value="Audit S3 Archive" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;fillColor=#7AA116;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11.5;" vertex="1" parent="1">
+          <mxGeometry x="1635" y="255" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_sec_kms" value="KMS Audit Key" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.key_management_service;fillColor=#DD344C;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11.5;" vertex="1" parent="1">
+          <mxGeometry x="1725" y="255" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d06_sec" value="D06" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="245" width="28" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_sec_firehose" value="Data Firehose" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.kinesis_data_firehose;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11.5;" vertex="1" parent="1">
+          <mxGeometry x="1815" y="255" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_sec_athena" value="Athena Workspace" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.athena;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11.5;" vertex="1" parent="1">
+          <mxGeometry x="1905" y="255" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="sec_text" value="Roles and Capabilities:&#10;• Delegated Administrator: CloudTrail organization trail and IAM Identity Center.&#10;• Central Audit Archive Bucket (s3://aroma-audit-archive-shared) [D06]:&#10;  - S3 Object Lock in COMPLIANCE MODE: 5-year immutable retention (ASM-067).&#10;  - Customer-Managed KMS Key (audit key) with restrictive key policy.&#10;  - S3 Block Public Access, Versioning, bucket policy denying non-TLS requests.&#10;  - Key Prefixes: AWSLogs/&lt;org-id&gt;/ (CloudTrail) and application/ (Firehose).&#10;• Amazon Data Firehose: receives application audit records from pdn CloudWatch Logs cross-account.&#10;• Amazon Athena: audit query workspace for Auditor role (read-only queries).&#10;• Multi-Region Organization Trail: logs all management events + S3 drone bucket data events.&#10;• Boundary Rule: Runs no application workloads; single security account matches ADR-001 (ASM-061)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#a7f3d0;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="325" width="720" height="305" as="geometry" />
+        </mxCell>
+        <mxCell id="net_ou" value="Infrastructure OU" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#7c3aed;strokeWidth=2;fontColor=#4c1d95;fontSize=15;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="2315" y="180" width="680" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="net_acct" value="Network Account (Environment: shared | Hub &amp; WAN | ASM-033)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8b5cf6;strokeWidth=1.5;fontColor=#4c1d95;fontSize=13.5;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="2330" y="215" width="650" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_net_tgw" value="Transit Gateway" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.transit_gateway;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11.5;" vertex="1" parent="1">
+          <mxGeometry x="2350" y="255" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="net_text" value="Roles and Capabilities:&#10;• Collection-Center Hub (ASM-033): AWS Transit Gateway (TGW) terminating WAN links.&#10;• Reserved Address Space: 10.83.0.0/16 held for Network &amp; Security infrastructure (ASM-034).&#10;• Three Collection Center Site Attachments:&#10;  - Cauca Collection Center WAN (10.41.0.0/16, octet 41 | IPsec VPN)&#10;  - Huila Collection Center WAN (10.42.0.0/16, octet 42 | IPsec VPN)&#10;  - Tolima Collection Center WAN (10.43.0.0/16, octet 43 | IPsec VPN)&#10;• Environment VPC Attachments:&#10;  - Production VPC attachment (10.82.0.0/16)&#10;  - Test VPC attachment (10.81.0.0/16)&#10;  - Development VPC attachment (10.80.0.0/16)&#10;• Cross-Account TGW Route Tables &amp; Security Segmentation (firewall-policy.md).&#10;• Boundary Rule: Houses only connectivity and hub routing; holds no workload data." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#ddd6fe;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="2345" y="325" width="620" height="305" as="geometry" />
+        </mxCell>
+        <mxCell id="tree_drop_mgmt" value="Master / Billing Account" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284c7;strokeWidth=2;fontSize=11.5;fontColor=#0284c7;align=center;exitX=0.02;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="org_root_junction" target="mgmt_acct">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tree_drop_sec" value="Security OU Branch" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;fontSize=11.5;fontColor=#059669;align=center;exitX=0.33;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="org_root_junction" target="sec_ou">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tree_drop_net" value="Infrastructure OU Branch" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7c3aed;strokeWidth=2;fontSize=11.5;fontColor=#7c3aed;align=center;exitX=0.65;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="org_root_junction" target="net_ou">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tree_drop_workloads" value="Workloads OU Branch" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;fontSize=11.5;fontColor=#d97706;align=center;exitX=0.92;exitY=1;entryX=0.85;entryY=0;" edge="1" parent="1" source="org_root_junction" target="workloads_ou">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="workloads_ou" value="Workloads OU (SCP: Require cost tags on creation: Environment, CostCenter | Section 3.1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=2;fontColor=#78350f;fontSize=15;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="805" y="680" width="3015" height="535" as="geometry" />
+        </mxCell>
+        <mxCell id="prod_ou" value="Production OU (SCP: Production changes only through CI/CD pipeline | Human Identity Center console writes denied)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f59e0b;strokeWidth=1.5;fontColor=#78350f;fontSize=13.5;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="825" y="720" width="1495" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="prod_acct" value="Production Account (pdn | 10.82.0.0/16 | Environment: pdn | ASM-006)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fefce8;strokeColor=#eab308;strokeWidth=1.5;fontColor=#713f12;fontSize=13.5;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="840" y="755" width="1465" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="card_prod_vpc" value="Production VPC&#10;10.82.0.0/16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=1.5;fontColor=#713f12;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="860" y="795" width="130" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d04_prod" value="D04" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="975" y="785" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="card_prod_state" value="S3 State Bucket&#10;(Native Locking)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=1.5;fontColor=#713f12;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="795" width="130" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d02_prod" value="D02" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="785" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="card_prod_kms" value="KMS Customer Keys&#10;(state, data, audit)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=1.5;fontColor=#713f12;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="795" width="140" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d06_pkms" value="D06" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="785" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="card_prod_oidc" value="GitHub OIDC Role&#10;pdn-apply (ADR-003)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=1.5;fontColor=#713f12;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="795" width="145" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d06_poidc" value="D06" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1465" y="785" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="card_prod_cognito" value="Cognito User Pools&#10;staff &amp; field" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=1.5;fontColor=#713f12;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="860" y="855" width="130" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d06_pcog" value="D06" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="975" y="845" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="card_prod_iot" value="AWS IoT Core&#10;Thing Registry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=1.5;fontColor=#713f12;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="855" width="130" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d09_piot" value="D09" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="845" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="card_prod_ddb" value="DynamoDB Telemetry&#10;(5-yr retention)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=1.5;fontColor=#713f12;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="855" width="140" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="card_prod_s3drone" value="S3 Drone Bucket&#10;(pdn-drone-objects)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=1.5;fontColor=#713f12;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="855" width="145" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d06_ps3d" value="D06" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1465" y="845" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="card_prod_cw" value="CloudWatch Logs&#10;/aws/application/audit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=1.5;fontColor=#713f12;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1505" y="855" width="155" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="prod_text" value="Production Components and Governance:&#10;• Production VPC (10.82.0.0/16) [D04]: application, telemetry, and datastore tiers with private VPC interface endpoints.&#10;• S3 State Bucket (aroma-pdn-tfstate) [D02]: native S3 object locking; KMS state key; accessible only via CI/CD OIDC role.&#10;• GitHub OIDC Federation [D06]: per-environment role pdn-apply with zero static AWS credentials (ADR-003).&#10;• Cognito User Pools [D06]: staff (MFA TOTP) for operators/agronomists; field (passwordless SMS) for farmers/transporters.&#10;• Device Registry [D06, D09]: AWS IoT Core X.509 device certificates for farm nodes and certified drone pilots.&#10;• Data Stores: Telemetry DynamoDB table (5-year retention, KMS key) [D09] &amp; S3 Drone Object Bucket (pdn-drone-objects).&#10;• Application Audit Log Group (/aws/application/audit): records sack reads &amp; threshold changes (365d local retention).&#10;• Cross-Account Streaming: CloudWatch Logs subscription filter forwards audit logs to Firehose in Security Account.&#10;• IoT Core Logs (AWSIotLogsV2): logs rejected connection and publication attempts at ERROR level." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#fde047;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="855" y="915" width="1435" height="255" as="geometry" />
+        </mxCell>
+        <mxCell id="nonprod_ou" value="NonProduction OU (Target of Testing Budget Action: SCP denies new resource creation on 100% test spend)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f59e0b;strokeWidth=1.5;fontColor=#78350f;fontSize=13.5;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="2340" y="720" width="1460" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_acct" value="Test Account (qa | 10.81.0.0/16 | Environment: qa | ASM-006)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#94a3b8;strokeWidth=1.5;fontColor=#1e293b;fontSize=13.5;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="2355" y="755" width="705" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="card_qa_vpc" value="QA VPC&#10;10.81.0.0/16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="2375" y="795" width="130" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d04_qa" value="D04" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="2490" y="785" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="card_qa_state" value="S3 State Bucket&#10;(Native Locking)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="2530" y="795" width="130" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d02_qa" value="D02" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="2645" y="785" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="card_qa_oidc" value="GitHub OIDC Role&#10;qa-apply (ADR-003)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="2685" y="795" width="140" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d06_qoidc" value="D06" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="2810" y="785" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_text" value="Test Account Components:&#10;• The Pattern Environment: qa is the test environment coded in Epic 6.&#10;• QA VPC (10.81.0.0/16) [D04] with subnets matching the addressing plan.&#10;• S3 State Bucket (aroma-qa-tfstate) [D02] with native object locking.&#10;• GitHub OIDC Federation [D06]: qa-plan and qa-apply IAM roles.&#10;• Test Instances: Cognito User Pools, IoT Core, and test Lambda functions.&#10;• Audit Logs: Local CloudWatch log group (operational testing only);&#10;  records are NOT archived to Security account (ASM-068).&#10;• Boundary Rule: Strictly isolated from production; holds NO production data." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="2370" y="860" width="675" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_acct" value="Development Account (dev | 10.80.0.0/16 | Environment: dev | ASM-006)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#94a3b8;strokeWidth=1.5;fontColor=#1e293b;fontSize=13.5;fontStyle=1;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="3080" y="755" width="705" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="card_dev_vpc" value="DEV VPC&#10;10.80.0.0/16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="3100" y="795" width="130" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d04_dev" value="D04" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="3215" y="785" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="card_dev_state" value="S3 State Bucket&#10;(Native Locking)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="3255" y="795" width="130" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d02_dev" value="D02" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="3370" y="785" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="card_dev_oidc" value="GitHub OIDC Role&#10;dev-apply (ADR-003)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="3410" y="795" width="140" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="badge_d06_doidc" value="D06" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="3535" y="785" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_text" value="Development Account Components:&#10;• Sandbox Environment: dev account for experimental development and testing.&#10;• Dev VPC (10.80.0.0/16) [D04] with development subnet layout.&#10;• S3 State Bucket (aroma-dev-tfstate) [D02] with native object locking.&#10;• GitHub OIDC Federation [D06]: dev-plan and dev-apply IAM roles.&#10;• Dev Instances: Lightweight developer resources, mocks, and sandboxes.&#10;• Audit Logs: Local CloudWatch log group (operational only);&#10;  records are NOT archived to Security account (ASM-068).&#10;• Boundary Rule: Isolated from QA and Production; holds NO production data." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="3095" y="860" width="675" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="panel_identity" value="IDENTITY ENTRY POINTS (Exactly 4 Kinds | Section 4 &amp; docs/security-and-identity.md Section 4)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;fontColor=#0f172a;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1255" width="1140" height="770" as="geometry" />
+        </mxCell>
+        <mxCell id="id_k1" value="1. AWS Human Operators (Platform Operator, Auditor, Break-Glass) [D06]&#10;• Entry Point: IAM Identity Center (Organization instance in Management Account; delegated admin in Security Account).&#10;• Authentication: Mandatory Multi-Factor Authentication (MFA) via TOTP software token on smartphone.&#10;• Access Control: One permission set per role, assigned per account; ZERO long-term IAM users or static keys.&#10;• Role Mapping:&#10;  - Auditor: Read-only access to Audit Archive bucket and Athena query workspace in Security Account.&#10;  - Platform Operator: Operations access to application log groups and AWSIotLogsV2 in workload accounts.&#10;  - Break-Glass: Emergency operational access, invoked only under recorded incident reference (A09)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1295" width="1100" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="id_k2" value="2. CI / CD Pipeline Automation (GitHub Actions) [D06]&#10;• Entry Point: GitHub OIDC Identity Provider configured in each environment account (dev, qa, pdn).&#10;• Security: Cryptographic OIDC federation exchanging signed GitHub JWT for temporary AWS STS credentials.&#10;• Access Control: Per-environment plan and apply IAM roles (ADR-003). Strictly ZERO static credentials or stored AWS keys." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1465" width="1100" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="id_k3" value="3. Hardware Devices (Crop Nodes, Drying Nodes, and Drones) [D06]&#10;• Entry Point: AWS IoT Core Thing Registry in each workload account (dev, qa, pdn).&#10;• Authentication: Mutual TLS (mTLS) with unique X.509 client certificate registered from CSR (port 8883 / 443 ALPN).&#10;• Certificate Lifecycle: Immediate revocation by certificate status check. Drones obtain upload grants before flight delivery." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1590" width="1100" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="id_k4" value="4. Application Users (8 Business Roles | security-and-identity.md Section 4) [D06]&#10;• Entry Point: Amazon Cognito User Pools located in the workload account (pdn):&#10;  * Staff Pool (MFA required with TOTP):&#10;    - Collection-Center Operator, Drone Operator, Agronomist, Platform Operator.&#10;    - Sensitive operations (fumigation authorization, threshold change, cert revoke) require re-authentication if auth_time &gt; 10 min.&#10;  * Field Pool (No MFA, justified adoption decision ASM-091):&#10;    - Farmer, Transporter, Read-Only Buyer.&#10;    - Passwordless SMS code to registered phone; 30-day refresh token; hardware-backed keystore offline outbox encryption (ASM-095).&#10;  * Anonymous Public Reader:&#10;    - Public sack lookup by code only; unauthenticated, no Cognito user pool (ASM-069). Zero cédula or full trace returned." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1715" width="1100" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="panel_audit" value="AUDIT PIPELINE FOR THE FOUR MANDATORY EVENTS (Section 7 | 5-Year Retention under Object Lock)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#047857;strokeWidth=2;fontColor=#064e3b;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1205" y="1255" width="1500" height="770" as="geometry" />
+        </mxCell>
+        <mxCell id="audit_ov" value="Dual-Layer Audit Architecture (Section 7):&#10;• Layer 1 (AWS CloudTrail): Authoritative for AWS API calls made by identifiable principals (S3 flight object uploads, pipeline apply).&#10;• Layer 2 (Application &amp; IoT Core): Authoritative for domain business events (sack reads, threshold changes, MQTT publications).&#10;• Compliance Retention: All audit records stored for 5 years in Security Account under S3 Object Lock compliance mode (ASM-067)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#10b981;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1225" y="1295" width="1460" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="ev1_box" value="1. Sack Read Audit (Public Web, Farmer App, Center App)&#10;• Writing Layer: Application lookup service (CloudFront + WAF + Lambda URL).&#10;• Audit Record: Structured JSON written to /aws/application/audit in pdn.&#10;• Content: Authenticated user and role (buyer, farmer, center op) or &#x27;anonymous&#x27; (ASM-069);&#10;  sack code, view returned (buyer/center/farmer), result (found/not found/denied),&#10;  UTC timestamp, source IP, channel (web/farmer/center app), user agent.&#10;• Privacy Guard: NO national ID (cédula) and NO full trace recorded (Point 2 requirement).&#10;• Shipping Path: CloudWatch Subscription -&gt; Data Firehose -&gt; s3://audit-archive/application/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#86efac;strokeWidth=1.5;fontColor=#064e3b;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1225" y="1405" width="715" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="ev2_box" value="2. Threshold Change Audit (Reports Web / Threshold Config)&#10;• Writing Layer: Application threshold service (written in same transaction).&#10;• Audit Record: Structured JSON written to /aws/application/audit in pdn.&#10;• Content: Federation agronomist or platform operator identity with MFA; variable,&#10;  zone (crop/drying), scope (pilot/farm), old value, new value, reason, UTC time, source IP.&#10;• Secondary Audit: CloudTrail write-only data events on thresholds DynamoDB table (PD-074).&#10;• Shipping Path: CloudWatch Subscription -&gt; Data Firehose -&gt; s3://audit-archive/application/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#86efac;strokeWidth=1.5;fontColor=#064e3b;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1970" y="1405" width="715" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="ev3_box" value="3. Telemetry Publication Audit (Crop &amp; Drying MQTT Readings)&#10;• Writing Layer: AWS IoT Core.&#10;• Accepted Publications: Telemetry topic rule writes reading + metadata directly to&#10;  DynamoDB telemetry store: node ID, cert principal, client ID, source IP, receive time, original timestamp.&#10;• Rejected Publications: Authorization or TLS failures logged at ERROR level in AWSIotLogsV2 log group.&#10;• Retention: 5 years in DynamoDB telemetry store (case statement requirement for readings).&#10;• Ingress Path: Direct via cellular bearer to regional IoT Core endpoint (bypasses center &amp; VPC)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#86efac;strokeWidth=1.5;fontColor=#064e3b;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1225" y="1605" width="715" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="ev4_box" value="4. Flight Object Delivery Audit (Drone Mission Upload)&#10;• Writing Layer: AWS CloudTrail (S3 Data Events) and Reception Lambda Function.&#10;• Audit Record: CloudTrail S3 data events (PutObject, CompleteMultipartUpload) on pdn drone&#10;  bucket by ARN prefix. Captures principal, bucket, key, version, size, eventTime, source IP.&#10;• Flight Linking: Reception function links S3 object to flight record in transactional store (ADR-002).&#10;• Pilot Attribution: Upload-grant record binds pilot identity &amp; drone kit to upload authorization (PD-075).&#10;• Shipping Path: Multi-Region Organization Trail -&gt; s3://audit-archive/AWSLogs/&lt;org-id&gt;/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#86efac;strokeWidth=1.5;fontColor=#064e3b;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1970" y="1605" width="715" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="audit_stor" value="Centralized Audit Storage &amp; Verification (Security Account)&#10;• Target S3 Bucket: s3://aroma-audit-archive-shared (us-east-1)&#10;• Integrity &amp; Compliance: S3 Object Lock in COMPLIANCE MODE (5-year default retention, ASM-067). Cannot be shortened or deleted by any user or root.&#10;• Encryption: Customer-Managed KMS Key (audit key) under Security account policy. S3 Block Public Access, Versioning, TLS 1.2+ enforce.&#10;• Partitioning: s3://.../AWSLogs/&lt;org-id&gt;/ (CloudTrail org events) | s3://.../application/ (Firehose-streamed application audit logs)&#10;• Verification: Amazon Athena workspace configured for Auditor role to execute SQL queries across both audit streams." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#10b981;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1225" y="1800" width="1260" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="auditor_card" value="Auditor Role&#10;(IAM Identity Center)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#064e3b;strokeColor=#064e3b;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2540" y="1820" width="45" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="athena_badge" value="Athena SQL&#10;Workspace" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C4FFF;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=11.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="2605" y="1835" width="95" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_auditor_athena" value="Queries" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;fontSize=11.5;fontColor=#059669;align=center;" edge="1" parent="1" source="athena_badge" target="audit_stor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_ev4_to_storage" value="CloudTrail Org Trail Stream -&gt; AWSLogs/&lt;org-id&gt;/" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;fontSize=11;fontColor=#064e3b;align=center;exitX=0.5;exitY=1;entryX=0.8;entryY=0;" edge="1" parent="1" source="ev4_box" target="audit_stor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="panel_budgets" value="BUDGETS &amp; COST ALERTING ARCHITECTURE (Section 6 | Management Account)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#b45309;strokeWidth=2;fontColor=#78350f;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="2730" y="1255" width="1110" height="770" as="geometry" />
+        </mxCell>
+        <mxCell id="budgets_ov_box" value="Centralized Cost Governance (Section 6):&#10;• All budgets created in Management Account over linked accounts; values follow A23 cost model (PD-076).&#10;• Historical note: 2020 prices are retired; no 2020 figure is used for budget baselines (legacy-2020.md).&#10;• Budgets split by cost allocation tags and linked accounts to mirror the 5 case dimensions." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f59e0b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="2750" y="1295" width="1070" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="budgets_cat_box" value="AWS Budgets Catalog (11 Monthly Cost Budgets | Section 6)&#10;1. Farms Budget: Filter CostCenter = farms, pdn account. Ingestion, telemetry store, threshold function.&#10;2. Drones Budget: Filter CostCenter = drones, pdn account. Ingress, S3 flight objects, inference functions.&#10;3. Collection Centers Budget: Filter CostCenter = collection-centers, pdn; child budget per center.&#10;4. Trips Budget: Filter CostCenter = trips, pdn account. Transporter position ingestion and store.&#10;5. Testing Budget: Linked accounts test (qa) and development (dev), all cost (ASM-064).&#10;6. Account Budgets (6 budgets): One budget per linked account (mgmt, sec, net, pdn, qa, dev).&#10;&#10;Alert Threshold Triggers (ASM-066):&#10;• Actual 80 % (early warning) | Actual 100 % (budget reached) | Forecasted 100 % (month-end projection)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#fde68a;strokeWidth=1.5;fontColor=#78350f;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="2750" y="1405" width="1070" height="245" as="geometry" />
+        </mxCell>
+        <mxCell id="budgets_flow_box" value="Alert Path and Automated Budget Actions (Section 6)&#10;• Alert Notification Flow:&#10;  AWS Budgets + AWS Cost Anomaly Detection (2 monitors: linked account &amp; CostCenter tag)&#10;  --&gt; Amazon SNS Topic in Management Account (encrypted with customer-managed KMS key)&#10;  --&gt; Subscribers: Platform Operator role and designated Cost Owner (email / SMS).&#10;• Testing Budget Automated Action (Guardrail):&#10;  * Trigger: At actual 100% test spend on Testing Budget.&#10;  * Governance Gate: Requires MANUAL APPROVAL by Cost Owner / Lead.&#10;  * Action: Applies SCP to NonProduction OU denying creation of new AWS resources.&#10;• Production Protection Rule (RTO Guardrail):&#10;  * Production OU NEVER receives an automatic budget stop action.&#10;  * Preserves continuous farmer alert delivery and public sack lookup (4-hour RTO requirement)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f59e0b;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.5;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="2750" y="1665" width="1070" height="255" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_budgets_trigger" value="Thresholds &amp; Anomalies Trigger Alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;fontSize=11.5;fontColor=#78350f;align=center;" edge="1" parent="1" source="budgets_cat_box" target="budgets_flow_box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="panel_tags" value="TAGGING SCHEME LEGEND, COST ALLOCATION, AND TRACEABILITY (Section 5 &amp; docs/architecture.md Section 14)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#1e293b;strokeWidth=2;fontColor=#0f172a;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2045" width="3800" height="535" as="geometry" />
+        </mxCell>
+        <mxCell id="th_0" value="Tag Key" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#334155;fontColor=#ffffff;fontSize=12.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="65" y="2090" width="140" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="th_1" value="Origin" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#334155;fontColor=#ffffff;fontSize=12.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="205" y="2090" width="140" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="th_2" value="Allowed Values" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#334155;fontColor=#ffffff;fontSize=12.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="345" y="2090" width="570" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="th_3" value="Set By" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#334155;fontColor=#ffffff;fontSize=12.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="915" y="2090" width="560" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="th_4" value="Tag Policy Status" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#334155;fontColor=#ffffff;fontSize=12.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1475" y="2090" width="470" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="th_5" value="Cost Allocation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#334155;fontColor=#ffffff;fontSize=12.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1945" y="2090" width="190" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_0_0" value="Client" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="65" y="2126" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_0_1" value="PC-IAC-004" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="205" y="2126" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_0_2" value="Fixed by infrastructure repository (PD-070)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="345" y="2126" width="570" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_0_3" value="Root stack common_tags, provider default_tags" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="915" y="2126" width="560" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_0_4" value="Key capitalization enforced; value after PD-070" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1475" y="2126" width="470" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_0_5" value="No" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1945" y="2126" width="190" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_1_0" value="Project" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="65" y="2172" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_1_1" value="PC-IAC-004" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="205" y="2172" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_1_2" value="Fixed by infrastructure repository (PD-070)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="345" y="2172" width="570" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_1_3" value="Root stack common_tags, provider default_tags" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="915" y="2172" width="560" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_1_4" value="Key capitalization enforced; value after PD-070" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1475" y="2172" width="470" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_1_5" value="Yes (Active)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1945" y="2172" width="190" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_2_0" value="Environment" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="65" y="2218" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_2_1" value="PC-IAC-004" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="205" y="2218" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_2_2" value="dev, qa, pdn (ASM-006); shared in mgmt/sec/net (ASM-063)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="345" y="2218" width="570" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_2_3" value="Root stack common_tags, from var.environment" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="915" y="2218" width="560" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_2_4" value="Enforced allowed values: dev, qa, pdn, shared" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1475" y="2218" width="470" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_2_5" value="Yes (Active)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1945" y="2218" width="190" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_3_0" value="Owner" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="65" y="2264" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_3_1" value="PC-IAC-004" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="205" y="2264" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_3_2" value="Role code: SR1, SR2, JR1, JR2 (strictly NO personal names)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="345" y="2264" width="570" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_3_3" value="Root stack common_tags" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="915" y="2264" width="560" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_3_4" value="Key capitalization enforced" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1475" y="2264" width="470" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_3_5" value="No" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1945" y="2264" width="190" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_4_0" value="CostCenter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="65" y="2310" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_4_1" value="PC-IAC-004" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="205" y="2310" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_4_2" value="farms, drones, collection-centers, trips, shared (ASM-064)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="345" y="2310" width="570" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_4_3" value="Root stack default; module overrides via additional_tags" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="915" y="2310" width="560" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_4_4" value="Enforced values: farms, drones, collection-centers, trips, shared" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1475" y="2310" width="470" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_4_5" value="Yes (Active)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1945" y="2310" width="190" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_5_0" value="FarmId" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="65" y="2356" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_5_1" value="A08" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="205" y="2356" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_5_2" value="Stable farm identifier registered by platform (format from A16)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="345" y="2356" width="570" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_5_3" value="Farm module (B08) via additional_tags on per-farm resources" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="915" y="2356" width="560" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_5_4" value="Key capitalization enforced" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1475" y="2356" width="470" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_5_5" value="Yes (Active)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1945" y="2356" width="190" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_6_0" value="CollectionCenter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="65" y="2402" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_6_1" value="A08" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="205" y="2402" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_6_2" value="cauca, huila, tolima (matches case octets 41, 42, 43)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="345" y="2402" width="570" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_6_3" value="Collection-center association (B05) &amp; per-center resources" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="915" y="2402" width="560" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_6_4" value="Enforced allowed values: cauca, huila, tolima" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1475" y="2402" width="470" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_6_5" value="Yes (Active)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1945" y="2402" width="190" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_7_0" value="Name" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="65" y="2448" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_7_1" value="PC-IAC-004" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="205" y="2448" width="140" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_7_2" value="Physical name adhering to PC-IAC-003 convention" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="345" y="2448" width="570" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_7_3" value="Each reference module explicitly" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="915" y="2448" width="560" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_7_4" value="Not enforced by policy" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=left;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1475" y="2448" width="470" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="tr_7_5" value="No" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#0f172a;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1945" y="2448" width="190" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="trace_box" value="Shared Resource Usage-Based Cost Allocation Formula (ASM-065):&#10;Cost of Entity (e) = Monthly Cost of Shared Resource Family x (Usage Units of e in Month / Total Units in Month)&#10;• Telemetry &amp; Thresholds (farms): Usage = accepted readings per farm (telemetry DynamoDB store).&#10;• Drone Ingress &amp; S3 Storage (drones): Usage = flight objects and stored bytes per farm and campaign (S3 prefixes).&#10;• Transporter Position Store (trips): Usage = position tracking messages per trip.&#10;• Public Lookup &amp; Sack Store (shared -&gt; farms): Usage = sack reads per farm of origin (application audit log).&#10;• Network Hub &amp; TGW (collection-centers): Direct tags where per-center; shared hub cost split equally (1/3 each).&#10;&#10;Diagram Box Badges Catalog (docs/architecture.md Section 14 Traceability to IaC):&#10;• [D02]: S3 remote state bucket per environment with native object locking (B02)&#10;• [D03]: Per-environment configuration, secrets management, and common_tags (B03)&#10;• [D04]: VPC boundaries, tiers, and private endpoints of pattern environment (B04)&#10;• [D06]: IAM Identity Center, Cognito User Pools, GitHub OIDC, and KMS keys (B06)&#10;• [D09]: Telemetry ingestion pattern module, IoT topic rule &amp; DynamoDB store (B09)&#10;&#10;Key Decision Log Citations:&#10;ASM-060 (Management acct), ASM-061 (Direct Org, no Control Tower), ASM-062 (OU-level SCPs),&#10;ASM-063 (Shared env tag), ASM-064 (CostCenter values &amp; testing scope), ASM-065 (Shared cost formula),&#10;ASM-066 (Budget alert thresholds), ASM-067 (5-year Object Lock retention), ASM-068 (Dev/QA audit logs not archived),&#10;ASM-069 (Anonymous public sack audit), ADR-001 (us-east-1, Azure prepared), ADR-002 (Combined flight mode), ADR-003 (OIDC, state buckets)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;fontColor=#0f172a;fontSize=12.2;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="2350" y="2090" width="1465" height="470" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
