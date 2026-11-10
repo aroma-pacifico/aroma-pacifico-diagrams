@@ -134,6 +134,24 @@ Amazon S3 objects are stored under customer-managed KMS key `objects` with Block
 
 ---
 
+### Source Documents
+
+- `docs/drone-service.md`: Services table (§3), records (§4), sequence phases (§5), mission package and flight record schemas (§6), S3 prefixes and quarantine (§7), inference triggers (§8), ingress endpoints (§9), offline store-and-forward behavior (§10).
+- `docs/inference-functions.md`: Bedrock Nova Pro foundation model integration in `us-east-1`, triggers, function contracts, and confidence thresholds (§2-§5, §8).
+- `docs/architecture.md`: Section 11 (pest-to-fumigation flow) and Section 14 (IaC boxes catalog).
+- `docs/adr/adr-002-drone-flight-mode-and-governance.md`: Combined flight mode, states, and switching events.
+- `docs/decision-log.md`: ASM-020 to ASM-029, ASM-075, ASM-092, ASM-095, ASM-140 to ASM-149, ASM-160 to ASM-169, PD-104, PD-121, PD-141.
+
+### Boxes D01-D13 Shown
+
+- `D04`: Network and Endpoints (S3 interface endpoint in `object_storage` tier, API Gateway in `application` tier, empty `drone_object_ingress` tier ASM-140).
+- `D06`: Security and IAM (Cognito `staff` User Pool MFA, customer-managed KMS keys `records`/`objects`/`telemetry`, IoT Thing certificates, separation of duties).
+- `D08`: Farm Module (crop sensor node on plot, MQTT over TLS 1.2, 24-hour buffer).
+- `D09`: Ingestion (AWS IoT Core topic rules, DynamoDB telemetry table, SQS queue).
+- `D10`: Inference Pattern (DynamoDB Stream pipe, EventBridge custom bus, SQS queues, Lambda functions, Bedrock Nova Pro invocation, TransactWriteItems persistence).
+
+---
+
 ## Drone Service State Machines: Pest Case, Fumigation Order & Mission Lifecycles
 
 - Source diagram: [`drone-state-machines.drawio`](drone-state-machines.drawio)
@@ -163,16 +181,14 @@ The state machine diagram details the formal transitions, guards, triggers, and 
 
 ### Source Documents
 
-- `docs/drone-service.md`: Services table (§3), records (§4), state machines (§5), mission package and flight record schemas (§6), S3 prefixes and quarantine (§7), inference triggers (§8), ingress endpoints (§9), offline store-and-forward behavior (§10), and review campaign cadence (§11).
-- `docs/inference-functions.md`: Bedrock Nova Pro foundation model integration in `us-east-1`, four triggers, function contracts, and confidence thresholds (§2-§5, §8).
-- `docs/architecture.md`: Section 11 (pest-to-fumigation flow) and Section 14 (IaC boxes catalog).
+- `docs/drone-service.md`: Lifecycle state machines for Pest Case (§5.1), Fumigation Order (§5.2), and Drone Mission (§5.3).
+- `docs/architecture.md`: Section 11 (pest-to-fumigation integration) and Section 14 (IaC boxes catalog).
 - `docs/adr/adr-002-drone-flight-mode-and-governance.md`: Combined flight mode, states, and switching events.
-- `docs/decision-log.md`: ASM-020 to ASM-029, ASM-075, ASM-092, ASM-095, ASM-140 to ASM-149, ASM-160 to ASM-169, PD-104, PD-121, PD-141.
+- `docs/decision-log.md`: ASM-020 to ASM-029, ASM-092, ASM-141, ASM-142, ASM-143, ASM-146, ASM-149, PD-104, PD-141.
 
 ### Boxes D01-D13 Shown
 
-- `D04`: Network and Endpoints (S3 interface endpoint in `object_storage` tier, API Gateway in `application` tier, empty `drone_object_ingress` tier ASM-140).
-- `D06`: Security and IAM (Cognito `staff` User Pool MFA, customer-managed KMS keys `records`/`objects`/`telemetry`, IoT Thing certificates, separation of duties).
-- `D08`: Farm Module (crop sensor node on plot, MQTT over TLS 1.2, 24-hour buffer).
-- `D09`: Ingestion (AWS IoT Core topic rules, DynamoDB telemetry table, SQS queue).
-- `D10`: Inference Pattern (DynamoDB Stream pipe, EventBridge custom bus, SQS queues, Lambda functions, Bedrock Nova Pro invocation, TransactWriteItems persistence).
+- `D06`: Security and IAM (Cognito `staff` User Pool MFA authorization, customer-managed KMS key `records`, separation of duties).
+- `D08`: Farm Module (plot state transitions, Area Mode and Precision Mode boundary switching).
+- `D09`: Ingestion (AWS IoT Core telemetry topic rules, DynamoDB ingestion stream).
+- `D10`: Inference Pattern (EventBridge Pipes, SQS queues, Lambda rules engine, Bedrock Nova Pro, DynamoDB TransactWriteItems state persistence).
