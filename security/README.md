@@ -23,51 +23,55 @@ security/
 
 The architecture diagram illustrates the end-to-end identity and access boundary of the Aroma Pacífico platform across its five functional tiers:
 1. **Kinds of Identity (Actors)**: Covers workforce administrators, staff application operators, field users, anonymous and registered coffee buyers, edge IoT devices, and automated CI/CD deployment pipelines.
-2. **Directories & Registries**: Models identity stores including centralized workforce federation in AWS IAM Identity Center, dual Amazon Cognito user pools (`staff` and `field`), AWS IoT Core device registry for mutual TLS authentication, and GitHub OIDC trust.
-3. **Entry Points & Front Doors**: Outlines authenticated perimeters including the AWS Management Console/SSO portal, Amazon API Gateway custom domain with Cognito JWT authorizer, Amazon CloudFront with AWS WAF rate limiting for public sack lookups, and AWS IoT Core MQTT TLS endpoint on port 8883.
-4. **Processing & Execution Roles**: Delineates least-privilege Lambda and service roles, dynamic database profile scope evaluation (enforcing immediate 0-minute updates), and strict separation of duties between agricultural engineers (who authorize fumigation) and drone pilots (who execute flights).
-5. **KMS CMK Protection & Protected Stores**: Displays the eight customer-managed keys (CMKs) within the workload environment and their protected datastores, as well as cross-account keys for the central audit archive and management budget notifications.
+2. **Directories & Registries**: Models identity stores including centralized workforce federation in AWS IAM Identity Center (D06), dual Amazon Cognito user pools (`staff` and `field`, D06), AWS IoT Core device registry for farm node certificates (D08), and GitHub OIDC trust.
+3. **Entry Points & Front Doors**: Outlines unauthenticated and authenticated perimeters including the AWS Management Console/SSO portal, Amazon API Gateway custom domain with Cognito JWT authorizer, Amazon CloudFront with AWS WAF rate limiting for public sack lookups, and AWS IoT Core MQTT TLS endpoint on port 8883.
+4. **Processing & Execution Roles**: Delineates least-privilege Lambda and service roles, dynamic database profile scope evaluation (enforcing immediate 0-minute updates), telemetry ingestion in the IoT rules engine (D09), and strict separation of duties between agricultural engineers (who authorize fumigation) and drone pilots (who execute flights).
+5. **KMS CMK Protection & Protected Stores**: Displays the eight customer-managed keys (CMKs) within the workload environment and their protected datastores (including the S3 state bucket and `state` key badged D02), as well as cross-account keys for the central audit archive and management budget notifications.
 
 ### Source Documents and Sections
 
 - `docs/security-and-identity.md`: Sections 2 (Kinds of Identity), 3 (Application Identity Directory), 4 (Roles and Least Privilege), 5 (MFA and Sign-In), 6 (Device Identities), 7 (Encryption at Rest and in Transit), 8 (Sack Code and Buyer View), 9 (Personal Data and Retention), and 10 (Revocation).
 - `docs/landing-zone.md`: Section 4 (Identity and Entry Points) and Section 7 (Audit Architecture).
+- `docs/architecture.md`: Section 14 (Diagram boxes D01 to D13 and traceability to IaC).
 - `docs/decision-log.md`: ASM-090 through ASM-099, ASM-154, ASM-165, and PD-100.
 
-### Architecture Boxes (D01–D13)
+### Architecture Boxes (D01–D13 Traceability)
 
-| Box | Component | Implementation in Diagram |
+In accordance with `docs/architecture.md` section 14, components are badged only with the box that creates or implements them:
+
+| Box | Component / Implementation | Track B Issue & Scope |
 |---|---|---|
-| **D06** | Application Identity Directory | Amazon Cognito User Pools (`staff` with mandatory TOTP MFA, and `field` with passwordless one-time codes). |
-| **D08** | Centralized Identity Directory | AWS IAM Identity Center in Management Account with SAML 2.0 / IdP federation and permission sets. |
-| **D09** | Public Lookup Front Door | Amazon CloudFront distribution and AWS WAF with rate-limiting rules protecting `/s/*`. |
-| **D04** | API Gateway / Ingress | Amazon API Gateway REST API with custom domain TLS 1.2+ and Cognito JWT Authorizer. |
-| **D02** | IoT Core Broker / Ingress | AWS IoT Core data endpoint on port 8883 enforcing mutual TLS (mTLS) with X.509 client certificates. |
+| **D06** | Identities, KMS keys and initial access controls | B06 (`#26`): AWS IAM Identity Center, Cognito User Pools (`staff` and `field`), and workload KMS CMKs (`telemetry`, `records`, `personal`, `public_view`, `objects`, `restricted`, `logs`, `state`). |
+| **D02** | One S3 state bucket per environment with native locking | B02 (`#22`): S3 Terraform State Bucket and `state` KMS CMK key. |
+| **D08** | The reusable farm module: one pattern farm | B08 (`#28`): Farm node IoT device identity in AWS IoT Core Registry and X.509 client certificate from CSR. |
+| **D09** | Telemetry ingestion pattern module | B09 (`#29`): AWS IoT Core MQTT rules engine topic routing and ingestion into DynamoDB. |
+
+*Note: Infrastructure entry points such as Amazon API Gateway (part of workload networking) and Amazon CloudFront with AWS WAF (public lookup front door) do not map to separate B-track boxes and remain unbadged.*
 
 ### Identity Kinds and Authentication Matrix
 
-| Identity Kind | Directory | Entry Point | Authentication & MFA | Token Lifetimes |
+| Identity Kind | Directory | Entry Point | Authentication & MFA | Session / Token Lifetimes |
 |---|---|---|---|---|
-| **Workforce** | AWS IAM Identity Center (D08) | AWS Console / CLI / SSO Portal | Enterprise IdP (SAML 2.0) + Mandatory MFA | STS session: 1h to 8h |
-| **Staff Users** | Cognito User Pool: `staff` (D06) | Amazon API Gateway (D04) | Username + Password + Mandatory TOTP MFA | Access/ID: 30 min, Refresh: 12 h (Step-up: $\le$ 10 min) |
-| **Field Users** | Cognito User Pool: `field` (D06) | Amazon API Gateway (D04) | Passwordless SMS OTP (No MFA, justified ASM-091) | Access/ID: 60 min, Refresh: 30 days |
-| **Registered Buyers** | Cognito User Pool: `field` (D06) | Amazon API Gateway (D04) | Passwordless Email OTP (No MFA, read-only) | Access/ID: 60 min, Refresh: 1 day |
-| **Public Buyers** | None (Unauthenticated) | CloudFront + AWS WAF (D09) | Anonymous HTTPS GET `/s/{sack_code}` | None (WAF rate limit $\le$ 100 req/5 min) |
-| **IoT Devices** | AWS IoT Core Registry (D02) | AWS IoT Core MQTT (D02) | X.509 client certificate (mTLS, port 8883) | Permanent cert, instant revocation |
+| **Workforce** | AWS IAM Identity Center (D06) | AWS Console / CLI / SSO Portal | Enterprise IdP (SAML 2.0) + Mandatory MFA | `PlatformReadOnly`/`Auditor`: 4h; `DeviceRevocation`/`IdentitySupport`/`BreakGlass`: 1h (§5.3) |
+| **Staff Users** | Cognito User Pool: `staff` (D06) | Amazon API Gateway | Username + Password + Mandatory TOTP MFA | Access/ID: 30 min, Refresh: 12 h (Step-up: $\le$ 10 min) |
+| **Field Users** | Cognito User Pool: `field` (D06) | Amazon API Gateway | Passwordless SMS OTP (No MFA, justified ASM-091) | Access/ID: 60 min, Refresh: 30 days |
+| **Registered Buyers** | Cognito User Pool: `field` (D06) | Amazon API Gateway | Passwordless Email OTP (No MFA, read-only) | Access/ID: 60 min, Refresh: 1 day |
+| **Public Buyers** | None (Unauthenticated) | CloudFront + AWS WAF | Anonymous HTTPS GET `/s/{sack_code}` | None (WAF rate limit $\le$ 100 req/5 min) |
+| **IoT Devices** | AWS IoT Core Registry (D08) | AWS IoT Core MQTT | X.509 client certificate (mTLS, port 8883) | Revocation takes effect within minutes of leaving ACTIVE |
 | **CI/CD Pipelines** | GitHub OIDC Provider | AWS STS OIDC Endpoint | Federated OIDC Web Identity Token | Ephemeral STS session: max 1h |
 
 ### KMS Customer-Managed Keys (CMKs) Protection
 
 | Account | KMS Key Alias | Protected Store | Scope & Data Classification | Rotation |
 |---|---|---|---|---|
-| **Workload** | `telemetry` | DynamoDB Telemetry Table & Transporter Position Store | Sensor telemetry (temperature, humidity, solar) and transporter GPS positions | 365 days (ASM-097) |
-| **Workload** | `records` | DynamoDB Transactional Tables | Core transactional records: sacks, custody events, trips, orders, grants | 365 days (ASM-097) |
-| **Workload** | `personal` | DynamoDB Personal Data Table | Cédula, phone, vehicle plate keyed by `subject_id` (5-year retention, ASM-098) | 365 days (ASM-097) |
-| **Workload** | `public_view` | DynamoDB `buyer_view` Projection Table | Isolated public sack projection: origin, dates, status, drying variables | 365 days (ASM-154) |
-| **Workload** | `objects` | S3 Drone Object Bucket | Drone photos, orthomosaics, flight polygons, sack history export prefix | 365 days (ASM-097) |
-| **Workload** | `restricted` | S3 Drone Object Bucket (`restricted/` prefix) | Drone imagery containing human persons; explicit Deny for all functions | 365 days (ASM-165) |
-| **Workload** | `logs` | CloudWatch Logs Groups | Application audit logs, Lambda execution logs, AWSIotLogsV2 | 365 days (ASM-097) |
-| **Workload** | `state` | S3 Terraform State Bucket | Remote Terraform state per environment with DynamoDB state locking | 365 days (ADR-003) |
+| **Workload** | `telemetry` (D06) | DynamoDB Telemetry Table & Position Store | Sensor telemetry (temperature, humidity, solar) and transporter GPS positions | 365 days (ASM-097) |
+| **Workload** | `records` (D06) | DynamoDB Transactional Tables | Core transactional records: sacks, custody events, trips, orders, grants | 365 days (ASM-097) |
+| **Workload** | `personal` (D06) | DynamoDB Personal Data Table | Cédula, phone, vehicle plate keyed by `subject_id` (5-year retention, ASM-098) | 365 days (ASM-097) |
+| **Workload** | `public_view` (D06) | DynamoDB `buyer_view` Projection Table | Isolated public sack projection: origin, dates, status, drying variables | 365 days (ASM-154) |
+| **Workload** | `objects` (D06) | S3 Drone Object Bucket | Drone photos, orthomosaics, flight polygons, sack history export prefix | 365 days (ASM-097) |
+| **Workload** | `restricted` (D06) | S3 Drone Object Bucket (`restricted/` prefix) | Drone imagery containing human persons; explicit Deny for all functions | 365 days (ASM-165) |
+| **Workload** | `logs` (D06) | CloudWatch Logs Groups | Application audit logs, Lambda execution logs, AWSIotLogsV2 | 365 days (ASM-097) |
+| **Workload** | `state` (D02 / D06) | S3 Terraform State Bucket (D02) | Remote Terraform state per environment with DynamoDB state locking | 365 days (ADR-003, B02) |
 | **Security** | `audit` | S3 Audit Archive Bucket | Organization CloudTrail and application audit records (Object Lock WORM) | 365 days (A08 §7) |
 | **Management** | Budget Notification Key | SNS Budget Alerts Topic | Server-side encryption for AWS Budgets notification delivery | 365 days (A08 §6) |
 
@@ -79,7 +83,7 @@ The architecture diagram illustrates the end-to-end identity and access boundary
 
 The sequence diagram details the three core operational authentication and revocation flows:
 1. **Scenario 1 (Authentication Protocols & Sensitive Operation Step-Up)**:
-   - *Part 1A*: Staff sign-in flow through Cognito `staff` pool enforcing mandatory TOTP challenge and issuing tokens with 30-minute access/ID and 12-hour refresh validity.
+   - *Part 1A*: Staff sign-in flow through Cognito `staff` pool (D06) enforcing mandatory TOTP challenge and issuing tokens with 30-minute access/ID and 12-hour refresh validity.
    - *Part 1B*: Sensitive operation step-up authentication ensuring an `auth_time` no older than 10 minutes prior to state-changing operations (such as fumigation authorization, threshold configuration, or identity administration), and enforcing separation of duties between agronomist and pilot.
    - *Part 1C*: Field user sign-in via passwordless SMS OTP with compensating controls (hardware keystore, phone lock, and dynamic database scopes) and offline outbox queuing.
 2. **Scenario 2 (Anonymous Public Sack Lookup & Buyer View)**:
@@ -88,7 +92,7 @@ The sequence diagram details the three core operational authentication and revoc
    - Enforces complete data isolation: lookup Lambda queries only the `buyer_view` projection table encrypted with CMK `public_view`, holding zero access to internal transactional or personal tables.
    - Enforces uniform responses with strict security headers: `Cache-Control: no-store`, `X-Robots-Tag: noindex`, and `Referrer-Policy: no-referrer`.
 3. **Scenario 3 (Revocation Protocols & Enforced Time Limits)**:
-   - *Part 3A*: Decommissioning a farm sensor node or lost drone kit via `UpdateCertificate(REVOKED)`, terminating broker MQTT connections in minutes (PD-100) and expiring upload grants within 15 minutes (ASM-093).
+   - *Part 3A*: Decommissioning a farm sensor node or lost drone kit via `UpdateCertificate(REVOKED)`, terminating broker MQTT connections within minutes of leaving ACTIVE (PD-100) and expiring upload grants within 15 minutes (ASM-093).
    - *Part 3B*: Departing staff member invalidation via `AdminDisableUser` and `AdminUserGlobalSignOut` with immediate token denial through database `revoked_after` timestamps.
    - *Part 3C*: Lost mobile device handling for field users, including session invalidation, device denylisting, and in-person cédula verification for phone re-enrollment.
 
@@ -96,15 +100,16 @@ The sequence diagram details the three core operational authentication and revoc
 
 - `docs/security-and-identity.md`: Section 5 (MFA and Sign-In), Section 8 (Sack Code and Buyer View), and Section 10 (Revocation).
 - `docs/sack-and-trip.md`: Section 7.2 (Public Front Door), Section 7.4 (Caching), and Section 10 (Stores).
+- `docs/architecture.md`: Section 14 (Box mapping).
 - `docs/decision-log.md`: ASM-058, ASM-091, ASM-092, ASM-093, ASM-094, ASM-095, ASM-098, ASM-154, ASM-155, and PD-100.
 
 ### Enforced Time Limits and SLA Protocols
 
 | Event / Mechanism | Enforced Time Limit | Normative Reference | Operational Control |
 |---|---|---|---|
-| **Incident Reporting Duty** | $\le$ 2 hours from awareness | ASM-098 | Mandatory notification by contract company, Federation liaison, or collection center. |
+| **Incident Reporting Duty** | As soon as known | ASM-098 | Mandatory notification by contract company, Federation liaison, or collection center. |
 | **Cloud Revocation SLA** | $\le$ 4 hours target from report | ASM-098 | Target completion SLA for platform operators to execute revocation across directories. |
-| **IoT Broker Disconnection** | Minutes ($\approx$ 0 min) | PD-100 | `UpdateCertificate(REVOKED)` causes immediate mTLS handshake failure and drops active sessions. |
+| **IoT Broker Disconnection** | Within minutes of leaving ACTIVE | PD-100, §10 | `UpdateCertificate(REVOKED)` terminates MQTT session and prevents reconnection. |
 | **S3 Pre-Signed Upload Grants** | $\le$ 15 minutes max | ASM-093 | Drone kit upload grants expire automatically; invalidation prevents subsequent uploads. |
 | **Step-Up Authentication** | $\le$ 10 minutes max | ASM-092 | Operations requiring step-up reject tokens where `now - auth_time > 10 min`. |
 | **Staff Token Lifetimes** | Access/ID: 30m, Refresh: 12h | ASM-092 | Enforced by Cognito `staff` user pool settings. |
@@ -126,9 +131,9 @@ All values, configurations, and boundaries depicted in these diagrams are ground
 - **ASM-095**: Edge outbox encryption with phone hardware keystore; contracted drone operator encrypts ground station storage.
 - **ASM-096**: Buyer view granularity restricted strictly to origin, processing dates, status, and drying variables.
 - **ASM-097**: One customer-managed key per data class and environment, with automatic 365-day rotation.
-- **ASM-098**: Retention clock of 5 years for personal data, 2-hour reporting duty, and 4-hour target cloud revocation SLA.
+- **ASM-098**: Retention clock of 5 years for personal data, reporting duty as soon as known, and 4-hour target cloud revocation SLA.
 - **ASM-099**: Single role per identity; threshold configuration and enrollment restricted to platform operators.
 - **ASM-154**: Isolated `public_view` KMS key encrypting the `buyer_view` projection table.
 - **ASM-155**: Public lookup AWS WAF rate limit ($\le$ 100 req/5 min per source IP) and reserved concurrency of 10.
 - **ASM-165**: Restricted drone object prefix (`restricted/`) with isolated CMK `restricted` denying all function execution roles.
-- **PD-100**: Live verification of AWS IoT Core revocation mechanics and MQTT session termination.
+- **PD-100**: Live verification of AWS IoT Core revocation mechanics and MQTT session termination within minutes of leaving ACTIVE.
