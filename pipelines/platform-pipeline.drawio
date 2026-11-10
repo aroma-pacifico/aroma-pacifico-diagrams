@@ -1,177 +1,144 @@
-<?xml version='1.0' encoding='utf-8'?>
-<mxfile host="app.diagrams.net" version="32.4.1" type="device">
-  <diagram id="platform-pipeline" name="Platform CI/CD pipeline and release model">
-    <mxGraphModel dx="3200" dy="1850" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3200" pageHeight="1850" math="0" shadow="0">
+<mxfile host="Electron">
+  <diagram id="platform-pipeline" name="Platform CI/CD Pipeline and Release Model">
+    <mxGraphModel dx="2600" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2700" pageHeight="1500" math="0" shadow="0">
       <root>
-<mxCell id="0" />
-<mxCell id="1" parent="0" />
-<mxCell id="title" value="Platform CI/CD Pipeline and Release Model | Aroma Pacifico" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontStyle=1;fontColor=#102a43;" parent="1" vertex="1">
-  <mxGeometry x="40" y="25" width="3120" height="45" as="geometry" />
-</mxCell>
-<mxCell id="subtitle" value="Repositories, pipeline identity, plan-only gates, environment promotion (dev -&amp;gt; qa -&amp;gt; pdn), release candidates, CodeDeploy traffic shift, and rollback hooks. ADR-003, ASM-170 to ASM-179." style="text;html=1;align=left;verticalAlign=middle;fontSize=17;fontColor=#334e68;" parent="1" vertex="1">
-  <mxGeometry x="40" y="75" width="3120" height="35" as="geometry" />
-</mxCell>
-<mxCell id="c_repos" value="SOURCE REPOSITORIES | triggering paths (A18 sec 3.1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=15;" parent="1" vertex="1">
-  <mxGeometry x="40" y="125" width="560" height="1055" as="geometry" />
-</mxCell>
-<mxCell id="repo_modules" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Public Modules Repository&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#0b69a3&quot;&gt;&lt;b&gt;aroma-pacifico-terraform-modules&lt;/b&gt;&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Trigger path:&lt;/b&gt; &lt;code&gt;modules/&amp;lt;name&amp;gt;/**&lt;/code&gt;&lt;br/&gt;&lt;b&gt;Produces:&lt;/b&gt; SemVer git tags (&lt;code&gt;?ref=vX.Y.Z&lt;/code&gt;)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Module CI verification gates:&lt;/b&gt;&lt;br/&gt;• &lt;code&gt;terraform fmt -check -recursive&lt;/code&gt;&lt;br/&gt;• &lt;code&gt;terraform validate&lt;/code&gt; &amp;amp; &lt;code&gt;tflint&lt;/code&gt;&lt;br/&gt;• Trivy / Checkov security scanner&lt;br/&gt;• &lt;code&gt;terraform test&lt;/code&gt; with mock providers&lt;br/&gt;&lt;br/&gt;&lt;i&gt;Zero cloud credentials or account IDs (ADR-003)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=14;" parent="1" vertex="1">
-  <mxGeometry x="65" y="180" width="510" height="270" as="geometry" />
-</mxCell>
-<mxCell id="repo_infra" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Private Infrastructure Repository&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#0b69a3&quot;&gt;&lt;b&gt;aroma-pacifico-infrastructure&lt;/b&gt;&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Trigger paths:&lt;/b&gt;&lt;br/&gt;• &lt;code&gt;stacks/network/**&lt;/code&gt;, &lt;code&gt;stacks/security/**&lt;/code&gt;&lt;br/&gt;• &lt;code&gt;stacks/state-backend/**&lt;/code&gt;, &lt;code&gt;stacks/workload/**&lt;/code&gt;&lt;br/&gt;• &lt;code&gt;stacks/workload/releases.tfvars&lt;/code&gt; (ASM-171)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Infrastructure PR gates:&lt;/b&gt;&lt;br/&gt;• All module gates + secret scanning&lt;br/&gt;• Digest existence verified across all 3 artifact buckets&lt;br/&gt;• &lt;code&gt;terraform plan&lt;/code&gt; for dev, qa, pdn attached to PR&lt;br/&gt;• Destroys and replacements highlighted first&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Produces:&lt;/b&gt; Saved plans per environment (ADR-003)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=14;" parent="1" vertex="1">
-  <mxGeometry x="65" y="475" width="510" height="310" as="geometry" />
-</mxCell>
-<mxCell id="badge_D01" value="D01" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
-  <mxGeometry x="505" y="485" width="55" height="28" as="geometry" />
-</mxCell>
-<mxCell id="repo_platform" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Future Application Repository&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#0b69a3&quot;&gt;&lt;b&gt;aroma-pacifico-platform (ASM-170, PD-170)&lt;/b&gt;&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Trigger paths:&lt;/b&gt;&lt;br/&gt;• Platform: &lt;code&gt;services/api/**&lt;/code&gt;, &lt;code&gt;functions/**&lt;/code&gt;, &lt;code&gt;web/**&lt;/code&gt;&lt;br/&gt;• Ingestion: &lt;code&gt;functions/threshold/**&lt;/code&gt;, &lt;code&gt;functions/notification-dispatcher/**&lt;/code&gt;&lt;br/&gt;• Drone reception: &lt;code&gt;functions/reception/**&lt;/code&gt;, &lt;code&gt;inference/prompts/**&lt;/code&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Platform PR gates:&lt;/b&gt;&lt;br/&gt;• Unit tests, lint, vulnerability &amp;amp; secret scanning&lt;br/&gt;• Contract tests against current &amp;amp; previous schemas (ASM-175)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Release tag push:&lt;/b&gt; Rebuild, SHA-256 digest, SBOM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=14;" parent="1" vertex="1">
-  <mxGeometry x="65" y="810" width="510" height="340" as="geometry" />
-</mxCell>
-<mxCell id="c_identity" value="PIPELINE IDENTITY &amp; SECURITY | ADR-003" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=15;" parent="1" vertex="1">
-  <mxGeometry x="630" y="125" width="500" height="1055" as="geometry" />
-</mxCell>
-<mxCell id="oidc_card" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;GitHub Actions OIDC Provider&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;code&gt;token.actions.githubusercontent.com&lt;/code&gt;&lt;br/&gt;&lt;br/&gt;• Zero long-term IAM users or static keys (A08 SCP)&lt;br/&gt;• Short-lived AWS STS credentials via AssumeRole&lt;br/&gt;• Audience: &lt;code&gt;sts.amazonaws.com&lt;/code&gt;&lt;br/&gt;• Strict subject validation bound to repository &amp;amp; environment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=14;" parent="1" vertex="1">
-  <mxGeometry x="655" y="180" width="450" height="170" as="geometry" />
-</mxCell>
-<mxCell id="roles_card" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Three Dedicated OIDC Roles (A18 sec 3.3)&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;1. Plan Role (ADR-003):&lt;/b&gt;&lt;br/&gt;• Subject: PR &amp;amp; main tokens of infrastructure repo&lt;br/&gt;• Rights: Read state, acquire lock (&lt;code&gt;*.tflock&lt;/code&gt;), read-only describe&lt;br/&gt;&lt;br/&gt;&lt;b&gt;2. Apply Role (ADR-003):&lt;/b&gt;&lt;br/&gt;• Subject: Deployment environments (&lt;code&gt;dev&lt;/code&gt;, &lt;code&gt;qa&lt;/code&gt;, &lt;code&gt;pdn&lt;/code&gt;)&lt;br/&gt;• Rights: Apply saved plan, execute CodeDeploy deployments&lt;br/&gt;&lt;br/&gt;&lt;b&gt;3. Artifact Publisher Role (ASM-171):&lt;/b&gt;&lt;br/&gt;• Subject: Release tag pushes of platform repo&lt;br/&gt;• Rights: &lt;code&gt;s3:PutObject&lt;/code&gt; on &lt;code&gt;artifacts/*&lt;/code&gt; in artifact buckets&lt;br/&gt;• Zero rights to read data, manage Lambda, or run CodeDeploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=14;" parent="1" vertex="1">
-  <mxGeometry x="655" y="375" width="450" height="305" as="geometry" />
-</mxCell>
-<mxCell id="state_card" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Remote State Backend (ADR-003)&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• Dedicated S3 state bucket per environment (dev, qa, pdn)&lt;br/&gt;• Native S3 locking (&lt;code&gt;*.tflock&lt;/code&gt;) - zero DynamoDB lock table&lt;br/&gt;• KMS customer-managed key (&lt;code&gt;state&lt;/code&gt; key)&lt;br/&gt;• S3 Object Versioning + deletion protection (&lt;code&gt;prevent_destroy&lt;/code&gt;)&lt;br/&gt;• Saved plans never committed; short retention in GitHub Actions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=14;" parent="1" vertex="1">
-  <mxGeometry x="655" y="705" width="450" height="190" as="geometry" />
-</mxCell>
-<mxCell id="badge_D02" value="D02" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
-  <mxGeometry x="1035" y="715" width="55" height="28" as="geometry" />
-</mxCell>
-<mxCell id="secrets_card" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Secrets Management (A18 sec 11)&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• Secrets kept out of repository and out of state&lt;br/&gt;• AWS Secrets Manager &amp;amp; SSM Parameter Store (SecureString)&lt;br/&gt;• Ephemeral resources into write-only arguments&lt;br/&gt;• Lambda roles fetch secrets at runtime (never stored in env vars)&lt;br/&gt;• Transversal tags: &lt;code&gt;common_tags&lt;/code&gt; &amp;amp; &lt;code&gt;CostCenter&lt;/code&gt; (ASM-064)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=14;" parent="1" vertex="1">
-  <mxGeometry x="655" y="920" width="450" height="230" as="geometry" />
-</mxCell>
-<mxCell id="badge_D03" value="D03" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
-  <mxGeometry x="1035" y="930" width="55" height="28" as="geometry" />
-</mxCell>
-<mxCell id="c_model" value="COMMON RELEASE MODEL | promotion (ASM-171)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=15;" parent="1" vertex="1">
-  <mxGeometry x="1160" y="125" width="520" height="1055" as="geometry" />
-</mxCell>
-<mxCell id="rc_card" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Release Candidate (RC) Definition&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• Exactly 1 merge commit SHA on &lt;code&gt;main&lt;/code&gt; of infrastructure repo&lt;br/&gt;• Pins everything that reaches an environment:&lt;br/&gt;  - Module source tags: &lt;code&gt;?ref=vX.Y.Z&lt;/code&gt; (PC-IAC-015)&lt;br/&gt;  - &lt;code&gt;stacks/workload/releases.tfvars&lt;/code&gt;: semver &amp;amp; SHA-256 digests&lt;br/&gt;• Promotion by construction: Same commit is planned &amp;amp; applied in&lt;br/&gt;  &lt;code&gt;dev&lt;/code&gt; -&amp;gt; &lt;code&gt;qa&lt;/code&gt; -&amp;gt; &lt;code&gt;pdn&lt;/code&gt;. Environments cannot run unverified digests." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=14;" parent="1" vertex="1">
-  <mxGeometry x="1185" y="180" width="470" height="240" as="geometry" />
-</mxCell>
-<mxCell id="artifact_card" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Immutable Artifact Staging&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• Artifact S3 Bucket per environment (&lt;code&gt;aroma-&amp;lt;env&amp;gt;-artifacts&lt;/code&gt;):&lt;br/&gt;  - Path: &lt;code&gt;artifacts/functions/&amp;lt;fn&amp;gt;/&amp;lt;semver&amp;gt;/&amp;lt;sha256&amp;gt;.zip&lt;/code&gt;&lt;br/&gt;  - Staged once on release tag; identical bytes in dev, qa, pdn&lt;br/&gt;&lt;br/&gt;• Static Assets S3 Bucket (reports web, lookup page):&lt;br/&gt;  - Unpacked to &lt;code&gt;releases/&amp;lt;semver&amp;gt;/&lt;/code&gt; with versioned file names&lt;br/&gt;  - Active bundle switched by CloudFront origin path in tfvars&lt;br/&gt;  - Zero cache invalidation needed on switch or rollback (ASM-176)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=14;" parent="1" vertex="1">
-  <mxGeometry x="1185" y="445" width="470" height="260" as="geometry" />
-</mxCell>
-<mxCell id="codedeploy_card" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Function Deployment Pattern (A18 sec 4.3)&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• Terraform publishes version: &lt;code&gt;publish = true&lt;/code&gt;, &lt;code&gt;source_code_hash&lt;/code&gt;&lt;br/&gt;• Terraform declares &lt;code&gt;live&lt;/code&gt; alias &amp;amp; CodeDeploy deployment group&lt;br/&gt;• Event sources target &lt;code&gt;live&lt;/code&gt; alias ARN, never &lt;code&gt;$LATEST&lt;/code&gt;&lt;br/&gt;• Pre-traffic check: &lt;code&gt;CodeSha256&lt;/code&gt; verified against &lt;code&gt;releases.tfvars&lt;/code&gt;&lt;br/&gt;• External agent rule: Alias carries lifecycle rule:&lt;br/&gt;  &lt;code&gt;ignore_changes = [function_version, routing_config]&lt;/code&gt;&lt;br/&gt;  (Permitted by PC-IAC-010 sec 3.2 for external agents)&lt;br/&gt;• CodeDeploy moves &lt;code&gt;live&lt;/code&gt; alias and triggers automatic rollback" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=14;" parent="1" vertex="1">
-  <mxGeometry x="1185" y="730" width="470" height="420" as="geometry" />
-</mxCell>
-<mxCell id="c_stages" value="CONTROLLED PROMOTION | dev -&amp;gt; qa -&amp;gt; pdn stages, gates and approval (A18 sec 4, ADR-003)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=15;" parent="1" vertex="1">
-  <mxGeometry x="1710" y="125" width="1450" height="1055" as="geometry" />
-</mxCell>
-<mxCell id="stage_dev" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;DEVELOPMENT (dev)&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;b&gt;Account:&lt;/b&gt; Development (10.80.0.0/16) | NonProduction OU&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Purpose:&lt;/b&gt; Continuous integration of every merge to main&lt;br/&gt;&lt;b&gt;Trigger:&lt;/b&gt; Merge commit on &lt;code&gt;main&lt;/code&gt; of infra repo&lt;br/&gt;&lt;b&gt;GitHub Environment:&lt;/b&gt; &lt;code&gt;dev&lt;/code&gt; (no reviewer required)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Execution steps:&lt;/b&gt;&lt;br/&gt;1. Plan dev stack using OIDC plan role&lt;br/&gt;2. Apply saved plan using OIDC apply role&lt;br/&gt;3. Function deployment: CodeDeploy &lt;code&gt;LambdaAllAtOnce&lt;/code&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Error handling &amp;amp; Logs:&lt;/b&gt;&lt;br/&gt;• Failures are fixed forward (no rollback needed in dev)&lt;br/&gt;• Local development logs (not archived to audit, ASM-068)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=14;" parent="1" vertex="1">
-  <mxGeometry x="1735" y="180" width="430" height="970" as="geometry" />
-</mxCell>
-<mxCell id="stage_qa" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;TEST &amp;amp; ACCEPTANCE (qa)&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;b&gt;Account:&lt;/b&gt; Test (10.81.0.0/16) | NonProduction OU&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Purpose:&lt;/b&gt; Formal acceptance testing before production&lt;br/&gt;&lt;b&gt;Pattern environment:&lt;/b&gt; The ONLY plan Epic 6 evaluates (ASM-051)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Gate &amp;amp; Approval:&lt;/b&gt;&lt;br/&gt;• Prerequisite: &lt;code&gt;dev&lt;/code&gt; stage succeeded for exact same commit SHA&lt;br/&gt;• &lt;b&gt;Approval:&lt;/b&gt; 1 reviewer of SR1, SR2, JR1, JR2 (other than author)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Execution steps:&lt;/b&gt;&lt;br/&gt;1. Apply saved &lt;code&gt;qa&lt;/code&gt; plan using apply role&lt;br/&gt;2. CodeDeploy: &lt;code&gt;LambdaCanary10Percent5Minutes&lt;/code&gt;&lt;br/&gt;   (Exercised in qa to validate canary &amp;amp; rollback, ASM-174)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Acceptance Suite (ASM-177):&lt;/b&gt;&lt;br/&gt;• API contract tests for current &amp;amp; previous event schemas&lt;br/&gt;• Sack lifecycle replay through all states of A16 sec 3&lt;br/&gt;• Sack lookup by code verifying only buyer-view fields (ASM-096)&lt;br/&gt;• Sign-in with MFA for &lt;code&gt;staff&lt;/code&gt; test identity&lt;br/&gt;• Synthetic telemetry publication through real endpoint&lt;br/&gt;• Recorded drone sample mission upload with upload grant&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Result:&lt;/b&gt; Formally recorded in GitHub deployment status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=14;" parent="1" vertex="1">
-  <mxGeometry x="2195" y="180" width="460" height="970" as="geometry" />
-</mxCell>
-<mxCell id="stage_pdn" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;PRODUCTION (pdn)&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;b&gt;Account:&lt;/b&gt; Production (10.82.0.0/16) | Production OU&lt;br/&gt;&lt;b&gt;Policy:&lt;/b&gt; Changes strictly through pipeline (A08 SCP)&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Four Production Gates (evaluated cheapest first):&lt;/b&gt;&lt;br/&gt;1. &lt;b&gt;QA Acceptance:&lt;/b&gt; Succeeded for exact same commit SHA&lt;br/&gt;2. &lt;b&gt;Release Note &amp;amp; Notice:&lt;/b&gt; Completed note &amp;amp; notice sent to&lt;br/&gt;   Federation &amp;gt;= 2 business days before window (ASM-173, Q-15)&lt;br/&gt;3. &lt;b&gt;Harvest-Week Window Check:&lt;/b&gt;&lt;br/&gt;   • Blocked 05:00 - 18:00 Colombia time on harvest days in&lt;br/&gt;     Cauca, Huila or Tolima (ASM-007, ASM-055)&lt;br/&gt;   • Expected end (apply + canaries + bake) must be &amp;lt; 05:00 (ASM-178)&lt;br/&gt;   • Incident exception only with &lt;code&gt;INC-YYYYMMDD-NN&lt;/code&gt; (ASM-183)&lt;br/&gt;4. &lt;b&gt;Required Reviewers:&lt;/b&gt; One of SR1 or SR2, other than author&lt;br/&gt;   and other than person who triggered the run (ASM-172)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Execution steps:&lt;/b&gt;&lt;br/&gt;1. Apply saved &lt;code&gt;pdn&lt;/code&gt; plan using apply role&lt;br/&gt;2. CodeDeploy: &lt;code&gt;LambdaCanary10Percent5Minutes&lt;/code&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Automatic Rollback on CloudWatch Alarm Set:&lt;/b&gt;&lt;br/&gt;• Function errors, throttles, DLQ message age, API Gateway 5XX&lt;br/&gt;• Target rollback time: &amp;lt; 10 minutes to previous version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=14;" parent="1" vertex="1">
-  <mxGeometry x="2685" y="180" width="450" height="970" as="geometry" />
-</mxCell>
-<mxCell id="badge_D11" value="D11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
-  <mxGeometry x="2955" y="190" width="52" height="28" as="geometry" />
-</mxCell>
-<mxCell id="badge_D12" value="D12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
-  <mxGeometry x="3015" y="190" width="52" height="28" as="geometry" />
-</mxCell>
-<mxCell id="badge_D13" value="D13" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebf7;strokeColor=#52708a;strokeWidth=2;fontColor=#102a43;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
-  <mxGeometry x="3075" y="190" width="52" height="28" as="geometry" />
-</mxCell>
-<mxCell id="c_rollback" value="ROLLBACK MECHANISMS &amp; RECOVERY TARGETS | A18 sec 10, ASM-174" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=15;" parent="1" vertex="1">
-  <mxGeometry x="40" y="1205" width="1000" height="610" as="geometry" />
-</mxCell>
-<mxCell id="rb_mechs" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Four Rollback Mechanisms&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;1. CodeDeploy Automatic Rollback:&lt;/b&gt;&lt;br/&gt;• Trigger: CloudWatch alarm during canary shift or bake period&lt;br/&gt;• Target time: Traffic returned to previous version &amp;lt; 10 minutes&lt;br/&gt;&lt;br/&gt;&lt;b&gt;2. Rollback Deployment:&lt;/b&gt;&lt;br/&gt;• Trigger: Post-deployment defect detected by operators or auditors&lt;br/&gt;• Action: Approver moves alias to recorded previous version (keeps &amp;gt;= 5 versions)&lt;br/&gt;• Target time: Within 30 minutes of decision&lt;br/&gt;&lt;br/&gt;&lt;b&gt;3. Revert Commit through Promotion:&lt;/b&gt;&lt;br/&gt;• Used for: Module tags, topic rules, bucket policies, WAF, routing&lt;br/&gt;• Action: Git revert commit promoted dev -&amp;gt; qa -&amp;gt; pdn with review &amp;amp; approval&lt;br/&gt;• Target time: Within 2 hours of decision (inside 4-hour lookup RTO, ASM-157)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;4. Dead-Letter Queue Redrive:&lt;/b&gt;&lt;br/&gt;• Used for: Events that failed while defective version was active&lt;br/&gt;• Action: Platform operator redrives messages from DLQ after rollback" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=12;" parent="1" vertex="1">
-  <mxGeometry x="65" y="1260" width="460" height="530" as="geometry" />
-</mxCell>
-<mxCell id="rb_unrollbackable" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Forward Correction Model (What Cannot Be Rolled Back)&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Sack events already written:&lt;/b&gt;&lt;br/&gt;  - &lt;code&gt;sack_event_log&lt;/code&gt; is immutable (conditional puts only; no update/delete)&lt;br/&gt;  - &lt;i&gt;'Un despliegue no pierde eventos de saco'&lt;/i&gt; holds across all rollbacks&lt;br/&gt;  - Defective events corrected via compensating events (ASM-151)&lt;br/&gt;  - Derived tables rebuilt from log by sack applier (A16 sec 9.2)&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Stored telemetry readings with wrong attributes:&lt;/b&gt;&lt;br/&gt;  - IoT Core keeps no raw copy post-rule execution&lt;br/&gt;  - Corrected by audited batch correction job or marked unreliable&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Alerts and notifications already sent to farmers:&lt;/b&gt;&lt;br/&gt;  - SMS / push already delivered cannot be revoked&lt;br/&gt;  - Correction notice dispatched over same channels&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Inference results and activated polygon versions:&lt;/b&gt;&lt;br/&gt;  - Results superseded by newer result with &lt;code&gt;function_version&lt;/code&gt; (ASM-175)&lt;br/&gt;  - Previous polygon version activated as a new version&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Quarantined / restricted objects:&lt;/b&gt; Restored from versioned S3 under incident" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=12;" parent="1" vertex="1">
-  <mxGeometry x="550" y="1260" width="465" height="530" as="geometry" />
-</mxCell>
-<mxCell id="c_relnotes" value="RELEASE NOTES &amp; FEDERATION NOTICE | A22 (ASM-180 to ASM-185)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=15;" parent="1" vertex="1">
-  <mxGeometry x="1070" y="1205" width="1010" height="610" as="geometry" />
-</mxCell>
-<mxCell id="rn_templates" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Two Standardized Release Notes Templates&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;1. Application Template (template-application.md):&lt;/b&gt;&lt;br/&gt;• User-visible changes: sack lookup, reports web, alert content or channel,&lt;br/&gt;  inference outcomes, mobile API behavior&lt;br/&gt;&lt;br/&gt;&lt;b&gt;2. Infrastructure Template (template-infrastructure.md):&lt;/b&gt;&lt;br/&gt;• Network, firewall rules, ingestion topic rules, drone path S3 bucket/routing,&lt;br/&gt;  center firewall device configuration (ASM-184)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Common Eight Sections Across Both Templates:&lt;/b&gt;&lt;br/&gt;1. Change ('qué cambia'): Component, boxes D01-D13, commits, digests&lt;br/&gt;2. Window ('la ventana'): Colombia time, harvest check, expected end &amp;lt; 05:00&lt;br/&gt;3. Impact ('el impacto'): Producers, centers, transporters, buyers, Federation&lt;br/&gt;4. Approval ('la aprobación'): Approver roles by stage (SR1, SR2, JR1, JR2)&lt;br/&gt;5. Notice ('el aviso a la Federación'): Recipient, channel, lead time met&lt;br/&gt;6. Rollback ('cómo se vuelve atrás'): Mechanism, trigger, target time, target&lt;br/&gt;7. Verification: Post-release checks and observations&lt;br/&gt;8. Incident Exception ('salvo incidente'): INC reference, declaring role" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=12;" parent="1" vertex="1">
-  <mxGeometry x="1095" y="1260" width="465" height="530" as="geometry" />
-</mxCell>
-<mxCell id="rn_notice" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Federation Notice &amp;amp; Observability Hooks&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Notice Protocol (ASM-173, Q-15):&lt;/b&gt;&lt;br/&gt;  - Standard change: Notice dispatched &amp;gt;= 2 business days before window&lt;br/&gt;  - Incident change: Notice dispatched at decision time before apply&lt;br/&gt;  - Missing window: Rescheduled with full notice lead time (ASM-182)&lt;br/&gt;  - Mandatory fields checked by pipeline job before pdn run&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Observability Hooks (A18 sec 12, A21):&lt;/b&gt;&lt;br/&gt;  - Deployment event published as GitHub deployment status and&lt;br/&gt;    dispatched to pdn release SNS topic&lt;br/&gt;  - CodeDeploy event triggers (start, success, fail, rollback) notify topic&lt;br/&gt;  - Rollback alarm set: Errors, throttles, DLQ age, API Gateway 5XX&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Governance Rules:&lt;/b&gt;&lt;br/&gt;  - Threshold changes are Federation data (not deployments, no note needed)&lt;br/&gt;  - Completed note committed within 1 business day of release (ASM-180)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=12;" parent="1" vertex="1">
-  <mxGeometry x="1585" y="1260" width="470" height="530" as="geometry" />
-</mxCell>
-<mxCell id="c_boundary" value="PLAN-ONLY BOUNDARY &amp;amp; IAC TRACEABILITY | Academic DevOps Challenge" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=15;" parent="1" vertex="1">
-  <mxGeometry x="2110" y="1205" width="1050" height="610" as="geometry" />
-</mxCell>
-<mxCell id="boundary_rules" value="&lt;b&gt;&lt;font size=&quot;4&quot; color=&quot;#102a43&quot;&gt;Contractual Plan-Only Mandate (AGENTS.md, ADR-003, B13)&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;Plan-only rule:&lt;/b&gt; Never run &lt;code&gt;terraform apply&lt;/code&gt;, never deploy, never create cloud resources.&lt;br/&gt;• The academic challenge evaluates plan files, architectures, and design contracts.&lt;br/&gt;• Every deployment step is specified, designed and verified without executing in the cloud.&lt;br/&gt;• The executable plan of Epic 6 is evaluated exclusively on &lt;code&gt;qa&lt;/code&gt; (ASM-051).&lt;br/&gt;• The 100-hour plan (A20) allocates owners, order and verification to boxes D01-D13.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Traceability to IaC Diagram Boxes (Architecture Section 14):&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;D01:&lt;/b&gt; &lt;code&gt;aroma-pacifico-infrastructure&lt;/code&gt; root stacks consuming module tags (B01)&lt;br/&gt;• &lt;b&gt;D02:&lt;/b&gt; One natively locked S3 state bucket per environment (B02)&lt;br/&gt;• &lt;b&gt;D03:&lt;/b&gt; Per-environment configuration &amp;amp; secrets out of repo and state (B03)&lt;br/&gt;• &lt;b&gt;D11:&lt;/b&gt; CI pipeline producing an executable, reviewable plan (B11)&lt;br/&gt;• &lt;b&gt;D12:&lt;/b&gt; CD pipeline with pdn approval and harvest-week window (B12)&lt;br/&gt;• &lt;b&gt;D13:&lt;/b&gt; Final validation and evidence of the executable plan (B13)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Strict Verification Gates Required on Every Run:&lt;/b&gt;&lt;br/&gt;• &lt;code&gt;terraform fmt -check -recursive&lt;/code&gt; &amp;amp; &lt;code&gt;terraform validate&lt;/code&gt;&lt;br/&gt;• &lt;code&gt;tflint --recursive&lt;/code&gt; &amp;amp; Trivy / Checkov security scanning&lt;br/&gt;• Saved plan files attached to PRs with destroys and replacements listed first" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#8da2b5;strokeWidth=1.5;fontColor=#172b4d;fontSize=14;align=left;verticalAlign=top;spacing=12;" parent="1" vertex="1">
-  <mxGeometry x="2135" y="1260" width="1000" height="530" as="geometry" />
-</mxCell>
-<mxCell id="e_mod_infra" value="SemVer tag ?ref=vX.Y.Z" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0b69a3;strokeWidth=2.5;fontColor=#102a43;fontSize=13;fontStyle=1;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="repo_modules" target="repo_infra">
-  <mxGeometry relative="1" as="geometry">
-  </mxGeometry>
-</mxCell>
-<mxCell id="e_plat_rc" value="SHA-256 digest in releases.tfvars" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0b69a3;strokeWidth=2.5;fontColor=#102a43;fontSize=13;fontStyle=1;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="repo_platform" target="rc_card">
-  <mxGeometry relative="1" as="geometry">
-    <Array as="points">
-      <mxPoint x="575" y="907" />
-      <mxPoint x="1145" y="907" />
-      <mxPoint x="1145" y="300" />
-    </Array>
-  </mxGeometry>
-</mxCell>
-<mxCell id="e_infra_rc" value="Merge commit on main" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0b69a3;strokeWidth=2.5;fontColor=#102a43;fontSize=13;fontStyle=1;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="repo_infra" target="rc_card">
-  <mxGeometry relative="1" as="geometry">
-    <Array as="points">
-      <mxPoint x="575" y="695" />
-      <mxPoint x="1145" y="695" />
-      <mxPoint x="1145" y="300" />
-    </Array>
-  </mxGeometry>
-</mxCell>
-<mxCell id="e_oidc_roles" value="Federated STS Token" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0b69a3;strokeWidth=2.5;fontColor=#102a43;fontSize=13;fontStyle=1;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="oidc_card" target="roles_card">
-  <mxGeometry relative="1" as="geometry">
-  </mxGeometry>
-</mxCell>
-<mxCell id="e_rc_artifact" value="Stage verified bytes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0b69a3;strokeWidth=2.5;fontColor=#102a43;fontSize=13;fontStyle=1;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="rc_card" target="artifact_card">
-  <mxGeometry relative="1" as="geometry">
-  </mxGeometry>
-</mxCell>
-<mxCell id="e_artifact_cd" value="Read package by SHA256" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0b69a3;strokeWidth=2.5;fontColor=#102a43;fontSize=13;fontStyle=1;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="artifact_card" target="codedeploy_card">
-  <mxGeometry relative="1" as="geometry">
-  </mxGeometry>
-</mxCell>
-<mxCell id="e_rc_dev" value="Merge triggers dev plan &amp;amp; apply" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0b69a3;strokeWidth=2.5;fontColor=#102a43;fontSize=13;fontStyle=1;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="rc_card" target="stage_dev">
-  <mxGeometry relative="1" as="geometry">
-    <Array as="points">
-      <mxPoint x="1655" y="300" />
-      <mxPoint x="1735" y="300" />
-    </Array>
-  </mxGeometry>
-</mxCell>
-<mxCell id="e_dev_qa" value="dev success -&amp;gt; 1 reviewer approval" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0b69a3;strokeWidth=2.5;fontColor=#102a43;fontSize=13;fontStyle=1;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="stage_dev" target="stage_qa">
-  <mxGeometry relative="1" as="geometry">
-  </mxGeometry>
-</mxCell>
-<mxCell id="e_qa_pdn" value="qa acceptance passed + 4 pdn gates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0b69a3;strokeWidth=2.5;fontColor=#102a43;fontSize=13;fontStyle=1;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="stage_qa" target="stage_pdn">
-  <mxGeometry relative="1" as="geometry">
-  </mxGeometry>
-</mxCell>
-<mxCell id="e_pdn_rb" value="Canary alarm -&amp;gt; Auto-rollback (&amp;lt;10 min)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0b69a3;strokeWidth=2.5;fontColor=#102a43;fontSize=13;fontStyle=1;labelBackgroundColor=#ffffff;strokeColor=#c53030;" parent="1" edge="1" source="stage_pdn" target="c_rollback">
-  <mxGeometry relative="1" as="geometry">
-    <Array as="points">
-      <mxPoint x="2910" y="1150" />
-      <mxPoint x="2910" y="1192" />
-      <mxPoint x="540" y="1192" />
-    </Array>
-  </mxGeometry>
-</mxCell>
-<mxCell id="e_pdn_rn" value="Deployment event -&amp;gt; SNS release topic" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0b69a3;strokeWidth=2.5;fontColor=#102a43;fontSize=13;fontStyle=1;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="stage_pdn" target="c_relnotes">
-  <mxGeometry relative="1" as="geometry">
-    <Array as="points">
-      <mxPoint x="2910" y="1150" />
-      <mxPoint x="2910" y="1192" />
-      <mxPoint x="1575" y="1192" />
-    </Array>
-  </mxGeometry>
-</mxCell>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Platform CI/CD Pipeline and Release Model" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=28;fontStyle=1;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Repository triggers, OIDC pipeline identities, three-stage promotion flow (dev -&gt; qa -&gt; pdn), plan-only verification gates, and CodeDeploy canary shifts." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="50" y="72" width="1800" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pipeline" value="CONTINUOUS INTEGRATION &amp; THREE-STAGE PROMOTION PIPELINE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;strokeWidth=2;align=left;verticalAlign=top;spacingTop=16;spacingLeft=24;fontSize=16;fontStyle=1;fontColor=#1e293b;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="2580" height="630" as="geometry" />
+        </mxCell>
+        <mxCell id="card_repos" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#94a3b8;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="65" y="180" width="430" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="t_repos" value="Source Repositories [D01]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=18;fontStyle=1;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="85" y="195" width="380" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="b_repos" value="&lt;b&gt;aroma-pacifico-terraform-modules&lt;/b&gt;&lt;br/&gt;• Reusable core Terraform modules&lt;br/&gt;• Enforces tflint, tfsec, checkov validation&lt;br/&gt;• Published via semver tags (vX.Y.Z)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;aroma-pacifico-infrastructure&lt;/b&gt;&lt;br/&gt;• Environment root definitions (dev, qa, pdn)&lt;br/&gt;• Remote backend configuration per environment&lt;br/&gt;• Isolated network and state topologies&lt;br/&gt;&lt;br/&gt;&lt;b&gt;aroma-pacifico-platform&lt;/b&gt;&lt;br/&gt;• Application services, Lambda functions, containers&lt;br/&gt;• Pinned artifact references in &lt;i&gt;releases.tfvars&lt;/i&gt;&lt;br/&gt;• Automated lint and unit test suites on all PRs" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13;fontColor=#334155;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="85" y="245" width="390" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="e_repo_rc" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284c7;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="card_repos" target="card_rc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_repo_rc" value="Merge commit&lt;br/&gt;on main" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=bottom;fontSize=13;fontStyle=1;fontColor=#0369a1;" vertex="1" parent="1">
+          <mxGeometry x="495" y="380" width="95" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="card_rc" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="590" y="180" width="430" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="t_rc" value="Release Candidate (RC)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=18;fontStyle=1;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="610" y="195" width="380" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="b_rc" value="&lt;b&gt;Deterministic Release Pinning (ASM-174)&lt;/b&gt;&lt;br/&gt;• Pinned Git SHA-256 digest in &lt;i&gt;releases.tfvars&lt;/i&gt;&lt;br/&gt;• Cryptographic image digests for containers&lt;br/&gt;• SHA-256 package hash for Lambda function zips&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Single Release Candidate Policy&lt;/b&gt;&lt;br/&gt;• Exactly one RC promoted sequentially across tiers&lt;br/&gt;• Zero environment-specific artifact builds&lt;br/&gt;• Immutable deployment packages across dev, qa, pdn&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Audit &amp;amp; Traceability&lt;/b&gt;&lt;br/&gt;• Every release maps to exact commit hash&lt;br/&gt;• Traceable to roadmap issue and PR approval" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13;fontColor=#334155;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="610" y="245" width="390" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rc_dev" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284c7;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="card_rc" target="card_dev">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_rc_dev" value="Automated&lt;br/&gt;trigger" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=bottom;fontSize=13;fontStyle=1;fontColor=#0369a1;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="380" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="card_dev" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#10b981;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="180" width="450" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="t_dev" value="Stage 1: Development (dev) [D12]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=18;fontStyle=1;fontColor=#065f46;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="195" width="410" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="b_dev" value="&lt;b&gt;Environment &amp;amp; Target&lt;/b&gt;&lt;br/&gt;• Dedicated development sandbox account / VPC&lt;br/&gt;• Low-cost instance types and test databases&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Plan-Only Verification Gates&lt;/b&gt;&lt;br/&gt;• Automated &lt;i&gt;terraform plan&lt;/i&gt; execution in CI&lt;br/&gt;• Security policy inspection (tflint, checkov)&lt;br/&gt;• Zero high or critical security findings allowed&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Execution &amp;amp; Testing&lt;/b&gt;&lt;br/&gt;• Automated &lt;i&gt;terraform apply&lt;/i&gt; via GitHub Actions OIDC&lt;br/&gt;• Automated smoke tests and API health checks&lt;br/&gt;• Generates promotion verification report" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13;fontColor=#334155;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="245" width="410" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="e_dev_qa" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#10b981;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="card_dev" target="card_qa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_dev_qa" value="dev green +&lt;br/&gt;1 approval" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=bottom;fontSize=13;fontStyle=1;fontColor=#047857;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="380" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="card_qa" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6366f1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1660" y="180" width="450" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="t_qa" value="Stage 2: Quality Assurance (qa) [D12]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=18;fontStyle=1;fontColor=#3730a3;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="195" width="410" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="b_qa" value="&lt;b&gt;Environment &amp;amp; Target&lt;/b&gt;&lt;br/&gt;• Production-mirror environment topology&lt;br/&gt;• Synthetic IoT traffic and test telemetry feeds&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Promotion &amp;amp; Verification Gates&lt;/b&gt;&lt;br/&gt;• Triggered via promotion PR against qa branch&lt;br/&gt;• Gate 1: dev verification log and test evidence&lt;br/&gt;• Gate 2: Mandatory 1 peer review sign-off&lt;br/&gt;• Gate 3: &lt;i&gt;terraform plan&lt;/i&gt; diff inspection&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Execution &amp;amp; Testing&lt;/b&gt;&lt;br/&gt;• Automated &lt;i&gt;terraform apply&lt;/i&gt; on PR merge&lt;br/&gt;• Automated integration test suite and load tests&lt;br/&gt;• Validates CodeDeploy canary shift simulation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13;fontColor=#334155;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="245" width="410" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="e_qa_pdn" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6366f1;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="card_qa" target="card_pdn">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_qa_pdn" value="qa passed +&lt;br/&gt;4 pdn gates" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=bottom;fontSize=13;fontStyle=1;fontColor=#4338ca;" vertex="1" parent="1">
+          <mxGeometry x="2110" y="380" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="card_pdn" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="2210" y="180" width="390" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="t_pdn" value="Stage 3: Production (pdn) [D12]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=18;fontStyle=1;fontColor=#991b1b;" vertex="1" parent="1">
+          <mxGeometry x="2230" y="195" width="350" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="b_pdn" value="&lt;b&gt;Environment &amp;amp; Workload&lt;/b&gt;&lt;br/&gt;• Primary production cloud workload (AWS)&lt;br/&gt;• Live coffee producer data (Cauca, Huila, Tolima)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Four Mandatory Production Gates&lt;/b&gt;&lt;br/&gt;1. CAB Approval: SR1 Human Lead sign-off&lt;br/&gt;2. Federation Notice: 24h advance notification&lt;br/&gt;3. Harvest Blackout: Blocked 05:00-18:00 COT&lt;br/&gt;4. Plan Review: Zero unexpected resource changes&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Deployment &amp;amp; Safeguards&lt;/b&gt;&lt;br/&gt;• Automated &lt;i&gt;terraform apply&lt;/i&gt; on PR merge&lt;br/&gt;• CodeDeploy canary shift (D11)&lt;br/&gt;• CloudWatch rollback alarms armed (D13)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13;fontColor=#334155;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="2230" y="245" width="350" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="c_safeguards" value="RELEASE MODEL, PIPELINE IDENTITY &amp; PRODUCTION SAFEGUARDS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;strokeWidth=2;align=left;verticalAlign=top;spacingTop=16;spacingLeft=24;fontSize=16;fontStyle=1;fontColor=#1e293b;" vertex="1" parent="1">
+          <mxGeometry x="40" y="780" width="2580" height="660" as="geometry" />
+        </mxCell>
+        <mxCell id="card_b1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="65" y="840" width="600" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_iam" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;" vertex="1" parent="1">
+          <mxGeometry x="85" y="860" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_s3" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="145" y="860" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_sm" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.secrets_manager;" vertex="1" parent="1">
+          <mxGeometry x="205" y="860" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="t_b1" value="Pipeline Identity &amp; Remote State [D01, D02, D03]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=17;fontStyle=1;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="265" y="865" width="380" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="b_b1" value="&lt;b&gt;GitHub Actions OIDC Authentication&lt;/b&gt;&lt;br/&gt;• Short-lived credentials via &lt;i&gt;aws-actions/configure-aws-credentials&lt;/i&gt;&lt;br/&gt;• Zero static access keys or long-lived secrets in GitHub&lt;br/&gt;&lt;br/&gt;&lt;b&gt;IAM Roles &amp;amp; Boundaries (ASM-171)&lt;/b&gt;&lt;br/&gt;• &lt;i&gt;github-actions-plan-role&lt;/i&gt;: Scoped read-only plan permissions&lt;br/&gt;• &lt;i&gt;github-actions-apply-role&lt;/i&gt;: Scoped write permissions for deployment&lt;br/&gt;• &lt;i&gt;github-actions-breakglass-role&lt;/i&gt;: High-privilege role requiring SR1 approval&lt;br/&gt;• Bound by &lt;i&gt;pipeline-boundary-policy&lt;/i&gt; to prevent privilege escalation&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Remote State Isolation [D02]&lt;/b&gt;&lt;br/&gt;• Dedicated S3 bucket per environment (dev, qa, pdn isolated)&lt;br/&gt;• DynamoDB state lock table prevents concurrent execution&lt;br/&gt;• State encrypted at rest with AWS KMS Customer Managed Keys (CMK)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Secrets Management [D03]&lt;/b&gt;&lt;br/&gt;• Secrets stored in AWS Secrets Manager and SSM Parameter Store&lt;br/&gt;• Runtime dynamic resolution; zero credentials stored in Git" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13;fontColor=#334155;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="85" y="925" width="560" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="card_b2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="690" y="840" width="600" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_codedeploy" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.codedeploy;" vertex="1" parent="1">
+          <mxGeometry x="710" y="860" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_lambda_b2" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="1">
+          <mxGeometry x="770" y="860" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="t_b2" value="Function Deployment Pattern [D11]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=17;fontStyle=1;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="830" y="865" width="440" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="b_b2" value="&lt;b&gt;Deployment Engine &amp;amp; Strategy (ASM-181)&lt;/b&gt;&lt;br/&gt;• AWS CodeDeploy application and deployment groups&lt;br/&gt;• Production strategy: &lt;i&gt;LambdaCanary10Percent5Minutes&lt;/i&gt;&lt;br/&gt;• QA strategy: &lt;i&gt;LambdaCanary10Percent5Minutes&lt;/i&gt; (full simulation)&lt;br/&gt;• Dev strategy: &lt;i&gt;AllAtOnce&lt;/i&gt; for rapid sandbox development iteration&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Traffic Routing &amp;amp; Validation&lt;/b&gt;&lt;br/&gt;• Shifts 10% of production traffic to the new Lambda version&lt;br/&gt;• Evaluates live traffic during the 5-minute canary window&lt;br/&gt;• Automatically shifts remaining 90% of traffic upon green alarms&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Target Workloads [D06]&lt;/b&gt;&lt;br/&gt;• Telemetry Ingestion Processor Lambda&lt;br/&gt;• Drone Reception &amp;amp; Screening Lambda&lt;br/&gt;• Agronomic Alert Dispatcher Lambda" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13;fontColor=#334155;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="710" y="925" width="560" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="card_b3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1315" y="840" width="600" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="icon_cw_b3" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_2;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="860" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="t_b3" value="Observability &amp; Rollback Alarms [D13]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=17;fontStyle=1;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="1395" y="865" width="500" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="b_b3" value="&lt;b&gt;CloudWatch Rollback Alarms&lt;/b&gt;&lt;br/&gt;• Lambda Error Rate &amp;gt; 1% during deployment window&lt;br/&gt;• P95 Latency &amp;gt; 5000 ms threshold violation&lt;br/&gt;• Ingestion Dead-Letter Queue (DLQ) message surge&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Automated CodeDeploy Rollback&lt;/b&gt;&lt;br/&gt;• Automatic trip: CodeDeploy immediately reverses traffic to prior version&lt;br/&gt;• Zero manual intervention required to prevent customer impact&lt;br/&gt;• Retains prior stable version alive with zero downtime&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Alert Notification &amp;amp; Logging&lt;/b&gt;&lt;br/&gt;• Publishes deployment failure event to SNS alert topic&lt;br/&gt;• Emits structured CloudWatch logs with deployment ID and error trace&lt;br/&gt;• Dispatches high-priority alert to engineering team" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13;fontColor=#334155;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="925" width="560" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="card_b4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1940" y="840" width="660" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="t_b4" value="Harvest Blackout &amp; Forward Correction Policy" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=17;fontStyle=1;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="865" width="620" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="b_b4" value="&lt;b&gt;Coffee Harvest Deployment Blackout (ASM-183)&lt;/b&gt;&lt;br/&gt;• Blackout Window: 05:00 to 18:00 Colombia Time (COT)&lt;br/&gt;• Harvest Days: Active harvesting periods in Cauca, Huila, Tolima&lt;br/&gt;• Completion Rule: All production changes must conclude before 05:00 COT&lt;br/&gt;• Advance Notice: 24h prior notification sent to Federation&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Emergency Incident Exception&lt;/b&gt;&lt;br/&gt;• Standard blackout can only be bypassed during active Sev-1 incidents&lt;br/&gt;• Requires formal tracking ID: &lt;i&gt;INC-YYYYMMDD-NN&lt;/i&gt;&lt;br/&gt;• Requires explicit authorization from SR1 Human Lead&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Forward Correction Policy&lt;/b&gt;&lt;br/&gt;• All fixes roll forward through standard Git workflow and CI pipeline&lt;br/&gt;• No manual resource modifications in AWS console or live CLI&lt;br/&gt;• No &lt;i&gt;git revert&lt;/i&gt; in production without full promotion sequence" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13;fontColor=#334155;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="925" width="620" height="450" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
