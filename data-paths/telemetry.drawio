@@ -11,13 +11,13 @@
         <mxCell id="subtitle" value="Farm nodes publish readings to persistence, threshold evaluation, alerting and history. Farm traffic bypasses the collection center and VPC subnets." style="text;html=1;align=left;verticalAlign=middle;fontSize=18;fontColor=#334e68;" vertex="1" parent="1">
           <mxGeometry x="40" y="70" width="2820" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="farm" value="FARM | crop and drying zones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=15;" vertex="1" parent="1">
+        <mxCell id="farm" value="FARM | crop and drying zones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacingLeft=55;spacingTop=25;" vertex="1" parent="1">
           <mxGeometry x="30" y="230" width="950" height="440" as="geometry" />
         </mxCell>
-        <mxCell id="center" value="COLLECTION CENTER | not traversed by farm telemetry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=15;" vertex="1" parent="1">
+        <mxCell id="center" value="COLLECTION CENTER | not traversed by farm telemetry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacingLeft=55;spacingTop=25;" vertex="1" parent="1">
           <mxGeometry x="30" y="720" width="900" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="acct" value="AWS workload account | us-east-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=15;" vertex="1" parent="1">
+        <mxCell id="acct" value="AWS WORKLOAD ACCOUNT | us-east-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacingLeft=60;spacingTop=25;" vertex="1" parent="1">
           <mxGeometry x="1050" y="230" width="1830" height="730" as="geometry" />
         </mxCell>
         <mxCell id="nodes" value="Crop node: 6 readings/day&#10;Drying node: 24 readings/day while active&#10;Original timestamp + sequence number" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
@@ -27,7 +27,7 @@
           <mxGeometry x="430" y="350" width="270" height="150" as="geometry" />
         </mxCell>
         <mxCell id="bearer" value="Cellular bearer + public internet&#10;No center relay" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="820" y="350" width="220" height="125" as="geometry" />
+          <mxGeometry x="740" y="350" width="220" height="125" as="geometry" />
         </mxCell>
         <mxCell id="center_note" value="Farm nodes connect directly to the regional public IoT endpoint." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
           <mxGeometry x="80" y="780" width="480" height="85" as="geometry" />
@@ -36,19 +36,19 @@
           <mxGeometry x="1110" y="350" width="150" height="155" as="geometry" />
         </mxCell>
         <mxCell id="lambda" value="Threshold Lambda" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=17;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1760" y="535" width="170" height="155" as="geometry" />
+          <mxGeometry x="1900" y="535" width="170" height="155" as="geometry" />
         </mxCell>
         <mxCell id="ddb" value="Telemetry DynamoDB" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=17;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="1430" y="350" width="175" height="155" as="geometry" />
         </mxCell>
         <mxCell id="sns" value="SNS" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=17;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="2080" y="350" width="150" height="155" as="geometry" />
+          <mxGeometry x="2200" y="350" width="150" height="155" as="geometry" />
         </mxCell>
         <mxCell id="consumer" value="Farmer alert channel&#10;Farmer history and pilot report" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="2410" y="350" width="260" height="140" as="geometry" />
+          <mxGeometry x="2510" y="350" width="280" height="140" as="geometry" />
         </mxCell>
         <mxCell id="endpoint" value="VPC reservation only: telemetry_ingress endpoint.&#10;Not crossed by farm route." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="1390" y="710" width="390" height="150" as="geometry" />
+          <mxGeometry x="1090" y="730" width="250" height="120" as="geometry" />
         </mxCell>
         <mxCell id="history" value="Persisted reading history, five years.&#10;Threshold evaluation uses configured ranges." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
           <mxGeometry x="1370" y="730" width="480" height="150" as="geometry" />
@@ -65,22 +65,71 @@
         <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="iot" target="ddb">
           <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48" />
         </mxCell>
-        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;exitX=0.5;exitY=0;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" edge="1" parent="1" source="iot" target="lambda">
-          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48"><Array as="points"><mxPoint x="1185" y="310" /><mxPoint x="1845" y="310" /></Array></mxGeometry>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;exitX=0.5;exitY=0;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" edge="1" parent="1" source="iot" target="threshold_queue">
+          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48">
+            <Array as="points">
+              <mxPoint x="1185" y="310" />
+              <mxPoint x="1695" y="310" />
+            </Array>
+          </mxGeometry>
         </mxCell>
-        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="lambda" target="sns">
-          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48"><Array as="points"><mxPoint x="1845" y="500" /><mxPoint x="2155" y="500" /></Array></mxGeometry>
+        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="lambda" target="sns">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" edge="1" parent="1" source="ddb" target="history">
-          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48" />
+        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;exitX=0;exitY=0.7;exitPerimeter=1;entryX=0.08;entryY=0;entryPerimeter=1;" edge="1" parent="1" source="ddb" target="history">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1340" y="459" />
+              <mxPoint x="1340" y="700" />
+              <mxPoint x="1408" y="700" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="e8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="sns" target="consumer">
           <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48" />
         </mxCell>
         <mxCell id="e9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;dashed=1;dashPattern=8 6;strokeColor=#9a5b13;whiteSpace=wrap;exitX=0.5;exitY=0;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" edge="1" parent="1" source="buf" target="iot">
-          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48"><Array as="points"><mxPoint x="565" y="320" /><mxPoint x="1185" y="320" /></Array></mxGeometry>
+          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48">
+            <Array as="points">
+              <mxPoint x="565" y="320" />
+              <mxPoint x="1185" y="320" />
+            </Array>
+          </mxGeometry>
         </mxCell>
-      <mxCell id="label-e1" value="Local write; MQTT PUBACK releases buffer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="220" y="525" width="220" height="48" as="geometry" /></mxCell><mxCell id="label-e2" value="MQTT/TLS 1.2+; QoS 1; drain after live reading" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="500" y="525" width="220" height="48" as="geometry" /></mxCell><mxCell id="label-e3" value="MQTT/TLS 1.2+; port 8883 or 443/ALPN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="850" y="525" width="220" height="48" as="geometry" /></mxCell><mxCell id="label-e4" value="IoT rule writes telemetry row" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="1180" y="525" width="220" height="48" as="geometry" /></mxCell><mxCell id="label-e5" value="Topic rule invokes threshold function" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="1410" y="265" width="220" height="48" as="geometry" /></mxCell><mxCell id="label-e6" value="Out of range: persist alert; SNS publish" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="1840" y="525" width="220" height="48" as="geometry" /></mxCell><mxCell id="label-e7" value="History query; five-year retention" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="1420" y="650" width="220" height="48" as="geometry" /></mxCell><mxCell id="label-e8" value="SNS notification to farmer channel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="2110" y="525" width="220" height="48" as="geometry" /></mxCell><mxCell id="label-e9" value="NO SIGNAL: encrypted buffer; reconnect then drain" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="720" y="300" width="220" height="48" as="geometry" /></mxCell></root>
+        <mxCell id="label-e1" value="Local write; MQTT PUBACK releases buffer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
+          <mxGeometry x="220" y="525" width="220" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="label-e2" value="MQTT/TLS 1.2+; QoS 1; drain after live reading" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
+          <mxGeometry x="500" y="525" width="220" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="label-e3" value="MQTT/TLS 1.2+; port 8883 or 443/ALPN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
+          <mxGeometry x="740" y="525" width="220" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="label-e4" value="IoT rule writes accepted telemetry row" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="580" width="200" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="label-e5" value="Topic rule sends reading key and payload to SQS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
+          <mxGeometry x="1530" y="260" width="220" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="label-e7" value="History query; five-year retention" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="580" width="210" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="label-e8" value="SNS notification to farmer channel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
+          <mxGeometry x="2180" y="585" width="220" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="label-e9" value="NO SIGNAL: encrypted buffer; reconnect then drain" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
+          <mxGeometry x="720" y="300" width="220" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="threshold_queue" value="Threshold SQS queue" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=17;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1620" y="350" width="150" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="e5b" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="threshold_queue" target="lambda">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bedrock_note" value="Amazon Bedrock enrichment only on an opening alert, after publication. It cannot suppress, delay or reclassify Federation-configured rules." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef5fb;strokeColor=#61788d;strokeWidth=1.5;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1950" y="790" width="650" height="90" as="geometry" />
+        </mxCell>
+      </root>
     </mxGraphModel>
   </diagram>
 </mxfile>
