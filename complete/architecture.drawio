@@ -241,6 +241,12 @@
         <mxCell id="tier_data_title" value="data | 10.82.64.0/20 (Private)&#10;Persistence, Queues &amp; Event Bus" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#1e3a8a;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="1980" y="1495" width="280" height="36" as="geometry" />
         </mxCell>
+        <mxCell id="orchestrator_group" value="" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 4;fillColor=none;strokeColor=#be185d;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="1170" y="1505" width="530" height="195" as="geometry" />
+        </mxCell>
+        <mxCell id="orchestrator_label" value="Drone capability orchestrator (event-driven) · ADR-004" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#9d174d;fillColor=#ffffff;spacingLeft=4;spacingRight=4;" parent="1" vertex="1">
+          <mxGeometry x="1180" y="1496" width="372" height="18" as="geometry" />
+        </mxCell>
         <mxCell id="eventbridge" value="EventBridge&#10;Pipe + Bus" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.eventbridge;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=14;fontStyle=1;" parent="1" vertex="1">
           <mxGeometry x="1200" y="1535" width="135" height="105" as="geometry" />
         </mxCell>

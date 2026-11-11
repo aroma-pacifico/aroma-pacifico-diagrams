@@ -164,6 +164,7 @@ The state machine diagram details the formal transitions, guards, triggers, and 
 ### Source Documents
 
 - `docs/drone-service.md`: Services table (§3), records (§4), state machines (§5), mission package and flight record schemas (§6), S3 prefixes and quarantine (§7), inference triggers (§8), ingress endpoints (§9), offline store-and-forward behavior (§10), and review campaign cadence (§11).
+- `docs/adr/adr-004-drone-capability-orchestration.md`: the bus and its routing rules are grouped and labeled the Drone capability orchestrator (event-driven).
 - `docs/inference-functions.md`: Bedrock Nova Pro foundation model integration in `us-east-1`, four triggers, function contracts, and confidence thresholds (§2-§5, §8).
 - `docs/architecture.md`: Section 11 (pest-to-fumigation flow) and Section 14 (IaC boxes catalog).
 - `docs/adr/adr-002-drone-flight-mode-and-governance.md`: Combined flight mode, states, and switching events.
