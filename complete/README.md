@@ -11,7 +11,7 @@ The source architecture documents and ADRs were read from `origin/main` of `arom
 | `docs/security-and-identity.md`, `docs/adr/adr-001-primary-and-second-cloud.md` | AWS primary Region, undeployed Azure export target, identities, MFA, encryption and data boundaries. |
 | `docs/drone-service.md`, `docs/adr/adr-002-drone-flight-mode-and-governance.md` | Combined flight mode, mission preload, pest-to-fumigation events, human authorization and closure gates. |
 | `docs/farm-monitoring.md`, `docs/sack-and-trip.md` | Telemetry and alert path, sack lifecycle, trip custody, and buyer view. |
-| `docs/inference-functions.md`, `docs/adr/adr-003-iac-tool-remote-state-and-pattern-module.md` | EventBridge, SQS, Lambda, Amazon Bedrock, remote state, the approved pattern module and plan pipeline. |
+| `docs/inference-functions.md`, `docs/adr/adr-003-iac-tool-remote-state-and-pattern-module.md`, `docs/adr/adr-004-drone-capability-orchestration.md` | EventBridge, SQS, Lambda, Amazon Bedrock, remote state, the approved pattern module and plan pipeline; the bus, rules and per-function queues are labeled the Drone capability orchestrator (event-driven), ADR-004. |
 | `docs/automation-and-pipelines.md`, `docs/legacy-2020.md`, `docs/decision-log.md` | Promotion gates, harvest-week window, retained and retired 2020 requirements, and open/closed decision status. |
 | `aroma-pacifico-diagrams/data-paths/data-paths.md` and the three A13 Draw.io sources | Detailed telemetry, transporter and drone paths reconciled to the same architecture revision. |
 
