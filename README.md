@@ -30,6 +30,9 @@ Traceability Rule: Every D-box that a diagram badges on a component or names in 
 | `flows/` | Sack Lifecycle State Machine | [PNG](flows/sack-states.png) | [SVG](flows/sack-states.svg) | [Draw.io](flows/sack-states.drawio) | `docs/sack-and-trip.md` §3 | D04, D05, D06 |
 | `pipelines/` | Ingestion & Flight-Object Pipelines | [PNG](pipelines/ingestion-and-flight-objects.png) | [SVG](pipelines/ingestion-and-flight-objects.svg) | [Draw.io](pipelines/ingestion-and-flight-objects.drawio) | `docs/automation-and-pipelines.md` §6-7, `docs/farm-monitoring.md` §3-5 | D08, D09, D10 |
 | `pipelines/` | Platform CI/CD Deployment Pipeline | [PNG](pipelines/platform-pipeline.png) | [SVG](pipelines/platform-pipeline.svg) | [Draw.io](pipelines/platform-pipeline.drawio) | `docs/automation-and-pipelines.md` §3-5, §8, §10 | D01, D02, D03, D04, D05, D06, D08, D10, D11, D12, D13 |
+| `pipelines/` | IaC CI & Module Release Sequence | [PNG](pipelines/iac-ci-sequence.png) | [SVG](pipelines/iac-ci-sequence.svg) | [Draw.io](pipelines/iac-ci-sequence.drawio) | `standards/iac-rules/` (pc-iac-015, pc-iac-027, pc-iac-028), ADR-003 | D01, D11, D13 |
+| `pipelines/` | IaC CD Provisioning Sequence | [PNG](pipelines/iac-provisioning-sequence.png) | [SVG](pipelines/iac-provisioning-sequence.svg) | [Draw.io](pipelines/iac-provisioning-sequence.drawio) | `docs/cd-pipeline.md` §1-5, ADR-003, ASM-172, ASM-178, ASM-320 | D01, D02, D04, D06, D12, D13 |
+| `pipelines/` | IaC Teardown & Rollback Sequence | [PNG](pipelines/iac-teardown-and-rollback-sequence.png) | [SVG](pipelines/iac-teardown-and-rollback-sequence.svg) | [Draw.io](pipelines/iac-teardown-and-rollback-sequence.drawio) | `docs/cd-pipeline.md` §7, ASM-157, ASM-174, ASM-184, ASM-320 | D01, D02, D04, D06, D12, D13 |
 | `legacy/` | 2020 Legacy Mapping (Keep/Retire/Replace) | [PNG](legacy/legacy-2020.png) | [SVG](legacy/legacy-2020.svg) | [Draw.io](legacy/legacy-2020.drawio) | `docs/legacy-2020.md` §2-4 | D01, D03, D04, D05, D06, D08, D09, D10 |
 | `data-paths/` | Telemetry Data Path | [PNG](data-paths/telemetry.png) | [SVG](data-paths/telemetry.svg) | [Draw.io](data-paths/telemetry.drawio) | `docs/connectivity.md` §4, `data-paths/data-paths.md` | - |
 | `data-paths/` | Transporter Position Data Path | [PNG](data-paths/transporter-position.png) | [SVG](data-paths/transporter-position.svg) | [Draw.io](data-paths/transporter-position.drawio) | `docs/connectivity.md` §7, `data-paths/data-paths.md` | - |
@@ -214,6 +217,30 @@ The `pipelines/` package details ingestion pipelines and the multi-environment T
 - **Vector SVG:** [`pipelines/platform-pipeline.svg`](pipelines/platform-pipeline.svg)
 - **Draw.io Source:** [`pipelines/platform-pipeline.drawio`](pipelines/platform-pipeline.drawio)
 - Illustrates the GitHub Actions CI/CD deployment pipeline, branch promotion gates across environments, reviewable plan generation, and harvest-week freeze windows, derived from `docs/automation-and-pipelines.md` §3-5, §8, and §10.
+
+### IaC CI & Reusable Module Release Sequence
+
+![IaC CI and Reusable Module Release Sequence Preview](pipelines/iac-ci-sequence.png)
+
+- **Vector SVG:** [`pipelines/iac-ci-sequence.svg`](pipelines/iac-ci-sequence.svg)
+- **Draw.io Source:** [`pipelines/iac-ci-sequence.drawio`](pipelines/iac-ci-sequence.drawio)
+- Sequence diagram detailing pull request hygiene, secret scanning, parallel 4-stack matrix gates (fmt, validate, tflint, trivy, terraform test), speculative plan against the Floci AWS emulator (pc-iac-028), Infracost monthly cost delta (pc-iac-027), cross-provider review, and immutable SemVer module release tagging (pc-iac-015), derived from `standards/iac-rules/` and ADR-003.
+
+### IaC CD Provisioning Sequence
+
+![IaC CD Provisioning Sequence Preview](pipelines/iac-provisioning-sequence.png)
+
+- **Vector SVG:** [`pipelines/iac-provisioning-sequence.svg`](pipelines/iac-provisioning-sequence.svg)
+- **Draw.io Source:** [`pipelines/iac-provisioning-sequence.drawio`](pipelines/iac-provisioning-sequence.drawio)
+- Sequence diagram detailing controlled multi-environment promotion (dev -> qa -> pdn), plan-only guard enforcement (ASM-320), harvest blackout verification (05:00–18:00 Colombia time, ASM-007, ASM-178), two-step production workflow approval binding two named humans to the SHA-256 plan digest (PD-020, ASM-172), and proposed provisioning in strict dependency order (state-backend -> network -> security -> workload), derived from `docs/cd-pipeline.md` §1-5.
+
+### IaC Teardown & Rollback Sequence
+
+![IaC Teardown and Rollback Sequence Preview](pipelines/iac-teardown-and-rollback-sequence.png)
+
+- **Vector SVG:** [`pipelines/iac-teardown-and-rollback-sequence.svg`](pipelines/iac-teardown-and-rollback-sequence.svg)
+- **Draw.io Source:** [`pipelines/iac-teardown-and-rollback-sequence.drawio`](pipelines/iac-teardown-and-rollback-sequence.drawio)
+- Sequence diagram detailing emergency rollback by reverting and re-promoting with inverted speculative plan review (ASM-174, ASM-184), pre-teardown verification of 5-year data retention compliance guards (DynamoDB deletion protection, S3 Object Lock Compliance Mode, central audit archive, and remote state persistence safeguard), and proposed environment teardown in reverse stack dependency order (workload -> security -> network -> state-backend), derived from `docs/cd-pipeline.md` §7.
 
 ---
 
