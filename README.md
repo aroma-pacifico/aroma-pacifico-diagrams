@@ -1,8 +1,8 @@
 # aroma-pacifico-diagrams
 
-Diagrams as code for the Aroma Pacífico pilot (Draw.io and Mermaid sources with SVG and PNG exports), including the numbered boxes D01-D13 that the IaC implements
+Diagrams as code for the Aroma Pacifico pilot (Draw.io and Mermaid sources with SVG and PNG exports), including the numbered boxes D01-D13 that the IaC implements
 
-Part of the Aroma Pacífico pilot, the 2026 update of the coffee traceability pilot for Cauca, Huila and Tolima. Work is tracked in [aroma-pacifico-roadmap](https://github.com/aroma-pacifico/aroma-pacifico-roadmap) and on the [Aroma Pacífico Pilot board](https://github.com/orgs/aroma-pacifico/projects/1).
+Part of the Aroma Pacifico pilot, the 2026 update of the coffee traceability pilot for Cauca, Huila and Tolima. Work is tracked in [aroma-pacifico-roadmap](https://github.com/aroma-pacifico/aroma-pacifico-roadmap) and on the [Aroma Pacifico Pilot board](https://github.com/orgs/aroma-pacifico/projects/1).
 
 ## What lives here
 
@@ -26,6 +26,20 @@ data-paths/
 |-- drone-objects.drawio
 |-- drone-objects.svg
 `-- drone-objects.png
+```
+
+## Complete architecture
+
+The A19 package contains a two-page runtime and IaC traceability diagram. Page 1 shows the runtime architecture; page 2 maps boxes D01-D13 and the plan pipeline. The editable source and SVG/PNG exports are in `complete/`.
+
+```text
+complete/
+|-- README.md
+|-- architecture.drawio
+|-- architecture.svg
+|-- architecture.png
+|-- architecture-iac.svg
+`-- architecture-iac.png
 ```
 
 ## Tasks delivered here
