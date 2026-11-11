@@ -1,12 +1,15 @@
-# Security and Identity Architecture & Sequence Diagrams
+# Security, Identity, and Firewall Architecture & Sequence Diagrams
 
-This directory contains the security, identity, encryption, and revocation architecture diagrams and sequence specifications for the Aroma Pacífico coffee traceability platform. All models align with the requirements of the academic DevOps challenge across Cauca, Huila, and Tolima.
+This directory contains the security, identity, encryption, perimeter and cloud firewall architecture diagrams and sequence specifications for the Aroma Pacífico coffee traceability platform. All models align with the requirements of the academic DevOps challenge across Cauca, Huila, and Tolima.
 
 ## 1. Directory Structure
 
 ```text
 security/
 |-- README.md
+|-- firewall-policy.drawio
+|-- firewall-policy.svg
+|-- firewall-policy.png
 |-- identity-and-access.drawio
 |-- identity-and-access.svg
 |-- identity-and-access.png
@@ -137,3 +140,97 @@ All values, configurations, and boundaries depicted in these diagrams are ground
 - **ASM-155**: Public lookup AWS WAF rate limit ($\le$ 100 req/5 min per source IP) and reserved concurrency of 10.
 - **ASM-165**: Restricted drone object prefix (`restricted/`) with isolated CMK `restricted` denying all function execution roles.
 - **PD-100**: Live verification of AWS IoT Core revocation mechanics and MQTT session termination within minutes of leaving ACTIVE.
+
+## 4. Perimeter and Cloud Firewall Policy Architecture (`firewall-policy.drawio`)
+
+### What It Shows
+
+The architecture diagram illustrates the end-to-end perimeter and cloud firewall policy for the Aroma Pacífico coffee traceability pilot across the collection centers and AWS workload environment:
+1. **Collection Center Perimeter (`10.4x.0.0/16`)**: Covers the three collection centers (Cauca `10.41.0.0/16`, Huila `10.42.0.0/16`, Tolima `10.43.0.0/16`) and their segmented LAN zones:
+   - *Gerencia (`10.4x.1.0/24`, VLAN 101, WPA3-Enterprise)*: Office management workstations with 802.1X EAP-TLS.
+   - *Soporte (`10.4x.2.0/24`, VLAN 102, WPA3-Enterprise)*: Technical staff and the paired drone ground station (`10.4x.2.10/32`).
+   - *Logística (`10.4x.3.0/24`, VLAN 103, WPA3-Enterprise)*: Coffee intake workstations, barcode scanners, and code-sheet printers.
+   - *Servidores locales (`10.4x.10.0/24`, VLAN 110, Wired)*: Core switches, access points, network code-sheet printers (`.50` to `.59`), and temporary commissioning laptop (`.60`).
+   - *Internet-Only Isolated Context (VRF)*: Separate guest and transporter wireless networks (*Transporte `10.4x.4.0/24`*, *Visitantes `10.4x.5.0/24`*) strictly denied routing to logistics, management, or internal networks.
+   - *Perimeter Firewall (`10.4x.20.1`)*: Enforces local gateway services (DHCP, DNS, NTP), priority queue bandwidth shaping (2 Mbps network, 15 Mbps logistics, 20 Mbps drone, 25 Mbps staff, 8 Mbps guest), and WAN interfaces.
+2. **Public Internet & Central Transit Hub**:
+   - *Public Clients*: Farm field nodes (telemetry via MQTT/TLS), transporter and farmer mobile apps (Cognito-authenticated REST APIs), public sack lookup consumers (CloudFront/WAF rate-limited 30/min), and municipal drone operators.
+   - *AWS Network Account Central Transit Hub (`tgw-aroma-hub`)*: Route tables for `centers`, `pdn`, `dev`, and `qa`; AWS Site-to-Site VPN attachments (IKEv2, UDP 500/4500, IP 50 ESP); customer-managed prefix lists shared via AWS RAM (`cc-firewalls`, `cc-staff`, `cc-logistics`, `cc-ground-stations`, `cc-device-mgmt`).
+   - *Isolation Guarantees*: Blackhole routes preventing center-to-center lateral traversal (`10.40.0.0/13`) and isolating development environments (`10.80.0.0/16`).
+3. **AWS Workload Account Production (`pdn` `10.82.0.0/16`) Environment**:
+   - *Regional Managed Public Entry Points*: AWS IoT Core data endpoint (`CL-TEL-01`, `CL-TEL-02`), public application API front door (`CL-TEL-03`), public sack lookup front door (`CL-PUB-01`, `CL-PUB-02`), and Amazon S3 Regional Endpoint (`CL-DRN-03`).
+   - *Production VPC Tiers (3 AZs)*: `transit` (/28 subnets), `application` (`10.82.48.0/20`), `object_storage` (`10.82.80.0/20`), `administration` (`10.82.96.0/20`), `data` (`10.82.64.0/20`), and `public_query` (`10.82.0.0/20`).
+   - *Explicit Reserved Tiers*: `drone_object_ingress` (`10.82.32.0/20`, ASM-140 closing PD-121) and `telemetry_ingress` (`10.82.16.0/20`, A10 section 4.2), verifying zero active endpoints and explicit denies from on-premise networks.
+   - *Cloud Defense Controls*: Egress isolation (no NAT Gateway, no `0.0.0.0/0` internet route, `CL-EGR-01`), explicit default deny (`CL-DEF-01`), VPC Flow Logs capture to CloudWatch Logs with KMS encryption (`CL-DEF-02`), and AWS Config rules blocking open management ports (`CL-ADM-05`).
+   - *Non-Production & Prepared Environments*: QA environment (`10.81.0.0/16`, temporary test path `CC-LNK-06` / `CL-LNK-05`), Dev environment (`10.80.0.0/16`, isolated), and Azure prepared target (`10.88.0.0/13`, ADR-001).
+
+### Source Documents and Sections
+
+- `docs/firewall-policy.md`:
+  - Section 2: Rule identifier format (`CC-*` and `CL-*`).
+  - Section 3: Rule groups (`GST`, `BAS`, `LNK`, `ADM`, `DRN`, `LOG`, `STF`, `TEL`, `PUB`, `APP`, `DAT`, `EGR`, `DEF`).
+  - Section 4: Collection center perimeter policy (10-rule group top-down matrix).
+  - Section 5: Managed rule groups, customer-managed prefix lists, and AWS RAM sharing.
+  - Section 6: Non-production environments, temporary rules, and audit schedules.
+  - Section 7: Audit rules before production (`PD-125`).
+  - Section 8: Traffic control, priority classes, and bandwidth guarantees.
+- `docs/collection-center-network.md`:
+  - Section 6: Perimeter firewall rules and interface mappings.
+  - Section 7: Device management IP allocation (`10.4x.10.0/24`).
+  - Section 8: Bandwidth allocation, priority queues, and traffic shaping.
+- `docs/architecture.md`:
+  - Section 12: Network topology and IP allocations.
+  - Section 14: Architecture box catalog (D04, D05, D07).
+- `docs/decision-log.md`: PD-011, PD-052, PD-083, PD-091, PD-093, PD-100, PD-102, PD-120 through PD-125, ASM-078, ASM-120 through ASM-129, and ASM-140.
+
+### Architecture Boxes (D01–D13 Traceability)
+
+In accordance with `docs/architecture.md` section 14:
+
+| Box | Component / Implementation | Track B Issue & Scope |
+|---|---|---|
+| **D04** | VPC and tiers of pattern environment (`10.82.0.0/16`) | B04 (`#24`): Covers transit, application, object_storage, administration, data, and public_query tiers, along with reserved tier boundaries. |
+| **D05** | Association of environment with one pattern collection center (`10.4x.0.0/16`) | B05 (`#25`): Site-to-Site VPN connections from Cauca (.41), Huila (.42), and Tolima (.43) to `tgw-aroma-hub` and TGW route table associations. |
+| **D07** | Pattern firewall rules (security module, Epic 6) | B07 (`#27`): Comprehensive 13-rule-group matrix across LAN perimeter interfaces, Transit Gateway, Security Groups, Stateless NACLs, and AWS WAF Web ACLs. |
+
+### Visual Dash Style Legend
+
+- **Solid Blue (`#2563eb`)**: Permanent Rule (Subject to scheduled review).
+- **Dashed Blue (`#2563eb`)**: Audit before Production (`PD-125`).
+- **Dotted Amber (`#d97706`)**: Temporary Rule (Active during acceptance/maintenance window; flagged for audit).
+- **Dashed Red (`#dc2626`)**: Explicit Deny / Blackhole Route.
+
+---
+
+## 5. Architectural Decisions and Traceability
+
+All values, configurations, and boundaries depicted in these diagrams are grounded directly in the referenced architecture specifications and registered decision-log entries:
+- **ASM-090**: Amazon Cognito user pools on the Essentials plan in `us-east-1` with dual `staff` and `field` pools per environment in the workload account.
+- **ASM-091**: Justified absence of MFA for farmers and transporters; passwordless SMS one-time codes with keystore encryption and server-side dynamic scoping.
+- **ASM-092**: Token lifetimes (staff: 30m access/ID, 12h refresh; field: 60m access/ID, 30d refresh; buyer refresh: 1d) and 10-minute step-up requirement for sensitive staff operations.
+- **ASM-093**: Drone kit paired ground station identity in AWS IoT Core; kit upload grants with 15-minute pre-signed URLs.
+- **ASM-094**: 80-bit random Crockford Base32 sack code with check symbol printed with public lookup QR code.
+- **ASM-095**: Edge outbox encryption with phone hardware keystore; contracted drone operator encrypts ground station storage.
+- **ASM-096**: Buyer view granularity restricted strictly to origin, processing dates, status, and drying variables.
+- **ASM-097**: One customer-managed key per data class and environment, with automatic 365-day rotation.
+- **ASM-098**: Retention clock of 5 years for personal data, reporting duty as soon as known, and 4-hour target cloud revocation SLA.
+- **ASM-099**: Single role per identity; threshold configuration and enrollment restricted to platform operators.
+- **ASM-154**: Isolated `public_view` KMS key encrypting the `buyer_view` projection table.
+- **ASM-155**: Public lookup AWS WAF rate limit ($\le$ 100 req/5 min per source IP) and reserved concurrency of 10.
+- **ASM-165**: Restricted drone object prefix (`restricted/`) with isolated CMK `restricted` denying all function execution roles.
+- **PD-100**: Live verification of AWS IoT Core revocation mechanics and MQTT session termination within minutes of leaving ACTIVE.
+- **ASM-078**: IPsec VPN tunnel establishment (IKEv2, UDP 500/4500, IP 50 ESP) with automatic cellular failover.
+- **ASM-120**: Primary and secondary Site-to-Site VPN tunnels terminating at AWS Transit Gateway in us-east-1.
+- **ASM-121**: Scoped temporary routing between collection center logistics VLAN and QA application tier for acceptance testing.
+- **ASM-122**: Conditional DNS forwarding from collection center firewalls to Route 53 Resolver inbound endpoints in administration tier.
+- **ASM-123**: Local RADIUS authentication on perimeter firewall validated against centralized certificate authority.
+- **ASM-124**: Bandwidth guarantees and shaping across center WAN interfaces (100 Mbps primary, LTE backup).
+- **ASM-125**: Zero direct database access from collection centers or external networks; data tier accessible exclusively from application tier.
+- **ASM-126**: Blackhole routing on Transit Gateway preventing lateral traversal between collection centers.
+- **ASM-127**: Cloud workload private tier egress isolation with zero NAT Gateways and no default internet route.
+- **ASM-128**: Customer-managed prefix lists shared via AWS RAM for centralized security group and route management.
+- **ASM-129**: AWS WAF rate-limiting rules and AWSManagedRules rule groups protecting public entry points.
+- **ASM-140**: Explicit reservation of drone_object_ingress tier (10.82.32.0/20) with zero active endpoints in pilot (closing PD-121).
+- **PD-102**: Public lookup rate limiting budget calibrated to 30 requests/minute per source IP.
+- **PD-125**: Pre-production audit mandate for firewall rules marked for verification before production traffic enablement.
+
