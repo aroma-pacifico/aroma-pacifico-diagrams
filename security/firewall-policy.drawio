@@ -211,48 +211,48 @@
 
         <!-- Production VPC (pdn) -->
         <mxCell id="vpc_pdn" value="PRODUCTION VPC (pdn) | 10.82.0.0/16 (3 AZs: us-east-1a, 1b, 1c)&#10;No NAT Gateway &amp;amp; No Default Internet Route (CL-EGR-01). AWS Network Firewall NOT deployed (ASM-127)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=8;spacingLeft=10;fontColor=#0f172a;fontSize=13;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1735" y="510" width="900" height="775" as="geometry" />
+          <mxGeometry x="1735" y="510" width="900" height="780" as="geometry" />
         </mxCell>
         <mxCell id="tier_transit" value="transit Tier | /28 Subnets (TGW VPC Attachment)&#10;• CL-LNK-08: Stateless NACL passes only 10.40.0.0/13 &amp;amp; 10.82.0.0/16 [REVIEW]&#10;• Inbound center flows routed to local VPC tier endpoints" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#8b5cf6;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;fontColor=#5b21b6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1750" y="555" width="340" height="85" as="geometry" />
+          <mxGeometry x="1750" y="555" width="340" height="95" as="geometry" />
         </mxCell>
-        <mxCell id="tier_app" value="application Tier | 10.82.48.0/20 (Private Subnets)&#10;• VPC Interface Endpoints: execute-api, cognito-idp&#10;• Security Group CL-APP-01: Inbound TCP 443 from cc-staff, cc-logistics, cc-ground-stations [AUDIT]&#10;• CL-APP-02: Endpoint policy restricted to platform API ARNs [AUDIT]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;fontColor=#1e3a8a;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1750" y="675" width="340" height="105" as="geometry" />
+        <mxCell id="tier_app" value="application Tier | 10.82.48.0/20 (Private Subnets)&#10;• VPC Interface Endpoints: execute-api, cognito-idp&#10;• Security Group CL-APP-01: Inbound TCP 443 from cc-staff, cc-logistics, cc-ground-stations [AUDIT]&#10;• CL-APP-02: Endpoint policy restricted to platform API ARNs [AUDIT]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=6;spacingLeft=10;fontColor=#1e3a8a;fontSize=11;fontStyle=1;spacingRight=8;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="685" width="340" height="105" as="geometry" />
         </mxCell>
-        <mxCell id="tier_storage" value="object_storage Tier | 10.82.80.0/20 (Private Subnets)&#10;• VPC Interface Endpoint: Amazon S3 (com.amazonaws.us-east-1.s3)&#10;• Security Group CL-DRN-01: Inbound TCP 443 from cc-ground-stations only [AUDIT]&#10;• CL-DRN-02: Policy: s3:PutObject &amp;amp; AbortMultipart on drone bucket [AUDIT]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;fontColor=#1e3a8a;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1750" y="810" width="340" height="95" as="geometry" />
+        <mxCell id="tier_storage" value="object_storage Tier | 10.82.80.0/20 (Private Subnets)&#10;• VPC Interface Endpoint: Amazon S3 (com.amazonaws.us-east-1.s3)&#10;• Security Group CL-DRN-01: Inbound TCP 443 from cc-ground-stations only [AUDIT]&#10;• CL-DRN-02: Policy: s3:PutObject &amp;amp; AbortMultipart on drone bucket [AUDIT]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=8;spacingLeft=10;fontColor=#1e3a8a;fontSize=11;fontStyle=1;spacingRight=8;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="810" width="340" height="115" as="geometry" />
         </mxCell>
-        <mxCell id="tier_admin" value="administration Tier | 10.82.96.0/20 (Private Subnets)&#10;• Route 53 Resolver Inbound Endpoint (2 IP addresses, CL-ADM-01, UDP/TCP 53) [AUDIT]&#10;• Endpoints: CloudWatch Logs, CloudWatch, IAM Roles Anywhere (CL-ADM-02) [AUDIT]&#10;• Management Session Host: outbound SSH 22 &amp;amp; HTTPS 443 to cc-device-mgmt (CL-ADM-03)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;fontColor=#1e3a8a;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1750" y="935" width="340" height="105" as="geometry" />
+        <mxCell id="tier_admin" value="administration Tier | 10.82.96.0/20 (Private Subnets)&#10;• Route 53 Resolver Inbound Endpoint (2 IP addresses, CL-ADM-01, UDP/TCP 53) [AUDIT]&#10;• Endpoints: CloudWatch Logs, CloudWatch, IAM Roles Anywhere (CL-ADM-02) [AUDIT]&#10;• Management Session Host: outbound SSH 22 &amp;amp; HTTPS 443 to cc-device-mgmt (CL-ADM-03)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=8;spacingLeft=10;fontColor=#1e3a8a;fontSize=11;fontStyle=1;spacingRight=8;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="945" width="340" height="115" as="geometry" />
         </mxCell>
-        <mxCell id="cloud_defense_box" value="CLOUD DEFENSE &amp;amp; OBSERVABILITY CONTROLS&#10;• CL-EGR-01: No NAT GW &amp;amp; no default internet route [AUDIT]&#10;• CL-DEF-01: Explicit Default Deny on SGs, NACLs &amp;amp; TGW [AUDIT]&#10;• CL-DEF-02: Flow logs to CloudWatch with 'logs' key [REVIEW]&#10;• CL-ADM-05: Config rules block open mgmt ports [AUDIT]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=8;spacingLeft=8;fontColor=#991b1b;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1750" y="1070" width="340" height="135" as="geometry" />
+        <mxCell id="cloud_defense_box" value="CLOUD DEFENSE &amp;amp; OBSERVABILITY CONTROLS&#10;• CL-EGR-01: No NAT GW &amp;amp; no default internet route [AUDIT]&#10;• CL-DEF-01: Explicit Default Deny on SGs, NACLs &amp;amp; TGW [AUDIT]&#10;• CL-DEF-02: Flow logs to CloudWatch with 'logs' key [REVIEW]&#10;• CL-ADM-05: Config rules block open mgmt ports [AUDIT]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=8;spacingLeft=12;fontColor=#991b1b;fontSize=11;fontStyle=1;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="1090" width="340" height="135" as="geometry" />
         </mxCell>
-        <mxCell id="tier_pub_query" value="public_query Tier | 10.82.0.0/20 (Public Subnets)&#10;• Origin for CloudFront: Serverless Lambda Function URL / S3 origin (PD-051)&#10;• Security Group CL-PUB-03: Inbound TCP 443 from CloudFront origin prefix list [AUDIT]&#10;• Stateless NACL CL-PUB-04: Inbound TCP 443; outbound ephemeral ports [REVIEW]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;fontColor=#1e3a8a;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="2260" y="555" width="350" height="85" as="geometry" />
+        <mxCell id="tier_pub_query" value="public_query Tier | 10.82.0.0/20 (Public Subnets)&#10;• Origin for CloudFront: Serverless Lambda Function URL / S3 origin (PD-051)&#10;• Security Group CL-PUB-03: Inbound TCP 443 from CloudFront origin prefix list [AUDIT]&#10;• Stateless NACL CL-PUB-04: Inbound TCP 443; outbound ephemeral ports [REVIEW]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=8;spacingLeft=12;fontColor=#1e3a8a;fontSize=11;fontStyle=1;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="2260" y="555" width="350" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="tier_data" value="data Tier | 10.82.64.0/20 (Private Subnets)&#10;• Amazon DynamoDB &amp;amp; S3 Gateway Endpoints (CL-DAT-03 with aws:ResourceOrgID) [REVIEW]&#10;• Stateless NACL CL-DAT-01: DENY ALL from 10.40.0.0/13 (Lowest rule number) [AUDIT]&#10;• Security Group CL-DAT-02: ALLOW Store Port from App Tier only; rest DENY [REVIEW]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;fontColor=#1e3a8a;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="2260" y="675" width="350" height="105" as="geometry" />
+        <mxCell id="tier_data" value="data Tier | 10.82.64.0/20 (Private Subnets)&#10;• Amazon DynamoDB &amp;amp; S3 Gateway Endpoints (CL-DAT-03 with aws:ResourceOrgID) [REVIEW]&#10;• Stateless NACL CL-DAT-01: DENY ALL from 10.40.0.0/13 (Lowest rule number) [AUDIT]&#10;• Security Group CL-DAT-02: ALLOW Store Port from App Tier only; rest DENY [REVIEW]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=6;spacingLeft=10;fontColor=#1e3a8a;fontSize=11;fontStyle=1;spacingRight=8;" vertex="1" parent="1">
+          <mxGeometry x="2260" y="685" width="350" height="105" as="geometry" />
         </mxCell>
-        <mxCell id="tier_drone_reserved" value="drone_object_ingress Tier | 10.82.32.0/20 (Private Subnets)&#10;[RESERVED TIER - NO ENDPOINTS DEPLOYED IN PILOT (ASM-140, closes PD-121)]&#10;• Ground station endpoints sit in application and object_storage tiers&#10;• CC-DRN-02: Inbound traffic from centers explicitly DENIED [AUDIT]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;fontColor=#991b1b;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="2260" y="810" width="350" height="95" as="geometry" />
+        <mxCell id="tier_drone_reserved" value="drone_object_ingress Tier | 10.82.32.0/20 (Private Subnets)&#10;[RESERVED TIER - NO ENDPOINTS DEPLOYED IN PILOT (ASM-140, closes PD-121)]&#10;• Ground station endpoints sit in application and object_storage tiers&#10;• CC-DRN-02: Inbound traffic from centers explicitly DENIED [AUDIT]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=8;spacingLeft=14;fontColor=#991b1b;fontSize=11;fontStyle=1;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="2260" y="810" width="350" height="115" as="geometry" />
         </mxCell>
-        <mxCell id="tier_tel_reserved" value="telemetry_ingress Tier | 10.82.16.0/20 (Private Subnets)&#10;[RESERVED TIER - NO ENDPOINTS DEPLOYED IN PILOT (A10 sec 4.2)]&#10;• Farm telemetry connects directly to public AWS IoT Core (CL-TEL-01)&#10;• CC-TEL-01 / CL-TEL-04: Inbound traffic explicitly DENIED [REVIEW]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;fontColor=#991b1b;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="2260" y="935" width="350" height="105" as="geometry" />
+        <mxCell id="tier_tel_reserved" value="telemetry_ingress Tier | 10.82.16.0/20 (Private Subnets)&#10;[RESERVED TIER - NO ENDPOINTS DEPLOYED IN PILOT (A10 sec 4.2)]&#10;• Farm telemetry connects directly to public AWS IoT Core (CL-TEL-01)&#10;• CC-TEL-01 / CL-TEL-04: Inbound traffic explicitly DENIED [REVIEW]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=8;spacingLeft=14;fontColor=#991b1b;fontSize=11;fontStyle=1;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="2260" y="945" width="350" height="125" as="geometry" />
         </mxCell>
 
         <!-- Non-Production Boundary -->
         <mxCell id="nonprod_box" value="NON-PRODUCTION &amp;amp; PREPARED TARGET ENVIRONMENTS (ISOLATION &amp;amp; AUDIT CONTROLS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=8;spacingLeft=10;fontColor=#0f172a;fontSize=13;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1735" y="1300" width="900" height="175" as="geometry" />
+          <mxGeometry x="1735" y="1310" width="900" height="175" as="geometry" />
         </mxCell>
         <mxCell id="env_qa" value="QA Environment (qa) | 10.81.0.0/16&#10;• QA Application: 10.81.48.0/20&#10;• CC-LNK-06 &amp;amp; CL-LNK-05: Logística acceptance test path [TEMPORARY, AUDIT]&#10;• Static routes on TGW centers &amp;amp; qa; SG rule on TCP 443" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#f59e0b;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;fontColor=#92400e;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1750" y="1340" width="280" height="120" as="geometry" />
+          <mxGeometry x="1750" y="1350" width="280" height="120" as="geometry" />
         </mxCell>
         <mxCell id="env_dev" value="Dev Environment (dev) | 10.80.0.0/16&#10;• Complete network isolation from operational centers&#10;• CL-LNK-04: 10.40.0.0/13 explicitly BLACKHOLED in dev route table [REVIEW]&#10;• Development workloads never reach collection centers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;fontColor=#0f172a;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="2045" y="1340" width="280" height="120" as="geometry" />
+          <mxGeometry x="2045" y="1350" width="280" height="120" as="geometry" />
         </mxCell>
         <mxCell id="env_azure" value="Azure Prepared Target | 10.88.0.0/13&#10;[PREPARED, NOT DEPLOYED (ADR-001)]&#10;• Architecture &amp;amp; addressing planned as secondary target&#10;• Zero cloud resources deployed, zero cross-cloud links or billing in pilot" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=1.5;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;fontColor=#0f172a;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="2340" y="1340" width="280" height="120" as="geometry" />
+          <mxGeometry x="2340" y="1350" width="280" height="120" as="geometry" />
         </mxCell>
 
         <!-- ========================================== -->
@@ -326,16 +326,12 @@
         </mxCell>
 
         <!-- 6. Network Infrastructure RADIUS to Firewall -->
-        <mxCell id="e_bas_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2.2;dashed=1;dashPattern=8 4;endArrow=block;endFill=1;exitX=1;exitY=0.45;entryX=0;entryY=0.49;" edge="1" parent="1" source="node_net_devs" target="fw_device">
+        <mxCell id="e_bas_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2.2;dashed=1;dashPattern=8 4;endArrow=block;endFill=1;exitX=1;exitY=0.45;entryX=0;entryY=0.456;" edge="1" parent="1" source="node_net_devs" target="fw_device">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="500" y="791" />
-              <mxPoint x="585" y="791" />
-            </Array>
-          </mxGeometry>
+            <Array as="points"><mxPoint x="500" y="751" /><mxPoint x="585" y="751" /></Array></mxGeometry>
         </mxCell>
-        <mxCell id="lbl_bas_2" value="CC-BAS-02 | RADIUS (Audit)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=1.2;fontColor=#1e40af;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="445" y="740" width="130" height="22" as="geometry" />
+        <mxCell id="lbl_bas_2" value="CC-BAS-02 | RADIUS (Audit)" style="rounded=1;whiteSpace=nowrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=1.2;fontColor=#1e40af;fontSize=9.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="439" y="740" width="142" height="22" as="geometry" />
         </mxCell>
 
         <!-- 7. Firewall to Switch/AP Management -->
@@ -352,31 +348,21 @@
         </mxCell>
 
         <!-- 8. Staff Denied Direct Management of Network Devs (CC-ADM-03) -->
-        <mxCell id="e_adm_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#dc2626;strokeWidth=2.2;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;exitX=1;exitY=0.85;entryX=1;entryY=0.35;" edge="1" parent="1" source="z_logistica" target="node_net_devs">
+        <mxCell id="e_adm_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#dc2626;strokeWidth=2.2;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;exitX=1;exitY=0.85;entryX=1;entryY=0.22;" edge="1" parent="1" source="z_logistica" target="node_net_devs">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="560" y="680" />
-              <mxPoint x="560" y="785" />
-              <mxPoint x="420" y="785" />
-            </Array>
-          </mxGeometry>
+            <Array as="points"><mxPoint x="508" y="680" /><mxPoint x="508" y="775" /><mxPoint x="420" y="775" /></Array></mxGeometry>
         </mxCell>
-        <mxCell id="lbl_adm_3" value="CC-ADM-03 | DENY (Audit)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=1.2;fontColor=#b91c1c;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="475" y="700" width="135" height="22" as="geometry" />
+        <mxCell id="lbl_adm_3" value="CC-ADM-03 | DENY (Audit)" style="rounded=1;whiteSpace=nowrap;html=1;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=1.2;fontColor=#b91c1c;fontSize=9.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="442" y="669" width="132" height="22" as="geometry" />
         </mxCell>
 
         <!-- 9. Guests Denied Access to Private Management (CC-GST-01..03) -->
         <mxCell id="e_gst_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#dc2626;strokeWidth=2.2;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;exitX=1;exitY=0.15;entryX=1;entryY=0.85;" edge="1" parent="1" source="z_isolated_container" target="z_servidores">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="550" y="1074" />
-              <mxPoint x="550" y="974" />
-              <mxPoint x="435" y="974" />
-            </Array>
-          </mxGeometry>
+            <Array as="points"><mxPoint x="508" y="1074" /><mxPoint x="508" y="974" /><mxPoint x="435" y="974" /></Array></mxGeometry>
         </mxCell>
-        <mxCell id="lbl_gst_1" value="CC-GST-01..03 | DENY (Audit)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=1.2;fontColor=#b91c1c;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="470" y="1010" width="145" height="22" as="geometry" />
+        <mxCell id="lbl_gst_1" value="CC-GST-01..03 | DENY (Audit)" style="rounded=1;whiteSpace=nowrap;html=1;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=1.2;fontColor=#b91c1c;fontSize=9.5;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="440" y="1013" width="136" height="22" as="geometry" />
         </mxCell>
 
         <!-- 10. Guests Capped Web Breakout -->
@@ -546,105 +532,75 @@
         <!-- ============================================== -->
 
         <!-- Inbound Center to Application Tier (CL-APP-01, 03) -->
-        <mxCell id="e_transit_app" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2.2;dashed=1;dashPattern=8 4;endArrow=block;endFill=1;exitX=1;exitY=0.7;entryX=1;entryY=0.25;" edge="1" parent="1" source="tier_transit" target="tier_app">
+        <mxCell id="e_transit_app" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2.2;dashed=1;dashPattern=8 4;endArrow=block;endFill=1;exitX=1;exitY=0.32;entryX=1;entryY=0.25;" edge="1" parent="1" source="tier_transit" target="tier_app">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2115" y="615" />
-              <mxPoint x="2115" y="701" />
-            </Array>
-          </mxGeometry>
+            <Array as="points"><mxPoint x="2120" y="585" /><mxPoint x="2120" y="711" /></Array></mxGeometry>
         </mxCell>
         <mxCell id="lbl_transit_app" value="CL-APP-01, 03&#10;TCP 443 (Audit)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=1.2;fontColor=#1e40af;fontSize=9;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="2095" y="635" width="80" height="26" as="geometry" />
+          <mxGeometry x="2084" y="640" width="74" height="26" as="geometry" />
         </mxCell>
 
         <!-- Inbound Center Deny to Data Tier (CL-DAT-01) -->
-        <mxCell id="e_transit_data_deny" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#dc2626;strokeWidth=2.2;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;exitX=1;exitY=0.4;entryX=0;entryY=0.25;" edge="1" parent="1" source="tier_transit" target="tier_data">
+        <mxCell id="e_transit_data_deny" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#dc2626;strokeWidth=2.2;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;exitX=1;exitY=0.15;entryX=0;entryY=0.25;" edge="1" parent="1" source="tier_transit" target="tier_data">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2235" y="589" />
-              <mxPoint x="2235" y="701" />
-            </Array>
-          </mxGeometry>
+            <Array as="points"><mxPoint x="2240" y="569" /><mxPoint x="2240" y="711" /></Array></mxGeometry>
         </mxCell>
         <mxCell id="lbl_transit_data_deny" value="CL-DAT-01&#10;DENY (Audit)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=1.2;fontColor=#b91c1c;fontSize=9;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="2195" y="635" width="75" height="26" as="geometry" />
+          <mxGeometry x="2205" y="665" width="74" height="26" as="geometry" />
         </mxCell>
 
         <!-- Application Tier to Data Tier (CL-APP-02) -->
-        <mxCell id="e_app_arns" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2.2;dashed=1;dashPattern=8 4;endArrow=block;endFill=1;exitX=1;exitY=0.52;entryX=0;entryY=0.52;" edge="1" parent="1" source="tier_app" target="tier_data">
+        <mxCell id="e_app_arns" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2.2;dashed=1;dashPattern=8 4;endArrow=block;endFill=1;exitX=1;exitY=0.45;entryX=0;entryY=0.45;" edge="1" parent="1" source="tier_app" target="tier_data">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2175" y="730" />
-            </Array>
-          </mxGeometry>
+            <Array as="points"><mxPoint x="2175" y="732" /></Array></mxGeometry>
         </mxCell>
         <mxCell id="lbl_app_arns" value="CL-APP-02 | ARNs (Private)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=1.2;fontColor=#1e40af;fontSize=9;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="2105" y="720" width="140" height="20" as="geometry" />
         </mxCell>
 
         <!-- Application Tier to Data Tier Store Port (CL-DAT-02) -->
-        <mxCell id="e_app_data" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2.2;endArrow=block;endFill=1;exitX=1;exitY=0.81;entryX=0;entryY=0.81;" edge="1" parent="1" source="tier_app" target="tier_data">
+        <mxCell id="e_app_data" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2.2;endArrow=block;endFill=1;exitX=1;exitY=0.75;entryX=0;entryY=0.75;" edge="1" parent="1" source="tier_app" target="tier_data">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2175" y="760" />
-            </Array>
-          </mxGeometry>
+            <Array as="points"><mxPoint x="2175" y="764" /></Array></mxGeometry>
         </mxCell>
         <mxCell id="lbl_app_data" value="CL-DAT-02 | Store Port" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=1.2;fontColor=#1e40af;fontSize=9;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="2105" y="750" width="140" height="20" as="geometry" />
         </mxCell>
 
         <!-- Inbound Center to Object Storage Tier (CL-DRN-01, 04) -->
-        <mxCell id="e_transit_storage" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2.2;dashed=1;dashPattern=8 4;endArrow=block;endFill=1;exitX=1;exitY=0.8;entryX=1;entryY=0.5;" edge="1" parent="1" source="tier_transit" target="tier_storage">
+        <mxCell id="e_transit_storage" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2.2;dashed=1;dashPattern=8 4;endArrow=block;endFill=1;exitX=1;exitY=0.66;entryX=1;entryY=0.35;" edge="1" parent="1" source="tier_transit" target="tier_storage">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2115" y="623" />
-              <mxPoint x="2115" y="857" />
-            </Array>
-          </mxGeometry>
+            <Array as="points"><mxPoint x="2135" y="618" /><mxPoint x="2135" y="850" /></Array></mxGeometry>
         </mxCell>
         <mxCell id="lbl_transit_storage" value="CL-DRN-01, 04&#10;TCP 443 (Audit)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=1.2;fontColor=#1e40af;fontSize=9;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="2095" y="820" width="85" height="26" as="geometry" />
+          <mxGeometry x="2096" y="755" width="78" height="26" as="geometry" />
         </mxCell>
 
         <!-- Inbound Center Deny to Drone Reserved Tier (CL-DRN-04) -->
-        <mxCell id="e_transit_drone_deny" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#dc2626;strokeWidth=2.2;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="tier_transit" target="tier_drone_reserved">
+        <mxCell id="e_transit_drone_deny" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#dc2626;strokeWidth=2.2;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;exitX=1;exitY=0.49;entryX=0;entryY=0.35;" edge="1" parent="1" source="tier_transit" target="tier_drone_reserved">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2235" y="597" />
-              <mxPoint x="2235" y="857" />
-            </Array>
-          </mxGeometry>
+            <Array as="points"><mxPoint x="2225" y="602" /><mxPoint x="2225" y="850" /></Array></mxGeometry>
         </mxCell>
         <mxCell id="lbl_transit_drone_deny" value="CL-DRN-04&#10;DENY Reserved" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=1.2;fontColor=#b91c1c;fontSize=9;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="2195" y="820" width="75" height="26" as="geometry" />
+          <mxGeometry x="2195" y="785" width="74" height="26" as="geometry" />
         </mxCell>
 
         <!-- Inbound Center to Administration Tier (CL-ADM-01, 02) -->
-        <mxCell id="e_transit_admin" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2.2;dashed=1;dashPattern=8 4;endArrow=block;endFill=1;exitX=1;exitY=0.9;entryX=1;entryY=0.5;" edge="1" parent="1" source="tier_transit" target="tier_admin">
+        <mxCell id="e_transit_admin" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2.2;dashed=1;dashPattern=8 4;endArrow=block;endFill=1;exitX=1;exitY=0.95;entryX=1;entryY=0.35;" edge="1" parent="1" source="tier_transit" target="tier_admin">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2115" y="631" />
-              <mxPoint x="2115" y="987" />
-            </Array>
-          </mxGeometry>
+            <Array as="points"><mxPoint x="2150" y="645" /><mxPoint x="2150" y="985" /></Array></mxGeometry>
         </mxCell>
         <mxCell id="lbl_transit_admin" value="CL-ADM-01, 02&#10;DNS/Logs (Audit)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=1.2;fontColor=#1e40af;fontSize=9;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="2095" y="945" width="85" height="26" as="geometry" />
+          <mxGeometry x="2095" y="885" width="80" height="26" as="geometry" />
         </mxCell>
 
         <!-- Inbound Center Deny to Telemetry Reserved Tier (CL-TEL-04) -->
-        <mxCell id="e_tel_deny" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#dc2626;strokeWidth=2.2;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;exitX=1;exitY=0.6;entryX=0;entryY=0.5;" edge="1" parent="1" source="tier_transit" target="tier_tel_reserved">
+        <mxCell id="e_tel_deny" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#dc2626;strokeWidth=2.2;dashed=1;dashPattern=6 3;endArrow=block;endFill=1;exitX=1;exitY=0.82;entryX=0;entryY=0.35;" edge="1" parent="1" source="tier_transit" target="tier_tel_reserved">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2235" y="606" />
-              <mxPoint x="2235" y="987" />
-            </Array>
-          </mxGeometry>
+            <Array as="points"><mxPoint x="2210" y="633" /><mxPoint x="2210" y="989" /></Array></mxGeometry>
         </mxCell>
         <mxCell id="lbl_tel_deny" value="CL-TEL-04&#10;DENY Reserved" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=1.2;fontColor=#b91c1c;fontSize=9;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="2195" y="945" width="75" height="26" as="geometry" />
+          <mxGeometry x="2190" y="920" width="74" height="26" as="geometry" />
         </mxCell>
 
         <!-- Cloud Defense Explicit Egress Deny (CL-EGR-01) -->
@@ -654,7 +610,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="lbl_egr_deny" value="CL-EGR-01 | DENY Internet Egress - No NAT GW" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#fca5a5;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=1;fontColor=#991b1b;spacing=2;" vertex="1" parent="1">
-          <mxGeometry x="1815" y="1225" width="210" height="22" as="geometry" />
+          <mxGeometry x="1815" y="1240" width="210" height="22" as="geometry" />
         </mxCell>
 
       </root>
