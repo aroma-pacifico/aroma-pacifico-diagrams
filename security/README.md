@@ -123,24 +123,6 @@ The sequence diagram details the three core operational authentication and revoc
 
 ---
 
-## 4. Architectural Decisions and Traceability
-
-All values, configurations, and boundaries depicted in these diagrams are grounded directly in the referenced architecture specifications and registered decision-log entries:
-- **ASM-090**: Amazon Cognito user pools on the Essentials plan in `us-east-1` with dual `staff` and `field` pools per environment in the workload account.
-- **ASM-091**: Justified absence of MFA for farmers and transporters; passwordless SMS one-time codes with keystore encryption and server-side dynamic scoping.
-- **ASM-092**: Token lifetimes (staff: 30m access/ID, 12h refresh; field: 60m access/ID, 30d refresh; buyer refresh: 1d) and 10-minute step-up requirement for sensitive staff operations.
-- **ASM-093**: Drone kit paired ground station identity in AWS IoT Core; kit upload grants with 15-minute pre-signed URLs.
-- **ASM-094**: 80-bit random Crockford Base32 sack code with check symbol printed with public lookup QR code.
-- **ASM-095**: Edge outbox encryption with phone hardware keystore; contracted drone operator encrypts ground station storage.
-- **ASM-096**: Buyer view granularity restricted strictly to origin, processing dates, status, and drying variables.
-- **ASM-097**: One customer-managed key per data class and environment, with automatic 365-day rotation.
-- **ASM-098**: Retention clock of 5 years for personal data, reporting duty as soon as known, and 4-hour target cloud revocation SLA.
-- **ASM-099**: Single role per identity; threshold configuration and enrollment restricted to platform operators.
-- **ASM-154**: Isolated `public_view` KMS key encrypting the `buyer_view` projection table.
-- **ASM-155**: Public lookup AWS WAF rate limit ($\le$ 100 req/5 min per source IP) and reserved concurrency of 10.
-- **ASM-165**: Restricted drone object prefix (`restricted/`) with isolated CMK `restricted` denying all function execution roles.
-- **PD-100**: Live verification of AWS IoT Core revocation mechanics and MQTT session termination within minutes of leaving ACTIVE.
-
 ## 4. Perimeter and Cloud Firewall Policy Architecture (`firewall-policy.drawio`)
 
 ### What It Shows
@@ -152,7 +134,7 @@ The architecture diagram illustrates the end-to-end perimeter and cloud firewall
    - *Logística (`10.4x.3.0/24`, VLAN 103, WPA3-Enterprise)*: Coffee intake workstations, barcode scanners, and code-sheet printers.
    - *Servidores locales (`10.4x.10.0/24`, VLAN 110, Wired)*: Core switches, access points, network code-sheet printers (`.50` to `.59`), and temporary commissioning laptop (`.60`).
    - *Internet-Only Isolated Context (VRF)*: Separate guest and transporter wireless networks (*Transporte `10.4x.4.0/24`*, *Visitantes `10.4x.5.0/24`*) strictly denied routing to logistics, management, or internal networks.
-   - *Perimeter Firewall (`10.4x.20.1`)*: Enforces local gateway services (DHCP, DNS, NTP), priority queue bandwidth shaping (2 Mbps network, 15 Mbps logistics, 20 Mbps drone, 25 Mbps staff, 8 Mbps guest), and WAN interfaces.
+   - *Perimeter Firewall (`10.4x.20.1`)*: Enforces local gateway services (DHCP, DNS, NTP), priority queue bandwidth shaping (Network 2M, Logistics 44M, Drone 20M, Staff 28M, non-operational 30M down cap), and WAN interfaces.
 2. **Public Internet & Central Transit Hub**:
    - *Public Clients*: Farm field nodes (telemetry via MQTT/TLS), transporter and farmer mobile apps (Cognito-authenticated REST APIs), public sack lookup consumers (CloudFront/WAF rate-limited 30/min), and municipal drone operators.
    - *AWS Network Account Central Transit Hub (`tgw-aroma-hub`)*: Route tables for `centers`, `pdn`, `dev`, and `qa`; AWS Site-to-Site VPN attachments (IKEv2, UDP 500/4500, IP 50 ESP); customer-managed prefix lists shared via AWS RAM (`cc-firewalls`, `cc-staff`, `cc-logistics`, `cc-ground-stations`, `cc-device-mgmt`).
