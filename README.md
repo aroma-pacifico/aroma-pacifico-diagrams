@@ -232,7 +232,7 @@ The `pipelines/` package details ingestion pipelines and the multi-environment T
 
 - **Vector SVG:** [`pipelines/iac-provisioning-sequence.svg`](pipelines/iac-provisioning-sequence.svg)
 - **Draw.io Source:** [`pipelines/iac-provisioning-sequence.drawio`](pipelines/iac-provisioning-sequence.drawio)
-- Sequence diagram detailing controlled multi-environment promotion (dev -> qa -> pdn), plan-only guard enforcement (ASM-320), harvest blackout verification (05:00–18:00 Colombia time, ASM-007, ASM-178), two-step production workflow approval binding two named humans to the SHA-256 plan digest (PD-020, ASM-172), and proposed provisioning in strict dependency order (state-backend -> network -> security -> workload), derived from `docs/cd-pipeline.md` §1-5.
+- Sequence diagram detailing controlled multi-environment promotion (dev -> qa -> pdn), plan-only guard enforcement (ASM-320), harvest blackout verification (05:00–18:00 Colombia time, ASM-007, ASM-178), two-step production workflow approval binding two named humans to the SHA-256 plan digest (PD-020, ASM-172), and provisioning in strict dependency order (state-backend -> network -> security -> workload), derived from `docs/cd-pipeline.md` §1-5.
 
 ### IaC Teardown & Rollback Sequence
 
@@ -240,7 +240,7 @@ The `pipelines/` package details ingestion pipelines and the multi-environment T
 
 - **Vector SVG:** [`pipelines/iac-teardown-and-rollback-sequence.svg`](pipelines/iac-teardown-and-rollback-sequence.svg)
 - **Draw.io Source:** [`pipelines/iac-teardown-and-rollback-sequence.drawio`](pipelines/iac-teardown-and-rollback-sequence.drawio)
-- Sequence diagram detailing emergency rollback by reverting and re-promoting with inverted speculative plan review (ASM-174, ASM-184), pre-teardown verification of 5-year data retention compliance guards (DynamoDB deletion protection, S3 Object Lock Compliance Mode, central audit archive, and remote state persistence safeguard), and proposed environment teardown in reverse stack dependency order (workload -> security -> network -> state-backend), derived from `docs/cd-pipeline.md` §7.
+- Sequence diagram detailing emergency rollback by reverting and re-promoting with inverted speculative plan review (ASM-174, ASM-184), pre-teardown verification of 5-year data retention compliance guards (DynamoDB deletion protection, S3 Object Lock Compliance Mode, central audit archive, and remote state persistence safeguard), and environment teardown in reverse stack dependency order (workload -> security -> network -> state-backend), derived from `docs/cd-pipeline.md` §7.
 
 ---
 
