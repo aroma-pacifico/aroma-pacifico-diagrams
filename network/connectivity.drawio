@@ -125,6 +125,7 @@
         <mxCell id="c118" value="&lt;b&gt;10.88.0.0/13&lt;/b&gt;&lt;br&gt;export target only" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1500" y="995" width="270" height="50" as="geometry"/></mxCell>
         <mxCell id="c119" value="Without signal" style="rounded=1;arcSize=3;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=16;fontStyle=1;fontColor=#5A6B86;strokeColor=#5A6B86;fillColor=none;strokeWidth=1.5;dashed=0;align=left;verticalAlign=top;spacingLeft=12;spacingTop=6;container=0;" vertex="1" parent="1"><mxGeometry x="800" y="940" width="540" height="140" as="geometry"/></mxCell>
         <mxCell id="c120" value="Nodes keep 24 h, then drain oldest first&lt;br&gt;Apps and drone keep data until ACK&lt;br&gt;Duplicates absorbed by idempotent keys" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=left;verticalAlign=top;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="820" y="975" width="510" height="120" as="geometry"/></mxCell>
+        <mxCell id="c121" value="D06" style="rounded=1;arcSize=20;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#FFFFFF;fillColor=#E07B00;strokeColor=none;align=center;verticalAlign=middle;" vertex="1" parent="1"><mxGeometry x="896" y="578" width="41" height="24" as="geometry"/></mxCell>
       </root>
     </mxGraphModel>
   </diagram>

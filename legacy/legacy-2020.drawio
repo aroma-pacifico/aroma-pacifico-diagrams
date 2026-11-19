@@ -165,6 +165,7 @@
         <mxCell id="c158" value="" style="rounded=1;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;strokeColor=#C9D1DA;fillColor=#FFFFFF;strokeWidth=1.2;dashed=0;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="1660" y="1215" width="300" height="160" as="geometry"/></mxCell>
         <mxCell id="c159" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3E;strokeColor=none;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.mobile_client;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="1782" y="1237" width="56" height="56" as="geometry"/></mxCell>
         <mxCell id="c160" value="&lt;b&gt;New design system&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1670" y="1311" width="280" height="26" as="geometry"/></mxCell>
+        <mxCell id="c161" value="D06" style="rounded=1;arcSize=20;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#FFFFFF;fillColor=#E07B00;strokeColor=none;align=center;verticalAlign=middle;" vertex="1" parent="1"><mxGeometry x="1474.5" y="1341" width="41" height="24" as="geometry"/></mxCell>
       </root>
     </mxGraphModel>
   </diagram>
