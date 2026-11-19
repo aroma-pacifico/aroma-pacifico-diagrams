@@ -76,64 +76,64 @@
         <mxCell id="ic_src" value="" style="shape=image;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxMCIgZmlsbD0iIzI0MjkyZiIvPgogIDxnIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPGNpcmNsZSBjeD0iMjIiIGN5PSIxOCIgcj0iNC41IiBmaWxsPSIjZmZmZmZmIi8+CiAgICA8Y2lyY2xlIGN4PSIyMiIgY3k9IjQ2IiByPSI0LjUiIGZpbGw9IiNmZmZmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjQzIiBjeT0iMjQiIHI9IjQuNSIgZmlsbD0iIzM4YmRmOCIgc3Ryb2tlPSIjMzhiZGY4Ii8+CiAgICA8bGluZSB4MT0iMjIiIHkxPSIyMi41IiB4Mj0iMjIiIHkyPSI0MS41Ii8+CiAgICA8cGF0aCBkPSJNMjIgMzYgQzIyIDI5LCA0MyAzMiwgNDMgMjguNSIgc3Ryb2tlPSIjMzhiZGY4Ii8+CiAgPC9nPgo8L3N2Zz4=;imageAspect=1;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontColor=#0f172a;fontSize=13;fontFamily=Helvetica;spacingTop=4;" vertex="1" parent="1">
           <mxGeometry x="192" y="188" width="52" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="chip_10" value="terraform-modules (Public · vX.Y.Z)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_10" value="terraform-modules (Public · vX.Y.Z)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="72" y="266" width="292" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="chip_11" value="infrastructure (Private · stacks)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_11" value="infrastructure (Private · stacks)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="72" y="308" width="292" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="chip_12" value="platform (Private · Lambdas)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_12" value="platform (Private · Lambdas)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="72" y="350" width="292" height="34" as="geometry" />
         </mxCell>
         <mxCell id="ic_rc" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;outlineConnect=0;fontColor=#0f172a;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
           <mxGeometry x="572" y="188" width="52" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="chip_13" value="Built once per release tag" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_13" value="Built once per release tag" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="452" y="266" width="292" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="chip_14" value="SHA-256 pinned (releases.tfvars)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_14" value="SHA-256 pinned (releases.tfvars)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="452" y="308" width="292" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="chip_15" value="Zero rebuilds across envs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_15" value="Zero rebuilds across envs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="452" y="350" width="292" height="34" as="geometry" />
         </mxCell>
         <mxCell id="ic_dev" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.codebuild;outlineConnect=0;fontColor=#0f172a;fillColor=#3B48CC;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
           <mxGeometry x="952" y="188" width="52" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="chip_16" value="CI gates (fmt, tflint, trivy, test)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_16" value="CI gates (fmt, tflint, trivy, test)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="832" y="266" width="292" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="chip_17" value="Floci speculative plan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_17" value="Floci speculative plan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="832" y="308" width="292" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="chip_18" value="LambdaAllAtOnce + smoke tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_18" value="LambdaAllAtOnce + smoke tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="832" y="350" width="292" height="34" as="geometry" />
         </mxCell>
         <mxCell id="ic_qa" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.vpc;outlineConnect=0;fontColor=#0f172a;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
           <mxGeometry x="1332" y="188" width="52" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="chip_19" value="Pattern topology + synthetic suite" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_19" value="Pattern topology + synthetic suite" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="1212" y="266" width="292" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="chip_20" value="1 peer review (SR1/SR2/JR1/JR2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_20" value="1 peer review (SR1/SR2/JR1/JR2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="1212" y="308" width="292" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="chip_21" value="Canary 10% for 5 min" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_21" value="Canary 10% for 5 min" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="1212" y="350" width="292" height="34" as="geometry" />
         </mxCell>
         <mxCell id="ic_pdn" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.single_sign_on;outlineConnect=0;fontColor=#0f172a;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
           <mxGeometry x="1712" y="188" width="52" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="chip_22" value="1. SR1/SR2 Four-Eyes approval" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#fca5a5;strokeWidth=1;fontColor=#7f1d1d;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_22" value="1. SR1/SR2 Four-Eyes approval" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#fca5a5;strokeWidth=1;fontColor=#7f1d1d;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="1592" y="256" width="292" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="chip_23" value="2. 2-day Federation notice" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#fca5a5;strokeWidth=1;fontColor=#7f1d1d;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_23" value="2. 2-day Federation notice" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#fca5a5;strokeWidth=1;fontColor=#7f1d1d;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="1592" y="290" width="292" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="chip_24" value="3. Blackout 05:00-18:00 harvest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#fca5a5;strokeWidth=1;fontColor=#7f1d1d;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_24" value="3. Blackout 05:00-18:00 harvest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#fca5a5;strokeWidth=1;fontColor=#7f1d1d;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="1592" y="324" width="292" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="chip_25" value="4. Fresh plan + QA acceptance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#fca5a5;strokeWidth=1;fontColor=#7f1d1d;fontSize=11.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+        <mxCell id="chip_25" value="4. Fresh plan + QA acceptance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#fca5a5;strokeWidth=1;fontColor=#7f1d1d;fontSize=12;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
           <mxGeometry x="1592" y="358" width="292" height="28" as="geometry" />
         </mxCell>
         <mxCell id="step_26" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1d4ed8;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" vertex="1" parent="1">
@@ -208,8 +208,11 @@
         <mxCell id="bi_sec" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.secrets_manager;outlineConnect=0;fontColor=#0f172a;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
           <mxGeometry x="185" y="564" width="42" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="bt_sec" value="• GitHub OIDC (plan/apply); BreakGlass SSO only&lt;br/&gt;• S3 state bucket + native lock (KMS)&lt;br/&gt;• Secrets Manager &amp;amp; SSM (no git secrets)" style="text;html=1;align=left;verticalAlign=top;fontSize=12;fontColor=#334155;fontFamily=Helvetica;strokeColor=none;fillColor=none;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="72" y="614" width="410" height="66" as="geometry" />
+        <mxCell id="bt_sec_chip1" value="GitHub OIDC roles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+          <mxGeometry x="73" y="624" width="198" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bt_sec_chip2" value="KMS state + secrets" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+          <mxGeometry x="286" y="624" width="198" height="40" as="geometry" />
         </mxCell>
         <mxCell id="bi_cd" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.codedeploy;outlineConnect=0;fontColor=#0f172a;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
           <mxGeometry x="542" y="564" width="42" height="42" as="geometry" />
@@ -217,8 +220,11 @@
         <mxCell id="bi_lam" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;outlineConnect=0;fontColor=#0f172a;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
           <mxGeometry x="597" y="564" width="42" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="bt_can" value="• LambdaCanary10Percent5Minutes (qa &amp;amp; pdn)&lt;br/&gt;• 10% traffic -&gt; 5m bake -&gt; 90% shift&lt;br/&gt;• Keep 5 versions (Threshold, Reception, Inference)" style="text;html=1;align=left;verticalAlign=top;fontSize=12;fontColor=#334155;fontFamily=Helvetica;strokeColor=none;fillColor=none;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="539" y="614" width="410" height="66" as="geometry" />
+        <mxCell id="bt_can_chip1" value="10% for 5 min" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+          <mxGeometry x="540" y="624" width="198" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bt_can_chip2" value="Keep 5 versions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+          <mxGeometry x="753" y="624" width="198" height="40" as="geometry" />
         </mxCell>
         <mxCell id="bi_cw" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_2;outlineConnect=0;fontColor=#0f172a;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
           <mxGeometry x="1009" y="564" width="42" height="42" as="geometry" />
@@ -226,8 +232,11 @@
         <mxCell id="bi_al" value="" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.alarm;outlineConnect=0;fontColor=#0f172a;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
           <mxGeometry x="1064" y="564" width="42" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="bt_obs" value="• Rollback alarms: errors, throttles, DLQ &amp;gt; 0, 5XX&lt;br/&gt;• Auto alias rollback (&amp;lt; 10m); manual (&amp;lt; 30m)&lt;br/&gt;• Git revert re-promotion (&amp;lt; 2h) + DLQ redrive" style="text;html=1;align=left;verticalAlign=top;fontSize=12;fontColor=#334155;fontFamily=Helvetica;strokeColor=none;fillColor=none;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="1006" y="614" width="410" height="66" as="geometry" />
+        <mxCell id="bt_obs_chip1" value="Alarms trigger rollback" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1007" y="624" width="198" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bt_obs_chip2" value="Auto rollback &amp;lt; 10m" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="624" width="198" height="40" as="geometry" />
         </mxCell>
         <mxCell id="bi_clk" value="" style="shape=mxgraph.aws4.event_time_based;outlineConnect=0;fontColor=#0f172a;fillColor=#0f766e;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
           <mxGeometry x="1476" y="564" width="42" height="42" as="geometry" />
@@ -235,8 +244,11 @@
         <mxCell id="bi_usr" value="" style="shape=mxgraph.aws4.user;outlineConnect=0;fontColor=#0f172a;fillColor=#0f766e;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
           <mxGeometry x="1531" y="564" width="42" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="bt_win" value="• Harvest blackout: 05:00-18:00 Colombia time&lt;br/&gt;• Incident override: SR1/SR2 + INC-YYYYMMDD-NN&lt;br/&gt;• Forward-only backward-compatible schemas" style="text;html=1;align=left;verticalAlign=top;fontSize=12;fontColor=#334155;fontFamily=Helvetica;strokeColor=none;fillColor=none;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="1473" y="614" width="410" height="66" as="geometry" />
+        <mxCell id="bt_win_chip1" value="Harvest blackout 05-18h" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1474" y="624" width="198" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bt_win_chip2" value="Forward-only schemas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;strokeWidth=1;fontColor=#1e293b;fontSize=12.5;fontFamily=Helvetica;align=center;verticalAlign=middle;arcSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1687" y="624" width="198" height="40" as="geometry" />
         </mxCell>
         <mxCell id="legend_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;strokeWidth=1.2;arcSize=12;" vertex="1" parent="1">
           <mxGeometry x="30" y="724" width="1900" height="44" as="geometry" />
