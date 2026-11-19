@@ -1,123 +1,147 @@
-<mxfile host="app.diagrams.net" version="32.4.1" type="device">
+<mxfile host="Electron" modified="2026-11-18T00:00:00.000Z" agent="Mozilla/5.0 AromaPacifico" version="32.4.1" type="device">
   <diagram id="transporter-position" name="Transporter position and offline events">
-    <mxGraphModel dx="2900" dy="1100" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="2900" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1880" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1880" pageHeight="720" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="title" value="Transporter position and offline events" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontStyle=1;fontColor=#102a43;" vertex="1" parent="1">
-          <mxGeometry x="40" y="20" width="2820" height="45" as="geometry" />
+        <mxCell id="title" value="Transporter position and offline events" style="text;html=1;align=left;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="16" width="1820" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="subtitle" value="The phone persists each fix and custody event before upload; reconnect preserves the trip timeline and event identity." style="text;html=1;align=left;verticalAlign=middle;fontSize=18;fontColor=#334e68;" vertex="1" parent="1">
-          <mxGeometry x="40" y="70" width="2820" height="55" as="geometry" />
+        <mxCell id="subtitle" value="Phone outbox persists GNSS fixes and custody events offline, draining custody first on reconnect" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=0;fontColor=#475569;fontFamily=Helvetica;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="50" width="1820" height="22" as="geometry" />
         </mxCell>
-        <mxCell id="phone" value="TRANSPORTER PHONE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=24;fontStyle=1;align=left;verticalAlign=top;spacingLeft=60;spacingTop=35;" vertex="1" parent="1">
-          <mxGeometry x="40" y="250" width="580" height="420" as="geometry" />
+        <mxCell id="grp_phone" value="Transporter Mobile Device" style="shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_on_premise;verticalAlign=top;align=left;grIconSize=36;spacingLeft=42;spacingTop=6;fontSize=14;fontStyle=1;fontFamily=Helvetica;fontColor=#1e293b;strokeColor=#475569;strokeWidth=1.8;fillColor=#f8fafc;dashed=0;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;rounded=1;arcSize=3;html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="96" width="440" height="385" as="geometry" />
         </mxCell>
-        <mxCell id="center" value="COLLECTION CENTER | optional yard access" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=15;" vertex="1" parent="1">
-          <mxGeometry x="680" y="250" width="570" height="340" as="geometry" />
+        <mxCell id="phone_app" value="&lt;b&gt;Transporter app&lt;/b&gt;&lt;br/&gt;&lt;font color='#475569' style='font-size:12px'&gt;GNSS fix / 5 min&lt;/font&gt;" style="shape=mxgraph.aws4.mobile_client;outlineConnect=0;fontColor=#0f172a;fillColor=#1d4ed8;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="85" y="200" width="50" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="acct" value="AWS workload account | production (pdn)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=15;" vertex="1" parent="1">
-          <mxGeometry x="1530" y="250" width="1280" height="680" as="geometry" />
+        <mxCell id="outbox" value="&lt;b&gt;Encrypted outbox&lt;/b&gt;&lt;br/&gt;&lt;font color='#475569' style='font-size:12px'&gt;&amp;gt;= 7d (2,016 fixes)&lt;/font&gt;" style="shape=mxgraph.aws4.ssl_padlock;outlineConnect=0;fontColor=#0f172a;fillColor=#0f766e;strokeColor=none;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingBottom=4;" vertex="1" parent="1">
+          <mxGeometry x="310" y="200" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="vpc" value="VPC | private application and data tiers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f8fc;strokeColor=#61788d;strokeWidth=2;fontColor=#172b4d;fontSize=18;fontStyle=1;align=left;verticalAlign=top;spacing=15;" vertex="1" parent="1">
-          <mxGeometry x="1570" y="320" width="1190" height="510" as="geometry" />
+        <mxCell id="step_1" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1d4ed8;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="210" y="190" width="24" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="gnss" value="GNSS position every 5 minutes&#10;while trip is open" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="65" y="350" width="220" height="115" as="geometry" />
+        <mxCell id="edge_2" value="Persist first" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e293b;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontColor=#0f172a;fontSize=12;fontStyle=1;fontFamily=Helvetica;labelBackgroundColor=#ffffff;labelBorderColor=none;spacing=4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="phone_app" target="outbox">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="outbox" value="Encrypted app outbox&#10;No time-based eviction&#10;Custody events first on reconnect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="340" y="340" width="245" height="150" as="geometry" />
+        <mxCell id="offline_rules" value="&lt;b&gt;No data: hold locally&lt;/b&gt;&lt;br/&gt;&lt;font color='#78350f'&gt;Custody drains first · never dropped&lt;br/&gt;Thin positions to 15 min only if full&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=1.5;dashed=1;dashPattern=6 4;fontSize=12;fontColor=#78350f;fontFamily=Helvetica;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="75" y="365" width="350" height="78" as="geometry" />
         </mxCell>
-        <mxCell id="vlan" value="Transport zone 10.4x.4.0/24&#10;Internet-only local breakout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="720" y="330" width="210" height="130" as="geometry" />
+        <mxCell id="edge_3" value="Offline hold" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;dashed=1;dashPattern=6 4;endArrow=block;endFill=1;fontColor=#0f172a;fontSize=12;fontStyle=1;fontFamily=Helvetica;labelBackgroundColor=#ffffff;labelBorderColor=none;spacing=4;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="outbox" target="offline_rules">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="fw" value="Center firewall&#10;No VPN route for transporter traffic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="980" y="330" width="210" height="130" as="geometry" />
+        <mxCell id="cell_tower" value="&lt;b&gt;Mobile network&lt;/b&gt;&lt;br/&gt;&lt;font color='#475569' style='font-size:12px'&gt;Primary path&lt;/font&gt;" style="shape=mxgraph.networks.radio_tower;outlineConnect=0;fontColor=#0f172a;fillColor=#334155;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="565" y="175" width="48" height="62" as="geometry" />
         </mxCell>
-        <mxCell id="net" value="Public mobile network&#10;and internet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="1320" y="280" width="210" height="120" as="geometry" />
+        <mxCell id="public_inet" value="&lt;b&gt;Public internet&lt;/b&gt;&lt;br/&gt;&lt;font color='#475569' style='font-size:12px'&gt;API front door&lt;/font&gt;" style="shape=mxgraph.networks.cloud;outlineConnect=0;fontColor=#0f172a;fillColor=#475569;strokeColor=none;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingBottom=4;" vertex="1" parent="1">
+          <mxGeometry x="735" y="182" width="72" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="api" value="API Gateway" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#52708a;fontColor=#172b4d;fontSize=17;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1640" y="440" width="155" height="155" as="geometry" />
+        <mxCell id="grp_yard" value="Collection Center Yard (Optional)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f9ff;strokeColor=#0284c7;strokeWidth=1.8;dashed=1;dashPattern=6 4;fontColor=#0369a1;fontSize=14;fontStyle=1;fontFamily=Helvetica;align=left;verticalAlign=top;spacingLeft=14;spacingTop=10;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="510" y="345" width="360" height="210" as="geometry" />
         </mxCell>
-        <mxCell id="ingest" value="Position + custody ingestion&#10;Validate caller; deduplicate event_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="1920" y="440" width="260" height="125" as="geometry" />
+        <mxCell id="yard_ap" value="&lt;b&gt;Transport SSID&lt;/b&gt;&lt;br/&gt;&lt;font color='#475569' style='font-size:12px'&gt;Yard Wi-Fi&lt;/font&gt;" style="shape=mxgraph.aws4.office_building;outlineConnect=0;fontColor=#0f172a;fillColor=#0369a1;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="555" y="405" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="store" value="DynamoDB transport_positions table&#10;Key: trip_id + sequence_no&#10;Five-year retention; idempotent event_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="2240" y="435" width="240" height="135" as="geometry" />
+        <mxCell id="yard_fw" value="&lt;b&gt;Center firewall&lt;/b&gt;&lt;br/&gt;&lt;font color='#475569' style='font-size:12px'&gt;Local breakout (no VPN)&lt;/font&gt;" style="shape=mxgraph.networks.firewall;outlineConnect=0;fontColor=#0f172a;fillColor=#0369a1;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="745" y="403" width="54" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="consumer" value="Trip trace + sack history&#10;transporter and center ops" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="2580" y="440" width="250" height="125" as="geometry" />
+        <mxCell id="step_4" value="2" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1d4ed8;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="485" y="165" width="24" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="offline" value="NO DATA: persist transport_position and sack_custody locally.&#10;Reconnect: custody first, then positions oldest first.&#10;Thin positions to 15 minutes only after capacity exhaustion." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#52708a;strokeWidth=2;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="680" y="660" width="820" height="145" as="geometry" />
+        <mxCell id="edge_5" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e293b;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontColor=#0f172a;fontSize=12;fontStyle=1;fontFamily=Helvetica;labelBackgroundColor=#ffffff;labelBorderColor=none;spacing=4;exitX=1;exitY=0.11;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="outbox" target="cell_tower">
+          <mxGeometry x="-0.4" relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="gnss" target="outbox">
-          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48" />
+        <mxCell id="edge_6" value="TLS 1.2+" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e293b;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontColor=#0f172a;fontSize=12;fontStyle=1;fontFamily=Helvetica;labelBackgroundColor=#ffffff;labelBorderColor=none;spacing=4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="cell_tower" target="public_inet">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;exitX=0.5;exitY=0;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" edge="1" parent="1" source="outbox" target="net">
-          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48">
-            <Array as="points"><mxPoint x="462" y="180" /><mxPoint x="1425" y="180" /></Array></mxGeometry>
-        </mxCell>
-        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;dashed=1;dashPattern=8 6;strokeColor=#61788d;" edge="1" parent="1" source="vlan" target="fw">
-          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48" />
-        </mxCell>
-        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#61788d;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;dashed=1;dashPattern=8 6;exitX=1;exitY=0.077;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="fw" target="net">
-          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48">
+        <mxCell id="edge_7" value="Yard Wi-Fi" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284c7;strokeWidth=2;dashed=1;dashPattern=6 4;endArrow=block;endFill=1;fontColor=#0f172a;fontSize=12;fontStyle=1;fontFamily=Helvetica;labelBackgroundColor=#ffffff;labelBorderColor=none;spacing=4;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="outbox" target="yard_ap">
+          <mxGeometry x="-0.683" relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1190" y="340" />
-              <mxPoint x="1320" y="340" />
+              <mxPoint x="485" y="242" />
+              <mxPoint x="485" y="429" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.75;exitPerimeter=1;entryX=0;entryY=0.3;entryPerimeter=1;" edge="1" parent="1" source="net" target="api">
-          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48">
-            <Array as="points"><mxPoint x="1580" y="370" /><mxPoint x="1580" y="486" /></Array></mxGeometry>
+        <mxCell id="edge_8" value="Breakout" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284c7;strokeWidth=2;dashed=1;dashPattern=6 4;endArrow=block;endFill=1;fontColor=#0f172a;fontSize=12;fontStyle=1;fontFamily=Helvetica;labelBackgroundColor=#ffffff;labelBorderColor=none;spacing=4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="yard_ap" target="yard_fw">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="api" target="ingest">
-          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48" />
+        <mxCell id="edge_9" value="Public exit" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284c7;strokeWidth=2;dashed=1;dashPattern=6 4;endArrow=block;endFill=1;fontColor=#0f172a;fontSize=12;fontStyle=1;fontFamily=Helvetica;labelBackgroundColor=#ffffff;labelBorderColor=none;spacing=4;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="yard_fw" target="public_inet">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="ingest" target="store">
-          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48" />
+        <mxCell id="grp_aws" value="AWS Cloud" style="shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud_alt;verticalAlign=top;align=left;grIconSize=36;spacingLeft=42;spacingTop=6;fontSize=14;fontStyle=1;fontFamily=Helvetica;fontColor=#232F3E;strokeColor=#232F3E;strokeWidth=1.8;fillColor=none;dashed=0;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;rounded=1;arcSize=3;html=1;" vertex="1" parent="1">
+          <mxGeometry x="910" y="96" width="940" height="495" as="geometry" />
         </mxCell>
-        <mxCell id="e8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;whiteSpace=wrap;exitX=1;exitY=0.5;exitPerimeter=1;entryX=0;entryY=0.5;entryPerimeter=1;" edge="1" parent="1" source="store" target="consumer">
-          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48" />
+        <mxCell id="grp_region" value="Region us-east-1  |  Workload Account (pdn)" style="shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_region;verticalAlign=top;align=left;grIconSize=36;spacingLeft=42;spacingTop=6;fontSize=14;fontStyle=1;fontFamily=Helvetica;fontColor=#0E82B8;strokeColor=#0E82B8;strokeWidth=1.8;fillColor=#f8fafc;dashed=1;dashPattern=6 4;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;rounded=1;arcSize=3;html=1;" vertex="1" parent="1">
+          <mxGeometry x="930" y="142" width="900" height="430" as="geometry" />
         </mxCell>
-        <mxCell id="e9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334e68;strokeWidth=2;endArrow=block;endFill=1;fontColor=#172b4d;fontSize=16;dashed=1;dashPattern=8 6;strokeColor=#9a5b13;whiteSpace=wrap;exitX=0.5;exitY=1;exitPerimeter=1;entryX=0.5;entryY=0;entryPerimeter=1;" edge="1" parent="1" source="outbox" target="offline">
-          <mxGeometry relative="1" as="geometry" x="0.5" y="-0.7" width="150" height="48">
+        <mxCell id="grp_vpc" value="Workload VPC (Application &amp; Data Tiers)" style="shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_vpc;verticalAlign=top;align=left;grIconSize=36;spacingLeft=42;spacingTop=6;fontSize=14;fontStyle=1;fontFamily=Helvetica;fontColor=#2C8723;strokeColor=#2C8723;strokeWidth=1.8;fillColor=#ffffff;dashed=0;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;rounded=1;arcSize=3;html=1;" vertex="1" parent="1">
+          <mxGeometry x="955" y="200" width="850" height="345" as="geometry" />
+        </mxCell>
+        <mxCell id="apigw" value="&lt;b&gt;Application API&lt;/b&gt;&lt;br/&gt;&lt;font color='#475569' style='font-size:12px'&gt;Transporter JWT&lt;/font&gt;" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;outlineConnect=0;fontColor=#0f172a;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="295" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fn_pos" value="&lt;b&gt;Position &amp;amp; custody&lt;/b&gt;&lt;br/&gt;&lt;font color='#475569' style='font-size:12px'&gt;Dedupe event_id&lt;/font&gt;" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;outlineConnect=0;fontColor=#0f172a;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="1225" y="295" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ddb_pos" value="&lt;b&gt;DynamoDB tables&lt;/b&gt;&lt;br/&gt;&lt;font color='#475569' style='font-size:12px'&gt;transport_positions + custody&lt;/font&gt;" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;outlineConnect=0;fontColor=#0f172a;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="295" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ops_users" value="&lt;b&gt;Trip trace &amp;amp; custody&lt;/b&gt;&lt;br/&gt;&lt;font color='#475569' style='font-size:12px'&gt;Ops &amp;amp; transporter&lt;/font&gt;" style="shape=mxgraph.aws4.users;outlineConnect=0;fontColor=#0f172a;fillColor=#334155;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=13;fontFamily=Helvetica;aspect=fixed;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="1685" y="297" width="56" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_10" value="API ACK" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e293b;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontColor=#0f172a;fontSize=12;fontStyle=1;fontFamily=Helvetica;labelBackgroundColor=#ffffff;labelBorderColor=none;spacing=4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="public_inet" target="apigw">
+          <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="462" y="520" />
-              <mxPoint x="462" y="625" />
-              <mxPoint x="1090" y="625" />
+              <mxPoint x="860" y="206" />
+              <mxPoint x="860" y="325" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="label-e1" value="Persist event before upload" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="180" y="500" width="220" height="48" as="geometry" />
+        <mxCell id="step_11" value="3" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1d4ed8;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="285" width="24" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="label-e2" value="HTTPS/TLS; outbox held until API ACK" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="900" y="155" width="220" height="48" as="geometry" />
+        <mxCell id="edge_12" value="Validate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e293b;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontColor=#0f172a;fontSize=12;fontStyle=1;fontFamily=Helvetica;labelBackgroundColor=#ffffff;labelBorderColor=none;spacing=4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="apigw" target="fn_pos">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="label-e3" value="Optional yard: transport SSID" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="720" y="485" width="220" height="48" as="geometry" />
+        <mxCell id="step_13" value="4" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1d4ed8;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1365" y="285" width="24" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="label-e4" value="HTTPS local breakout; not IPsec VPN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="980" y="485" width="220" height="48" as="geometry" />
+        <mxCell id="edge_14" value="PutItem (5y)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e293b;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontColor=#0f172a;fontSize=12;fontStyle=1;fontFamily=Helvetica;labelBackgroundColor=#ffffff;labelBorderColor=none;spacing=4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fn_pos" target="ddb_pos">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="label-e5" value="HTTPS/TLS; transporter identity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="1295" y="420" width="220" height="45" as="geometry" />
+        <mxCell id="step_15" value="5" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1d4ed8;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#ffffff;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="285" width="24" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="label-e6" value="Validate caller and trip" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="1730" y="380" width="220" height="48" as="geometry" />
+        <mxCell id="edge_16" value="Query" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontColor=#0f172a;fontSize=12;fontStyle=1;fontFamily=Helvetica;labelBackgroundColor=#ffffff;labelBorderColor=none;spacing=4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ddb_pos" target="ops_users">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="label-e7" value="Persist + deduplicate event_id; five years" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="2030" y="345" width="220" height="48" as="geometry" />
+        <mxCell id="legend_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;strokeWidth=1.2;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="30" y="645" width="1820" height="44" as="geometry" />
         </mxCell>
-        <mxCell id="label-e8" value="Trip trace; custody updates sack history" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="2370" y="345" width="220" height="48" as="geometry" />
+        <mxCell id="leg_p_17" value="" style="line;strokeWidth=2.5;html=1;strokeColor=#1e293b;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="46" y="663" width="34" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="label-e9" value="NO DATA: encrypted outbox; retry on reconnect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b8c7d5;strokeWidth=1;fontColor=#172b4d;fontSize=16;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
-          <mxGeometry x="710" y="600" width="220" height="48" as="geometry" />
+        <mxCell id="leg_t_18" value="Primary cellular HTTPS path (ACK releases outbox)" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#334155;fontFamily=Helvetica;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="86" y="649" width="359" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_p_19" value="" style="line;strokeWidth=2.5;html=1;strokeColor=#0284c7;dashed=1;dashPattern=6 4;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="463" y="663" width="34" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_t_20" value="Optional yard Wi-Fi local breakout (no VPN)" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#334155;fontFamily=Helvetica;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="503" y="649" width="317" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_p_21" value="" style="line;strokeWidth=2.5;html=1;strokeColor=#d97706;dashed=1;dashPattern=6 4;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="838" y="663" width="34" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_t_22" value="Offline outbox (&gt;= 7d / 2,016 fixes; custody first)" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#334155;fontFamily=Helvetica;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="878" y="649" width="373" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_b_23" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1d4ed8;strokeColor=none;fontColor=#ffffff;fontSize=11;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="1269" y="657" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_t_24" value="Ordered flow step" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#334155;fontFamily=Helvetica;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="649" width="135" height="36" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
