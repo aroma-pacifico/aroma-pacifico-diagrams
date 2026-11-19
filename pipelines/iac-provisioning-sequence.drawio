@@ -136,7 +136,7 @@
             <mxPoint x="429" y="280" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="msg_10" value="1.2: Block apply / destroy commands" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#dc2626;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
+        <mxCell id="msg_10" value="1.2: Block apply / destroy" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#dc2626;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="429" y="316" as="sourcePoint" />
             <mxPoint x="429" y="342" as="targetPoint" />
@@ -152,8 +152,8 @@
             <mxPoint x="694" y="386" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="msg_12" value="2.1: Plan dev (state -&amp;gt; net -&amp;gt; sec -&amp;gt; work)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;spacingBottom=4;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
+        <mxCell id="msg_12" value="2.1: Plan dev (4 stacks)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;spacingBottom=4;" edge="1" parent="1">
+          <mxGeometry x="-0.25" relative="1" as="geometry">
             <mxPoint x="694" y="482" as="sourcePoint" />
             <mxPoint x="1754" y="482" as="targetPoint" />
           </mxGeometry>
@@ -169,7 +169,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="msg_14" value="2.3: Plan qa pattern stacks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;spacingBottom=4;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
+          <mxGeometry x="-0.25" relative="1" as="geometry">
             <mxPoint x="694" y="590" as="sourcePoint" />
             <mxPoint x="1754" y="590" as="targetPoint" />
           </mxGeometry>
@@ -191,12 +191,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="msg_17" value="3.2: Plan pdn across 4 stacks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;spacingBottom=4;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
             <mxPoint x="429" y="780" as="sourcePoint" />
             <mxPoint x="959" y="780" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="msg_18" value="3.3: Check 05:00-18:00 harvest blackout" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
+        <mxCell id="msg_18" value="3.3: Check harvest blackout" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="959" y="818" as="sourcePoint" />
             <mxPoint x="959" y="844" as="targetPoint" />
@@ -206,7 +206,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="msg_19" value="3.4: Compute SHA256SUMS digest" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
+        <mxCell id="msg_19" value="3.4: Compute SHA256SUMS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="959" y="876" as="sourcePoint" />
             <mxPoint x="959" y="902" as="targetPoint" />
@@ -222,7 +222,7 @@
             <mxPoint x="1224" y="946" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="msg_21" value="4.1: Distinct SR1/SR2 reviews plan &amp;amp; cost" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#dc2626;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
+        <mxCell id="msg_21" value="4.1: SR1/SR2 review plan &amp;amp; cost" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#dc2626;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1224" y="1034" as="sourcePoint" />
             <mxPoint x="1224" y="1060" as="targetPoint" />
@@ -239,12 +239,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="msg_23" value="4.3: Run cd-verify-approval.sh" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7c3aed;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;spacingBottom=4;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
+          <mxGeometry x="-0.25" relative="1" as="geometry">
             <mxPoint x="429" y="1140" as="sourcePoint" />
             <mxPoint x="1489" y="1140" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="msg_24" value="4.4: Verify Four-Eyes &amp;amp; SHA-256 match" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7c3aed;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
+        <mxCell id="msg_24" value="4.4: Verify Four-Eyes &amp;amp; SHA" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7c3aed;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1489" y="1176" as="sourcePoint" />
             <mxPoint x="1489" y="1202" as="targetPoint" />
@@ -254,7 +254,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="msg_25" value="4.5: Re-check window &amp;amp; save record (90d)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
+        <mxCell id="msg_25" value="4.5: Recheck window, log 90d" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1489" y="1236" as="sourcePoint" />
             <mxPoint x="1489" y="1262" as="targetPoint" />
@@ -264,13 +264,13 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="msg_26" value="5.1: Apply Stack 1: state-backend [D02]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7c3aed;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;spacingBottom=4;" edge="1" parent="1">
+        <mxCell id="msg_26" value="5.1: Apply state-backend [D02]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7c3aed;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;spacingBottom=4;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1489" y="1384" as="sourcePoint" />
             <mxPoint x="1754" y="1384" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="msg_27" value="5.2: Apply Stack 2: network [D04/D05]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7c3aed;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=right;spacingRight=10;verticalAlign=middle;" edge="1" parent="1">
+        <mxCell id="msg_27" value="5.2: Apply network [D04/D05]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7c3aed;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=right;spacingRight=10;verticalAlign=middle;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1754" y="1424" as="sourcePoint" />
             <mxPoint x="1754" y="1450" as="targetPoint" />
@@ -280,7 +280,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="msg_28" value="5.3: Apply Stack 3: security [D06]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7c3aed;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=right;spacingRight=10;verticalAlign=middle;" edge="1" parent="1">
+        <mxCell id="msg_28" value="5.3: Apply security [D06]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7c3aed;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=right;spacingRight=10;verticalAlign=middle;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1754" y="1484" as="sourcePoint" />
             <mxPoint x="1754" y="1510" as="targetPoint" />
@@ -290,7 +290,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="msg_29" value="5.4: Apply Stack 4: workload [D10]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7c3aed;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=right;spacingRight=10;verticalAlign=middle;" edge="1" parent="1">
+        <mxCell id="msg_29" value="5.4: Apply workload [D10]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7c3aed;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=right;spacingRight=10;verticalAlign=middle;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1754" y="1544" as="sourcePoint" />
             <mxPoint x="1754" y="1570" as="targetPoint" />
@@ -301,13 +301,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="msg_30" value="5.5: Emit SNS release event" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;dashed=1;dashPattern=6 4;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;spacingBottom=4;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
+          <mxGeometry x="0.1667" relative="1" as="geometry">
             <mxPoint x="1754" y="1624" as="sourcePoint" />
             <mxPoint x="164" y="1624" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="msg_31" value="5.6: Archive approval in release-notes/" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;dashed=1;dashPattern=6 4;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;spacingBottom=4;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
+          <mxGeometry x="0.25" relative="1" as="geometry">
             <mxPoint x="1224" y="1684" as="sourcePoint" />
             <mxPoint x="164" y="1684" as="targetPoint" />
           </mxGeometry>

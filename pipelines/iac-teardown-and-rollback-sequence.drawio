@@ -118,7 +118,7 @@
         <mxCell id="leg_t_33" value="IaC Box ID (D01, D02, D04-D06, D09, D10, D12)" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#334155;fontFamily=Helvetica;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="659" y="1494" width="331" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="msg_9" value="1.1: Declare incident (INC-YYYYMMDD-NN)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
+        <mxCell id="msg_9" value="1.1: Declare incident" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="164" y="276" as="sourcePoint" />
             <mxPoint x="164" y="302" as="targetPoint" />
@@ -146,7 +146,7 @@
             <mxPoint x="694" y="434" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="msg_13" value="1.5: Plan inverse &amp;amp; approve Run 2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
+        <mxCell id="msg_13" value="1.5: Plan inverse, approve" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=left;spacingLeft=10;verticalAlign=middle;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="694" y="474" as="sourcePoint" />
             <mxPoint x="694" y="500" as="targetPoint" />
@@ -169,13 +169,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="msg_16" value="2.3: Verify 5y PITR &amp;amp; Object Lock" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;spacingBottom=4;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
+          <mxGeometry x="0.5" relative="1" as="geometry">
             <mxPoint x="1489" y="676" as="sourcePoint" />
             <mxPoint x="959" y="676" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="msg_17" value="2.4: Confirm telemetry protected" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;dashed=1;dashPattern=6 4;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;spacingBottom=4;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
             <mxPoint x="959" y="720" as="sourcePoint" />
             <mxPoint x="1489" y="720" as="targetPoint" />
           </mxGeometry>
@@ -211,7 +211,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="msg_23" value="3.4: Schedule KMS deletion (30d wait)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284c7;strokeWidth=2;dashed=0;endArrow=block;endFill=1;fontSize=12;fontStyle=1;fontColor=#0f172a;fontFamily=Helvetica;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;spacingBottom=4;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
+          <mxGeometry x="0.5" relative="1" as="geometry">
             <mxPoint x="1754" y="1098" as="sourcePoint" />
             <mxPoint x="1224" y="1098" as="targetPoint" />
           </mxGeometry>
