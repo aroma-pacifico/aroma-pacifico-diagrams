@@ -1,421 +1,132 @@
-<?xml version='1.0' encoding='utf-8'?>
-<mxfile host="app.diagrams.net" version="32.4.1" type="device">
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" agent="aroma-pacifico-diagram-generator" version="1">
   <diagram id="no_signal_sequence" name="No-signal sequence and crop alert budget">
-    <mxGraphModel dx="3700" dy="2300" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="3700" pageHeight="2300" math="0" shadow="0">
+    <mxGraphModel dx="2000" dy="1170" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1170" math="0" shadow="0" background="#FFFFFF">
       <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="title" value="No-Signal Handling &amp; Crop Alert Latency Budget | Aroma Pacífico 2026" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontStyle=1;fontColor=#102a43;" vertex="1" parent="1">
-          <mxGeometry x="40" y="20" width="3620" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="subtitle" value="Part 1: Offline buffering, reconnection, ordered replay, and idempotent deduplication. Part 2: 7-hop end-to-end crop alert delivery budget (&lt;5 min). Source: docs/connectivity.md sections 4.3, 7, and 8." style="text;html=1;align=left;verticalAlign=middle;fontSize=16;fontColor=#334e68;" vertex="1" parent="1">
-          <mxGeometry x="40" y="68" width="3620" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="grp_part1" value="PART 1: THE NO-SIGNAL CASE — OFFLINE BUFFERING, RECONNECTION, ORDERED REPLAY &amp; DEDUPLICATION&#10;(docs/connectivity.md Sections 4.3, 7, 9 &amp; ASM-074, ASM-076, ASM-079)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=17;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
-          <mxGeometry x="40" y="125" width="1780" height="2140" as="geometry" />
-        </mxCell>
-        <mxCell id="ll_sensor" value="Sensor / GNSS / Scanner&#10;(Soil Probe / GPS Fix)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="70" y="190" width="180" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="ll_node" value="Node / App Controller&#10;(Crop Node / Mobile App)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="320" y="190" width="190" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="ll_buf" value="Encrypted Local Buffer&#10;(24 h Ring / Phone Outbox)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="580" y="190" width="190" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="ll_bearer" value="Bearer / Network Link&#10;(Cellular / Satellite / WAN)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="840" y="190" width="190" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="ll_cloud" value="AWS Ingestion Endpoint&#10;(IoT Core / App API)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="1100" y="190" width="190" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="ll_db" value="Cloud Store (Idempotent)&#10;(DynamoDB / S3 / RDS)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="1360" y="190" width="190" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="ll_lambda" value="Threshold Lambda [D10]&#10;(Alert Evaluation)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="1610" y="190" width="170" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="p1_phase1" value="1. NORMAL CONNECTED STATE — Direct Ingestion &amp; Acknowledgment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#94a3b8;fontColor=#334155;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="60" y="275" width="1740" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2001" value="1. Periodic reading taken (Crop: 4 h, Drying: 1 h, GNSS: 5 min)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="160" y="320" as="sourcePoint" />
-            <mxPoint x="415" y="320" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2002" value="2. MQTT Publish (QoS 1) / HTTPS POST (TLS 1.2+)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="415" y="350" as="sourcePoint" />
-            <mxPoint x="935" y="350" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2003" value="3. Deliver payload to regional endpoint" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="935" y="375" as="sourcePoint" />
-            <mxPoint x="1195" y="375" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2004" value="4. Idempotent write (Key: node_id + reading_timestamp / event_id)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1195" y="400" as="sourcePoint" />
-            <mxPoint x="1455" y="400" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2005" value="5. Persistence confirmed (HTTP 200 / Store OK)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1455" y="425" as="sourcePoint" />
-            <mxPoint x="1195" y="425" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2006" value="6. MQTT PUBACK / HTTP 2xx response" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1195" y="450" as="sourcePoint" />
-            <mxPoint x="935" y="450" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2007" value="7. Acknowledgment delivered to device" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="935" y="475" as="sourcePoint" />
-            <mxPoint x="415" y="475" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="p1_phase2" value="2. SIGNAL LOSS &amp; OFFLINE BUFFERING — Store-and-Forward (Max 24 h Retention)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="60" y="510" width="1740" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="box_signal_drop" value="LINK LOST: Cellular RAN unavailable / Satellite contact pass ended / Center WAN service severed&#10;link_state = offline. Devices &amp; apps switch to offline store-and-forward mode." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#f87171;fontColor=#991b1b;fontSize=11;align=center;" vertex="1" parent="1">
-          <mxGeometry x="800" y="550" width="480" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2008" value="8. Reading / GNSS fix taken offline (original recorded_at timestamp)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="160" y="620" as="sourcePoint" />
-            <mxPoint x="415" y="620" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2009" value="9. Write to local encrypted buffer (node_id, sequence_no, recorded_at, values)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="415" y="650" as="sourcePoint" />
-            <mxPoint x="675" y="650" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2010" value="10. Stored in non-volatile flash (survives reboot/battery depletion)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="675" y="680" as="sourcePoint" />
-            <mxPoint x="415" y="680" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="box_buf_rules" value="BUFFER RETENTION CONSTRAINTS (ASM-074, ASM-076, ASM-079):&#10;- Field Telemetry: Non-volatile ring buffer. Sized with margin (&gt;=30 readings). Max retention 24 hours.&#10;  Readings older than 24 h without ACK are evicted; local drop_counter is incremented.&#10;- Transporter Phone Outbox: 7 days capacity (2,016 fixes). Custody events are NEVER evicted.&#10;- Logistics Post: Encrypted outbox. Reception events held until persistence ACK. Zero data loss." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=1.5;fontColor=#92400e;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="100" y="715" width="800" height="85" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2011" value="11. Multiple readings accumulate during outage (sequence numbers increment)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="160" y="820" as="sourcePoint" />
-            <mxPoint x="415" y="820" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2012" value="12. Append to buffer; buffer ring tracks oldest and newest sequence numbers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="415" y="850" as="sourcePoint" />
-            <mxPoint x="675" y="850" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="p1_phase3" value="3. RECONNECTION &amp; ORDERED REPLAY — Live Reading First, Then Oldest First (ASM-074)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#f59e0b;fontColor=#b45309;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="60" y="895" width="1740" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="box_reconnect" value="LINK RESTORED: Radio attaches to network; TLS 1.2+ mutual authentication re-established." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#10b981;fontColor=#065f46;fontSize=11;align=center;" vertex="1" parent="1">
-          <mxGeometry x="800" y="935" width="480" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2013" value="13. Reconnection Event: Fresh live reading taken at reconnect" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="160" y="990" as="sourcePoint" />
-            <mxPoint x="415" y="990" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2014" value="14. [LIVE FIRST] Publish live reading immediately (Never waits behind history!)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="415" y="1020" as="sourcePoint" />
-            <mxPoint x="935" y="1020" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2015" value="15. Live reading arrives at IoT Core (QoS 1)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="935" y="1050" as="sourcePoint" />
-            <mxPoint x="1195" y="1050" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2016" value="16. Persist live reading in DynamoDB" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1195" y="1080" as="sourcePoint" />
-            <mxPoint x="1455" y="1080" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2017" value="17. Evaluate live reading (raises live alert if out-of-range)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1195" y="1110" as="sourcePoint" />
-            <mxPoint x="1695" y="1110" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2018" value="18. MQTT PUBACK for live reading delivered to device" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1195" y="1140" as="sourcePoint" />
-            <mxPoint x="415" y="1140" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="box_drain_rule" value="DRAIN ORDER: Now buffer drains OLDEST FIRST in batches.&#10;First drain message carries drop_counter, oldest sequence_no, and newest sequence_no (gap report)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="100" y="1170" width="750" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2019" value="19. Fetch oldest buffered reading (chronological sequence)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="415" y="1230" as="sourcePoint" />
-            <mxPoint x="675" y="1230" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2020" value="20. Return buffered record with original recorded_at timestamp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="675" y="1260" as="sourcePoint" />
-            <mxPoint x="415" y="1260" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2021" value="21. [DRAIN OLDEST] Publish buffered message (includes drop_counter &amp; original time)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="415" y="1290" as="sourcePoint" />
-            <mxPoint x="935" y="1290" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2022" value="22. Ingest drained message at regional endpoint" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="935" y="1320" as="sourcePoint" />
-            <mxPoint x="1195" y="1320" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="p1_phase4" value="4. IDEMPOTENT DEDUPLICATION &amp; RELEASE ON ACKNOWLEDGMENT (ADR-003, ASM-011)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;fontColor=#1e40af;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="60" y="1360" width="1740" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2023" value="23. Primary key lookup &amp; upsert (node_id + reading_timestamp / event_id)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1195" y="1410" as="sourcePoint" />
-            <mxPoint x="1455" y="1410" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="box_dedup" value="IDEMPOTENT DEDUPLICATION:&#10;If duplicate delivery occurs (e.g. lost PUBACK/ACK),&#10;cloud upserts harmlessly. Zero duplicate alerts or ghost records." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;fontColor=#1e40af;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="1300" y="1435" width="420" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2024" value="24. Store confirmed; duplicate absorbed harmlessly" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1455" y="1510" as="sourcePoint" />
-            <mxPoint x="1195" y="1510" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2025" value="25. Evaluate drained reading vs alert thresholds (evaluated as if live)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1195" y="1540" as="sourcePoint" />
-            <mxPoint x="1695" y="1540" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="box_eval_drain" value="DRAINED READING EVALUATION:&#10;Alert emitted at drain time, within 24 hours. Delay is measured from&#10;original timestamp, clearly distinguishing drained alerts from live ones." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=1.5;fontColor=#92400e;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="1430" y="1565" width="340" height="65" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2026" value="26. MQTT PUBACK / HTTP 200 confirmed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1195" y="1645" as="sourcePoint" />
-            <mxPoint x="935" y="1645" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2027" value="27. Verified ACK delivered to node controller" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e3a8a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="935" y="1675" as="sourcePoint" />
-            <mxPoint x="415" y="1675" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2028" value="28. RELEASE ON ACK: Delete acknowledged record from buffer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="415" y="1705" as="sourcePoint" />
-            <mxPoint x="675" y="1705" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="box_release_ack" value="RELEASE CONTRACT: A record leaves the local buffer ONLY when verified cloud ACK is received.&#10;If session drops mid-drain, remaining records stay and drain resumes at next reconnect." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="100" y="1735" width="750" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="p1_summary_box" value="PART 1 CONTRACT SUMMARY — OFFLINE BEHAVIOR &amp; PROTOCOL PROPERTIES:&#10;1. Store-and-Forward: Max 24 h retention for farm &amp; wet mill telemetry (ASM-074). Unacknowledged records &gt;24 h evicted with gap report.&#10;2. Transporter Outbox: 7 days capacity (2,016 fixes at 5 min interval). Custody events are never evicted; oldest fixes thinned to 15 min if full.&#10;3. Drone Buffer: Storage on drone &amp; ground station has NO time limit. Fumigation cannot close until flight record is persisted in cloud.&#10;4. Replay Ordering: LIVE reading taken at reconnect published FIRST (never waits behind history); then buffered history drains OLDEST FIRST.&#10;5. Release on ACK: Record released ONLY after MQTT PUBACK, HTTP 2xx, or verified S3 multipart checksum. Lost ACK causes safe duplicate.&#10;6. Idempotency: Cloud stores keyed by (node_id + reading_timestamp) or UUID event_id. Duplicate delivery is harmlessly deduped." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
-          <mxGeometry x="60" y="1800" width="1740" height="170" as="geometry" />
-        </mxCell>
-        <mxCell id="p1_obs_box" value="OBSERVABILITY OF SILENT NODES (Case Point 6 &amp; A21):&#10;Nodes and farms silent for more than 24 hours are detected by CloudWatch metric alarms and reported in daily operational dashboard.&#10;Drained alerts are measured against the 24-hour limit, keeping the live &lt;5 minute SLO unpolluted by buffer drains." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=1.5;fontColor=#92400e;fontSize=12;align=left;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
-          <mxGeometry x="60" y="1990" width="1740" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="grp_part2" value="PART 2: CROP ALERT IN UNDER 5 MINUTES — PER-HOP LATENCY BUDGET (ROUTE AVAILABLE)&#10;(docs/connectivity.md Section 8 &amp; Case Statement Point 3: 'menos de 5 minutos desde la lectura fuera de rango')" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontColor=#0f172a;fontSize=17;fontStyle=1;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
-          <mxGeometry x="1860" y="125" width="1800" height="2140" as="geometry" />
-        </mxCell>
-        <mxCell id="ll2_probe" value="Soil / Weather Probe&#10;(NPK / Temp / Humidity)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="1880" y="190" width="180" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="ll2_node" value="Crop Node Controller&#10;(Autonomous Solar/Batt)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="2100" y="190" width="190" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="ll2_bearer" value="Cellular / Satellite Link&#10;(LTE-M / Satellite IP)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="2330" y="190" width="190" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="ll2_iot" value="AWS IoT Core [D09]&#10;(Regional Endpoint)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="2560" y="190" width="180" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="ll2_sqs" value="IoT Rule &amp; SQS [D10]&#10;(Threshold Queue)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="2780" y="190" width="180" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="ll2_lambda" value="Threshold Lambda [D10]&#10;(Evaluation &amp; Persistence)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="3000" y="190" width="190" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="ll2_sns" value="Amazon SNS Topic&#10;(Alert Fanout)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="3230" y="190" width="180" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="ll2_phone" value="Provider &amp; Farmer Phone&#10;(Push / SMS Delivery)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;lifelineDashed=1;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;size=55;" vertex="1" parent="1">
-          <mxGeometry x="3450" y="190" width="190" height="1200" as="geometry" />
-        </mxCell>
-        <mxCell id="p2_hop1" value="HOP 1: SENSOR READING TO MESSAGE READY ON NODE — Target: 10 s (Cumulative: 10 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="1880" y="275" width="1760" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2029" value="1. Soil probe samples soil NPK, moisture &amp; temp; detects out-of-range value" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1970" y="330" as="sourcePoint" />
-            <mxPoint x="2195" y="330" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2030" value="2. Node packages MQTT payload (node_id, sequence_no, timestamp, values)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2195" y="365" as="sourcePoint" />
-            <mxPoint x="2195" y="365" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="box_hop1_desc" value="HOP 1 DESIGN (ASM-075):&#10;Target: 10 s. Node does NOT evaluate alert ranges locally (ranges configured in cloud).&#10;Node formats message immediately without batching delays." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="2000" y="395" width="520" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="p2_hop2" value="HOP 2: RADIO WAKE, NETWORK ATTACH &amp; TLS CONNECTION — Target: 60 s (Cumulative: 70 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="1880" y="465" width="1760" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2031" value="3. Wake radio modem from low-power sleep; initiate LTE-M / NB-IoT cell attach" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2195" y="515" as="sourcePoint" />
-            <mxPoint x="2425" y="515" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2032" value="4. Attach to cellular network / acquire satellite carrier IP bearer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2425" y="545" as="sourcePoint" />
-            <mxPoint x="2425" y="545" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2033" value="5. TCP handshake &amp; TLS 1.2+ mutual auth negotiation (X.509 client cert, port 8883/443)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2425" y="580" as="sourcePoint" />
-            <mxPoint x="2650" y="580" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2034" value="6. TLS session established successfully" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2650" y="610" as="sourcePoint" />
-            <mxPoint x="2195" y="610" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="box_hop2_desc" value="HOP 2 DESIGN (Largest Field Hop, ASM-075, PD-081):&#10;Target: 60 s. Covers modem cold-wake, multi-network SIM cell attach, IP allocation, and TLS mutual auth handshake.&#10;For satellite bearer, contact pass window timing verified during procurement." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="2220" y="635" width="620" height="55" as="geometry" />
-        </mxCell>
-        <mxCell id="p2_hop3" value="HOP 3: MQTT PUBLISH TO BROKER PUBACK AT IOT CORE — Target: 20 s (Cumulative: 90 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="1880" y="710" width="1760" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2035" value="7. MQTT PUBLISH (QoS 1, topic: farms/{farmId}/nodes/{nodeId}/telemetry)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2195" y="760" as="sourcePoint" />
-            <mxPoint x="2650" y="760" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2036" value="8. MQTT PUBACK returned to device (confirms receipt at broker)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=1;endArrow=open;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2650" y="795" as="sourcePoint" />
-            <mxPoint x="2195" y="795" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="box_hop3_desc" value="HOP 3 DESIGN (ASM-003, ASM-075):&#10;Target: 20 s. Includes WAN latency Colombia -&gt; us-east-1 and absorbs transient MQTT packet retransmission at QoS 1.&#10;PUBACK arrival authorizes buffer release." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="2350" y="820" width="580" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="p2_hop4" value="HOP 4: TOPIC RULE TO THRESHOLD FUNCTION INVOCATION (SQS) — Target: 10 s (Cumulative: 100 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="1880" y="890" width="1760" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2037" value="9. IoT Topic Rule triggers: writes telemetry to DynamoDB &amp; enqueues to Threshold SQS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2650" y="940" as="sourcePoint" />
-            <mxPoint x="2870" y="940" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2038" value="10. SQS invokes Threshold Lambda via Event Source Mapping (batchSize=1)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2870" y="975" as="sourcePoint" />
-            <mxPoint x="3095" y="975" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="box_hop4_desc" value="HOP 4 DESIGN (ADR-003, ASM-161):&#10;Target: 10 s. SQS queue decouples IoT ingestion from function scaling. Event source mapping triggers Lambda immediately." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="2600" y="1005" width="580" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="p2_hop5" value="HOP 5: THRESHOLD LAMBDA EVALUATION &amp; PERSISTENCE — Target: 20 s (Cumulative: 120 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="1880" y="1070" width="1760" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2039" value="11. Read configured ranges (data-driven); evaluate out-of-range condition" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="3095" y="1120" as="sourcePoint" />
-            <mxPoint x="3095" y="1120" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2040" value="12. Persist alert record in DynamoDB (opens crop_alert_raised case)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="3095" y="1150" as="sourcePoint" />
-            <mxPoint x="3095" y="1150" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2041" value="13. Publish structured alert message to Amazon SNS alert topic" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="3095" y="1180" as="sourcePoint" />
-            <mxPoint x="3320" y="1180" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="box_hop5_desc" value="HOP 5 DESIGN (A17, ADR-002, PD-018):&#10;Target: 20 s. Evaluates ranges, writes alert to DB, opens drone confirmation case, and publishes to SNS." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="2850" y="1205" width="550" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="p2_hop6" value="HOP 6: SNS TOPIC TO NOTIFICATION CHANNEL PROVIDER — Target: 30 s (Cumulative: 150 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="1880" y="1270" width="1760" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2042" value="14. SNS HTTPS dispatch to Notification Channel Provider (Push / SMS)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="3320" y="1320" as="sourcePoint" />
-            <mxPoint x="3545" y="1320" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="box_hop6_desc" value="HOP 6 DESIGN (A14, PD-085):&#10;Target: 30 s. Cloud-to-gateway dispatch over resilient HTTPS API." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="3050" y="1345" width="500" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="p2_hop7" value="HOP 7: NOTIFICATION PROVIDER TO FARMER SMARTPHONE — Target: 60 s (Cumulative: 210 s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="1880" y="1405" width="1760" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="msg_2043" value="15. Cellular carrier transmission of Push Notification / SMS to farmer's handset" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="3545" y="1455" as="sourcePoint" />
-            <mxPoint x="3545" y="1455" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="msg_2044" value="16. Farmer receives audible alert &amp; opens app (Target: 210 s)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=1.8;strokeDashed=0;endArrow=block;endFill=1;fontSize=12;fontColor=#0f172a;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="3545" y="1490" as="sourcePoint" />
-            <mxPoint x="3545" y="1490" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="box_hop7_desc" value="HOP 7 DESIGN (PD-085, Case Point 3):&#10;Target: 60 s. Mobile network delivery to farmer's phone.&#10;Total Budget Sum: 210 s  |  Safety Margin: 90 s  |  Case Limit: 300 s (&lt;5 minutes)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=1.5;fontColor=#065f46;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
-          <mxGeometry x="3150" y="1515" width="480" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="p2_table_box" value="CROP ALERT LATENCY BUDGET TABLE (docs/connectivity.md Section 8.2):&#10;&#10;Hop 1: Reading taken to message ready on node           Target:  10 s  | Cumulative:  10 s  | Node publishes immediately; no local evaluation&#10;Hop 2: Radio wake, network attach and TLS connection    Target:  60 s  | Cumulative:  70 s  | Multi-network SIM attaches to best available carrier&#10;Hop 3: MQTT publish to PUBACK at IoT Core endpoint      Target:  20 s  | Cumulative:  90 s  | QoS 1 with PUBACK; absorbs transient retransmissions&#10;Hop 4: Topic rule to threshold function invocation       Target:  10 s  | Cumulative: 100 s  | Routing rule through SQS threshold queue&#10;Hop 5: Threshold function evaluation &amp; persistence      Target:  20 s  | Cumulative: 120 s  | Evaluates ranges, persists DynamoDB, dispatches SNS&#10;Hop 6: Alert topic to notification channel provider     Target:  30 s  | Cumulative: 150 s  | Amazon SNS HTTPS dispatch to Push/SMS gateway&#10;Hop 7: Channel provider to farmer's smartphone          Target:  60 s  | Cumulative: 210 s  | Push notification or SMS delivered to farmer phone&#10;-------------------------------------------------------------------------------------------------------------------------------------------------&#10;Total Design Target: 210 s (3.5 min)  |  Safety Margin: 90 s  |  Case Statement Hard Limit: 300 s (&lt;5 minutes, Case Point 3)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;fontColor=#0f172a;fontSize=12;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
-          <mxGeometry x="1880" y="1590" width="1760" height="240" as="geometry" />
-        </mxCell>
-        <mxCell id="p2_slo_box" value="TRACEABILITY TO A21 ALERT-DELIVERY SLO (docs/connectivity.md Section 8.3 &amp; Roadmap #34):&#10;- Proposed SLI: Share of out-of-range readings published live (not from buffer) whose notification arrives on farmer phone within 300 s.&#10;- Trace Points: 1. Reading timestamp (Hop 1) | 2. Broker PUBACK (Hop 3) | 3. Lambda execution start &amp; alert persist (Hop 5) | 4. SNS handoff (Hop 6) | 5. Delivery receipt (Hop 7).&#10;- Hop timestamps allow A21 to attribute any SLO breach to the exact failing hop (field attach vs cloud queue vs carrier SMS).&#10;- Drained readings (offline buffer) are measured separately against the 24-hour limit; drying alerts use the identical budget." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=1.5;fontColor=#1e40af;fontSize=12;align=left;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
-          <mxGeometry x="1880" y="1850" width="1760" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="seq_global_note" value="DIAGRAM METADATA &amp; NORMATIVE RULES: Part of ALPH-20 / ALPH-23. Repository aroma-pacifico-diagrams (network/). Refs aroma-pacifico/aroma-pacifico-roadmap#19. Closes ALPH-23.&#10;All timings and latencies are design targets defined in docs/connectivity.md. Diagram adheres to zero-emoji policy and strict Draw.io XML standards." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=1;fontColor=#334155;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="40" y="2180" width="3620" height="60" as="geometry" />
-        </mxCell>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="c1" value="No-Signal Handling and Crop Alert Budget" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=28;fontStyle=1;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="30" y="18" width="1940" height="36" as="geometry"/></mxCell>
+        <mxCell id="c2" value="Part 1: buffer, reconnect, replay and deduplicate.  Part 2: crop alert in under 5 minutes" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=17;fontStyle=0;fontColor=#5F6B7A;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="30" y="56" width="1940" height="24" as="geometry"/></mxCell>
+        <mxCell id="c3" value="Part 1   Without signal: store-and-forward" style="rounded=1;arcSize=3;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=16;fontStyle=1;fontColor=#5A6B86;strokeColor=#5A6B86;fillColor=#FFFFFF;strokeWidth=1.5;dashed=0;align=left;verticalAlign=top;spacingLeft=12;spacingTop=6;container=0;" vertex="1" parent="1"><mxGeometry x="20" y="100" width="1160" height="1050" as="geometry"/></mxCell>
+        <mxCell id="c4" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=none;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.iot_thing_temperature_sensor;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="94" y="145" width="52" height="52" as="geometry"/></mxCell>
+        <mxCell id="c5" value="&lt;b&gt;Crop node&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="30" y="202" width="180" height="24" as="geometry"/></mxCell>
+        <mxCell id="c6" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3E;strokeColor=none;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.disk;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="284" y="145" width="52" height="52" as="geometry"/></mxCell>
+        <mxCell id="c7" value="&lt;b&gt;Local buffer&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="220" y="202" width="180" height="24" as="geometry"/></mxCell>
+        <mxCell id="c8" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#1A73C8;strokeColor=#1A73C8;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;pointerEvents=1;shape=mxgraph.networks.radio_tower;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="477" y="145" width="46" height="52" as="geometry"/></mxCell>
+        <mxCell id="c9" value="&lt;b&gt;Cellular or satellite&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="410" y="202" width="180" height="24" as="geometry"/></mxCell>
+        <mxCell id="c10" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.iot_core;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="664" y="145" width="52" height="52" as="geometry"/></mxCell>
+        <mxCell id="c11" value="&lt;b&gt;IoT Core&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="600" y="202" width="180" height="24" as="geometry"/></mxCell>
+        <mxCell id="c12" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="854" y="145" width="52" height="52" as="geometry"/></mxCell>
+        <mxCell id="c13" value="&lt;b&gt;Telemetry store&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="790" y="202" width="180" height="24" as="geometry"/></mxCell>
+        <mxCell id="c14" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="1044" y="145" width="52" height="52" as="geometry"/></mxCell>
+        <mxCell id="c15" value="&lt;b&gt;Threshold Lambda&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="980" y="202" width="180" height="24" as="geometry"/></mxCell>
+        <mxCell id="c16" value="D09" style="rounded=1;arcSize=20;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#FFFFFF;fillColor=#E07B00;strokeColor=none;align=center;verticalAlign=middle;" vertex="1" parent="1"><mxGeometry x="720" y="150" width="41" height="24" as="geometry"/></mxCell>
+        <mxCell id="c17" value="D10" style="rounded=1;arcSize=20;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#FFFFFF;fillColor=#E07B00;strokeColor=none;align=center;verticalAlign=middle;" vertex="1" parent="1"><mxGeometry x="1100" y="150" width="41" height="24" as="geometry"/></mxCell>
+        <mxCell id="c18" value="" style="rounded=1;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;strokeColor=none;fillColor=#F3F6F9;strokeWidth=1.5;dashed=0;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="35" y="240" width="1130" height="130" as="geometry"/></mxCell>
+        <mxCell id="c19" value="" style="rounded=1;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;strokeColor=none;fillColor=#FDF0EE;strokeWidth=1.5;dashed=0;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="35" y="380" width="1130" height="160" as="geometry"/></mxCell>
+        <mxCell id="c20" value="" style="rounded=1;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;strokeColor=none;fillColor=#EEF7F0;strokeWidth=1.5;dashed=0;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="35" y="550" width="1130" height="255" as="geometry"/></mxCell>
+        <mxCell id="c21" value="" style="rounded=1;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;strokeColor=none;fillColor=#EEF3FB;strokeWidth=1.5;dashed=0;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="35" y="815" width="1130" height="185" as="geometry"/></mxCell>
+        <mxCell id="c22" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#8A96A3;strokeWidth=1.5;dashed=1;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#8A96A3;labelBackgroundColor=#FFFFFF;edgeStyle=none;dashPattern=8 5;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="120" y="236" as="sourcePoint"/><mxPoint x="120" y="1000" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c23" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#8A96A3;strokeWidth=1.5;dashed=1;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#8A96A3;labelBackgroundColor=#FFFFFF;edgeStyle=none;dashPattern=8 5;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="310" y="236" as="sourcePoint"/><mxPoint x="310" y="1000" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c24" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#8A96A3;strokeWidth=1.5;dashed=1;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#8A96A3;labelBackgroundColor=#FFFFFF;edgeStyle=none;dashPattern=8 5;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="500" y="236" as="sourcePoint"/><mxPoint x="500" y="1000" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c25" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#8A96A3;strokeWidth=1.5;dashed=1;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#8A96A3;labelBackgroundColor=#FFFFFF;edgeStyle=none;dashPattern=8 5;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="690" y="236" as="sourcePoint"/><mxPoint x="690" y="1000" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c26" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#8A96A3;strokeWidth=1.5;dashed=1;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#8A96A3;labelBackgroundColor=#FFFFFF;edgeStyle=none;dashPattern=8 5;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="880" y="236" as="sourcePoint"/><mxPoint x="880" y="1000" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c27" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#8A96A3;strokeWidth=1.5;dashed=1;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#8A96A3;labelBackgroundColor=#FFFFFF;edgeStyle=none;dashPattern=8 5;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="1070" y="236" as="sourcePoint"/><mxPoint x="1070" y="1000" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c28" value="A  Connected" style="rounded=1;arcSize=30;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#5F6B7A;fillColor=#F3F6F9;strokeColor=none;dashed=0;align=center;verticalAlign=middle;spacing=2;" vertex="1" parent="1"><mxGeometry x="45" y="244" width="109" height="24" as="geometry"/></mxCell>
+        <mxCell id="c29" value="B  No signal" style="rounded=1;arcSize=30;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#5F6B7A;fillColor=#FDF0EE;strokeColor=none;dashed=0;align=center;verticalAlign=middle;spacing=2;" vertex="1" parent="1"><mxGeometry x="45" y="384" width="109" height="24" as="geometry"/></mxCell>
+        <mxCell id="c30" value="C  Reconnect: live first, then oldest" style="rounded=1;arcSize=30;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#5F6B7A;fillColor=#EEF7F0;strokeColor=none;dashed=0;align=center;verticalAlign=middle;spacing=2;" vertex="1" parent="1"><mxGeometry x="45" y="554" width="304" height="24" as="geometry"/></mxCell>
+        <mxCell id="c31" value="D  Deduplicate and release" style="rounded=1;arcSize=30;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#5F6B7A;fillColor=#EEF3FB;strokeColor=none;dashed=0;align=center;verticalAlign=middle;spacing=2;" vertex="1" parent="1"><mxGeometry x="45" y="819" width="218" height="24" as="geometry"/></mxCell>
+        <mxCell id="c32" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#1E8E3E;strokeWidth=2;dashed=0;endArrow=block;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#1E8E3E;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="120" y="290" as="sourcePoint"/><mxPoint x="690" y="290" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c33" value="1  Publish QoS 1" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#1E8E3E;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="332.0" y="265" width="146" height="22" as="geometry"/></mxCell>
+        <mxCell id="c34" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#232F3E;strokeWidth=2;dashed=0;endArrow=block;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#232F3E;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="690" y="325" as="sourcePoint"/><mxPoint x="880" y="325" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c35" value="2  Write by key" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#232F3E;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="716.0" y="300" width="138" height="22" as="geometry"/></mxCell>
+        <mxCell id="c36" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#232F3E;strokeWidth=2;dashed=1;endArrow=open;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#232F3E;labelBackgroundColor=#FFFFFF;edgeStyle=none;dashPattern=8 5;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="690" y="355" as="sourcePoint"/><mxPoint x="120" y="355" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c37" value="3  PUBACK" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#232F3E;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="361.5" y="330" width="87" height="22" as="geometry"/></mxCell>
+        <mxCell id="c38" value="Link down" style="rounded=1;arcSize=30;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#D13212;fillColor=#FFFFFF;strokeColor=#D13212;dashed=0;align=center;verticalAlign=middle;spacing=2;" vertex="1" parent="1"><mxGeometry x="440" y="412" width="120" height="26" as="geometry"/></mxCell>
+        <mxCell id="c39" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#D13212;strokeWidth=3;dashed=0;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#D13212;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="488" y="450" as="sourcePoint"/><mxPoint x="512" y="474" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c40" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#D13212;strokeWidth=3;dashed=0;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#D13212;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="512" y="450" as="sourcePoint"/><mxPoint x="488" y="474" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c41" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#D13212;strokeWidth=2;dashed=0;endArrow=block;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#D13212;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="120" y="450" as="sourcePoint"/><mxPoint x="310" y="450" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c42" value="4  Store reading" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#D13212;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="142.0" y="425" width="146" height="22" as="geometry"/></mxCell>
+        <mxCell id="c43" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#D13212;strokeWidth=2;dashed=0;endArrow=block;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#D13212;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="120" y="490" as="sourcePoint"/><mxPoint x="310" y="490" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c44" value="5  Store, keep counting" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#D13212;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="112.5" y="465" width="205" height="22" as="geometry"/></mxCell>
+        <mxCell id="c45" value="Max 24 h, then evict" style="rounded=1;arcSize=30;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=13;fontStyle=1;fontColor=#D13212;fillColor=#FFFFFF;strokeColor=#D13212;dashed=0;align=center;verticalAlign=middle;spacing=2;" vertex="1" parent="1"><mxGeometry x="330" y="505" width="210" height="26" as="geometry"/></mxCell>
+        <mxCell id="c46" value="Link up, TLS" style="rounded=1;arcSize=30;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#1E8E3E;fillColor=#FFFFFF;strokeColor=#1E8E3E;dashed=0;align=center;verticalAlign=middle;spacing=2;" vertex="1" parent="1"><mxGeometry x="430" y="586" width="140" height="26" as="geometry"/></mxCell>
+        <mxCell id="c47" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#1E8E3E;strokeWidth=2;dashed=0;endArrow=block;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#1E8E3E;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="120" y="645" as="sourcePoint"/><mxPoint x="690" y="645" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c48" value="6  Live reading first" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#1E8E3E;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="311.0" y="620" width="188" height="22" as="geometry"/></mxCell>
+        <mxCell id="c49" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#232F3E;strokeWidth=2;dashed=0;endArrow=block;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#232F3E;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="690" y="680" as="sourcePoint"/><mxPoint x="1070" y="680" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c50" value="7  Evaluate, alert" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#232F3E;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="798.5" y="655" width="163" height="22" as="geometry"/></mxCell>
+        <mxCell id="c51" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#232F3E;strokeWidth=2;dashed=1;endArrow=open;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#232F3E;labelBackgroundColor=#FFFFFF;edgeStyle=none;dashPattern=8 5;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="690" y="715" as="sourcePoint"/><mxPoint x="120" y="715" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c52" value="8  PUBACK" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#232F3E;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="361.5" y="690" width="87" height="22" as="geometry"/></mxCell>
+        <mxCell id="c53" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#1E8E3E;strokeWidth=2;dashed=0;endArrow=block;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#1E8E3E;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="310" y="752" as="sourcePoint"/><mxPoint x="120" y="752" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c54" value="9  Oldest reading" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#1E8E3E;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="138.0" y="727" width="154" height="22" as="geometry"/></mxCell>
+        <mxCell id="c55" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#1E8E3E;strokeWidth=2;dashed=0;endArrow=block;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#1E8E3E;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="120" y="790" as="sourcePoint"/><mxPoint x="690" y="790" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c56" value="10  Drained, original time" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#1E8E3E;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="290.0" y="765" width="230" height="22" as="geometry"/></mxCell>
+        <mxCell id="c57" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#232F3E;strokeWidth=2;dashed=0;endArrow=block;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#232F3E;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="690" y="860" as="sourcePoint"/><mxPoint x="880" y="860" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c58" value="11  Upsert, duplicate absorbed" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#232F3E;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="653.0" y="835" width="264" height="22" as="geometry"/></mxCell>
+        <mxCell id="c59" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#232F3E;strokeWidth=2;dashed=0;endArrow=block;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#232F3E;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="690" y="900" as="sourcePoint"/><mxPoint x="1070" y="900" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c60" value="12  Evaluate as if live" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#232F3E;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="777.5" y="875" width="205" height="22" as="geometry"/></mxCell>
+        <mxCell id="c61" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#232F3E;strokeWidth=2;dashed=1;endArrow=open;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#232F3E;labelBackgroundColor=#FFFFFF;edgeStyle=none;dashPattern=8 5;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="690" y="940" as="sourcePoint"/><mxPoint x="120" y="940" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c62" value="13  PUBACK" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#232F3E;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="357.0" y="915" width="96" height="22" as="geometry"/></mxCell>
+        <mxCell id="c63" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#232F3E;strokeWidth=2;dashed=0;endArrow=block;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#232F3E;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="120" y="975" as="sourcePoint"/><mxPoint x="310" y="975" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c64" value="14  Delete on ACK" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;fontColor=#232F3E;align=center;verticalAlign=middle;labelBackgroundColor=#FFFFFF;fillColor=#FFFFFF;strokeColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="138.0" y="950" width="154" height="22" as="geometry"/></mxCell>
+        <mxCell id="c65" value="Buffer limits" style="rounded=1;arcSize=3;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#5A6B86;strokeColor=#5A6B86;fillColor=#FBFCFD;strokeWidth=1.5;dashed=0;align=left;verticalAlign=top;spacingLeft=12;spacingTop=6;container=0;" vertex="1" parent="1"><mxGeometry x="35" y="1015" width="1130" height="120" as="geometry"/></mxCell>
+        <mxCell id="c66" value="Farm nodes: 24 h, drain oldest first after the live reading&lt;br&gt;Transporter app: at least 7 days (2,016 fixes); custody events never dropped&lt;br&gt;Drone and apps: kept until the cloud acknowledges" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=left;verticalAlign=top;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="50" y="1045" width="1100" height="85" as="geometry"/></mxCell>
+        <mxCell id="c67" value="Part 2   Crop alert in under 5 minutes" style="rounded=1;arcSize=3;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=16;fontStyle=1;fontColor=#5A6B86;strokeColor=#5A6B86;fillColor=#FFFFFF;strokeWidth=1.5;dashed=0;align=left;verticalAlign=top;spacingLeft=12;spacingTop=6;container=0;" vertex="1" parent="1"><mxGeometry x="1210" y="100" width="770" height="1050" as="geometry"/></mxCell>
+        <mxCell id="c68" value="Target seconds (cumulative)" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#5F6B7A;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1500" y="160" width="440" height="22" as="geometry"/></mxCell>
+        <mxCell id="c69" value="1" style="ellipse;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#FFFFFF;fillColor=#232F3E;strokeColor=#FFFFFF;strokeWidth=2;align=center;verticalAlign=middle;aspect=fixed;" vertex="1" parent="1"><mxGeometry x="1230" y="214" width="28" height="28" as="geometry"/></mxCell>
+        <mxCell id="c70" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=none;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.iot_thing_temperature_sensor;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="1272" y="204" width="48" height="48" as="geometry"/></mxCell>
+        <mxCell id="c71" value="&lt;b&gt;Reading ready&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1332" y="206" width="170" height="44" as="geometry"/></mxCell>
+        <mxCell id="c72" value="" style="rounded=0;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;strokeColor=none;fillColor=#2E7D4F;strokeWidth=1.5;dashed=0;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="1500.0" y="214" width="14.5" height="26" as="geometry"/></mxCell>
+        <mxCell id="c73" value="10 s" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1520.5" y="215" width="70" height="24" as="geometry"/></mxCell>
+        <mxCell id="c74" value="2" style="ellipse;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#FFFFFF;fillColor=#232F3E;strokeColor=#FFFFFF;strokeWidth=2;align=center;verticalAlign=middle;aspect=fixed;" vertex="1" parent="1"><mxGeometry x="1230" y="306" width="28" height="28" as="geometry"/></mxCell>
+        <mxCell id="c75" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#1A73C8;strokeColor=#1A73C8;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;pointerEvents=1;shape=mxgraph.networks.radio_tower;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="1274" y="294" width="44" height="50" as="geometry"/></mxCell>
+        <mxCell id="c76" value="&lt;b&gt;Radio attach, TLS&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1332" y="298" width="170" height="44" as="geometry"/></mxCell>
+        <mxCell id="c77" value="" style="rounded=0;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;strokeColor=none;fillColor=#2E7D4F;strokeWidth=1.5;dashed=0;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="1514.5" y="306" width="87.0" height="26" as="geometry"/></mxCell>
+        <mxCell id="c78" value="60 s" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1607.5" y="307" width="70" height="24" as="geometry"/></mxCell>
+        <mxCell id="c79" value="3" style="ellipse;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#FFFFFF;fillColor=#232F3E;strokeColor=#FFFFFF;strokeWidth=2;align=center;verticalAlign=middle;aspect=fixed;" vertex="1" parent="1"><mxGeometry x="1230" y="398" width="28" height="28" as="geometry"/></mxCell>
+        <mxCell id="c80" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.iot_core;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="1272" y="388" width="48" height="48" as="geometry"/></mxCell>
+        <mxCell id="c81" value="&lt;b&gt;Publish to PUBACK&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1332" y="390" width="170" height="44" as="geometry"/></mxCell>
+        <mxCell id="c82" value="" style="rounded=0;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;strokeColor=none;fillColor=#2E7D4F;strokeWidth=1.5;dashed=0;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="1601.5" y="398" width="29.0" height="26" as="geometry"/></mxCell>
+        <mxCell id="c83" value="20 s" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1636.5" y="399" width="70" height="24" as="geometry"/></mxCell>
+        <mxCell id="c84" value="4" style="ellipse;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#FFFFFF;fillColor=#232F3E;strokeColor=#FFFFFF;strokeWidth=2;align=center;verticalAlign=middle;aspect=fixed;" vertex="1" parent="1"><mxGeometry x="1230" y="490" width="28" height="28" as="geometry"/></mxCell>
+        <mxCell id="c85" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="1272" y="480" width="48" height="48" as="geometry"/></mxCell>
+        <mxCell id="c86" value="&lt;b&gt;Rule to queue&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1332" y="482" width="170" height="44" as="geometry"/></mxCell>
+        <mxCell id="c87" value="" style="rounded=0;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;strokeColor=none;fillColor=#2E7D4F;strokeWidth=1.5;dashed=0;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="1630.5" y="490" width="14.5" height="26" as="geometry"/></mxCell>
+        <mxCell id="c88" value="10 s" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1651.0" y="491" width="70" height="24" as="geometry"/></mxCell>
+        <mxCell id="c89" value="5" style="ellipse;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#FFFFFF;fillColor=#232F3E;strokeColor=#FFFFFF;strokeWidth=2;align=center;verticalAlign=middle;aspect=fixed;" vertex="1" parent="1"><mxGeometry x="1230" y="582" width="28" height="28" as="geometry"/></mxCell>
+        <mxCell id="c90" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="1272" y="572" width="48" height="48" as="geometry"/></mxCell>
+        <mxCell id="c91" value="&lt;b&gt;Evaluate and persist&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1332" y="574" width="170" height="44" as="geometry"/></mxCell>
+        <mxCell id="c92" value="" style="rounded=0;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;strokeColor=none;fillColor=#2E7D4F;strokeWidth=1.5;dashed=0;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="1645.0" y="582" width="29.0" height="26" as="geometry"/></mxCell>
+        <mxCell id="c93" value="20 s" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1680.0" y="583" width="70" height="24" as="geometry"/></mxCell>
+        <mxCell id="c94" value="6" style="ellipse;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#FFFFFF;fillColor=#232F3E;strokeColor=#FFFFFF;strokeWidth=2;align=center;verticalAlign=middle;aspect=fixed;" vertex="1" parent="1"><mxGeometry x="1230" y="674" width="28" height="28" as="geometry"/></mxCell>
+        <mxCell id="c95" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="1272" y="664" width="48" height="48" as="geometry"/></mxCell>
+        <mxCell id="c96" value="&lt;b&gt;Topic to provider&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1332" y="666" width="170" height="44" as="geometry"/></mxCell>
+        <mxCell id="c97" value="" style="rounded=0;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;strokeColor=none;fillColor=#2E7D4F;strokeWidth=1.5;dashed=0;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="1674.0" y="674" width="43.5" height="26" as="geometry"/></mxCell>
+        <mxCell id="c98" value="30 s" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1723.5" y="675" width="70" height="24" as="geometry"/></mxCell>
+        <mxCell id="c99" value="7" style="ellipse;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#FFFFFF;fillColor=#232F3E;strokeColor=#FFFFFF;strokeWidth=2;align=center;verticalAlign=middle;aspect=fixed;" vertex="1" parent="1"><mxGeometry x="1230" y="766" width="28" height="28" as="geometry"/></mxCell>
+        <mxCell id="c100" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3E;strokeColor=none;dashed=0;html=1;fontFamily=Helvetica;fontSize=15;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.mobile_client;verticalLabelPosition=bottom;verticalAlign=top;align=center;labelPosition=center;" vertex="1" parent="1"><mxGeometry x="1272" y="756" width="48" height="48" as="geometry"/></mxCell>
+        <mxCell id="c101" value="&lt;b&gt;Push or SMS&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1332" y="758" width="170" height="44" as="geometry"/></mxCell>
+        <mxCell id="c102" value="" style="rounded=0;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#232F3E;strokeColor=none;fillColor=#2E7D4F;strokeWidth=1.5;dashed=0;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="1717.5" y="766" width="87.0" height="26" as="geometry"/></mxCell>
+        <mxCell id="c103" value="60 s" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1810.5" y="767" width="70" height="24" as="geometry"/></mxCell>
+        <mxCell id="c104" value="&lt;b&gt;Total&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=16;fontStyle=0;fontColor=#232F3E;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1332" y="856" width="170" height="44" as="geometry"/></mxCell>
+        <mxCell id="c105" value="&lt;b&gt;210 s&lt;/b&gt;" style="rounded=0;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=0;fontColor=#FFFFFF;strokeColor=none;fillColor=#1E5E3A;strokeWidth=1.5;dashed=0;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="1500" y="866" width="304.5" height="30" as="geometry"/></mxCell>
+        <mxCell id="c106" value="90 s margin" style="rounded=0;arcSize=6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=14;fontStyle=0;fontColor=#1E5E3A;strokeColor=#2E7D4F;fillColor=#FFFFFF;strokeWidth=1.5;dashed=1;align=center;verticalAlign=middle;spacingLeft=0;spacing=6;" vertex="1" parent="1"><mxGeometry x="1804.5" y="866" width="130.5" height="30" as="geometry"/></mxCell>
+        <mxCell id="c107" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#D13212;strokeWidth=2.5;dashed=0;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#D13212;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="1935.0" y="190" as="sourcePoint"/><mxPoint x="1935.0" y="924" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c108" value="300 s limit" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#D13212;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1865.0" y="928" width="140" height="22" as="geometry"/></mxCell>
+        <mxCell id="c109" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#5F6B7A;strokeWidth=1.5;dashed=0;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#5F6B7A;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="1500" y="964" as="sourcePoint"/><mxPoint x="1935.0" y="964" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c110" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#5F6B7A;strokeWidth=1.5;dashed=0;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#5F6B7A;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="1500.0" y="959" as="sourcePoint"/><mxPoint x="1500.0" y="969" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c111" value="0" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=14;fontStyle=0;fontColor=#5F6B7A;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1475.0" y="972" width="50" height="20" as="geometry"/></mxCell>
+        <mxCell id="c112" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#5F6B7A;strokeWidth=1.5;dashed=0;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#5F6B7A;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="1587.0" y="959" as="sourcePoint"/><mxPoint x="1587.0" y="969" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c113" value="60" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=14;fontStyle=0;fontColor=#5F6B7A;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1562.0" y="972" width="50" height="20" as="geometry"/></mxCell>
+        <mxCell id="c114" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#5F6B7A;strokeWidth=1.5;dashed=0;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#5F6B7A;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="1674.0" y="959" as="sourcePoint"/><mxPoint x="1674.0" y="969" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c115" value="120" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=14;fontStyle=0;fontColor=#5F6B7A;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1649.0" y="972" width="50" height="20" as="geometry"/></mxCell>
+        <mxCell id="c116" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#5F6B7A;strokeWidth=1.5;dashed=0;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#5F6B7A;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="1761.0" y="959" as="sourcePoint"/><mxPoint x="1761.0" y="969" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c117" value="180" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=14;fontStyle=0;fontColor=#5F6B7A;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1736.0" y="972" width="50" height="20" as="geometry"/></mxCell>
+        <mxCell id="c118" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#5F6B7A;strokeWidth=1.5;dashed=0;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#5F6B7A;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="1848.0" y="959" as="sourcePoint"/><mxPoint x="1848.0" y="969" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c119" value="240" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=14;fontStyle=0;fontColor=#5F6B7A;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1823.0" y="972" width="50" height="20" as="geometry"/></mxCell>
+        <mxCell id="c120" value="" style="html=1;fontFamily=Helvetica;rounded=0;jumpStyle=none;strokeColor=#5F6B7A;strokeWidth=1.5;dashed=0;endArrow=none;endFill=1;startArrow=none;startFill=1;fontSize=14;fontStyle=1;fontColor=#5F6B7A;labelBackgroundColor=#FFFFFF;edgeStyle=none;" edge="1" parent="1"><mxGeometry x="0" y="0" relative="1" as="geometry"><mxPoint x="1935.0" y="959" as="sourcePoint"/><mxPoint x="1935.0" y="969" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="c121" value="300" style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=14;fontStyle=0;fontColor=#5F6B7A;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1910.0" y="972" width="50" height="20" as="geometry"/></mxCell>
+        <mxCell id="c122" value="Targets, not measurements. Without signal the alert is raised at buffer drain, within 24 h." style="text;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=14;fontStyle=0;fontColor=#5F6B7A;align=left;verticalAlign=top;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="1"><mxGeometry x="1240" y="1014" width="720" height="50" as="geometry"/></mxCell>
       </root>
     </mxGraphModel>
   </diagram>
